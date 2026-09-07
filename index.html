@@ -1,0 +1,1176 @@
+<!doctype html>
+<!--
+  ============================================================
+  MANDAI DESIGN — صفحه اصلی (کپی برابر اصل)
+  ------------------------------------------------------------
+  ▸ ساختار کد دقیقاً مثل قالب وردپرس چیده شده است:
+      TopBar        →  قسمت «announcement» (ویجت نوار اعلان)
+      <header>      →  header.php
+      هر <section>  →  یک template part مستقل
+      <footer>      →  footer.php
+  ▸ همه متن‌ها، لینک‌ها و محصولات مستقیماً در همین فایل هستند
+    و بالای هر بخش با کامنت «✏️ ویرایش» مشخص شده‌اند.
+  ▸ راهنمای کامل نصب و ویرایش: فایل README-FA.html
+  ============================================================
+-->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ✏️ ویرایش: عنوان و توضیحات سئو (مهم‌ترین تگ‌های سئو) -->
+  <title>Store Fixtures &amp; Shopfittings | Mandai Design</title>
+  <meta name="description" content="We offer unique store fixtures and shopfittings, including retail shelving, clothing racks, cash counters and more. Made in Germany.">
+  <meta name="keywords" content="store fixtures, shopfittings, retail shelving, shop counters, clothing racks, display pedestals, modular shelving system, retail interior">
+  <meta name="author" content="Mandai Design">
+  <meta name="robots" content="index, follow, max-video-preview:-1, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- ✏️ ویرایش: آدرس دامنه خودتان را در canonical و OG جایگزین example.com کنید -->
+  <link rel="canonical" href="https://www.example.com/">
+
+  <!-- Open Graph (اشتراک‌گذاری در شبکه‌های اجتماعی) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta property="og:site_name" content="Mandai Design">
+  <meta property="og:title" content="Store Fixtures &amp; Shopfittings | Mandai Design">
+  <meta property="og:description" content="We offer unique store fixtures and shopfittings, including retail shelving, clothing racks, cash counters and more. Made in Germany.">
+  <meta property="og:image" content="https://www.example.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mandai Design — Store Fixtures &amp; Shopfittings">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Store Fixtures &amp; Shopfittings | Mandai Design">
+  <meta name="twitter:description" content="We offer unique store fixtures and shopfittings, including retail shelving, clothing racks, cash counters and more. Made in Germany.">
+  <meta name="twitter:image" content="https://www.example.com/images/og-image.jpg">
+
+  <!-- Favicon (برای تعویض، فایل favicon.svg را عوض کنید) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- فونت‌های self-host شده (سریع‌تر از CDN و بدون وابستگی خارجی) -->
+  <link rel="preload" href="fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/hero-poster.jpg" as="image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- ============================================================
+       Structured Data (JSON-LD) — سئوی پیشرفته برای گوگل
+       ✏️ ویرایش: آدرس دامنه (example.com) را جایگزین کنید.
+       در وردپرس این کار را افزونه Yoast/Rank Math انجام می‌دهد.
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "Mandai Design",
+        "url": "https://www.example.com/",
+        "inLanguage": "en",
+        "publisher": { "@type": "Organization", "name": "Mandai Design" }
+      },
+      {
+        "@type": "Organization",
+        "name": "Mandai Design",
+        "url": "https://www.example.com/",
+        "logo": "https://www.example.com/images/logo.png",
+        "description": "We offer unique store fixtures and shopfittings, including retail shelving, clothing racks, cash counters and more. Made in Germany.",
+        "telephone": "+49 (0)34341 40 70 950",
+        "email": "info@example.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "DE",
+          "addressLocality": "Geithain"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+49 (0)34341 40 70 950",
+            "contactType": "customer service",
+            "availableLanguage": ["English", "German"]
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "Store Fixtures & Shopfittings | Mandai Design",
+        "url": "https://www.example.com/",
+        "description": "We offer unique store fixtures and shopfittings, including retail shelving, clothing racks, cash counters and more. Made in Germany.",
+        "about": "Store Fixtures and Shopfittings",
+        "isPartOf": { "@id": "https://www.example.com/#website" }
+      },
+      {
+        "@type": "FAQPage",
+        "url": "https://www.example.com/",
+        "name": "Frequently asked questions",
+        "inLanguage": "en",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which countries do you deliver to?",
+            "acceptedAnswer": { "@type": "Answer", "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our \u201cPayment and Shipping\u201d page." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where are Mandai Design retail fixtures manufactured?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The majority of our shopfittings are produced in our own manufacturing facility in Germany. In-house production ensures high quality standards, short delivery routes, and the flexibility to accommodate individual adaptations and custom solutions." }
+          },
+          {
+            "@type": "Question",
+            "name": "What materials are used?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Mandai Design uses powder-coated steel, high-grade wood finishes, glass and quality fittings. All systems are designed for professional, long-term use and stand out for their durability and ease of maintenance. We are happy to assist you in selecting the right solution for your individual retail concept." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Mandai Design have a showroom?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can visit our showroom at our headquarters in Geithain, Germany by prior appointment. There, you can experience our shelving systems, display fittings and materials in person. We are also happy to provide references near your location upon request." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I order products in different colors, dimensions, or finishes?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I order material samples?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, we provide up to three free samples of our wood finishes. This allows you to evaluate materials and surfaces directly in your retail space. A powder-coated steel sample is also available on request." }
+          }
+        ]
+      }
+    ],
+    "mainEntity": [
+      { "@type": "ItemList", "name": "Modular shopfitting systems from Mandai Design", "numberOfItems": 3 }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- لینک پرش برای دسترس‌پذیری (صفحه‌خوان‌ها) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       نوار اعلان چرخشی (بالای صفحه)
+       ✏️ ویرایش: متن‌ها و لینک اعلان‌ها را همین‌جا عوض کنید.
+       در وردپرس → ویجت نوار اعلان / Smart Slider
+       ============================================================ -->
+  <div class="topbar" role="region" aria-label="Announcements" data-topbar>
+    <div class="topbar__inner">
+      <button type="button" class="topbar__arrow topbar__arrow--prev" data-topbar-prev aria-label="Previous announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+
+      <!-- هر <template> یک اعلان است — برای اضافه‌کردن، کپی کنید -->
+      <p class="topbar__text" data-topbar-text aria-live="polite">Order Free Samples</p>
+
+      <button type="button" class="topbar__arrow topbar__arrow--next" data-topbar-next aria-label="Next announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <!-- داده اعلان‌ها (JS این‌ها را می‌چرخاند) -->
+  <script type="application/json" data-topbar-data>
+    [
+      { "text": "Order Free Samples", "href": "#help" },
+      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+    ]
+  </script>
+
+  <!-- ============================================================
+       هدر سایت (header.php در وردپرس)
+       ✏️ ویرایش لوگو: مسیر تصویر یا متن زیر را عوض کنید.
+       ✏️ ویرایش منو: آیتم‌های <li> داخل nav اصلی
+       ============================================================ -->
+  <header class="site-header" id="site-header" data-header>
+
+    <!-- ── نوار کاربردی (فقط دسکتاپ) — با اسکرول جمع می‌شود ── -->
+    <div class="site-header__utility">
+      <div class="container site-header__utility-inner">
+        <nav aria-label="Utility navigation">
+          <ul class="utility-nav">
+            <!-- ✏️ ویرایش: لینک‌های کوچک بالای هدر -->
+            <li><a href="#experience" class="link-underline">About Us</a></li>
+            <li><a href="#help" class="link-underline">Sample Service</a></li>
+            <li><a href="#help" class="link-underline">Design Support</a></li>
+            <li><a href="#faq" class="link-underline">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <!-- انتخاب کشور/ارز (استاتیک — در وردپرس به WooCommerce وصل می‌شود) -->
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
+          <img src="images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>Germany (EUR €)</span>
+          <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── ردیف اصلی هدر ─────────────────────────────────────── -->
+    <div class="container site-header__main">
+      <!-- ✏️ ویرایش لوگو: فایل images/logo.png را با لوگوی خودتان جایگزین کنید -->
+      <a href="index.html" class="site-header__logo" aria-label="Mandai Design — home">
+        <img src="images/logo.png" alt="Mandai Design — Home of Shopfitting" width="220" height="56" class="site-header__logo-img" loading="eager">
+      </a>
+
+      <!-- منوی دسکتاپ با زیرمنو -->
+      <nav aria-label="Main navigation" class="site-header__nav">
+        <ul class="nav">
+          <!-- ✏️ ویرایش منو: هر <li> یک آیتم اصلی؛ <ul class="nav__dropdown"> زیرمنوی آن -->
+          <li class="nav__item">
+            <a href="#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Retail Sectors
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="nav__dropdown">
+              <ul>
+                <!-- ✏️ ویرایش: هر سکتور یک صفحهٔ مستقل در پوشهٔ sectors/ دارد -->
+                <li><a href="sectors/fashion.html">Fashion</a></li>
+                <li><a href="sectors/menswear.html">Menswear</a></li>
+                <li><a href="sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="sectors/shoes.html">Shoes</a></li>
+                <li><a href="sectors/kids-stores.html">Kids Stores</a></li>
+                <li><a href="sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                <li><a href="sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="sectors/pet-stores.html">Pet Stores</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Store Fixtures
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="nav__dropdown">
+              <ul>
+                <!-- ✏️ ویرایش: هر دسته یک صفحهٔ مستقل در پوشهٔ fixtures/ دارد -->
+                <li><a href="fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="fixtures/quick-delivery.html">Quick Delivery</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Shelving Systems
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="nav__dropdown">
+              <ul>
+                <li><a href="systems/addison.html">Addison</a></li>
+                <li><a href="systems/ceres.html">Ceres</a></li>
+                <li><a href="systems/cetus.html">Cetus</a></li>
+                <li><a href="systems/brooklyn.html">Brooklyn</a></li>
+                <li><a href="systems/slimline.html">Slimline</a></li>
+                <li><a href="systems/ontario.html">Ontario</a></li>
+                <li><a href="systems/bergen.html">Bergen</a></li>
+                <li><a href="systems/customize.html">Customize your shelf</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="#references" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              References
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+            <div class="nav__dropdown">
+              <ul>
+                <li><a href="#references">Fashion Stores</a></li>
+                <li><a href="#references">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="#references">Homeware Stores</a></li>
+                <li><a href="#references">Concept Stores</a></li>
+                <li><a href="#references">Cosmetics &amp; Wellness</a></li>
+                <li><a href="#references">VIEW ALL</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="#experience" class="nav__link">Our Process</a>
+          </li>
+          <li class="nav__item">
+            <a href="#contact" class="nav__link">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- آیکون‌های اقدام: جستجو / حساب / سبد خرید -->
+      <div class="site-header__actions">
+        <button type="button" class="icon-btn" data-search-open aria-label="Open search">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button type="button" class="icon-btn hide-sm" data-demo="Account" aria-label="My account">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button type="button" class="icon-btn" data-demo="Cart" aria-label="Shopping cart, 0 items">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </button>
+        <button type="button" class="icon-btn site-header__menu-toggle" data-mobile-open aria-label="Open menu">
+          <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── منوی موبایل (پنل کشویی از راست) ── -->
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true">
+      <div class="mobile-menu__head">
+        <span class="mobile-menu__title">Mandai Design</span>
+        <button type="button" class="icon-btn" data-mobile-close aria-label="Close menu">
+          <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation" class="mobile-menu__body">
+        <ul>
+          <li class="mobile-menu__item">
+            <a href="#sectors">Retail Sectors</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="sectors/fashion.html">Fashion</a></li>
+              <li><a href="sectors/menswear.html">Menswear</a></li>
+              <li><a href="sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="sectors/shoes.html">Shoes</a></li>
+              <li><a href="sectors/kids-stores.html">Kids Stores</a></li>
+              <li><a href="sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="sectors/fine-foods.html">Fine Foods</a></li>
+              <li><a href="sectors/pet-stores.html">Pet Stores</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#categories">Store Fixtures</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="fixtures/quick-delivery.html">Quick Delivery</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#bestsellers">Shelving Systems</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="systems/addison.html">Addison</a></li>
+              <li><a href="systems/ceres.html">Ceres</a></li>
+              <li><a href="systems/cetus.html">Cetus</a></li>
+              <li><a href="systems/brooklyn.html">Brooklyn</a></li>
+              <li><a href="systems/slimline.html">Slimline</a></li>
+              <li><a href="systems/ontario.html">Ontario</a></li>
+              <li><a href="systems/bergen.html">Bergen</a></li>
+              <li><a href="systems/customize.html">Customize your shelf</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#references">References</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="#references">Fashion Stores</a></li>
+              <li><a href="#references">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="#references">Homeware Stores</a></li>
+              <li><a href="#references">Concept Stores</a></li>
+              <li><a href="#references">Cosmetics &amp; Wellness</a></li>
+              <li><a href="#references">VIEW ALL</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item"><a href="#experience">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="#contact">Contact Us</a></li>
+        </ul>
+
+        <ul class="mobile-menu__utility">
+          <li><a href="#experience">About Us</a></li>
+          <li><a href="#help">Sample Service</a></li>
+          <li><a href="#help">Design Support</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <div class="mobile-menu__contact">
+          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+        </div>
+      </nav>
+    </div>
+    <div class="overlay" data-overlay hidden></div>
+
+    <!-- ── دیالوگ جستجو ── -->
+    <div class="search-dialog" id="search-dialog" data-search-dialog role="dialog" aria-modal="true" aria-label="Search" hidden>
+      <div class="search-dialog__box">
+        <button type="button" class="icon-btn search-dialog__close" data-search-close aria-label="Close search">
+          <svg class="icon-18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <h2 class="search-dialog__title">Search</h2>
+        <p class="search-dialog__desc">Looking for a specific fixture? Type a keyword below.</p>
+        <form class="search-dialog__form" role="search" data-search-form>
+          <label class="sr-only" for="site-search">Search products</label>
+          <input id="site-search" type="search" placeholder="e.g. shelving, counter, rack…" class="search-dialog__input">
+          <button type="submit" class="btn btn--dark search-dialog__submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ============================================================
+         HERO — ویدیوی تمام‌عرض + تیتر H1 (تنها H1 صفحه — مهم برای سئو)
+         ✏️ ویرایش: متن H1 و فایل ویدیو/پوستر
+         ============================================================ -->
+    <section class="hero" aria-label="Mandai Design — Store Fixtures and Shopfittings">
+      <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="images/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="images/hero-video.mp4" type="video/mp4">
+      </video>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content">
+        <!-- ✏️ ویرایش: تیتر اصلی صفحه -->
+        <h1 class="hero__title">Store Fixtures and Shopfittings</h1>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INTRO — معرفی کوتاه زیر هیرو
+         ============================================================ -->
+    <section class="intro" aria-labelledby="intro-heading">
+      <div class="container intro__inner">
+        <!-- ✏️ ویرایش: تیتر و متن معرفی -->
+        <h2 id="intro-heading" class="intro__heading">Modern Fixtures Made for Retail.</h2>
+        <p class="intro__text">Mandai Design offers high quality store fixtures and modular shopfitting systems for a wide range of retail sectors. Explore our unique collection and discover the right retail shelving, shop counter or clothing rack for your store. Benefit from our 25 years of retail experience - we offer complimentary support with designing and planning your space with our products.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORIES — اسلایدر دسته‌بندی محصولات (کارت مربعی)
+         ✏️ ویرایش/حذف/افزودن محصول: هر <li> یک کارت است؛
+            فقط تصویر، عنوان و لینک را عوض کنید. تعداد دلخواه مجاز است.
+         ============================================================ -->
+    <section id="categories" class="carousel-section" aria-labelledby="categories-heading">
+      <div class="container">
+        <div class="carousel-section__head">
+          <h2 id="categories-heading" class="h-serif-lg">Explore by Category</h2>
+          <div class="carousel-arrows">
+            <button type="button" class="arrow-btn" data-carousel-prev aria-label="Move to previous slide" disabled>
+              <svg class="arrow-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
+            </button>
+            <button type="button" class="arrow-btn" data-carousel-next aria-label="Move to next slide">
+              <svg class="arrow-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="carousel" data-carousel style="--slide-gap:12px">
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/retail-shelving.html" class="card__link" aria-label="Shelving Systems">
+              <div class="card__media card__media--square"><img src="images/cat-shelving-systems.jpg" alt="Shelving Systems" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Shelving Systems</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/shop-counters.html" class="card__link" aria-label="Shop Counters">
+              <div class="card__media card__media--square"><img src="images/cat-shop-counters.jpg" alt="Shop Counters" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Shop Counters</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/racks-and-rails.html" class="card__link" aria-label="Free-standing Racks">
+              <div class="card__media card__media--square"><img src="images/cat-racks.jpg" alt="Free-standing Racks" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Free-standing Racks</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/racks-and-rails.html" class="card__link" aria-label="Wall-mounted Rails">
+              <div class="card__media card__media--square"><img src="images/cat-wall-rails.jpg" alt="Wall-mounted Rails" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Wall-mounted Rails</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/display-pedestals.html" class="card__link" aria-label="Display Pedestals">
+              <div class="card__media card__media--square"><img src="images/cat-pedestals.jpg" alt="Display Pedestals" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Display Pedestals</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/gondola-shelving.html" class="card__link" aria-label="Gondola Shelving">
+              <div class="card__media card__media--square"><img src="images/cat-gondola.jpg" alt="Gondola Shelving" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Gondola Shelving</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/display-tables.html" class="card__link" aria-label="Display Tables">
+              <div class="card__media card__media--square"><img src="images/cat-display-tables.jpg" alt="Display Tables" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Display Tables</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="fixtures/reception-desks.html" class="card__link" aria-label="Reception Desks">
+              <div class="card__media card__media--square"><img src="images/cat-reception-desks.jpg" alt="Reception Desks" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Reception Desks</h3>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTORS — اسلایدر سکتورهای خرده‌فروشی (کارت عمودی 3:5)
+         ✏️ ویرایش: مثل بخش قبل، هر <li> یک کارت است.
+         ============================================================ -->
+    <section id="sectors" class="carousel-section" aria-labelledby="sectors-heading">
+      <div class="container">
+        <div class="carousel-section__head">
+          <h2 id="sectors-heading" class="h-serif-lg">Explore by Retail Sector</h2>
+          <div class="carousel-arrows">
+            <button type="button" class="arrow-btn" data-carousel-prev aria-label="Move to previous slide" disabled>
+              <svg class="arrow-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
+            </button>
+            <button type="button" class="arrow-btn" data-carousel-next aria-label="Move to next slide">
+              <svg class="arrow-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="carousel" data-carousel style="--slide-gap:12px">
+          <!-- ✏️ ویرایش: هر کارت به یک صفحهٔ سکتور در sectors/ لینک است -->
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/fashion.html" class="card__link" aria-label="Fashion">
+              <div class="card__media card__media--portrait"><img src="images/sector-fashion.jpg" alt="Fashion" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Fashion</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/menswear.html" class="card__link" aria-label="Menswear">
+              <div class="card__media card__media--portrait"><img src="images/sectors/menswear.jpg" alt="Menswear" width="1800" height="1200" loading="lazy"></div>
+              <h3 class="card__title">Menswear</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/homeware.html" class="card__link" aria-label="Homeware">
+              <div class="card__media card__media--portrait"><img src="images/sector-homeware.jpg" alt="Homeware" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Homeware</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/concept-stores.html" class="card__link" aria-label="Concept Stores">
+              <div class="card__media card__media--portrait"><img src="images/sectors/concept-stores.jpg" alt="Concept Stores" width="1800" height="1200" loading="lazy"></div>
+              <h3 class="card__title">Concept Stores</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/shoes.html" class="card__link" aria-label="Shoes">
+              <div class="card__media card__media--portrait"><img src="images/sectors/shoes.jpg" alt="Shoes" width="1800" height="1200" loading="lazy"></div>
+              <h3 class="card__title">Shoes</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/kids-stores.html" class="card__link" aria-label="Kids Stores">
+              <div class="card__media card__media--portrait"><img src="images/sectors/kids-stores.jpg" alt="Kids Stores" width="1800" height="1200" loading="lazy"></div>
+              <h3 class="card__title">Kids Stores</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/cosmetics.html" class="card__link" aria-label="Cosmetics &amp; Spa">
+              <div class="card__media card__media--portrait"><img src="images/sector-cosmetics.jpg" alt="Cosmetics &amp; Spa" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Cosmetics &amp; Spa</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/fine-foods.html" class="card__link" aria-label="Fine Foods">
+              <div class="card__media card__media--portrait"><img src="images/sector-fine-foods.jpg" alt="Fine Foods" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Fine Foods</h3>
+            </a>
+          </li>
+          <li class="card" style="--basis:calc(50% - 6px)">
+            <a href="sectors/pet-stores.html" class="card__link" aria-label="Pet Supplies">
+              <div class="card__media card__media--portrait"><img src="images/sector-pet.jpg" alt="Pet Supplies" width="768" height="768" loading="lazy"></div>
+              <h3 class="card__title">Pet Supplies</h3>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXPERIENCE — سکشن تجربه (تصویر + دکمه پخش + متن + CTA)
+         ✏️ ویرایش: متن‌ها و لینک ویدیو یوتیوب
+         ============================================================ -->
+    <section id="experience" class="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="experience__grid">
+          <a href="https://www.youtube.com/@mandaidesign" target="_blank" rel="noopener noreferrer" class="experience__media" aria-label="Watch: The Mandai Experience video">
+            <div class="experience__media-frame">
+              <img src="images/experience-thumb.jpg" alt="Interior designer standing in a retail store planning the space" width="1024" height="1024" loading="lazy">
+            </div>
+            <span class="experience__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            </span>
+          </a>
+          <div class="experience__copy">
+            <!-- ✏️ ویرایش: تیتر و پاراگراف‌ها -->
+            <h2 id="experience-heading" class="h-serif-xl">The Mandai Experience</h2>
+            <p>See what a typical retail project with Mandai Design looks like - from the first idea and planning stages to production, delivery, setup and opening day.</p>
+            <p>Planning your own store? Let&rsquo;s bring your ideas to life.</p>
+            <a href="#contact" class="btn btn--dark">Start your project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         REFERENCES — نمونه‌کارهای واقعی (اسلایدر با کپشن)
+         ✏️ ویرایش: هر <li> یک نمونه‌کار — نام سیستم، فروشگاه، شهر، عکس
+         ============================================================ -->
+    <section id="references" class="references" aria-labelledby="references-heading">
+      <div class="container">
+        <p class="eyebrow">REFERENCES</p>
+        <div class="references__head">
+          <div class="references__head-text">
+            <h2 id="references-heading" class="h-serif-lg">Retail Spaces Featuring Our Fixtures</h2>
+            <p class="references__desc">From fashion boutiques to concept stores, cosmetic studios and more - discover our fixtures in real retail spaces. See more on our <a href="#references" class="text-link">references page</a>.</p>
+          </div>
+          <div class="carousel-arrows">
+            <button type="button" class="arrow-btn" data-carousel-prev aria-label="Move to previous slide" disabled>
+              <svg class="arrow-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
+            </button>
+            <button type="button" class="arrow-btn" data-carousel-next aria-label="Move to next slide">
+              <svg class="arrow-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <ul class="carousel references__carousel" data-carousel style="--slide-gap:14px">
+          <li class="ref-card" style="--basis:78%">
+            <div class="ref-card__media"><img src="images/ref-lcouture.jpg" alt="Shelving system Ceres — L&acute;Couture, Dubai, UAE" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__system">Shelving system Ceres</p>
+            <p class="ref-card__store"><a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L&acute;Couture</a>, Dubai, UAE</p>
+          </li>
+          <li class="ref-card" style="--basis:78%">
+            <div class="ref-card__media"><img src="images/ref-thread-seed.jpg" alt="Shelving system Ceres — Thread + Seed, La Jolla, US" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__system">Shelving system Ceres</p>
+            <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
+            <p class="ref-card__credit">Photo: <a href="https://dianarosephoto.com/" target="_blank" rel="noopener noreferrer" class="text-link">Diana Rose Photography</a></p>
+          </li>
+          <li class="ref-card" style="--basis:78%">
+            <div class="ref-card__media"><img src="images/ref-moonhub.jpg" alt="Shelving system Addison, Display table Addison — Moonhub, Zurich, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__system">Shelving system Addison, Display table Addison</p>
+            <p class="ref-card__store"><a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Zurich, Switzerland</p>
+            <p class="ref-card__credit">Photo: <a href="https://www.instagram.com/dangmayer/" target="_blank" rel="noopener noreferrer" class="text-link">Dang Mayer</a></p>
+          </li>
+          <li class="ref-card" style="--basis:78%">
+            <div class="ref-card__media"><img src="images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__system">Shelving system Addison</p>
+            <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad S&auml;ckingen, Germany</p>
+          </li>
+          <li class="ref-card" style="--basis:78%">
+            <div class="ref-card__media"><img src="images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__system">Shelving system Ceres</p>
+            <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BENEFITS — ردیف مزایا (آیکون + عنوان)
+         ✏️ ویرایش: هر <li> یک مزیت؛ آیکون‌ها در images/benefit-*.png
+         ============================================================ -->
+    <section class="benefits" aria-labelledby="benefits-heading">
+      <div class="container">
+        <h2 id="benefits-heading" class="benefits__heading">Our benefits at a glance</h2>
+        <ul class="benefits__grid">
+          <li>
+            <div class="benefits__icon"><img src="images/benefit-modular.png" alt="" loading="lazy"></div>
+            <p>Modular and flexible systems</p>
+          </li>
+          <li>
+            <div class="benefits__icon"><img src="images/benefit-support.png" alt="" loading="lazy"></div>
+            <p>Advice and planning support</p>
+          </li>
+          <li>
+            <div class="benefits__icon"><img src="images/benefit-germany.png" alt="" loading="lazy"></div>
+            <p>Made in Germany</p>
+          </li>
+          <li>
+            <div class="benefits__icon"><img src="images/benefit-25.png" alt="" loading="lazy"></div>
+            <p>Years experience in shopfitting</p>
+          </li>
+          <li>
+            <div class="benefits__icon"><img src="images/benefit-samples.png" alt="" loading="lazy"></div>
+            <p>Variety of finishes and free samples</p>
+          </li>
+          <li>
+            <div class="benefits__icon"><img src="images/benefit-assembly.png" alt="" loading="lazy"></div>
+            <p>Easy, uncomplicated self-assembly</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MODULAR — متن معرفی سیستم ماژولار + دکمه
+         ============================================================ -->
+    <section class="modular" aria-labelledby="modular-heading">
+      <div class="container">
+        <div class="modular__inner">
+          <h2 id="modular-heading" class="h-serif-md">Modular shelving systems - more flexibility for your store</h2>
+          <p>Our shelving systems are modular, flexible and individually adaptable - for every room, and every retail sector. Display fittings such as shelf boards and front arms can easily be combined as desired. Benefit permanently from retail shelves that can be extended and redesigned at any time.</p>
+          <a href="#categories" class="btn btn--outline">Discover now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         VIDEO BANNER — بنر ویدیویی تیره (سیستم Addison)
+         ✏️ ویرایش: تیتر و فایل ویدیو/پوستر
+         ============================================================ -->
+    <section class="video-banner" aria-labelledby="video-banner-heading">
+      <video class="video-banner__video" autoplay muted loop playsinline preload="metadata" poster="images/banner-addison-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="images/banner-addison.mp4" type="video/mp4">
+      </video>
+      <div class="video-banner__overlay" aria-hidden="true"></div>
+      <div class="video-banner__content">
+        <h2 id="video-banner-heading" class="video-banner__title">Addison retail shelving - modular and flexible</h2>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BESTSELLERS — محصولات پرفروش (گرید ۴ ستونه)
+         ✏️ ویرایش محصولات: هر <li> یک محصول است.
+            تصویر + نام + قیمت + تعداد گزینه + (اختیاری) بج «Quick delivery»
+            برای افزودن محصول، یک <li> را کپی کنید — گرید خودش تنظیم می‌شود.
+         ============================================================ -->
+    <section id="bestsellers" class="bestsellers" aria-labelledby="bestsellers-heading">
+      <div class="container">
+        <h2 id="bestsellers-heading" class="h-serif-lg">Bestsellers</h2>
+        <ul class="bestsellers__grid">
+          <li>
+            <a href="systems/addison.html" class="product" aria-label="Shelving System Addison - Fashion - Style 5 — from €2,252.00">
+              <div class="product__media">
+                <img src="images/product-addison-style5.jpg" alt="Shelving System Addison - Fashion - Style 5" width="1024" height="1024" loading="lazy">
+              </div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 5</h3>
+              <p class="product__price">from &euro;2,252.00</p>
+              <p class="product__variants">3 wood decors</p>
+            </a>
+          </li>
+          <li>
+            <a href="systems/ceres.html" class="product" aria-label="Shelving System Ceres - Homeware - Style 4, black — from €2,109.00">
+              <div class="product__media">
+                <img src="images/product-ceres-style4.jpg" alt="Shelving System Ceres - Homeware - Style 4, black" width="1024" height="1024" loading="lazy">
+              </div>
+              <h3 class="product__name">Shelving System Ceres - Homeware - Style 4, black</h3>
+              <p class="product__price">from &euro;2,109.00</p>
+              <p class="product__variants">2 options</p>
+            </a>
+          </li>
+          <li>
+            <a href="fixtures/racks-and-rails.html" class="product" aria-label="Clothing Rail Como black, W 120, 3 heights — from €346.00">
+              <div class="product__media">
+                <img src="images/product-como.jpg" alt="Clothing Rail Como black, W 120, 3 heights" width="1024" height="1024" loading="lazy">
+                <span class="product__badge">Quick delivery</span>
+              </div>
+              <h3 class="product__name">Clothing Rail Como black, W 120, 3 heights</h3>
+              <p class="product__price">from &euro;346.00</p>
+              <p class="product__variants">4 options</p>
+            </a>
+          </li>
+          <li>
+            <a href="systems/ontario.html" class="product" aria-label="Clothing Rail Ontario, W203, Black — from €556.00">
+              <div class="product__media">
+                <img src="images/product-ontario.jpg" alt="Clothing Rail Ontario, W203, Black" width="1024" height="1024" loading="lazy">
+                <span class="product__badge">Quick delivery</span>
+              </div>
+              <h3 class="product__name">Clothing Rail Ontario, W203, Black</h3>
+              <p class="product__price">from &euro;556.00</p>
+              <p class="product__variants">2 options</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         HELP — «Three ways we can help» (سه ستون)
+         ✏️ ویرایش: هر <article> یک کارت — تصویر، تیتر، متن، دکمه
+         ============================================================ -->
+    <section id="help" class="help" aria-labelledby="help-heading">
+      <div class="container">
+        <h2 id="help-heading" class="help__heading">Three ways we can help</h2>
+        <div class="help__grid">
+          <article class="help-card">
+            <div class="help-card__media"><img src="images/help-samples.jpg" alt="Free colour samples" width="1024" height="1024" loading="lazy"></div>
+            <h3 class="help-card__title">Free colour samples</h3>
+            <p class="help-card__text">Not sure about the colour? Our shelving is available in a huge range of finishes. Our free sample service makes it easier to decide.</p>
+            <div class="help-card__action"><a href="#contact" class="btn btn--outline btn--sm">Order samples</a></div>
+          </article>
+          <article class="help-card">
+            <div class="help-card__media"><img src="images/help-planning.jpg" alt="Free planning service" width="1024" height="1024" loading="lazy"></div>
+            <h3 class="help-card__title">Free planning service</h3>
+            <p class="help-card__text">Starting from scratch? Our team of interior designers can design a shop shelving system using your floor plan and measurements.</p>
+            <div class="help-card__action"><a href="#contact" class="btn btn--outline btn--sm">Find out more</a></div>
+          </article>
+          <article class="help-card">
+            <div class="help-card__media"><img src="images/help-videos.jpg" alt="How-to videos and ideas" width="1024" height="1024" loading="lazy"></div>
+            <h3 class="help-card__title">How-to videos and ideas</h3>
+            <p class="help-card__text">Explore how simple our shelves are to put together or check out our video library for plenty of how-to videos, ideas and inspiration!</p>
+            <div class="help-card__action"><a href="#references" class="btn btn--outline btn--sm">Watch now</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         REVIEWS — نظرات مشتریان (اسلایدر)
+         ✏️ برای افزودن نظر، یک <li> کپی کنید — فلش‌ها و نقطه‌ها
+            خودکار ظاهر می‌شوند (وقتی بیش از یک نظر باشد).
+         ============================================================ -->
+    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
+      <div class="container">
+        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
+        <div class="reviews__slider">
+          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
+            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
+          </button>
+          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
+            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
+          </button>
+
+          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
+            <li class="review-slide" style="--basis:100%">
+              <div class="review-slide__grid">
+                <div class="review-slide__media">
+                  <img src="images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
+                </div>
+                <blockquote class="review-slide__quote">
+                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
+                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
+                </blockquote>
+              </div>
+            </li>
+          </ul>
+
+          <div class="reviews__dots" data-reviews-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FAQ — سوالات متداول (آکاردئون)
+         ✏️ ویرایش: هر <div class="faq__item"> یک سوال/جواب است.
+            همین سوال‌ها در JSON-LD بالای فایل هم هستند — اگر تغییر
+            دادید، آنجا هم همین متن‌ها را به‌روز کنید (برای سئو).
+         ============================================================ -->
+    <section id="faq" class="faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="faq__inner">
+          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
+
+          <div class="faq__list">
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
+                  <span>Which countries do you deliver to?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
+                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
+                  <span>Where are Mandai Design retail fixtures manufactured?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
+                <p>The majority of our shopfittings are produced in our own manufacturing facility in Germany. In-house production ensures high quality standards, short delivery routes, and the flexibility to accommodate individual adaptations and custom solutions.</p>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-button-2">
+                  <span>What materials are used?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-2" role="region" aria-labelledby="faq-button-2" hidden>
+                <p>Mandai Design uses powder-coated steel, high-grade wood finishes, glass and quality fittings. All systems are designed for professional, long-term use and stand out for their durability and ease of maintenance. We are happy to assist you in selecting the right solution for your individual retail concept.</p>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-button-3">
+                  <span>Does Mandai Design have a showroom?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-3" role="region" aria-labelledby="faq-button-3" hidden>
+                <p>Yes, you can visit our showroom at our headquarters in Geithain, Germany by prior appointment. There, you can experience our shelving systems, display fittings and materials in person. We are also happy to provide references near your location upon request.</p>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-button-4">
+                  <span>Can I order products in different colors, dimensions, or finishes?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-4" role="region" aria-labelledby="faq-button-4" hidden>
+                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-5" id="faq-button-5">
+                  <span>Can I order material samples?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="faq-panel-5" role="region" aria-labelledby="faq-button-5" hidden>
+                <p>Yes, we provide up to three free samples of our wood finishes. This allows you to evaluate materials and surfaces directly in your retail space. A powder-coated steel sample is also available on request.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__more">
+            <p>Couldn&rsquo;t find your question?</p>
+            <a href="#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACT — فرم تماس
+         ✏️ ویرایش: متن‌ها و گزینه‌های «How did you hear about us?»
+         ▶ فرم به contact.php ارسال می‌شود — ایمیل گیرنده را بالای
+           آن فایل تنظیم کنید. پیام‌ها در files/submissions.csv ذخیره می‌شوند.
+         ============================================================ -->
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+          <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+        </div>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+            </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
+            </div>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SEO TEXT — متن سه ستونه سئو (انتهای صفحه)
+         ✏️ ویرایش: تیتر + سه بلوک متن؛ کلمات کلیدی کسب‌وکار خودتان
+         ============================================================ -->
+    <section class="seo-text" aria-labelledby="seo-heading">
+      <div class="container">
+        <h2 id="seo-heading" class="seo-text__heading">Modular shopfitting systems from Mandai Design</h2>
+        <div class="seo-text__grid">
+          <div>
+            <h3>Shopfittings for stylish shop design</h3>
+            <p>Present your products perfectly: our online shop offers interactive shop counters, modular shelving systems, clothing rails and display fittings for your shop. No matter which products you want to offer in your shop or pop-up store - with individual shopfittings from Mandai Design, your range will always be presented beautifully.</p>
+          </div>
+          <div>
+            <h3>Design as a success factor in retail</h3>
+            <p>Most customers are guided by emotions when making a purchase. They want to be positively surprised and expect a special shopping experience when entering a shop. In this respect, the design of a shop interior plays a major role in successfully attracting customers. An interior beautiful design is somewhat more cost-intensive to purchase, but more economical in the long run.</p>
+          </div>
+          <div>
+            <h3>Store fixtures that stand out</h3>
+            <p>In our online shop, you can buy modern store fixtures that stand out from the crowd thanks to its clearly defined style. Our easy-to-assemble shelving systems impress with their strong design: shopfitting system Addison impresses with timeless elegance and shelving system Ceres with lightness.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER (footer.php در وردپرس)
+       ✏️ ویرایش: اطلاعات تماس، شبکه‌های اجتماعی، ستون لینک‌ها،
+          متن خبرنامه، روش‌های پرداخت و کپی‌رایت
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+
+      <!-- ── گرید بالای فوتر ── -->
+      <div class="site-footer__top">
+        <!-- تماس + شبکه‌های اجتماعی -->
+        <div class="site-footer__contact">
+          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
+          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
+          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <ul class="site-footer__socials" aria-label="Social media">
+            <li><a href="#" aria-label="Facebook" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Instagram" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="LinkedIn" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Pinterest" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M9.2 20.2c.6-2.4 1.5-6.1 1.5-6.1"/><path d="M10.7 14.1c.3 1 1.2 1.6 2.3 1.6 2.1 0 3.6-1.9 3.6-4.3A4.6 4.6 0 0 0 8.6 9c-.7 1.2-.4 2.4.2 3"/><path d="M9.2 20.2c.1-.5.3-1.1.4-1.6"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="YouTube" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- ستون‌های لینک (✏️ ویرایش: هر nav یک ستون) -->
+        <nav aria-label="Footer column 1" class="site-footer__col">
+          <ul>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#help">Design Service</a></li>
+            <li><a href="#help">Sample Service</a></li>
+            <li><a href="#help">Assembly Instructions</a></li>
+            <li><a href="#categories">Wardrobe Systems</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer column 2" class="site-footer__col">
+          <ul>
+            <li><a href="#">Payment And Shipping</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Imprint</a></li>
+            <li><a href="#">CCPA Opt Out</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer column 3" class="site-footer__col">
+          <ul>
+            <li><a href="fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="fixtures/display-pedestals.html">Display Pedestals</a></li>
+          </ul>
+        </nav>
+
+        <!-- یادداشت کسب‌وکار -->
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="#contact" class="text-link-strong">contact us</a>.</p>
+      </div>
+
+      <!-- ── خبرنامه (به contact.php وصل است — form_type=newsletter) ── -->
+      <div class="newsletter">
+        <p class="newsletter__text">Subscribe to our newsletter for product launches, inspiration and more.</p>
+        <form class="newsletter__form" data-newsletter-form novalidate>
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" name="email" type="email" required autocomplete="email" placeholder="Your email" class="newsletter__input">
+          <button type="submit" class="newsletter__btn" data-newsletter-submit>Subscribe</button>
+        </form>
+      </div>
+
+      <!-- ── معرفی سایت دوم (آلمانی) ── -->
+      <div class="secondary-site">
+        <img src="images/flag-de.png" alt="" width="22" height="14" class="secondary-site__flag">
+        <p>Looking for our German website? <a href="https://www.mandai-design.de/" target="_blank" rel="noopener noreferrer" class="text-link-strong">Visit mandai-design.de</a></p>
+      </div>
+
+      <!-- ── نوار پایانی: کشور / کپی‌رایت / روش‌های پرداخت ── -->
+      <div class="site-footer__bottom">
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
+          <img src="images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>Germany (EUR €)</span>
+          <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+
+        <ul class="site-footer__payments" aria-label="Accepted payment methods">
+          <li>Amex</li>
+          <li>Apple Pay</li>
+          <li>Diners</li>
+          <li>Discover</li>
+          <li>Google Pay</li>
+          <li>Maestro</li>
+          <li>Mastercard</li>
+          <li>PayPal</li>
+          <li>Shop Pay</li>
+          <li>Union Pay</li>
+          <li>Visa</li>
+        </ul>
+      </div>
+
+      <!-- لینک‌های داخلی سئو (نامرئی) -->
+      <nav aria-label="Footer keyword links" class="sr-only">
+        <ul>
+          <li><a href="#categories">Store fixtures &amp; shopfittings</a></li>
+          <li><a href="#bestsellers">Retail shelving systems</a></li>
+          <li><a href="#faq">Frequently asked questions</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ظرف اعلان‌های موقت (Toast) -->
+  <div class="toast-container" data-toasts aria-live="polite"></div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- ✏️ برای تعویض favicon، همین فایل را جایگزین کنید (32x32) -->
+  <rect width="32" height="32" rx="3" fill="#1a1a1a"/>
+  <text x="16" y="22.5" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#ffffff" text-anchor="middle">M</text>
+</svg>

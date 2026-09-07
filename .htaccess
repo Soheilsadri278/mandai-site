@@ -1,0 +1,40 @@
+# ============================================================
+# MANDAI DESIGN — تنظیمات Apache (هاست اشتراکی)
+# ============================================================
+
+# کاراکترست پیش‌فرض
+AddDefaultCharset UTF-8
+
+# جلوگیری از نمایش لیست فایل‌ها
+Options -Indexes
+
+# ── فشرده‌سازی GZIP (سرعت بیشتر) ──
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# ── کش مرورگر ──
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ── فایل‌های حمایتی نباید در نتایج جستجو بیایند ──
+<FilesMatch "^(contact\.php|README.*)$">
+  <IfModule mod_headers.c>
+    Header set X-Robots-Tag "noindex"
+  </IfModule>
+</FilesMatch>
+
+# ✏️ اختیاری: فعال‌سازی اجباری HTTPS (بعد از نصب SSL روی هاست،
+# دو خط زیر را از حالت کامنت خارج کنید)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

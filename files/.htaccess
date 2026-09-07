@@ -1,0 +1,9 @@
+# پوشه files جلوی دسترسی مستقیم از وب بسته شده است
+# (پیام‌های فرم و خبرنامه فقط از طریق FTP/فایل‌منیجر هاست قابل مشاهده‌اند)
+Require all denied
+
+# سازگاری با Apache 2.2 قدیمی‌تر
+<IfModule !mod_authz_core.c>
+  Order allow,deny
+  Deny from all
+</IfModule>

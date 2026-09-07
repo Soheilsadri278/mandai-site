@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>راهنمای نصب و ویرایش — Mandai Design</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Vazirmatn, "Segoe UI", Tahoma, Arial, sans-serif;
+    background: #f6f5f3; color: #1a1a1a;
+    margin: 0; padding: 24px 16px 64px; line-height: 2;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; }
+  .card {
+    background: #fff; border: 1px solid #e6e4e1; border-radius: 8px;
+    padding: 20px 24px; margin-bottom: 20px;
+  }
+  h1 { font-size: 26px; margin: 8px 0 4px; }
+  h2 { font-size: 19px; margin: 0 0 8px; color: #1a1a1a; border-inline-start: 4px solid #1a1a1a; padding-inline-start: 12px; }
+  code, kbd {
+    background: #f0efec; border: 1px solid #e6e4e1; border-radius: 4px;
+    padding: 1px 7px; font-size: 13px; direction: ltr; display: inline-block;
+    font-family: Consolas, Menlo, monospace;
+  }
+  pre {
+    background: #141414; color: #e8e6e2; border-radius: 8px; padding: 14px 18px;
+    overflow-x: auto; direction: ltr; text-align: left; font-size: 13px; line-height: 1.8;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { border: 1px solid #e6e4e1; padding: 8px 12px; text-align: start; }
+  th { background: #f4f3f1; }
+  .muted { color: #6d6a66; font-size: 14px; }
+  .tag { display: inline-block; background: #1a1a1a; color: #fff; border-radius: 4px; padding: 1px 10px; font-size: 12px; }
+  .warn { background: #fdf6ec; border: 1px solid #eedcbf; border-radius: 6px; padding: 10px 16px; margin: 10px 0; font-size: 14px; }
+  ul { padding-inline-start: 22px; }
+  li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="card">
+    <span class="tag">راهنمای فارسی</span>
+    <h1>Mandai Design — نصب روی هاست و ویرایش سایت</h1>
+    <p class="muted">این نسخه یک سایت «استاتیک» (HTML + CSS + JS + PHP) است و روی هر هاست معمولی (سی‌پنل، دایرکت‌ادمین، FTP و…) بدون نیاز به Node.js یا دیتابیس کار می‌کند.</p>
+  </div>
+
+  <div class="card">
+    <h2>۱) نصب روی هاست — ۳ دقیقه</h2>
+    <ol>
+      <li>وارد <strong>سی‌پنل / دایرکت‌ادمین</strong> هاست شوید و به <code>File Manager</code> بروید (یا با FTP وصل شوید).</li>
+      <li>محتویات این فایل ZIP را داخل پوشه <code>public_html</code> آپلود و <strong>Extract</strong> کنید.</li>
+      <li>دامنه خود را در مرورگر باز کنید — سایت بالا می‌آید. همین!</li>
+    </ol>
+    <div class="warn">⚠️ فایل <code>.htaccess</code> (نقطه‌دار) را در آپلود جا نیندازید؛ در File Manager باید گزینه «Show hidden files» فعال باشد.</div>
+  </div>
+
+  <div class="card">
+    <h2>۲) سه تغییر ضروری بعد از نصب</h2>
+    <table>
+      <tr><th>چه چیزی</th><th>کجا</th><th>چطور</th></tr>
+      <tr>
+        <td>دامنه</td>
+        <td><code>index.html</code> + <code>sitemap.xml</code> + <code>robots.txt</code></td>
+        <td>عبارت <code>www.example.com</code> را با دامنه خودتان عوض کنید (در index.html سه‌چهار جا: canonical، og:url و JSON-LD).</td>
+      </tr>
+      <tr>
+        <td>ایمیل دریافت فرم‌ها</td>
+        <td><code>contact.php</code></td>
+        <td>خط اول فایل: <code>$RECIPIENT_EMAIL = 'info@example.com';</code></td>
+      </tr>
+      <tr>
+        <td>لوگو</td>
+        <td>پوشه <code>images/</code></td>
+        <td>فایل <code>logo.png</code> را با لوگوی خودتان (همان نام) جایگزین کنید.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>۳) ویرایش محتوا — بدون دانش برنامه‌نویسی</h2>
+    <p>تمام متن‌ها در <code>index.html</code> هستند و بالای هر بخش با کامنت <code>✏️ ویرایش</code> مشخص شده است:</p>
+    <ul>
+      <li><strong>نام سایت:</strong> جستجوی <code>Mandai Design</code> در index.html و جایگزینی با نام برند شما.</li>
+      <li><strong>متن‌ها (تیترها/پاراگراف‌ها):</strong> هر سکشن یک بلوک کامنت‌دار دارد (Hero، Intro، Categories، …).</li>
+      <li><strong>محصولات (Bestsellers):</strong> بخش <code>BESTSELLERS</code> — هر <code>&lt;li&gt;</code> یک محصول است؛ برای افزودن، همان را کپی کنید و تصویر/نام/قیمت را عوض کنید. تعداد دلخواه مجاز است و گرید خودش مرتب می‌شود.</li>
+      <li><strong>دسته‌بندی‌ها و سکتورها:</strong> بخش‌های <code>CATEGORIES</code> و <code>SECTORS</code> — مثل محصولات، کپی/حذف/ویرایش آزاد است.</li>
+      <li><strong>نمونه‌کارها (References):</strong> بخش <code>REFERENCES</code> — هر <code>&lt;li class="ref-card"&gt;</code> یک نمونه‌کار.</li>
+          <li><strong>صفحات سکتورها:</strong> پوشه <code>sectors/</code> — هر سکتور (مد، کفش، پت‌شاپ و…) یک صفحهٔ HTML مستقل است با هدر/فوتر مشترک. برای ویرایش متن‌ها، همان فایل را باز کنید؛ بخش‌ها با کامنت <code>✏️ ویرایش</code> مشخص شده‌اند. تصاویر هیرو در <code>images/sectors/</code> هستند (فایل را با همان نام جایگزین کنید).</li>
+          <li><strong>صفحات تجهیزات (Store Fixtures):</strong> پوشه <code>fixtures/</code> — ۸ صفحهٔ دسته (قفسه، گندولا، ریل لباس، کانتر و…) با همان ساختار صفحات سکتور. تصاویر هیرو در <code>images/fixtures/</code> هستند.</li>
+          <li><strong>صفحات سیستم‌های قفسه (Shelving Systems):</strong> پوشهٔ <code>systems/</code> — ۸ صفحهٔ Addison، Ceres، Cetus، Brooklyn، Slimline، Ontario، Bergen و «Customize your shelf» با همان ساختار. تصاویر هیرو در <code>images/systems/</code> هستند.</li>
+          <li><strong>سوالات متداول:</strong> بخش <code>FAQ</code> — هر <code>faq__item</code> یک سوال؛ اگر جواب‌ها را عوض کردید، همان متن‌ها را در بلوک <code>JSON-LD</code> (بالای index.html) هم به‌روز کنید تا سئو حفظ شود.</li>
+      <li><strong>منوها:</strong> بخش هدر — هر <code>&lt;li class="nav__item"&gt;</code> یک آیتم منو و <code>nav__dropdown</code> زیرمنوی آن است.</li>
+      <li><strong>اعلان بالای سایت:</strong> بلوک <code>data-topbar-data</code> — متن‌ها و لینک‌های نوار چرخان.</li>
+      <li><strong>شبکه‌های اجتماعی:</strong> بخش فوتر — لینک <code>href="#"</code> هر آیکون را با آدرس صفحات خودتان عوض کنید.</li>
+      <li><strong>تصاویر:</strong> همه در پوشه <code>images/</code> — فایل را با همان نام جایگزین کنید تا نیازی به تغییر کد نباشد.</li>
+    </ul>
+    <div class="warn">💡 نکته: بعد از هر تغییر در <code>sitemap.xml</code> تاریخ <code>lastmod</code> را به‌روز کنید تا گوگل زودتر متوجه تغییرات شود.</div>
+  </div>
+
+  <div class="card">
+    <h2>۴) تغییر زبان سایت (مثلاً به فارسی)</h2>
+    <ul>
+      <li>در <code>index.html</code> خط <code>&lt;html lang="en" dir="ltr"&gt;</code> را به <code>&lt;html lang="fa" dir="rtl"&gt;</code> تغییر دهید — چیدمان به‌صورت خودکار راست‌چین می‌شود (CSS از خواص منطقی استفاده می‌کند).</li>
+      <li>متن‌ها را ترجمه کنید (همان بخش‌های ✏️).</li>
+      <li>برای فونت فارسی، فونت (مثلاً وزیرمتن) را در پوشه <code>fonts/</code> بگذارید و در <code>assets/css/style.css</code> یک <code>@font-face</code> اضافه و متغیر <code>--font-sans</code> را در <code>:root</code> عوض کنید.</li>
+      <li>فلش‌های «بعدی/قبلی» اسلایدرها جهت ثابت دارند؛ اگر خواستید در فارسی جابه‌جا شوند، در <code>main.js</code> تابع <code>go()</code> ضریب <code>dir</code> را از <code>document.documentElement.dir</code> بخواند.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>۵) فرم‌ها (تماس + خبرنامه)</h2>
+    <ul>
+      <li>پیام‌ها همیشه در <code>files/submissions.csv</code> و ایمیل‌های خبرنامه در <code>files/subscribers.csv</code> ذخیره می‌شوند (از طریق فایل‌منیجر هاست قابل مشاهده‌اند؛ این پوشه با htaccess از وب بسته است).</li>
+      <li>اگر تابع <code>mail()</code> هاست شما فعال باشد، علاوه بر CSV، ایمیل هم ارسال می‌شود.</li>
+      <li>یک فیلد مخفی «Honeypot» هم اسپم ربات‌ها را می‌گیرد.</li>
+      <li>در صورت نصب وردپرس در آینده: این فایل‌ها حذف می‌شوند و افزونه Contact Form 7 / WPForms جایگزین می‌شود.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>۶) مسیر مهاجرت به وردپرس</h2>
+    <p>کد عمداً طوری چیده شده که هر بخش معادل یک قطعه قالب وردپرس است:</p>
+    <table>
+      <tr><th>در این فایل</th><th>در وردپرس</th></tr>
+      <tr><td>نوار اعلان (topbar)</td><td>ویجت نوار اعلان</td></tr>
+      <tr><td><code>&lt;header&gt;</code></td><td><code>header.php</code> + <code>wp_nav_menu</code></td></tr>
+      <tr><td>هر <code>&lt;section&gt;</code></td><td>یک template part / بلوک گوتنبرگ</td></tr>
+      <tr><td>کارت‌های محصولات/دسته‌ها</td><td>Custom Post Type + Featured Image یا WooCommerce</td></tr>
+      <tr><td>مزایا، سوالات متداول</td><td>فیلد تکرارشونده ACF</td></tr>
+      <tr><td><code>&lt;footer&gt;</code></td><td><code>footer.php</code> + widget areas</td></tr>
+      <tr><td>بلوک JSON-LD و متاها</td><td>Yoast SEO / Rank Math</td></tr>
+      <tr><td><code>assets/css/style.css</code></td><td>استایل قالب (style.css قالب)</td></tr>
+      <tr><td><code>assets/js/main.js</code></td><td>enqueue در <code>functions.php</code></td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>۷) سئو — چک‌لیست</h2>
+    <ul>
+      <li>فقط یک <code>&lt;h1&gt;</code> در صفحه (داخل Hero) — سلسله‌مراتب h2/h3 رعایت شده.</li>
+      <li>متا تگ‌های title / description / keywords + Open Graph + Twitter Card در <code>&lt;head&gt;</code>.</li>
+      <li>داده ساختاریافته JSON-LD: <code>Organization</code> + <code>WebSite</code> + <code>WebPage</code> + <code>FAQPage</code>.</li>
+      <li>همه تصاویر <code>alt</code> دارند؛ لینک canonical تنظیم شده؛ <code>sitemap.xml</code> و <code>robots.txt</code> موجودند.</li>
+      <li>تصاویر زیرِ فولد <code>loading="lazy"</code> دارند؛ فونت‌ها self-host با <code>font-display: swap</code>؛ ویدیوها فشرده شده‌اند.</li>
+      <li>ساختار معنایی: header / main / nav / section / footer + skip-link دسترس‌پذیری.</li>
+    </ul>
+    <p class="muted">بعد از آنلاین شدن: دامنه را در Google Search Console ثبت و همین sitemap.xml را معرفی کنید.</p>
+  </div>
+
+  <div class="card">
+    <h2>۸) ساختار فایل‌ها</h2>
+    <pre>mandai-site/
+├── index.html          ← کل صفحه اصلی (متن‌ها همین‌جاست)
+├── contact.php         ← پردازش فرم تماس + خبرنامه
+├── .htaccess           ← تنظیمات Apache (کش، فشرده‌سازی، امنیت)
+├── robots.txt          ← راهنمای موتورهای جستجو
+├── sitemap.xml         ← نقشه سایت برای گوگل
+├── favicon.svg         ← آیکون مرورگر
+├── assets/
+│   ├── css/style.css   ← تمام استایل‌ها (متغیرهای رنگ در :root)
+│   └── js/main.js      ← تعاملات (منو، اسلایدر، فرم‌ها…)
+├── sectors/            ← ۹ صفحهٔ Retail Sectors (فشن، کفش، پت‌شاپ و…)
+├── fixtures/           ← ۸ صفحهٔ Store Fixtures (قفسه، گندولا، کانتر و…)
+├── systems/            ← ۸ صفحهٔ Shelving Systems (Addison، Ceres و…)
+├── fonts/              ← فونت‌های self-host (Playfair + Inter)
+├── images/             ← تمام تصاویر و ویدیوها
+│   ├── sectors/        ← تصاویر هیروی صفحات سکتور
+│   ├── fixtures/       ← تصاویر هیروی صفحات تجهیزات
+│   └── systems/        ← تصاویر هیروی صفحات سیستم‌ها
+├── files/              ← ذخیره پیام‌های فرم (از وب بسته است)
+└── README-FA.html      ← همین راهنما</pre>
+  </div>
+
+</div>
+</body>
+</html>
