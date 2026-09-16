@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ سیستم قفسه (قالب نسخهٔ ۲ — مثل سایت اصلی):
+  MANDAI DESIGN — Customize your shelf (بازسازی موبه‌مو از collections/create-your-retail-shelf — 2026-09):
   هیرو بدون تیتر → معرفی + ۴ ویژگی → بنر ویدیو → سکتورها با گرید محصول
   → گرید «سفارشی‌سازی» → FAQ وسط‌چین → نمونه‌کار مشتری → فرم تماس
   ▸ راهنمای کامل: README-FA.html
@@ -11,8 +11,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Customize your shelf - Retail shelving made to measure | Mandai Design</title>
-  <meta name="description" content="Custom sizes, alternative depths, individual finishes and colors: configure your retail shelving with Mandai Design. Made in Germany.">
+  <title>Customize your shelf - Create your retail shelving | Mandai Design</title>
+  <meta name="description" content="Create your perfect store shelving: configure our modular shelving systems - choose design, size, modules and finishes to fit your retail space.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
@@ -22,79 +22,111 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/systems/customize.html">
   <meta property="og:site_name" content="Mandai Design">
-  <meta property="og:title" content="Customize your shelf - Retail shelving made to measure | Mandai Design">
-  <meta property="og:description" content="Custom sizes, alternative depths, individual finishes and colors: configure your retail shelving with Mandai Design. Made in Germany.">
-  <meta property="og:image" content="https://www.example.com/images/systems/customize.jpg">
+  <meta property="og:title" content="Customize your shelf - Create your retail shelving | Mandai Design">
+  <meta property="og:description" content="Create your perfect store shelving: configure our modular shelving systems - choose design, size, modules and finishes to fit your retail space.">
+  <meta property="og:image" content="https://www.example.com/images/systems/ontario.jpg">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Modular retail shelving configured to measure">
+  <meta property="og:image:alt" content="Customized Mandai Design shelving in a retail store">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Customize your shelf - Retail shelving made to measure | Mandai Design">
-  <meta name="twitter:description" content="Custom sizes, alternative depths, individual finishes and colors: configure your retail shelving with Mandai Design. Made in Germany.">
-  <meta name="twitter:image" content="https://www.example.com/images/systems/customize.jpg">
+  <meta name="twitter:title" content="Customize your shelf - Create your retail shelving | Mandai Design">
+  <meta name="twitter:description" content="Create your perfect store shelving: configure our modular shelving systems - choose design, size, modules and finishes to fit your retail space.">
+  <meta name="twitter:image" content="https://www.example.com/images/systems/ontario.jpg">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/systems/customize.jpg" as="image">
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/retail-store-fixtures-shopfittings-product-display-mandai-design_b13121b7-9177-49ff-afd0-31128585aa35.jpg?v=1724665558&width=1200" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ تصویر اول، موبایل تصویر دوم (با نسبت طبیعی) */
+    .cus-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .cus-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .cus-hero-desktop { display: none; }
+      .cus-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .cus-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* انتخاب سیستم: گرید ۴ کارت (عکس + نام + شعار) */
+    .cus-choose__grid { display: grid; gap: 32px 24px; margin-top: 36px; }
+    @media (min-width: 640px)  { .cus-choose__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .cus-choose__grid { grid-template-columns: repeat(4, 1fr); } }
+    .cus-choose__card { display: block; text-align: center; }
+    .cus-choose__card img { width: 100%; height: auto; display: block; background: var(--bg-media); }
+    .cus-choose__card h3 { margin-top: 14px; font-family: var(--font-serif); font-weight: 400; font-size: 19px; }
+    .cus-choose__card p { margin-top: 4px; font-size: 12.5px; color: rgba(26, 26, 26, 0.7); }
+    /* خدمات: سه بلوک */
+    .cus-help__grid { display: grid; gap: 40px 32px; margin-top: 36px; }
+    @media (min-width: 1024px) { .cus-help__grid { grid-template-columns: repeat(3, 1fr); } }
+    .cus-help__grid img { width: 100%; height: auto; display: block; background: var(--bg-media); }
+    .cus-help__grid h3 { margin-top: 16px; font-size: 15.5px; font-weight: 600; }
+    .cus-help__grid p { margin-top: 8px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.8); }
+    .cus-help__grid .text-link { display: inline-block; margin-top: 10px; }
+    /* ✏️ ویرایش: تصاویر محصولات مربع (۲۰۴۸×۲۰۴۸) هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .cus-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدرهای افقی (مشتریان + محصولات ازپیشتنظیمشده) — مثل مرجع: اسکرول-اسنپ + فلش */
+    .cus-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .cus-slider::-webkit-scrollbar { display: none; }
+    .cus-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .cus-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .cus-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .cus-slider > li { flex-basis: 23.5%; } }
+    .cus-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    .cus-sec__head { max-width: 768px; margin-inline: auto; text-align: center; }
+    .cus-sec__head--left { text-align: left; margin-inline: 0; }
+    /* نوار «Shop pre-configured shelves»: تیتر + تب‌های فیلتر + فلش‌های بلند (مثل مرجع) */
+    .cus-pre-bar__row { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 26px; }
+    .cus-filter { display: flex; gap: 26px; flex-wrap: wrap; }
+    .cus-filter__btn {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.6); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cus-filter__btn:hover { color: var(--foreground); }
+    .cus-filter__btn.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .cus-pre .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; }
+    .cus-pre .slider-btn--long svg { width: 27px; height: 15px; }
+    .cus-pre .slider-btn--long[disabled] { opacity: 0.3; }
+    .cus-slider > li[hidden] { display: none; }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    /* دایره‌های گزینهٔ رنگ/چوب (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Create your own customized shelving",
+      "name": "Customize your shelf",
       "url": "https://www.example.com/systems/customize.html",
-      "description": "Custom sizes, alternative depths, individual finishes and colors: configure your retail shelving with Mandai Design. Made in Germany.",
+      "description": "Create your perfect store shelving: configure our modular shelving systems - choose design, size, modules and finishes to fit your retail space.",
       "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://www.example.com/#website"
-      },
-      "primaryImageOfPage": "https://www.example.com/images/systems/customize.jpg"
+      "isPartOf": { "@id": "https://www.example.com/#website" },
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/yoga-studio-shelving-mandai-design-style-4-2.jpg?v=1718623742"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.example.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Shelving Systems",
-          "item": "https://www.example.com/#bestsellers"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Customize your shelf",
-          "item": "https://www.example.com/systems/customize.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "url": "https://www.example.com/systems/customize.html",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible."
-          }
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Shelving Systems", "item": "https://www.example.com/#bestsellers" },
+        { "@type": "ListItem", "position": 3, "name": "Customize your shelf", "item": "https://www.example.com/systems/customize.html" }
       ]
     }
   ]
@@ -293,7 +325,7 @@
               <li><a href="cetus.html">Cetus</a></li>
               <li><a href="brooklyn.html">Brooklyn</a></li>
               <li><a href="slimline.html">Slimline</a></li>
-              <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
               <li><a href="bergen.html">Bergen</a></li>
               <li><a href="customize.html" aria-current="page">Customize your shelf</a></li>
             </ul>
@@ -345,229 +377,471 @@
     </div>
   </header>
 
-  <main id="main-content">
+      <main id="main-content">
 
-    <!-- ══════════ هیرو — تصویر تمام‌عرض بدون تیتر (مثل سایت اصلی) ══════════
-         ✏️ ویرایش: تصویر images/customize.jpg -->
-    <section class="sys-hero" aria-label="Create your own customized shelving">
-      <img src="../images/systems/customize.jpg" alt="Modular retail shelving configured to measure" class="sys-hero__img" width="1800" height="1800" loading="eager">
+    <!-- ══════════ هیرو — مثل مرجع: تصویر اول (دسکتاپ) + تصویر دوم (موبایل) ══════════ -->
+    <section class="sys-hero" aria-label="Customized Mandai Design shelving">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-store-fixtures-shopfittings-product-display-mandai-design_b13121b7-9177-49ff-afd0-31128585aa35.jpg?v=1724665558&width=1800" alt="Customized retail shelving with product displays" class="sys-hero__img cus-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/yoga-studio-shelving-mandai-design-style-4-2.jpg?v=1718623742&width=1200" alt="Customized Mandai Design shelving in a yoga studio" class="sys-hero__img cus-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
-    <!-- ══════════ معرفی + ویژگی‌ها ══════════ -->
-    <section class="sys-intro" aria-labelledby="sys-intro-heading">
+    <!-- ══════════ معرفی — عنوان و توضیحات صفحه (مثل مرجع) ══════════ -->
+    <section class="sys-intro" aria-labelledby="cus-intro-heading">
       <div class="container">
-        <h1 id="sys-intro-heading" class="sys-intro__title">Create your own customized shelving</h1>
-        <p class="sys-intro__lead">Your space. Your system. Your configuration. Our shelving systems are modular and can therefore be individually tailored to your needs: custom sizes, alternative depths and a range of finishes and colors - because every retail space is different.</p>
-        <ul class="feat-grid">
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-modular.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Custom sizes and depths</h3>
-            <p class="feat-card__text">Widths, heights and depths adapt to your floor plan - not the other way around.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-support.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Free planning service</h3>
-            <p class="feat-card__text">Our interior designers design your configuration with you - free of charge.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-samples.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Free samples</h3>
-            <p class="feat-card__text">Up to three wood finish samples to decide with confidence.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-germany.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Made in Germany</h3>
-            <p class="feat-card__text">Your configuration is built in our own factory.</p>
-          </li>
-        </ul>
+        <h1 id="cus-intro-heading" class="sys-intro__title">Create your perfect store shelving</h1>
+        <p class="sys-intro__lead">Our modular shelving systems can be configured to fit your individual needs and space. Start by selecting the shelving system design that you like best. Next, choose the height and width that fit the dimensions of your walls. You can create as wide as you like and extend your shelf anytime.</p>
+        <p class="sys-intro__lead">Then, customize your perfect shelving by choosing from a variety of modules, such as rails for fashion items or shelf boards for homeware displays. For the final touch, customize your shelving further by choosing the colors of the metal and wooden elements.</p>
       </div>
     </section>
 
-
-
-
-
-    <!-- ══════════ انتخاب سیستم پایه ══════════ -->
-    <section class="custom-sec" aria-labelledby="custom-heading">
+    <!-- ══════════ «Choose the shelving design you love» — ۴ کارت انتخاب سیستم ══════════
+         ✏️ ویرایش: کارت‌ها در مرجع به کانفیگوراتورهای build-your-addison/ceres/brooklyn/cetus می‌روند؛
+         اینجا به صفحهٔ محلی همان سیستم‌ها. -->
+    <section class="sector-alt cus-choose" aria-labelledby="cus-choose-heading">
       <div class="container">
-        <h2 id="custom-heading" class="h-serif-lg">Choose your base system</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="addison.html" class="product" aria-label="Shelving System Addison">
-              <div class="product__media"><img src="../images/systems/addison.jpg" alt="Shelving System Addison" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Addison</h3>
-              <p class="product__price">from &euro;2,252.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="ceres.html" class="product" aria-label="Shelving System Ceres">
-              <div class="product__media"><img src="../images/systems/ceres.jpg" alt="Shelving System Ceres" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Ceres</h3>
-              <p class="product__price">from &euro;2,109.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="cetus.html" class="product" aria-label="Shelving System Cetus">
-              <div class="product__media"><img src="../images/systems/cetus.jpg" alt="Shelving System Cetus" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Cetus</h3>
-              <p class="product__price">from &euro;1,651.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="brooklyn.html" class="product" aria-label="Shelving System Brooklyn">
-              <div class="product__media"><img src="../images/systems/brooklyn.jpg" alt="Shelving System Brooklyn" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Brooklyn</h3>
-              <p class="product__price">from &euro;1,998.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="slimline.html" class="product" aria-label="Shelving System Slimline">
-              <div class="product__media"><img src="../images/systems/slimline.jpg" alt="Shelving System Slimline" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Slimline</h3>
-              <p class="product__price">from &euro;1,384.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="ontario.html" class="product" aria-label="Wall Rail System Ontario">
-              <div class="product__media"><img src="../images/systems/ontario.jpg" alt="Wall Rail System Ontario" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Wall Rail System Ontario</h3>
-              <p class="product__price">from &euro;342.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="bergen.html" class="product" aria-label="Shelving System Bergen">
-              <div class="product__media"><img src="../images/systems/bergen.jpg" alt="Shelving System Bergen" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Bergen</h3>
-              <p class="product__price">from &euro;1,744.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../fixtures/racks-and-rails.html" class="product" aria-label="Clothing Rail Como, W 120">
-              <div class="product__media"><img src="../images/product-como.jpg" alt="Clothing Rail Como, W 120" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Clothing Rail Como, W 120</h3>
-              <p class="product__price">from &euro;346.00</p>
-            </a>
-          </li>
-        </ul>
+        <div class="cus-sec__head">
+          <h2 class="sector-alt__title" id="cus-choose-heading">Choose the shelving design you love</h2>
+          <p class="sector-alt__text">To get started, choose one of the following shelving systems.</p>
+        </div>
+        <div class="cus-choose__grid">
+          <a href="addison.html" class="cus-choose__card">
+            <img src="https://www.mandai-design.com/cdn/shop/files/build-your-addison-md.jpg?v=1725433830" alt="Build your Addison shelving system" width="800" height="800" loading="lazy">
+            <h3>Addison</h3>
+            <p>Freestanding, modern design.</p>
+          </a>
+          <a href="ceres.html" class="cus-choose__card">
+            <img src="https://www.mandai-design.com/cdn/shop/files/build-your-ceres.jpg?v=1725433669" alt="Build your Ceres shelving system" width="800" height="800" loading="lazy">
+            <h3>Ceres</h3>
+            <p>Straight lines, clean design.</p>
+          </a>
+          <a href="brooklyn.html" class="cus-choose__card">
+            <img src="https://www.mandai-design.com/cdn/shop/files/brooklyn-build.jpg?v=1725016652" alt="Build your Brooklyn shelving system" width="800" height="800" loading="lazy">
+            <h3>Brooklyn</h3>
+            <p>Industrial style shelf.</p>
+          </a>
+          <a href="cetus.html" class="cus-choose__card">
+            <img src="https://www.mandai-design.com/cdn/shop/files/build-your-cetus-md.jpg?v=1725433886" alt="Build your Cetus shelving system" width="800" height="800" loading="lazy">
+            <h3>Cetus</h3>
+            <p>Compact and endlessly flexible.</p>
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- ══════════ مراحل کار ══════════ -->
-    <section class="steps-sec" aria-labelledby="steps-heading">
+    <!-- ══════════ «Expert Assistance, Samples, and More» — سه بلوک خدمات ══════════
+         ✏️ ویرایش: لینک‌های مرجع به صفحات داخلی/یوتیوب خودشان می‌روند؛ اینجا به معادل‌های محلی. -->
+    <section class="sector-alt cus-help" aria-labelledby="cus-help-heading">
       <div class="container">
-        <h2 id="steps-heading" class="h-serif-lg">How it works</h2>
-        <ol class="steps-grid">
-          <li class="step-card">
-            <span class="step-card__num">1</span>
-            <h3 class="step-card__title">Tell us your space</h3>
-            <p class="step-card__text">Send us your floor plan, measurements and ideas via the contact form - or visit our showroom in Geithain, Germany by prior appointment.</p>
-          </li>
-          <li class="step-card">
-            <span class="step-card__num">2</span>
-            <h3 class="step-card__title">We plan with you</h3>
-            <p class="step-card__text">Our team of interior designers designs your shelving configuration - free of charge. Not sure about the finish? We send up to three free material samples.</p>
-          </li>
-          <li class="step-card">
-            <span class="step-card__num">3</span>
-            <h3 class="step-card__title">Made and delivered</h3>
-            <p class="step-card__text">Your customized shelving is manufactured in our own factory in Germany and delivered to your store - flat-packed for easy self-assembly.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ══════════ سوالات متداول (وسط‌چین مثل سایت اصلی) ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq faq--centered" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Commonly asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible.</p>
-              </div>
-            </div>
+        <div class="cus-sec__head cus-sec__head--left">
+          <h2 class="sector-alt__title" id="cus-help-heading">Expert Assistance, Samples, and More</h2>
+        </div>
+        <div class="cus-help__grid">
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-fixtures-planning-design-mandaidesign.jpg?v=1725889237" alt="Retail fixtures planning and design service" width="800" height="800" loading="lazy">
+            <h3>Need a helping hand?</h3>
+            <p>If you'd like assistance to create your perfect shelf and space, our interior design team is here to help. Contact us to take advantage of our free planning and design services.</p>
+            <a href="../index.html#help" class="text-link">learn more</a>
           </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/wood-samples-mandai-design.jpg?v=1724665195" alt="Wood finish samples" width="800" height="800" loading="lazy">
+            <h3>Get a feel for the finishes</h3>
+            <p>Want to see how our materials look and feel in your space? Request a free sample of our high-quality wood finishes on our samples page and explore the options up close.</p>
+            <a href="../index.html#help" class="text-link">SAMPLE SERVICE</a>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelf-mandaidesign.jpg?v=1725889545" alt="Retail shelf assembly" width="800" height="800" loading="lazy">
+            <h3>How-to videos and ideas</h3>
+            <p>Explore how simple our shelves are to put together and get familiar with the process - or check out our video library for plenty of ideas and inspiration!</p>
+            <a href="https://www.youtube.com/@mandaidesign" target="_blank" rel="noopener noreferrer" class="text-link">GET STARTED</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="references" aria-labelledby="refs-heading">
+    <!-- ══════════ «Explore our clients' custom shelving designs.» — اسلایدر ۸ عکس لایو ══════════ -->
+    <section class="references" aria-labelledby="cus-refs-heading">
       <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
-        <div class="references__head">
+        <div class="references__head cus-slider-head">
           <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">See this shelving system in real stores</h2>
-            <p class="references__desc">A selection of our customers&rsquo; stores equipped with our systems. More on our <a href="../index.html#references" class="text-link">references page</a>.</p>
+            <h2 id="cus-refs-heading" class="h-serif-lg">Explore our clients' custom shelving designs.</h2>
+            <p class="references__desc">Need some ideas? Check out how other retail stores are using our shelving systems. See more customer photos on our <a href="../index.html#references" class="text-link">reference page</a>.</p>
+          </div>
+          <div class="slider-nav">
+            <button type="button" class="slider-btn" data-slider="cusRefsSlider" data-dir="-1" aria-label="Previous">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M6.5 1.5 3 5l3.5 3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="slider-btn" data-slider="cusRefsSlider" data-dir="1" aria-label="Next">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
-        <ul class="ref-grid">
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad Säckingen, Germany</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-moonhub.jpg" alt="Shelving system Addison, Display table Addison — Moonhub, Zurich, Switzerland" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison, Display table Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Zurich, Switzerland</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-thread-seed.jpg" alt="Thread + Seed concept store, La Jolla, US" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Wall rail system Ontario/Glasgow</p>
-          <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
-        </li>
+        <ul class="ref-grid cus-slider" id="cusRefsSlider">
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-lewisia-home-store-shelves_1.jpg?v=1723117999" alt="Customized Addison shelving in store &mdash; Lewisia Home, US" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/lewisiahome/" target="_blank" rel="noopener noreferrer" class="text-link">Lewisia Home</a>, US</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-aromapflege-mandai-design-1.jpg?v=1718350596" alt="Customized Addison shelving in store &mdash; Aromapflege, Austria" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/aromapflege/" target="_blank" rel="noopener noreferrer" class="text-link">Aromapflege</a>, Austria</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/store-fixtures-shopfittings-retail-product-display-mandai-design_606676a1-b674-40b6-a389-06c6270c9d2c.jpg?v=1718698021" alt="Customized Ceres shelving in store &mdash; NIKA Home, UK" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://www.instagram.com/nikahomesalcombe/" target="_blank" rel="noopener noreferrer" class="text-link">NIKA Home</a>, UK</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/menswear-shelving-retail-display-fashion-lc-dubai.jpg?v=1717053695" alt="Customized Ceres, display pedestals shelving in store &mdash; L&acute;Couture Fashion, Dubai - UAE" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres, display pedestals - <a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L&acute;Couture Fashion</a>, Dubai - UAE</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mode-stoss-mandai-design-ref_1.jpg?v=1725523726" alt="Customized Addison shelving in store &mdash; Mode Stoss, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/mode_stoss/" target="_blank" rel="noopener noreferrer" class="text-link">Mode Stoss</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design-cetus_01232c9f-fc92-46cd-b272-2ea819a0cb18.jpg?v=1707922494" alt="Customized Cetus shelving in store &mdash; Tee Tea Th&eacute;, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Cetus - <a href="https://www.instagram.com/tee.tea.the/" target="_blank" rel="noopener noreferrer" class="text-link">Tee Tea Th&eacute;</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design-addison-wine_0c2e5607-1ecd-4f0a-b99b-f1ae4ac21bfa.jpg?v=1707922374" alt="Customized Addison shelving in store &mdash; Hafenspezerei, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/hafenspezerei/" target="_blank" rel="noopener noreferrer" class="text-link">Hafenspezerei</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/homeware-store-display-fishpools-retail-shelving_2_e3fc6dce-662e-4c68-b180-b896588f5a51.jpg?v=1725372379" alt="Customized Ceres shelving in store &mdash; Fishpools, UK" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://www.instagram.com/fishpoolsuk/" target="_blank" rel="noopener noreferrer" class="text-link">Fishpools</a>, UK</p>
+          </li>
         </ul>
       </div>
     </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
+    <!-- ══════════ «Shop pre-configured shelves» — اسلایدر ۲۵ کارت لایو ══════════
+         ✏️ ویرایش: در مرجع هر کارت به صفحهٔ محصول می‌رود؛ اینجا به فرم تماس. -->
+    <section class="sector-alt cus-pre" aria-labelledby="cus-pre-heading">
       <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Customize your retail shelf - made to measure by Mandai Design</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Custom sizes and depths</h3>
-            <p>Every wall is different: we adapt widths, heights and depths to your floor plan - not the other way around.</p>
-          </div>
-          <div>
-            <h3>Finishes and colors</h3>
-            <p>Powder-coated steel in different colors and a wide range of wood finishes - matched to your brand.</p>
-          </div>
-          <div>
-            <h3>Free planning service</h3>
-            <p>Our interior designers design your configuration with your floor plan and measurements - free of charge.</p>
+        <div class="cus-pre-bar">
+          <h2 class="sector-alt__title" id="cus-pre-heading">Shop pre-configured shelves</h2>
+          <div class="cus-pre-bar__row">
+            <!-- فیلتر سیستم (مثل مرجع: Addison / Ceres / Brooklyn / Cetus) -->
+            <div class="cus-filter" role="group" aria-label="Filter by shelving system">
+              <button type="button" class="cus-filter__btn is-active" data-system="addison" aria-pressed="true">Addison</button>
+              <button type="button" class="cus-filter__btn" data-system="ceres" aria-pressed="false">Ceres</button>
+              <button type="button" class="cus-filter__btn" data-system="brooklyn" aria-pressed="false">Brooklyn</button>
+              <button type="button" class="cus-filter__btn" data-system="cetus" aria-pressed="false">Cetus</button>
+            </div>
+            <div class="slider-nav">
+              <button type="button" class="slider-btn slider-btn--long" data-slider="cusPreSlider" data-dir="-1" aria-label="Previous">
+                <svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="slider-btn slider-btn--long" data-slider="cusPreSlider" data-dir="1" aria-label="Next">
+                <svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
           </div>
         </div>
+        <ul class="mini-grid cus-grid cus-slider" id="cusPreSlider">
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 1">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle1H260_mitAcc_3Halifax1.jpg?v=1670406672" alt="Shelving System Addison - Fashion - Style 1" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 1</h3>
+              <p class="product__price">from $806.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 2">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle2H260_mitAcc_2Halifax1.jpg?v=1670409163" alt="Shelving System Addison - Fashion - Style 2" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 2</h3>
+              <p class="product__price">from $1,948.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 3">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle3H260_mitAcc_Halifax1JPG.jpg?v=1670408538" alt="Shelving System Addison - Fashion - Style 3" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 3</h3>
+              <p class="product__price">from $1,394.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 4">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle4H260_mitAcc_Halifax1.jpg?v=1670415529" alt="Shelving System Addison - Fashion - Style 4" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 4</h3>
+              <p class="product__price">from $1,830.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 5">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle5H260_mitAcc_Halifax1.jpg?v=1670416089" alt="Shelving System Addison - Fashion - Style 5" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 5</h3>
+              <p class="product__price">from $2,613.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 6">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle6H260_mitAcc_Halifax1.jpg?v=1670416843" alt="Shelving System Addison - Fashion - Style 6" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 6</h3>
+              <p class="product__price">from $2,510.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 1">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle1H260_mitAccHalifax_2026.jpg?v=1769430727" alt="Shelving System Addison - Fine Foods - Style 1" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fine Foods - Style 1</h3>
+              <p class="product__price">from $1,316.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="addison">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 2">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle2H260_inclAccHalifax_2026.jpg?v=1769503911" alt="Shelving System Addison - Fine Foods - Style 2" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fine Foods - Style 2</h3>
+              <p class="product__price">from $3,064.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 1, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260_mitAcc_Halifax.jpg?v=1670489628" alt="Shelving system Ceres - Fashion - Style 1, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 1, black</h3>
+              <p class="product__price">from $723.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260_mitAcc_Halifax.jpg?v=1670489628" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260weissmitAcc_HalifaxEichenatur.jpg?v=1679479372" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 2, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260_mitAccHalifax.jpg?v=1670492389" alt="Shelving system Ceres - Fashion - Style 2, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 2, black</h3>
+              <p class="product__price">from $1,701.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260weiss_mitAccHalifax.jpg?v=1679479975" alt="White steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260_mitAccHalifax.jpg?v=1670492389" alt="Black steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 3, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260_mitAccHalifax.jpg?v=1670490073" alt="Shelving system Ceres - Fashion - Style 3, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 3, black</h3>
+              <p class="product__price">from $1,401.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260weiss_mitAccHalifax.jpg?v=1679490993" alt="White steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260_mitAccHalifax.jpg?v=1670490073" alt="Black steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 4, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260_mitAccHalifax.jpg?v=1670492701" alt="Shelving system Ceres - Fashion - Style 4, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 4, black</h3>
+              <p class="product__price">from $2,222.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260weiss_mitAccHalifax.jpg?v=1679483287" alt="White steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260_mitAccHalifax.jpg?v=1670492701" alt="Black steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 5, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260_mitAccHalifax.jpg?v=1670491094" alt="Shelving system Ceres - Fashion - Style 5, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 5, black</h3>
+              <p class="product__price">from $1,332.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260_mitAccHalifax.jpg?v=1670491094" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260weiss_mitAccHalifax.jpg?v=1679483528" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fashion - Style 6, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle6H260_mitAccGlas.jpg?v=1670493197" alt="Shelving System Ceres - Fashion - Style 6, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Fashion - Style 6, black</h3>
+              <p class="product__price">from $1,881.00</p>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fashion - Style 7, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle7H260_mitAccGlas.jpg?v=1670493793" alt="Shelving System Ceres - Fashion - Style 7, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Fashion - Style 7, black</h3>
+              <p class="product__price">from $2,128.00</p>
+            </a>
+          </li>
+          <li data-system="ceres">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fashion - Style 8, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle8H260_mitAccGlasHalifax.jpg?v=1670491779" alt="Shelving System Ceres - Fashion - Style 8, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Fashion - Style 8, black</h3>
+              <p class="product__price">from $1,881.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="brooklyn">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 1 with glass shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shelf-shopfitting-b1g-mandaidesign_381f7c9e-588f-44fc-adef-28dd1c3fa9c8.jpg?v=1694431040" alt="Shelving System Brooklyn - Style 1 with glass shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 1 with glass shelves</h3>
+              <p class="product__price">$857.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shelf-shopfitting-b1g-mandaidesign_381f7c9e-588f-44fc-adef-28dd1c3fa9c8.jpg?v=1694431040" alt="Glass" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shelf-shopfitting-b1w-mandaidesign.jpg?v=1694330607" alt="Wood" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="brooklyn">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 2 with wooden shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/industrial-style-retailshelf-brooklyn-shopfitting-2-wood-2_8f68062a-27e1-41df-8461-6249c680ab72.jpg?v=1694437498" alt="Shelving System Brooklyn - Style 2 with wooden shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 2 with wooden shelves</h3>
+              <p class="product__price">$1,299.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/industrial-style-retailshelf-brooklyn-shopfitting-2-glass-2.jpg?v=1694331037" alt="Glass" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/industrial-style-retailshelf-brooklyn-shopfitting-2-wood-2_8f68062a-27e1-41df-8461-6249c680ab72.jpg?v=1694437498" alt="Wood" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="brooklyn">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 3 with glass shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-glass-mandaidesign.jpg?v=1694331166" alt="Shelving System Brooklyn - Style 3 with glass shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 3 with glass shelves</h3>
+              <p class="product__price">$2,082.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-wood-mandaidesign.jpg?v=1694438915" alt="Wood" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-glass-mandaidesign.jpg?v=1694331166" alt="Glass" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="brooklyn">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 4 with wooden shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-4-wood-mandaidesign.jpg?v=1694439838" alt="Shelving System Brooklyn - Style 4 with wooden shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 4 with wooden shelves</h3>
+              <p class="product__price">$2,066.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-4-glass-mandaidesign.jpg?v=1694331366" alt="Glass" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-4-wood-mandaidesign.jpg?v=1694439838" alt="Wood" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="cetus">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 1, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle1_weiss_H260_HalifaxNatur_mitAcc.jpg?v=1695972422" alt="Shelving System Cetus - Classic - Style 1, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Cetus - Classic - Style 1, white</h3>
+              <p class="product__price">from $1,125.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle1_weiss_H260_HalifaxNatur_mitAcc.jpg?v=1695972422" alt="White" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle1Halifaxnatur_mitAcc.jpg?v=1676898286" alt="Black" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="cetus">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Yoga Studio - Style 2">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/yoga-studio-shelving-mandai-design-style-2_7.jpg?v=1718624753" alt="Shelving System Cetus - Yoga Studio - Style 2" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Cetus - Yoga Studio - Style 2</h3>
+              <p class="product__price">from $1,380.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="cetus">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 2, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle2Halifaxnatur_mitAcc.jpg?v=1676898740" alt="Shelving System Cetus - Classic - Style 2, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Cetus - Classic - Style 2, black</h3>
+              <p class="product__price">from $1,706.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelf-cetus-white-style-2.jpg?v=1721725229" alt="White" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle2Halifaxnatur_mitAcc.jpg?v=1676898740" alt="Black" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="cetus">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 4, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle4_weiss_H260_HalifaxmitAcc.jpg?v=1695983978" alt="Shelving System Cetus - Classic - Style 4, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Cetus - Classic - Style 4, white</h3>
+              <p class="product__price">from $2,796.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle4Halifaxnatur_mitAcc.jpg?v=1676967455" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle4_weiss_H260_HalifaxmitAcc.jpg?v=1695983978" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-system="cetus">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Yoga Studio - Style 4">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/yoga-studio-shelving-mandai-design-style-4_7.jpg?v=1718625159" alt="Shelving System Cetus - Yoga Studio - Style 4" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Cetus - Yoga Studio - Style 4</h3>
+              <p class="product__price">from $2,578.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
+
   </main>
 
     <section class="sector-cta" aria-labelledby="cta-heading">
@@ -606,6 +880,8 @@
         </div>
       </div>
     </section>
+
+
 
   <!-- ══════════ فوتر ══════════ -->
   <footer class="site-footer">
@@ -715,5 +991,42 @@
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
   <script src="../assets/js/main.js" defer></script>
+
+  <script>
+    /* فیلتر «Shop pre-configured shelves» بر اساس سیستم (مثل مرجع) */
+    (function () {
+      var slider = document.getElementById('cusPreSlider');
+      if (!slider) return;
+      var tabs = document.querySelectorAll('.cus-filter__btn');
+      tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          tabs.forEach(function (b) {
+            var active = b === btn;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          var sys = btn.getAttribute('data-system');
+          slider.querySelectorAll('li[data-system]').forEach(function (li) {
+            li.hidden = li.getAttribute('data-system') !== sys;
+          });
+          slider.scrollTo({ left: 0 });
+        });
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

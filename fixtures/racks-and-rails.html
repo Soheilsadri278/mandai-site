@@ -1,10 +1,10 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ دستهٔ تجهیزات: Racks and Rails
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در fixtures/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن: Racks and Rails (Clothing Racks)
+  (بازسازی موبه‌مو از mandai-design.com/collections/clothing-rails-racks — 2026-09)
+  هیرو → H1 + معرفی → نوار Sort → گرید ۳۲ محصول (سواچ/بج/هاور)   → About (H2 وسط‌چین + ۲ ردیف) → اسلایدر عکس مشتریان (۲۸) → wall-mounted rails + اسلایدر Ontario (۸)
+  → فرم تماس → FAQ خاکستری ۱۲تایی
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,58 +12,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>Aesthetic retail clothing rails for your store | Mandai Design</title>
-  <meta name="description" content="Stylish clothing rails and racks for retail: freestanding and wall-mounted, steel or with wood. Made in Germany - order online now.">
+  <meta name="description" content="Explore Mandai Design's wide collection of retail clothing racks. With a variety of finishes and styles, our racks seamlessly integrate with your store interior. Elevate your clothing collections and enhance your overall store aesthetic with our distinctive designs.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/fixtures/racks-and-rails.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/fixtures/racks-and-rails.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="Aesthetic retail clothing rails for your store | Mandai Design">
-  <meta property="og:description" content="Stylish clothing rails and racks for retail: freestanding and wall-mounted, steel or with wood. Made in Germany - order online now.">
-  <meta property="og:image" content="https://www.example.com/images/fixtures/racks-and-rails.jpg">
+  <meta property="og:description" content="Explore Mandai Design's wide collection of retail clothing racks. With a variety of finishes and styles, our racks seamlessly integrate with your store interior. Elevate your clothing collections and enhance your overall store aesthetic with our distinctive designs.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design.jpg?v=1706278314&width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Clothing rail in a retail store">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Retail clothing racks and rails by Mandai Design in a fashion store">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aesthetic retail clothing rails for your store | Mandai Design">
-  <meta name="twitter:description" content="Stylish clothing rails and racks for retail: freestanding and wall-mounted, steel or with wood. Made in Germany - order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/fixtures/racks-and-rails.jpg">
-
+  <meta name="twitter:description" content="Explore Mandai Design's wide collection of retail clothing racks. With a variety of finishes and styles, our racks seamlessly integrate with your store interior. Elevate your clothing collections and enhance your overall store aesthetic with our distinctive designs.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design.jpg?v=1706278314&width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/fixtures/racks-and-rails.jpg" as="image">
-
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design.jpg?v=1706278314&width=1800" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
 
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+    /* ── صفحهٔ Racks and Rails (مثل مرجع) ── */
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* ردیف دوستونه (About) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    @media (min-width: 900px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: -1; }
+    }
+    /* نوار Sort (سمت راست، مثل مرجع) */
+    .crp-toolbar { display: flex; justify-content: flex-end; margin-top: 26px; }
+    .crp-sort { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(26, 26, 26, 0.25); padding: 10px 14px; font-size: 12.5px; color: rgba(26, 26, 26, 0.8); }
+    .crp-sort svg { width: 10px; height: 10px; }
+    /* گرید ۴ستونی محصولات */
+    .crp-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 20px; }
+    @media (max-width: 1280px) { .crp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) { .crp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .crp-grid { grid-template-columns: 1fr; } }
+    .crp-grid .product__media, .crp-slider .product__media { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+    .product__media .product__img--alt { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .crp-count { margin-top: 34px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    /* درباره: H2 وسط‌چین + H3های سِریف */
+    .crp-about__title { text-align: center; margin-inline: auto; }
+    .cl-h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: var(--foreground); }
+    .crp-about .fsh-sys__row + .crp-h3wrap { margin-top: 64px; }
+    .crp-h3wrap .cl-h3 { margin-bottom: 10px; }
+    /* سواچ‌ها + بج + گزینه‌ها (مثل مرجع) */
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      position: absolute; top: 10px; left: 10px; z-index: 2; margin: 0; background: #fff;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+    /* اسلایدرهای تک‌ردیفه با فلش‌های شناور (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+      color: var(--foreground); cursor: pointer;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    .crp-cta { margin-top: 14px; }
+    /* FAQ: نوارهای خاکستری مثل مرجع */
+    .crp-faq .faq__inner { max-width: 880px; }
+    .crp-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .crp-faq .faq__button { padding: 17px 22px; }
+    .crp-faq .faq__panel { padding: 0 22px 18px; }
+    </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Retail Clothing Racks",
+      "name": "Aesthetic retail clothing rails for your store",
       "url": "https://www.example.com/fixtures/racks-and-rails.html",
-      "description": "Stylish clothing rails and racks for retail: freestanding and wall-mounted, steel or with wood. Made in Germany - order online now.",
+      "description": "Explore Mandai Design's wide collection of retail clothing racks. With a variety of finishes and styles, our racks seamlessly integrate with your store interior. Elevate your clothing collections and enhance your overall store aesthetic with our distinctive designs.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/fixtures/racks-and-rails.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design.jpg?v=1706278314"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,7 +237,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Store Fixtures",
-          "item": "https://www.example.com/#categories"
+          "item": "https://www.example.com/index.html#categories"
         },
         {
           "@type": "ListItem",
@@ -90,23 +249,101 @@
     },
     {
       "@type": "FAQPage",
-      "url": "https://www.example.com/fixtures/racks-and-rails.html",
-      "inLanguage": "en",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What sizes do the clothing racks come in?",
+          "name": "What Is a Clothing Rack?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our clothing rails come in various widths and heights - from compact W 120 rails to extendable wall systems. Custom sizes and custom colors are available on request."
+            "text": "A clothing or garment rack is a freestanding fixture used to present apparel in an organized, easy-to-scan way. In retail, it lets you display items within easy reach, refresh assortments seasonally, and structure the sales floor."
           }
         },
         {
           "@type": "Question",
-          "name": "Which countries do you deliver to?",
+          "name": "How Wide Is a Clothing Rack?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
+            "text": "Width varies by model and intended use. In retail, widths between 60 cm and 125 cm are common. Narrow racks from 60 cm work well for smaller areas, alcoves, or showcasing selected highlights. Wider models measuring 120 to 125 cm, on the other hand, offer enough space to display entire collections side by side."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is the Minimum Height a Garment Rack Should Have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum height of a clothing rack depends on the type of clothing to be displayed. For pants or shirts, a lower height of around 130 cm is sufficient, while for long dresses or coats, taller racks of 150 to 170 cm and above are more appropriate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Sturdy Are Clothing Racks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mandai Design clothing racks are made of high-quality steel and are exceptionally robust. Built for daily use in retail, our racks stay true to shape and tip-resistant even when fully loaded with jackets, pants, or accessories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Many Garments Fit on a Clothing Rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The number of items of clothing that can fit on a garment rack depends on the width of the rack and the type of clothing. A 60 cm wide rack can hold around 15 to 20 hangers with lighter fabrics, or 8 to 10 hangers with thicker garments. A 120 cm wide rack can hold twice as many items."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Do You Choose the Right Clothing Rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Base your selection on the store area, product range, and desired presentation style. Also consider how well it can be combined with other store fixtures and whether it offers the flexibility needed for seasonal changes. At Mandai Design, we offer various series for different room sizes and design requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Rack Design Works Best for Your Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The design of your clothing rack should complement the atmosphere of your store. Mandai Design offers a range of different design lines for this purpose. The Como series impresses with its timeless elegance in classic black or white. The Kansas series combines metal frames with decorative surfaces such as wood or stone looks, creating a cozy, elegant accent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Material Should Clothing Racks Be Made of?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clothing racks should be made of high-quality, durable materials that can withstand everyday wear and tear and also look good. At Mandai Design, we primarily use powder-coated steel and melamine-coated wood-based materials. Most of the joints are firmly welded together, offering optimal stability and an attractive design."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where Should You Place a Clothing Rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ideally, a clothing rack should be placed in the center of the room, along the side aisles, or in the entrance area, depending on which products you want to highlight. It is important to ensure that there is enough room to move around and that the products are easily accessible. In shop windows, racks attract additional attention and spark customers' curiosity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Can a Clothing Rack Be Used for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A clothing rack can be used to present clothing in a clear, accessible, and visually appealing way. With a clothing rack, collections can be sorted by color, size, or style. At the same time, you can highlight seasonal trends and emphasize new collections or promotional items."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Mid-Floor Racks Be Used As Room Dividers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, mid-floor clothing racks are ideal for visually separating different areas in the salesroom. They structure the room and at the same time draw attention to selected goods."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Makes a Good Clothing Rack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A good clothing rack is stable, durable, and versatile. It combines functionality with an attractive design that blends harmoniously into the store concept. Additionally, it should be easy to handle and quick to move around as needed."
           }
         }
       ]
@@ -185,38 +422,38 @@
             </div>
           </li>
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="retail-shelving.html">Retail Shelving</a></li>
-                <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-                <li><a href="racks-and-rails.html" aria-current="page">Racks and Rails</a></li>
-                <li><a href="shop-counters.html">Shop Counters</a></li>
-                <li><a href="reception-desks.html">Reception Desks</a></li>
-                <li><a href="display-tables.html">Display Tables</a></li>
-                <li><a href="display-pedestals.html">Display Pedestals</a></li>
-                <li><a href="quick-delivery.html">Quick Delivery</a></li>
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html" aria-current="page">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
               </ul>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="../systems/addison.html">Addison</a></li>
-                <li><a href="../systems/ceres.html">Ceres</a></li>
-                <li><a href="../systems/cetus.html">Cetus</a></li>
-                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-                <li><a href="../systems/slimline.html">Slimline</a></li>
-                <li><a href="../systems/ontario.html">Ontario</a></li>
-                <li><a href="../systems/bergen.html">Bergen</a></li>
-                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                <li><a href="addison.html">Addison</a></li>
+                <li><a href="ceres.html">Ceres</a></li>
+                <li><a href="cetus.html">Cetus</a></li>
+                <li><a href="brooklyn.html">Brooklyn</a></li>
+                <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="bergen.html">Bergen</a></li>
+                <li><a href="customize.html">Customize your shelf</a></li>
               </ul>
             </div>
           </li>
@@ -287,29 +524,29 @@
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="#main-content">Store Fixtures</a>
+            <a href="../index.html#categories">Store Fixtures</a>
             <ul class="mobile-menu__sub">
-              <li><a href="retail-shelving.html">Retail Shelving</a></li>
-              <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-              <li><a href="racks-and-rails.html" aria-current="page">Racks and Rails</a></li>
-              <li><a href="shop-counters.html">Shop Counters</a></li>
-              <li><a href="reception-desks.html">Reception Desks</a></li>
-              <li><a href="display-tables.html">Display Tables</a></li>
-              <li><a href="display-pedestals.html">Display Pedestals</a></li>
-              <li><a href="quick-delivery.html">Quick Delivery</a></li>
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html" aria-current="page">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../systems/addison.html">Addison</a></li>
-              <li><a href="../systems/ceres.html">Ceres</a></li>
-              <li><a href="../systems/cetus.html">Cetus</a></li>
-              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-              <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
-              <li><a href="../systems/bergen.html">Bergen</a></li>
-              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+              <li><a href="addison.html">Addison</a></li>
+              <li><a href="ceres.html">Ceres</a></li>
+              <li><a href="cetus.html">Cetus</a></li>
+              <li><a href="brooklyn.html">Brooklyn</a></li>
+              <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+              <li><a href="bergen.html">Bergen</a></li>
+              <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -358,208 +595,715 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
-
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#categories">Store Fixtures</a></li>
-          <li><span aria-current="page">Racks and Rails</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/fixtures/racks-and-rails.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/fixtures/racks-and-rails.jpg" alt="Clothing rail in a retail store" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Retail Clothing Racks</h1>
-        </div>
-      </div>
+    <!-- ══════════ هیرو ══════════ -->
+    <section class="sys-hero" aria-label="Retail clothing racks and rails by Mandai Design">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design.jpg?v=1706278314&width=1800" alt="Retail clothing racks and clothes rails in a store by Mandai Design" class="sys-hero__img fsh-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design-2.jpg?v=1706278327&width=1200" alt="Retail clothing racks and clothes rails in a store by Mandai Design" class="sys-hero__img fsh-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
     <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">STORE FIXTURES</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Elevate your product display</h2>
-        <div class="intro__text">
-          <p>Discover the perfect retail clothing racks for your store. Our stylish clothes rails come in various sizes and finishes to suit your unique needs - whether you are showcasing shorter clothing or bridal wear.</p>
-          <p>In today's competitive retail scene, staying flexible is crucial. Our retail clothing racks make it easy to redesign and refresh your store - a simple and cost-effective way to elevate your clothing display.</p>
+    <section class="sys-intro" aria-labelledby="crp-intro-heading">
+      <div class="container">
+        <h1 id="crp-intro-heading" class="sys-intro__title">Retail Clothing Racks</h1>
+        <p class="sector-alt__text">Explore Mandai Design&rsquo;s wide collection of retail clothing racks. With a variety of finishes and styles, our racks seamlessly integrate with your store interior. Elevate your clothing collections and enhance your overall store aesthetic with our distinctive designs.</p>
+        <div class="crp-toolbar" aria-hidden="true">
+          <span class="crp-sort">Sort: <strong>Featured</strong>
+            <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ محصولات ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ گرید محصولات (۳۲ = کل کالکشن؛ «Load more» مرجع حذف شده چون همه یک‌جا نمایش داده می‌شوند؛ کارت مطابق تصویر مرجع = فقط نام/قیمت/N options، بج روی گوشهٔ تصویر) ✏️ ══════════ -->
+    <section class="sector-alt" id="crp-grid" aria-label="All clothing racks and rails">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our racks and rails</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Clothing Rail Como, W 120">
-              <div class="product__media">
-                <img src="../images/product-como.jpg" alt="Clothing Rail Como black, W 120" width="1024" height="1024" loading="lazy">
+        <div class="crp-grid">
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/wood finish, W 65, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/KansasB60H132_mitAccHalifax1.jpg?v=1669907257&width=900" alt="Clothing Rail Kansas, black/wood finish, W 65, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/athleisure-store-retail-design-clothing-rack-gym-design-flagship-store_11_4f57d81f-ca6a-4259-95f0-cedae7d4dd8b.jpg?v=1742301923&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, black/wood finish, W 65, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/wood finish, W 125, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/KansasB128H132_mitAccHamilton1.jpg?v=1669907518&width=900" alt="Clothing Rail Kansas, black/wood finish, W 125, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothingrack-clothingrail-clothesrack-shopfitting-mandai-design-3.jpg?v=1739535189&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, black/wood finish, W 125, 3 heights</h3>
+            <p class="product__price">from $455.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Como black, W 60, 3 heights">
+            <span class="product__badge">Quick delivery</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAccschwarz1.jpg?v=1669905822&width=900" alt="Clothing Rail Como black, W 60, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rail-display-rack-shopfittings-mandai-design.jpg?v=1739535298&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Como black, W 60, 3 heights</h3>
+            <p class="product__price">from $323.00</p>
+                        <p class="product__options">5 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Como black, W 120, 3 heights">
+            <span class="product__badge">Quick delivery</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAccschwarz1.jpg?v=1669905949&width=900" alt="Clothing Rail Como black, W 120, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-stand-black-glass-boutique-ws.jpg?v=1739535291&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Como black, W 120, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Como white, W 60, 3 heights">
+            <span class="product__badge">Quick delivery</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAcc2weiss1.jpg?v=1669906236&width=900" alt="Clothing Rail Como white, W 60, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/Konfektionsstander-Como-_-weiss-_-B-60-_-Mandai-Design.jpg?v=1739535266&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Como white, W 60, 3 heights</h3>
+            <p class="product__price">from $323.00</p>
+                        <p class="product__options">5 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Como white, W 120, 3 heights">
+            <span class="product__badge">Quick delivery</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAcc2weiss1.jpg?v=1669906375&width=900" alt="Clothing Rail Como white, W 120, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-retail-kids-children-store.jpg?v=1739535280&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Como white, W 120, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Jade black, W 120, 4 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/JadeH132_mitAccschwarz4.jpg?v=1669906654&width=900" alt="Clothing Rail Jade black, W 120, 4 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-jade-retail-dress-display_2.jpg?v=1739535379&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Jade black, W 120, 4 heights</h3>
+            <p class="product__price">from $529.00</p>
+                        <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Jade white, W 120, 4 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/JadeH132_mitAcc2weiss4.jpg?v=1669906784&width=900" alt="Clothing Rail Jade white, W 120, 4 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/jade-white-clothingrack_1.jpg?v=1739535386&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Jade white, W 120, 4 heights</h3>
+            <p class="product__price">from $529.00</p>
+                        <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/wood finish, W 125, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/KansasB125H139HalifaxNatur_white_ACC.jpg?v=1690965700&width=900" alt="Clothing Rail Kansas, white/wood finish, W 125, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Konfektionsstander-Kleiderstander-Mittelraumstander-Verkaufsstander-Ladeneinrichtung.jpg?v=1739535163&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, white/wood finish, W 125, 3 heights</h3>
+            <p class="product__price">from $455.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/wood finish, W 65, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/KansasB65H139HalifaxNatur_white_ACC.jpg?v=1690983961&width=900" alt="Clothing Rail Kansas, white/wood finish, W 65, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothingrack-clothingrail-clothesrack-shopfitting-mandaidesign_6_1eef6e7a-73a3-496d-8664-ba801fd58787.jpg?v=1739535155&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, white/wood finish, W 65, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing rail Como black - wooden base - W 60, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/ComoW60H132blackHalifaxNaturewclothing.jpg?v=1699453505&width=900" alt="Clothing rail Como black - wooden base - W 60, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Como_Rack_Black_Wood_02.jpg?v=1739535214&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing rail Como black - wooden base - W 60, 3 heights</h3>
+            <p class="product__price">from $323.00</p>
+                        <p class="product__options">5 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing rail Como black - wooden base - W 120, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/ComoW120H132blackHalifaxnaturewclothing.jpg?v=1699455349&width=900" alt="Clothing rail Como black - wooden base - W 120, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Como_Rack_Black_Wood_01.jpg?v=1739535207&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing rail Como black - wooden base - W 120, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing rail Como white - wooden base - W 60, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAccweissHalifax1.jpg?v=1670244112&width=900" alt="Clothing rail Como white - wooden base - W 60, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-rack-white-wood-2.jpg?v=1739535255&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing rail Como white - wooden base - W 60, 3 heights</h3>
+            <p class="product__price">from $323.00</p>
+                        <p class="product__options">5 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing rail Como white - wooden base - W 120, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAccweissHalifax1.jpg?v=1670334113&width=900" alt="Clothing rail Como white - wooden base - W 120, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-white-wood-120.jpg?v=1739535243&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing rail Como white - wooden base - W 120, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/anthracite, W 65, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/08_01_Kansas_Rack_Unicolor_Anthrazit_B650_H1390.jpg?v=1739535103&width=900" alt="Clothing Rail Kansas, black/anthracite, W 65, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/toro-cubes-website-anth-w-with-racks_02a5ba39-7e8b-4431-be26-b7eaf50c2574.jpg?v=1739535103&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, black/anthracite, W 65, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/anthracite, W 125, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/07_01_Kansas_Rack_Unicolor_Anthrazit_B1250_H1390.jpg?v=1736245439&width=900" alt="Clothing Rail Kansas, black/anthracite, W 125, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/konfektionsstander-kleiderstander-mandaidesign_2.jpg?v=1739535095&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, black/anthracite, W 125, 3 heights</h3>
+            <p class="product__price">from $455.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/marble look, W 65, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/kansas-marble-look-black-W65_3.jpg?v=1736759201&width=900" alt="Clothing Rail Kansas, black/marble look, W 65, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/kansas-narrow-marble-W65.jpg?v=1739535141&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, black/marble look, W 65, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/marble look, W 125, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/kansas-marble-look-w125-h139.jpg?v=1736760408&width=900" alt="Clothing Rail Kansas, black/marble look, W 125, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/kansas-black-marble-look-inspirational.jpg?v=1739535147&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, black/marble look, W 125, 3 heights</h3>
+            <p class="product__price">from $455.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/marble look, W 65, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_Kansas_Marmor_White_650_1390.jpg?v=1736866831&width=900" alt="Clothing Rail Kansas, white/marble look, W 65, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/kansas-marble-finish-W65.jpg?v=1739535129&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, white/marble look, W 65, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/marble look, W 125, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/kansas-marmor-139-wide.jpg?v=1736778016&width=900" alt="Clothing Rail Kansas, white/marble look, W 125, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/kansas-white-marble-finish-wide.jpg?v=1739535135&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, white/marble look, W 125, 3 heights</h3>
+            <p class="product__price">from $455.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/unicolor, W 65, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Kanasa_Unicolor_Produktrender_21.jpg?v=1712645205&width=900" alt="Clothing Rail Kansas, white/unicolor, W 65, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-kansas-unicolor-rail.jpg?v=1739535111&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, white/unicolor, W 65, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/unicolor, W 125, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Kanasa_Unicolor_Produktrender_30.jpg?v=1712582693&width=900" alt="Clothing Rail Kansas, white/unicolor, W 125, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-kansas-unicolor-rail-window_5b28b374-bfab-4cd1-9022-56d86d07e586.jpg?v=1739535123&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rail Kansas, white/unicolor, W 125, 3 heights</h3>
+            <p class="product__price">from $455.00</p>
+                        <p class="product__options">6 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing rail Como - marble look - W 60, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/como-B60-marble-look-h132.jpg?v=1699006762&width=900" alt="Clothing rail Como - marble look - W 60, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-marble-como_4.jpg?v=1739535232&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing rail Como - marble look - W 60, 3 heights</h3>
+            <p class="product__price">from $323.00</p>
+                        <p class="product__options">5 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing rail Como - marble look - W 120, 3 heights">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-como-w120-h132.jpg?v=1699007871&width=900" alt="Clothing rail Como - marble look - W 120, 3 heights" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-marble-como_1.jpg?v=1739535221&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing rail Como - marble look - W 120, 3 heights</h3>
+            <p class="product__price">from $400.00</p>
+                        <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table & Clothing Rail Como, in black">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-clothing-rack-table-como-set-mandai-design_4.jpg?v=1742884553&width=900" alt="Display Table & Clothing Rail Como, in black" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-table-set_6cf78d6f-b464-41ba-b9a8-a48dd72091a4.jpg?v=1742884553&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table &amp; Clothing Rail Como, in black</h3>
+            <p class="product__price">$1,174.00</p>
+                        <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table & Clothing Rail Como, in white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/displaytable-presentationtable-shopfitting-MandaiDesign-Como-Halifax_7_3fc8805e-402e-4aa7-987a-10711d4c227e.jpg?v=1695733698&width=900" alt="Display Table & Clothing Rail Como, in white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Como_Kids_Store_Shop_03.jpg?v=1739455980&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table &amp; Clothing Rail Como, in white</h3>
+            <p class="product__price">$1,174.00</p>
+                        <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table & Clothing Rail Como, black with glass shelves">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoDisplayTableandRackBlackSteelandGlass1.jpg?v=1695733706&width=900" alt="Display Table & Clothing Rail Como, black with glass shelves" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/display-table-clothing-rack-shopfittings-mandai-design.jpg?v=1739455938&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table &amp; Clothing Rail Como, black with glass shelves</h3>
+            <p class="product__price">$1,174.00</p>
+                        <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rack Magic Rail Z, black or white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsZH132_mitAccschwarz1.jpg?v=1669907854&width=900" alt="Clothing Rack Magic Rail Z, black or white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-clothing-rail-shopfittings-mandai-design.jpg?v=1739535314&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rack Magic Rail Z, black or white</h3>
+            <p class="product__price">$399.00</p>
+                        <p class="product__options">2 colours</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rack Magic Rail Y, black or white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsYH132_mitAccschwarz1.jpg?v=1669908142&width=900" alt="Clothing Rack Magic Rail Y, black or white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsYH132_mitAccweiss1.jpg?v=1669908147&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rack Magic Rail Y, black or white</h3>
+            <p class="product__price">$387.00</p>
+                        <p class="product__options">2 colours</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rack Magic Rail T, black or white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsTH132_mitAccschwarz1.jpg?v=1669907618&width=900" alt="Clothing Rack Magic Rail T, black or white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsTH132_mitAccweiss1.jpg?v=1669907647&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rack Magic Rail T, black or white</h3>
+            <p class="product__price">$341.00</p>
+                        <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rack Magic Rail T-XL, black or white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsT-XLH132_mitAccschwarz1.jpg?v=1669908000&width=900" alt="Clothing Rack Magic Rail T-XL, black or white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/MagicRailsT-XLH132_mitAccweiss1.jpg?v=1669908006&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rack Magic Rail T-XL, black or white</h3>
+            <p class="product__price">$358.00</p>
+                        <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rack & Display Table, Series Magic Z">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/displaytable-presentationtable-shopfitting-MandaiDesign-Magic-Halifax_2_5fc2ed61-3de6-4cc2-9b62-287e93250206.jpg?v=1695733718&width=900" alt="Clothing Rack & Display Table, Series Magic Z" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Display-table-shopfitting-retail-table-mandai-design.jpg?v=1739456055&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rack &amp; Display Table, Series Magic Z</h3>
+            <p class="product__price">$1,077.00</p>
+                        <p class="product__options">3 wood decors</p>
+          </a>
+        </div>
+        <p class="crp-count">You&rsquo;re viewing 1-32 of 32 products</p>
+      </div>
+    </section>
+
+    <!-- ══════════ About clothing racks ══════════ -->
+    <section class="sector-alt crp-about" aria-labelledby="crp-about-heading">
+      <div class="container">
+        <h2 id="crp-about-heading" class="sector-alt__title crp-about__title">About clothing racks from Mandai Design</h2>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 56px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Discover varied sizes and finishes</h3>
+            <p class="sector-alt__text">Discover the perfect retail clothing racks for your store at Mandai Design. Our stylish clothes rails come in <strong>various sizes and finishes</strong>&nbsp;to suit your unique needs. Whether you&rsquo;re showcasing shorter clothing or bridal wear and long evening dresses, we offer a <strong>diverse range of heights</strong>. From more compact solutions to wider options, we have the ideal rack to elevate the presentation of your clothing collections.</p>
+            <p class="sector-alt__text">Crafted from <strong>high-quality, durable steel</strong>, our racks are available in classic black or white through our online store. Need a custom color? Just ask! Explore additional options, including racks with glass elements or a base featuring a wooden finish. At Mandai Design, we provide versatile solutions for your display needs.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-clothes-rails-store-fixtures-mandai-design-4.jpg?v=1706278347&width=1200" alt="Clothing racks in varied sizes and finishes" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <div class="fsh-sys__row" style="margin-top: 72px;">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/como-white-wood-120.jpg?v=1739535243&width=1200" alt="Clothing rail Como in white with wooden base" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Elevate your product display</h3>
+            <p class="sector-alt__text">In today&rsquo;s competitive retail scene, staying flexible is crucial. Our <strong>retail clothing racks</strong> make it easy to redesign and refresh your store. It&rsquo;s a simple and cost-effective way to <strong>elevate your clothing display</strong> and create an inviting shopping experience. Combine them with other fixtures like <a href="../fixtures/display-tables.html" class="text-link">tables</a> or <a href="../fixtures/display-pedestals.html" class="text-link">display pedestals</a> to create inviting and varied shopping landscapes in your store.</p>
+          </div>
+        </div>
+        <div class="crp-h3wrap" style="margin-top: 72px;">
+          <h3 class="cl-h3">Retail clothing racks in client stores</h3>
+          <p class="sector-alt__text">Get ideas and inspiration from these photos kindly shared with us. Check out our <a href="../index.html#references" class="text-link">reference page</a> and follow us on <a href="https://www.instagram.com/mandai_design_de/" target="_blank" rel="noopener noreferrer" class="text-link">Instagram</a> for weekly updates!</p>
+        </div>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="crRefsSlider" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="crRefsSlider" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fsh-slider-row" id="crRefsSlider">
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-racks-clothing-rails-thebeigebee.jpg?v=1779266676" alt="Clothing rack Kansas — The Beige Bee, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/the_beige_bee/" target="_blank" rel="noopener noreferrer" class="text-link">The Beige Bee</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-retail-rack-clothes-rail-indigo.jpg?v=1776075824" alt="Clothing rack Kansas — Indigo&Co, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/indigoandcoshop/" target="_blank" rel="noopener noreferrer" class="text-link">Indigo&amp;Co</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Hotel_Park_Split_Como_Mandai_Design.jpg?v=1783069937" alt="Clothing rack Como — Hotel Park Split, Croatia" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/hotelparksplit/" target="_blank" rel="noopener noreferrer" class="text-link">Hotel Park Split</a>, Croatia</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-clothing-rack-como-white-gallery9.jpg?v=1788339614" alt="Clothing rack Como — Gallery 9, Ireland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/gallery_9_concept_store/" target="_blank" rel="noopener noreferrer" class="text-link">Gallery 9</a>, Ireland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Unbenannt-3_bde62941-258d-47fb-84cb-b9b04321d320.jpg?v=1788256614" alt="Clothing rack Jade — Modeatelier Wagler, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Jade - <a href="https://www.instagram.com/wagler.leipzig" target="_blank" rel="noopener noreferrer" class="text-link">Modeatelier Wagler</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Kansas_ClothingRack_MandaiDesign.jpg?v=1785480625" alt="Clothing rack Kansas — Salty Elements, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/saltyelements.de/" target="_blank" rel="noopener noreferrer" class="text-link">Salty Elements</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/albaray-como-clothing-rack-black-glass.jpg?v=1736938664" alt="Clothing rack Como — Albaray, UK" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/_albaray/" target="_blank" rel="noopener noreferrer" class="text-link">Albaray</a>, UK</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-kansas-jk-taylor-mandai-design-2.jpg?v=1708333678" alt="Clothing rack Kansas — JK Taylor, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/jktaylorcullman/" target="_blank" rel="noopener noreferrer" class="text-link">JK Taylor</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothingrail-clothingrack-shopfitting-mandaidesign_e59251b7-239b-4d34-8805-f56015b2b883.jpg?v=1708422380" alt="Clothing rack Como — Gallery 9, Ireland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/gallery_9_concept_store/" target="_blank" rel="noopener noreferrer" class="text-link">Gallery 9</a>, Ireland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-kansas-mandaidesign-custom-solution.jpg?v=1776258802" alt="Clothing rack Kansas Custom solution — Iberostar Beachfront Resorts, Spain" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas Custom solution - <a href="https://www.instagram.com/iberostar/" target="_blank" rel="noopener noreferrer" class="text-link">Iberostar Beachfront Resorts</a>, Spain</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-displays-azani-boutique_5.jpg?v=1746688259" alt="Clothing rack Kansas — Azani, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/azani.boutique/" target="_blank" rel="noopener noreferrer" class="text-link">Azani</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-retail-rack-display-mandai.jpg?v=1776249191" alt="Clothing rack Kansas — L'Couture, Dubai" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L'Couture</a>, Dubai</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/oktopulli-kids-store-retail-interior-mandai-design_3.jpg?v=1751261716" alt="Clothing rack Como — Oktopulli Kids Store, Berlin" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/oktopulli/" target="_blank" rel="noopener noreferrer" class="text-link">Oktopulli Kids Store</a>, Berlin</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/jade-white-mila.jpg?v=1734690676" alt="Clothing rack Jade — Mila Andorf, Austria" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Jade - <a href="https://www.instagram.com/mila.andorf/?hl=en" target="_blank" rel="noopener noreferrer" class="text-link">Mila Andorf</a>, Austria</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-sports-store-rocacorba.jpg?v=1745567154" alt="Clothing rack Rocacorba Atelier, Spain" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store"><a href="https://www.instagram.com/rocacorbaatelier" target="_blank" rel="noopener noreferrer" class="text-link">Rocacorba Atelier</a>, Spain</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/gray-clothier-retail-store-menswear_3.jpg?v=1744832694" alt="Clothing rack Como — Gray Clothier, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/grayclothier/" target="_blank" rel="noopener noreferrer" class="text-link">Gray Clothier</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rails-fashion-store-mode-stoss.jpg?v=1725082401" alt="Clothing rack Kansas — Mode Stoss, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/mode_stoss/" target="_blank" rel="noopener noreferrer" class="text-link">Mode Stoss</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-rail-como-by-linus-fashion-mandai-design_681dd5dd-9eeb-4f48-8205-83e3e91cf969.jpg?v=1708333909" alt="Clothing rack Como — by Linus, Holland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/by_linus/" target="_blank" rel="noopener noreferrer" class="text-link">by Linus</a>, Holland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/emily-store-freiburg-mandai-design-2_6ffa1d22-4fb0-4ae0-869c-dfb6b7d4aa10.jpg?v=1710413917" alt="Clothing rack Como — Emily Store, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/emily.store.freiburg/" target="_blank" rel="noopener noreferrer" class="text-link">Emily Store</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-displays-azani-boutique_9.jpg?v=1746688259" alt="Clothing rack Azani Boutique, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store"><a href="https://azani.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Azani Boutique</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/magic-shoes-please-mandai-design.jpg?v=1710415211" alt="Clothing rack Magic — Shoes Please, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Magic - <a href="https://www.instagram.com/shoes.please.de/" target="_blank" rel="noopener noreferrer" class="text-link">Shoes Please</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-como-wood.jpg?v=1725282725" alt="Clothing rack Como — RI:KE Concept Store, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Como - <a href="https://www.instagram.com/rikewipperfuerth/" target="_blank" rel="noopener noreferrer" class="text-link">RI:KE Concept Store</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/magic-rail-black.jpg?v=1740732589" alt="Clothing rack Magic Rail T — MA.RI, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Magic Rail T - <a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">MA.RI</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/kansas-kids-store.jpg?v=1741609906" alt="Clothing rack Kansas — Kaeptnknirps, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/kaeptnknirps/" target="_blank" rel="noopener noreferrer" class="text-link">Kaeptnknirps</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/kansas-fashion-store-clothing-rack.jpg?v=1741874989" alt="Clothing rack Kansas — LB Luxury Brands, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/lb_luxury_brands_for_women/" target="_blank" rel="noopener noreferrer" class="text-link">LB Luxury Brands</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-racks-clothing-rails-retail-rack.jpg?v=1774003906" alt="Clothing rack Kansas — Moments Nerja, Spain" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/momentsnerja/" target="_blank" rel="noopener noreferrer" class="text-link">Moments Nerja</a>, Spain</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/konfektionsstander-kleiderstander-ladeneinrichtung.jpg?v=1778152698" alt="Clothing rack Kansas — MA.RI, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Kansas - <a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">MA.RI</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-clothing-racks-rails-shoesplease.jpg?v=1779267057" alt="Clothing rack Magic T — Shoes Please, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Magic T - <a href="https://www.instagram.com/shoes.please.rostock/" target="_blank" rel="noopener noreferrer" class="text-link">Shoes Please</a>, Germany</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Looking for wall-mounted rails? ══════════ -->
+    <section class="sector-alt" aria-labelledby="crp-wall-heading">
+      <div class="container">
+        <div class="crp-h3wrap">
+          <h3 id="crp-wall-heading" class="cl-h3">Looking for wall-mounted rails?</h3>
+          <p class="sector-alt__text">Discover our wall-mounted clothing rail system Ontario in various sizes and finishes.</p>
+          <p class="crp-cta"><a href="../systems/ontario.html" class="text-link">Shop Ontario wall rails</a></p>
+        </div>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="crOntarioSlider" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="crOntarioSlider" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fsh-slider-row crp-slider" id="crOntarioSlider">
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, Black">
                 <span class="product__badge">Quick delivery</span>
-              </div>
-              <h3 class="product__name">Clothing Rail Como, W 120</h3>
-              <p class="product__price">from &euro;346.00</p>
-              <p class="product__variants">4 options</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Clothing Rail Ontario, W 203">
-              <div class="product__media">
-                <img src="../images/product-ontario.jpg" alt="Clothing Rail Ontario, W203, Black" width="1024" height="1024" loading="lazy">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_Black_Mens_Acc_WB_2048x2048_2690e634-7617-4ca4-b4d3-2d8596e6e560.jpg?v=1753185910&width=900" alt="Clothing Rail Ontario, W65, Black" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_Black_Mens_Fashion_Acc._SI_2048x2048_4916a02c-c07a-4b42-b15a-affe1e78351a.jpg?v=1755074254&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W65, Black</h3>
+                <p class="product__price">from $355.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, White">
                 <span class="product__badge">Quick delivery</span>
-              </div>
-              <h3 class="product__name">Clothing Rail Ontario, W 203</h3>
-              <p class="product__price">from &euro;556.00</p>
-              <p class="product__variants">2 options</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Freestanding Racks">
-              <div class="product__media">
-                <img src="../images/cat-racks.jpg" alt="Free-standing clothing racks" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Freestanding Racks</h3>
-              <p class="product__variants">Custom solutions</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Wall-mounted Rails">
-              <div class="product__media">
-                <img src="../images/cat-wall-rails.jpg" alt="Wall-mounted clothing rails" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Wall-mounted Rails</h3>
-              <p class="product__variants">With glass shelves</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ متن راهنما ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Crafted from high-quality, durable steel</h2>
-          <p>Our racks are available in classic black or white through our online store. Need a custom color? Just ask! Explore additional options, including racks with glass elements or a base made of valuable wood.</p>
-          <p>Clothing rails and racks present clothes in a space-saving manner, sorted by size or color - and help divide up the salesroom, guiding customers systematically through your store.</p>
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_White_Womans_Acc_WB_2048x2048_f930fc65-3649-40a6-9159-96def84e08f2.jpg?v=1753366369&width=900" alt="Clothing Rail Ontario, W65, White" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_White_Womans_Fashion_Acc._SI_2048x2048_f0f2b83a-0091-4f9c-8b70-7656a53567d1.jpg?v=1756281065&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W65, White</h3>
+                <p class="product__price">from $355.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W165, Black, With Pedestals">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_a3889324-058e-4b86-9a8e-925696a5c0f3.jpg?v=1753340186&width=900" alt="Clothing Rail Ontario, W165, Black, With Pedestals" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_a7df6213-6436-485f-83a6-776d15a5399c.jpg?v=1753365312&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W165, Black, With Pedestals</h3>
+                <p class="product__price">from $860.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, White, With Pedestal">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1.jpg?v=1753253409&width=900" alt="Clothing Rail Ontario, W103, White, With Pedestal" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1_d56e1b8a-d45a-4c24-bb82-2915599e19c0.jpg?v=1753253409&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W103, White, With Pedestal</h3>
+                <p class="product__price">from $520.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, Black">
+                <span class="product__badge">Quick delivery</span>
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_Black_Mens_Acc_WB_2048x2048_6e85ee53-d38a-43ba-b993-192006b444c5.jpg?v=1753188515&width=900" alt="Clothing Rail Ontario, W103, Black" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_Black_Mens_Fashion_Acc._SI_2048x2048_178c3775-7711-4267-8066-bb8347602b57.jpg?v=1755074220&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W103, Black</h3>
+                <p class="product__price">from $386.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W265, White">
+                <span class="product__badge">Quick delivery</span>
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/05_Verkaufsregal_Ontarion_Style_05_H_1765_AM_1000_625_1000_White_Womans_Acc_WB_2048x2048_4f53290b-d2cb-440d-8388-ab5b38222c97.jpg?v=1753366494&width=900" alt="Clothing Rail Ontario, W265, White" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/05_VER_1_f617428d-2e93-456c-b1b4-32e7ebebef97.jpg?v=1756280926&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W265, White</h3>
+                <p class="product__price">from $868.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, White">
+                <span class="product__badge">Quick delivery</span>
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_White_Womans_Acc_WB_2048x2048_2629d9f0-8a34-4546-a521-8c9c1769a289.jpg?v=1753366405&width=900" alt="Clothing Rail Ontario, W103, White" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_White_Womans_Fashion_Acc._SI_2048x2048_a40f9334-197e-40fe-a338-71de6dfb620a.jpg?v=1756281041&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W103, White</h3>
+                <p class="product__price">from $386.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W203, White, With Pedestals">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_26385e02-d53b-4905-b750-164b04f8a1a0.jpg?v=1753254044&width=900" alt="Clothing Rail Ontario, W203, White, With Pedestals" width="900" height="900" loading="lazy">
+                  <img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_876feae9-88f7-490e-89ff-8917eeeb8fc1.jpg?v=1753254044&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+                <h3 class="product__name">Clothing Rail Ontario, W203, White, With Pedestals</h3>
+                <p class="product__price">from $910.00</p>
+                                <p class="product__options">2 options</p>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
 
-
-
-    <section class="references" aria-labelledby="refs-heading">
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
-        <div class="references__head">
-          <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">Our products in real stores</h2>
-            <p class="references__desc">Need some inspiration? Here are a few examples of our products in our customers&rsquo; stores. Explore more on our <a href="../index.html#references" class="text-link">references page</a>.</p>
-          </div>
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+          <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
         </div>
-        <ul class="ref-grid">
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad Säckingen, Germany</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-lcouture.jpg" alt="Shelving system Ceres — L´Couture, Dubai, UAE" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L´Couture</a>, Dubai, UAE</p>
-        </li>
-        </ul>
-      </div>
-    </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>What sizes do the clothing racks come in?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Our clothing rails come in various widths and heights - from compact W 120 rails to extendable wall systems. Custom sizes and custom colors are available on request.</p>
-              </div>
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
             </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
             </div>
           </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
           </div>
-        </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Looking for the right rail?</h2>
-          <p class="sector-cta__text">Tell us about your space and your collection - we will recommend the rails and racks that fit best.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
+  <!-- ══════════ FAQ — ۱۲ سؤال، ورداشتی از مرجع ══════════ -->
+  <section class="faq crp-faq" aria-labelledby="crp-faq-heading">
+    <div class="container">
+      <div class="faq__inner">
+        <h2 id="crp-faq-heading" class="faq__heading">FAQ: Clothing Racks</h2>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-0" id="crp-faq-button-0">
+                <span>What Is a Clothing Rack?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-0" role="region" aria-labelledby="crp-faq-button-0" hidden>
+              <p>A clothing or garment rack is a freestanding fixture used to present apparel in an organized, easy-to-scan way. In retail, it lets you display items within easy reach, refresh assortments seasonally, and structure the sales floor.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-1" id="crp-faq-button-1">
+                <span>How Wide Is a Clothing Rack?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-1" role="region" aria-labelledby="crp-faq-button-1" hidden>
+              <p>Width varies by model and intended use. In retail, widths between 60 cm and 125 cm are common. Narrow racks from 60 cm work well for smaller areas, alcoves, or showcasing selected highlights. Wider models measuring 120 to 125 cm, on the other hand, offer enough space to display entire collections side by side.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-2" id="crp-faq-button-2">
+                <span>What Is the Minimum Height a Garment Rack Should Have?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-2" role="region" aria-labelledby="crp-faq-button-2" hidden>
+              <p>The minimum height of a clothing rack depends on the type of clothing to be displayed. For pants or shirts, a lower height of around 130 cm is sufficient, while for long dresses or coats, taller racks of 150 to 170 cm and above are more appropriate.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-3" id="crp-faq-button-3">
+                <span>How Sturdy Are Clothing Racks?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-3" role="region" aria-labelledby="crp-faq-button-3" hidden>
+              <p>Mandai Design clothing racks are made of high-quality steel and are exceptionally robust. Built for daily use in retail, our racks stay true to shape and tip-resistant even when fully loaded with jackets, pants, or accessories.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-4" id="crp-faq-button-4">
+                <span>How Many Garments Fit on a Clothing Rack?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-4" role="region" aria-labelledby="crp-faq-button-4" hidden>
+              <p>The number of items of clothing that can fit on a garment rack depends on the width of the rack and the type of clothing. A 60 cm wide rack can hold around 15 to 20 hangers with lighter fabrics, or 8 to 10 hangers with thicker garments. A 120 cm wide rack can hold twice as many items.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-5" id="crp-faq-button-5">
+                <span>How Do You Choose the Right Clothing Rack?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-5" role="region" aria-labelledby="crp-faq-button-5" hidden>
+              <p>Base your selection on the store area, product range, and desired presentation style. Also consider how well it can be combined with other <a href="../index.html#categories" class="text-link">store fixtures</a> and whether it offers the flexibility needed for seasonal changes. At Mandai Design, we offer various series for different room sizes and design requirements.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-6" id="crp-faq-button-6">
+                <span>Which Rack Design Works Best for Your Store?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-6" role="region" aria-labelledby="crp-faq-button-6" hidden>
+              <p>The design of your clothing rack should complement the atmosphere of your store. Mandai Design offers a range of different design lines for this purpose. The Como series impresses with its timeless elegance in classic black or white. The Kansas series combines metal frames with decorative surfaces such as wood or stone looks, creating a cozy, elegant accent.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-7" id="crp-faq-button-7">
+                <span>What Material Should Clothing Racks Be Made of?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-7" role="region" aria-labelledby="crp-faq-button-7" hidden>
+              <p>Clothing racks should be made of high-quality, durable materials that can withstand everyday wear and tear and also look good. At Mandai Design, we primarily use powder-coated steel and melamine-coated wood-based materials. Most of the joints are firmly welded together, offering optimal stability and an attractive design.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-8" id="crp-faq-button-8">
+                <span>Where Should You Place a Clothing Rack?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-8" role="region" aria-labelledby="crp-faq-button-8" hidden>
+              <p>Ideally, a clothing rack should be placed in the center of the room, along the side aisles, or in the entrance area, depending on which products you want to highlight. It is important to ensure that there is enough room to move around and that the products are easily accessible. In shop windows, racks attract additional attention and spark customers' curiosity.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-9" id="crp-faq-button-9">
+                <span>What Can a Clothing Rack Be Used for?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-9" role="region" aria-labelledby="crp-faq-button-9" hidden>
+              <p>A clothing rack can be used to present clothing in a clear, accessible, and visually appealing way. With a clothing rack, collections can be sorted by color, size, or style. At the same time, you can highlight seasonal trends and emphasize new collections or promotional items.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-10" id="crp-faq-button-10">
+                <span>Can Mid-Floor Racks Be Used As Room Dividers?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-10" role="region" aria-labelledby="crp-faq-button-10" hidden>
+              <p>Yes, mid-floor clothing racks are ideal for visually separating different areas in the salesroom. They structure the room and at the same time draw attention to selected goods.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="crp-faq-panel-11" id="crp-faq-button-11">
+                <span>What Makes a Good Clothing Rack?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="crp-faq-panel-11" role="region" aria-labelledby="crp-faq-button-11" hidden>
+              <p>A good clothing rack is stable, durable, and versatile. It combines functionality with an attractive design that blends harmoniously into the store concept. Additionally, it should be easy to handle and quick to move around as needed.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Retail clothing racks - aesthetic presentation for your store</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Various sizes and finishes</h3>
-            <p>Short garments or long gowns: rails in different widths and heights present every collection properly - in steel, wood or with glass elements.</p>
-          </div>
-          <div>
-            <h3>Space-saving and structured</h3>
-            <p>Racks sort clothes by size or color, divide your salesroom into zones and guide customers through the store.</p>
-          </div>
-          <div>
-            <h3>Refresh your store anytime</h3>
-            <p>Racks are easy to move and reconfigure - the simplest way to give your store a new look with every season.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ══════════ فوتر ══════════ -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
@@ -607,11 +1351,11 @@
         </nav>
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
-            <li><a href="retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="racks-and-rails.html">Clothing Racks</a></li>
-            <li><a href="display-tables.html">Display Tables</a></li>
-            <li><a href="shop-counters.html">Shop Counters</a></li>
-            <li><a href="display-pedestals.html">Display Pedestals</a></li>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
@@ -666,6 +1410,37 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  <script>
+
+    /* فلش‌های اسلایدرهای ردیفی: وضعیت ابتدا/انتها */
+    (function () {
+      document.querySelectorAll('.fsh-grid-wrap').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1,10 +1,13 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ دستهٔ تجهیزات: Shop Counters
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در fixtures/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن: Shop Counters (پیشخوان فروشگاه)
+  (بازسازی موبه‌مو از mandai-design.com/collections/shop-counters — 2026-09)
+  هیرو → H1 + زیرتیتر + معرفی → نوار Sort → گرید ۱۲ پیشخوان (بج More Colours)   → ¶ وسط‌چین Made in Germany → About (H۲ وسط + ۳ ردیف + اسپات‌لایت Oval Reception Desk)
+  → «Our Retail Counters in Customers' Stores» + اسلایدر ۲۰ عکس مشتری → فرم تماس
+  → «Individual Cash Register Counters Made in Germany» (۲ ¶ + ۳ ستون H3) → FAQ خاکستری ۷تایی
+  → Get advice now
+  ✏️ دکمهٔ SHOP COCO و کارت‌ها به‌جای صفحهٔ محصول مرجع به فرم تماس همین سایت لینک شده‌اند
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,44 +15,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>Order custom-made retail counters &amp; checkout desks | Mandai Design</title>
-  <meta name="description" content="Custom-made retail counters and checkout desks. Plenty of storage, made in Germany. Configure your counter online now.">
+  <meta name="description" content="Order custom-made retail counters and checkout desks: Made in Germany, fully assembled and tailored to your store. Discover shop counters by Mandai Design.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/fixtures/shop-counters.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/fixtures/shop-counters.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="Order custom-made retail counters &amp; checkout desks | Mandai Design">
-  <meta property="og:description" content="Custom-made retail counters and checkout desks. Plenty of storage, made in Germany. Configure your counter online now.">
-  <meta property="og:image" content="https://www.example.com/images/fixtures/shop-counters.jpg">
+  <meta property="og:description" content="Order custom-made retail counters and checkout desks: Made in Germany, fully assembled and tailored to your store. Discover shop counters by Mandai Design.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design.jpg?v=1707398619&width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Wooden shop counter in a retail store">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Retail store counter by Mandai Design in a boutique">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Order custom-made retail counters &amp; checkout desks | Mandai Design">
-  <meta name="twitter:description" content="Custom-made retail counters and checkout desks. Plenty of storage, made in Germany. Configure your counter online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/fixtures/shop-counters.jpg">
-
+  <meta name="twitter:description" content="Order custom-made retail counters and checkout desks: Made in Germany, fully assembled and tailored to your store. Discover shop counters by Mandai Design.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design.jpg?v=1707398619&width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/fixtures/shop-counters.jpg" as="image">
-
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design.jpg?v=1707398619&width=1800" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__swatch-more {
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(26, 26, 26, 0.6); background: #fff;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
 
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+    /* ── صفحهٔ Shop Counters (مثل مرجع) ── */
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* ردیف دوستونه (About / اسپات‌لایت) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    @media (min-width: 900px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: -1; }
+    }
+    /* عنوان‌های وسط‌چین + پاراگراف باریک وسط (مثل مرجع) */
+    .sct-center { text-align: center; margin-inline: auto; }
+    .sct-lead { max-width: 780px; margin: 18px auto 0; text-align: center; font-size: 13.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .sct-lead a { color: inherit; }
+    /* نوار Sort */
+    .crp-toolbar { display: flex; justify-content: flex-end; margin-top: 26px; }
+    .crp-sort { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(26, 26, 26, 0.25); padding: 10px 14px; font-size: 12.5px; color: rgba(26, 26, 26, 0.8); }
+    .crp-sort svg { width: 10px; height: 10px; }
+    /* گرید ۴ستونی محصولات */
+    .crp-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 20px; }
+    @media (max-width: 1280px) { .crp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) { .crp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .crp-grid { grid-template-columns: 1fr; } }
+    .crp-grid .product__media { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+    .product__media .product__img--alt { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .crp-count { margin-top: 34px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    /* بج روی گوشهٔ تصویر (مثل مرجع) */
+    .product__badge {
+      position: absolute; top: 10px; left: 10px; z-index: 2; margin: 0; background: #fff;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    /* اسلایدر تک‌ردیفه با فلش‌های شناور */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+      color: var(--foreground); cursor: pointer;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* تیترهای سِریف بخش‌ها */
+    .cl-h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: var(--foreground); }
+    .sct-list { margin-top: 12px; padding-left: 20px; list-style: disc; display: grid; gap: 8px; }
+    .sct-list li { font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* اسپات‌لایت */
+    .sct-spot-eyebrow { font-family: var(--font-serif); font-size: 15px; color: rgba(26, 26, 26, 0.8); }
+    .sct-spot-kicker { margin-top: 6px; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    .sct-spot-sub { margin-top: 8px; font-size: 13.5px; font-weight: 600; }
+    .sct-spot .btn { margin-top: 18px; }
+    /* سه ستون پایین */
+    .sct-cols { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 24px; text-align: left; }
+    @media (max-width: 900px) { .sct-cols { grid-template-columns: 1fr; } }
+    .sct-cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 19px; }
+    .sct-cols p { margin-top: 10px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* Get advice now */
+    .sct-advice { padding-top: 0; }
+    .sct-advice .cl-h3 { font-size: 19px; }
+    .sct-advice p { margin-top: 10px; font-size: 13.5px; color: rgba(26, 26, 26, 0.85); }
+    /* FAQ: نوارهای خاکستری مثل مرجع */
+    .sct-faq .faq__inner { max-width: 880px; }
+    .sct-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .sct-faq .faq__button { padding: 17px 22px; }
+    .sct-faq .faq__panel { padding: 0 22px 18px; }
+    </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,12 +243,12 @@
       "@type": "WebPage",
       "name": "Retail Counters - Functionality Meets Elegance",
       "url": "https://www.example.com/fixtures/shop-counters.html",
-      "description": "Custom-made retail counters and checkout desks. Plenty of storage, made in Germany. Configure your counter online now.",
+      "description": "Order custom-made retail counters and checkout desks: Made in Germany, fully assembled and tailored to your store. Discover shop counters by Mandai Design.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/fixtures/shop-counters.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design.jpg?v=1707398619"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,7 +263,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Store Fixtures",
-          "item": "https://www.example.com/#categories"
+          "item": "https://www.example.com/index.html#categories"
         },
         {
           "@type": "ListItem",
@@ -90,23 +275,61 @@
     },
     {
       "@type": "FAQPage",
-      "url": "https://www.example.com/fixtures/shop-counters.html",
-      "inLanguage": "en",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can shop counters be made to measure?",
+          "name": "What Is a Retail Counter?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Since we manufacture all counters in our own factory in Germany, we can adapt sizes, materials and design to your individual requirements at your request."
+            "text": "A retail counter is the central piece of furniture in a store, where consultations take place and the purchasing process is completed. However, it serves not only as a work surface, but also as a visual flagship for your store. Ideally, its design conveys professionalism and emphasizes the character of the interior."
           }
         },
         {
           "@type": "Question",
-          "name": "Which countries do you deliver to?",
+          "name": "What Is The Standard Height of a Checkout Counter?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
+            "text": "The height of a retail counter is based on ergonomic standards and should be comfortable for both customers and employees to use. At Mandai Design, our retail counters have a standard height of 92 to 95 cm. Since the retail counters are custom-made, dimensions and designs can be flexibly adapted. This means you get a solution that fits your space concept perfectly. Please contact us directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Are the Optimal Dimensions for a Retail Counter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ideal dimensions depend on the layout of the room and how you want to use the retail counter. Thanks to Mandai Design's custom manufacturing, the height, width, and depth can be tailored precisely to your requirements. This allows the counter to blend harmoniously into your store while also meeting functional requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where Is the Best Place to Position a Retail Counter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The store counter should be positioned where it is clearly visible to customers and complements the layout of the store. A good location is often in the entrance or exit area, as this is where purchases are made. It is important that the counter supports the overall impression of the store and complements it harmoniously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Aspects Are Important to Consider When Planning a Store Counter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When planning a checkout counter, its functionality and appeal are crucial. Ideally, surfaces should be easy to clean and offer sufficient space for technology and various equipment. Simultaneously, the retail counter should serve as an elegant design element and emphasize your business concept."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Does the Delivery of Retail Counters Work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our retail counters are delivered fully assembled on disposable pallets. As a rule, the shipping company will deliver the counter to the curb of the corresponding delivery address. You can see how long delivery will take on the product page for each respective item. If you would like a different delivery option, please contact us."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is It Possible to Customize a Retail Counter According to My Preferences?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, at Mandai Design, we individually manufacture counters in our own factory. This means you can freely choose the dimensions and design you want. This way, you will receive a unique piece of furniture that exactly meets your expectations and reflects your business."
           }
         }
       ]
@@ -185,38 +408,38 @@
             </div>
           </li>
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="retail-shelving.html">Retail Shelving</a></li>
-                <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-                <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-                <li><a href="shop-counters.html" aria-current="page">Shop Counters</a></li>
-                <li><a href="reception-desks.html">Reception Desks</a></li>
-                <li><a href="display-tables.html">Display Tables</a></li>
-                <li><a href="display-pedestals.html">Display Pedestals</a></li>
-                <li><a href="quick-delivery.html">Quick Delivery</a></li>
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html" aria-current="page">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
               </ul>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="../systems/addison.html">Addison</a></li>
-                <li><a href="../systems/ceres.html">Ceres</a></li>
-                <li><a href="../systems/cetus.html">Cetus</a></li>
-                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-                <li><a href="../systems/slimline.html">Slimline</a></li>
-                <li><a href="../systems/ontario.html">Ontario</a></li>
-                <li><a href="../systems/bergen.html">Bergen</a></li>
-                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                <li><a href="addison.html">Addison</a></li>
+                <li><a href="ceres.html">Ceres</a></li>
+                <li><a href="cetus.html">Cetus</a></li>
+                <li><a href="brooklyn.html">Brooklyn</a></li>
+                <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="bergen.html">Bergen</a></li>
+                <li><a href="customize.html">Customize your shelf</a></li>
               </ul>
             </div>
           </li>
@@ -287,29 +510,29 @@
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="#main-content">Store Fixtures</a>
+            <a href="../index.html#categories">Store Fixtures</a>
             <ul class="mobile-menu__sub">
-              <li><a href="retail-shelving.html">Retail Shelving</a></li>
-              <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-              <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-              <li><a href="shop-counters.html" aria-current="page">Shop Counters</a></li>
-              <li><a href="reception-desks.html">Reception Desks</a></li>
-              <li><a href="display-tables.html">Display Tables</a></li>
-              <li><a href="display-pedestals.html">Display Pedestals</a></li>
-              <li><a href="quick-delivery.html">Quick Delivery</a></li>
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html" aria-current="page">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../systems/addison.html">Addison</a></li>
-              <li><a href="../systems/ceres.html">Ceres</a></li>
-              <li><a href="../systems/cetus.html">Cetus</a></li>
-              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-              <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
-              <li><a href="../systems/bergen.html">Bergen</a></li>
-              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+              <li><a href="addison.html">Addison</a></li>
+              <li><a href="ceres.html">Ceres</a></li>
+              <li><a href="cetus.html">Cetus</a></li>
+              <li><a href="brooklyn.html">Brooklyn</a></li>
+              <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+              <li><a href="bergen.html">Bergen</a></li>
+              <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -358,212 +581,451 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
-
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#categories">Store Fixtures</a></li>
-          <li><span aria-current="page">Shop Counters</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/fixtures/shop-counters.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/fixtures/shop-counters.jpg" alt="Wooden shop counter in a retail store" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Retail Counters - Functionality Meets Elegance</h1>
-        </div>
-      </div>
+    <!-- ══════════ هیرو ══════════ -->
+    <section class="sys-hero" aria-label="Retail counters and checkout desks by Mandai Design">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design.jpg?v=1707398619&width=1800" alt="Retail store counter and checkout desk by Mandai Design in a boutique" class="sys-hero__img fsh-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design-1.jpg?v=1707398660&width=1200" alt="Retail store counter and checkout desk by Mandai Design in a boutique" class="sys-hero__img fsh-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
     <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">STORE FIXTURES</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Individual checkout counters made to measure</h2>
-        <div class="intro__text">
-          <p>At Mandai Design, you can order stylish, high-quality furniture for your store fixtures - always Made in Germany. We manufacture all pieces in our own factory and rely on high-quality materials and precise workmanship.</p>
-          <p>As our retail counters are manufactured in our own factory, we can adapt the size and design to your individual requirements at your request. You can also choose from various material options.</p>
+    <section class="sys-intro" aria-labelledby="sct-intro-heading">
+      <div class="container">
+        <h1 id="sct-intro-heading" class="sys-intro__title">Retail Counters - Functionality Meets Elegance</h1>
+        <h2 class="fsh-sys__sub">Individual Checkout Counters Made to Measure</h2>
+        <p class="sector-alt__text">The retail counter is one of the most important pieces of furniture in a store &ndash; it is the place where you advise your customers and close the sale, and therefore the heart of every store. Its stylish appearance and optimum integration into the overall store design concept make it an attractive visual highlight. Whether in a traditional retail store, beauty salon or medical practice, <strong>the retail checkout counter is like a business card</strong>. It conveys professionalism and style.</p>
+        <div class="crp-toolbar" aria-hidden="true">
+          <span class="crp-sort">Sort: <strong>Featured</strong>
+            <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ محصولات ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ گرید محصولات (۱۲ پیشخوان — کل کالکشن) ══════════ -->
+    <section class="sector-alt" id="sct-grid" aria-label="All retail counters and checkout desks">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our retail counters</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter in wood and steel" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Made to measure</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Reception Desks">
-              <div class="product__media">
-                <img src="../images/cat-reception-desks.jpg" alt="Reception desk matching the counters" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Reception Desks</h3>
-              <p class="product__variants">Matching pieces</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Tables">
-              <div class="product__media">
-                <img src="../images/cat-display-tables.jpg" alt="Display table for a harmonious room concept" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Tables</h3>
-              <p class="product__variants">Complete the look</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shelving Systems">
-              <div class="product__media">
-                <img src="../images/cat-shelving-systems.jpg" alt="Shelving system matching the counter" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving Systems</h3>
-              <p class="product__variants">Harmonious concepts</p>
-            </a>
-          </li>
-        </ul>
+        <div class="crp-grid">
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Matera, wood and anthracite">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-checkout-desk-wood_2.jpg?v=1758091763&width=900" alt="Shop Counter Matera, wood and anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/04_Matera_Fashion_Store_022025.jpg?v=1758091763&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Matera, wood and anthracite</h3>
+            <p class="product__price">$2,072.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Matera, white and wood">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-white-wood-checkout-desk_2.jpg?v=1758091667&width=900" alt="Shop Counter Matera, white and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-cash-desk-checkout-counter-shopfitting-mandai-design_-_Kopie.jpg?v=1758091667&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Matera, white and wood</h3>
+            <p class="product__price">$2,072.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Tokyo, anthracite and wood">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/tokyo-retail-counter-checkout-desk_2.jpg?v=1758091321&width=900" alt="Shop Counter Tokyo, anthracite and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/1_Tokyo_Shop_Counter_Halifax_Oak_052025.jpg?v=1758091321&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Tokyo, anthracite and wood</h3>
+            <p class="product__price">$2,285.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Male, solid wood front">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-checkout-desk-male_2.jpg?v=1758091221&width=900" alt="Shop Counter Malé, solid wood front" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/1_Male_Shop_Counter_White_Solid_Wood_092025.jpg?v=1758091221&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Malé, solid wood front</h3>
+            <p class="product__price">$3,058.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Coco, Oval, decor of choice">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-coco-retail_7.jpg?v=1758105411&width=900" alt="Shop Counter Coco, Oval, decor of choice" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/coco-retail-counter-salon_2.jpg?v=1758105411&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Coco, Oval, decor of choice</h3>
+            <p class="product__price">$4,570.00</p>
+            <p class="product__options">4 decors</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Java, white and wood">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/java-white-wood-retail-counter_2.jpg?v=1758096973&width=900" alt="Shop Counter Java, white and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-retail-shopfitting-cash-wrap-white-wood.jpg?v=1758096973&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Java, white and wood</h3>
+            <p class="product__price">$1,997.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Java, anthracite and wood">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/checkout-counter-java-black-wood_2.jpg?v=1758095365&width=900" alt="Shop Counter Java, anthracite and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/verkaufstresen-java-verkaufstheke-tresen-menswear.jpg?v=1758095365&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Java, anthracite and wood</h3>
+            <p class="product__price">$1,997.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Java, white and marble look">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/java-checkout-counter-white-marble-retail-desk_2.jpg?v=1758096329&width=900" alt="Shop Counter Java, white and marble look" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/verkaufstresen-java-verkaufstheke-tresen-weiss-6.jpg?v=1758096329&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Java, white and marble look</h3>
+            <p class="product__price">$1,997.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Varios, White">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-counter-checkout-desk-varios-white_2.jpg?v=1758092301&width=900" alt="Shop Counter Varios, White" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/verkaufstresen-varios-verkaufstheke-tresen-weiss-8.jpg?v=1758092301&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Varios, White</h3>
+            <p class="product__price">$2,147.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Varios Classic, White">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/varios-classic-shop-counter-white_7.jpg?v=1732196183&width=900" alt="Shop Counter Varios Classic, White" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-varios-classic-white-wood-mandaidesign.jpg?v=1746609634&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Varios Classic, White</h3>
+            <p class="product__price">$2,874.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Varios Classic, Anthracite">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/varios-checkout-desk-black-wood-classic_2.jpg?v=1758092783&width=900" alt="Shop Counter Varios Classic, Anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-varios-classic.jpg?v=1758092783&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Varios Classic, Anthracite</h3>
+            <p class="product__price">$2,874.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Vienna, Country House Style, Solid Wood">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-vienna_2.jpg?v=1758097085&width=900" alt="Shop Counter Vienna, Country House Style, Solid Wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/verkaufstresen-vienna-verkaufstheke-tresen-landhausstil-holz-grau-122-Kopie.jpg?v=1758097085&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Vienna, Country House Style, Solid Wood</h3>
+            <p class="product__price">$4,258.00</p>
+          </a>
+        </div>
+        <p class="crp-count">You&rsquo;re viewing 1-12 of 12 products</p>
       </div>
     </section>
 
-    <!-- ══════════ متن راهنما ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
+    <!-- ══════════ Made in Germany + About ══════════ -->
+    <section class="sector-alt" aria-labelledby="sct-about-heading">
       <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Practical store counters with plenty of storage</h2>
-          <p>The sales counter is the heart of customer interaction - it is here that service, consultation and purchases all come together. As such, it is essential for this piece of furniture to be both functional and professional, while also reflecting your brand identity.</p>
-          <p>Combine checkout counters with matching shelves and tables for harmonious room concepts. All product lines are modular, so you can put together your own individual interior design.</p>
+        <p class="sct-lead">At Mandai Design, you can order stylish, high-quality furniture for your <a href="../index.html#categories" class="text-link">store fixtures</a> &ndash; always <strong>Made in Germany</strong>. We manufacture all pieces in our own factory and rely on high-quality materials and precise workmanship. Whether you are looking for counters for a classic retail store, a concept store or a boutique &ndash; you will find what you are looking for here. Thanks to <strong>in-house production</strong>, we can create individual solutions that fit in perfectly with your interior design concept.</p>
+        <h2 id="sct-about-heading" class="sector-alt__title sct-center" style="margin-top: 64px;">About retail counters from Mandai Design</h2>
+        <p class="sct-lead">Large Selection &amp; Functional, Stylish Solutions for Every Industry</p>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 56px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Custom-made Shop Counters</h3>
+            <p class="sector-alt__text">As our retail counters are manufactured in our own factory, we can adapt the size and design to <strong>your individual requirements</strong> at your request. You can also choose from various material options. As a rule, our <strong>checkout counters are made of wood</strong>. A wide range of decors and color variants are possible for every counter. Combinations with metal and glass cabinets are also possible. Simply give us a call or send us an e-mail to tell us how you imagine your individual store counter or the perfect checkout counter.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_Male_Shop_Counter_White_Solid_Wood_092025.jpg?v=1757408348&width=1200" alt="Custom-made shop counter Malé with solid wood front" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <div class="fsh-sys__row" style="margin-top: 72px;">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_Tokyo_Shop_Counter_Halifax_Oak_052025.jpg?v=1757340801&width=1200" alt="Shop counter Tokyo next to matching shelving" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Harmonious Room Concepts with Checkout Counters and Matching Shelves</h3>
+            <p class="sector-alt__text">At Mandai Design you will find a large selection of furnishing elements for your store. All product lines are modular, so you can put together your own <strong>individual interior design</strong>. Also discover this store furniture:</p>
+            <ul class="sct-list">
+              <li><a href="../fixtures/display-tables.html" class="text-link">Display tables for retail stores</a> and presentation tables for retail and other sectors</li>
+              <li>Modular <a href="../fixtures/retail-shelving.html" class="text-link">retail display shelves</a> that can be adapted to your specific requirements</li>
+              <li><a href="../fixtures/racks-and-rails.html" class="text-link">Clothing racks for retail stores</a> offer stylish presentation of fashion</li>
+            </ul>
+            <p class="sector-alt__text">Whether you are looking for just a counter or complete furnishings for your store - Mandai Design offers you a wide selection of <strong>aesthetic, tried-and-tested store furniture.</strong></p>
+          </div>
+        </div>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 72px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Practical Store Counters with Plenty of Storage Space and Convenience</h3>
+            <p class="sector-alt__text">In addition to an appealing design and high-quality workmanship, the <strong>practicality</strong> of the retail counter is also important in day-to-day business operations. Easy-to-clean surfaces and plenty of storage space for shopping bags and equipment are essential for smooth business operations at the checkout counter. High-quality full extension runners for drawers and shelves make it the perfect cash desk and a tried-and-tested checkout counter.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-store-counter-checkout-counter-shop-counter-cash-wraps-mandai-design-1_fed8a8ed-abf9-4a7a-b674-cb40e6e1e34a.jpg?v=1707398717&width=1200" alt="Store counter with plenty of storage space" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <div class="fsh-sys__row fsh-sys__row--flip sct-spot" style="margin-top: 72px;">
+          <div class="fsh-sys__copy">
+            <p class="sct-spot-eyebrow">Shop counter Coco</p>
+            <p class="sct-spot-kicker">Spotlight on&hellip;</p>
+            <h3 class="cl-h3" style="margin-top: 10px;">Oval Reception Desk</h3>
+            <p class="sct-spot-sub">Attractive focal point for any space</p>
+            <p class="sector-alt__text">An oval reception counter is always an eye-catcher. <strong>Elegant and timeless</strong> in design, reception counters give every room something special. Whether in a store, office or practice. Our shop counters are delivered fully assembled on disposable pallets. Unpack &ndash; set up &ndash; ready!</p>
+            <!-- ✏️ SHOP COCO در مرجع به صفحهٔ محصول لینک است؛ اینجا به فرم تماس -->
+            <a href="../index.html#contact" class="btn btn--outline">SHOP COCO</a>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/shopcounter-receptiondesk-checkoutcounter-shopffiting-mandaidesign-coco-marble_572a914c-613b-4070-bb1d-1385126ad2ee.jpg?v=1692891945&width=1200" alt="Oval reception desk Coco in marble look" width="1200" height="1200" loading="lazy"></div>
         </div>
       </div>
     </section>
 
-
-
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
+    <!-- ══════════ Our Retail Counters in Customers&rsquo; Stores ══════════ -->
+    <section class="sector-alt" aria-labelledby="sct-cust-heading">
       <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
-
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
-              </div>
+        <h2 id="sct-cust-heading" class="sector-alt__title sct-center">Our Retail Counters in Customers&rsquo; Stores</h2>
+        <p class="sct-lead">Are you looking for inspiration for your retail counter &ndash; for example for retail, a doctor&rsquo;s office, a boutique, or a beauty salon? Discover our versatile product range, designed to meet the needs of many different sectors. Be inspired by our customer photos and <a href="../index.html#references" class="text-link">references</a>.</p>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="sctRefsSlider" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="sctRefsSlider" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fsh-slider-row" id="sctRefsSlider">
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mooonhub-mandai-design-ladeneinrichtung-retail-design_2.jpg?v=1732089912" alt="Retail counter Shop Counter Coco — Moonhub, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Coco - <a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Switzerland<br>Photo: <a href="https://www.instagram.com/dangmayer/" target="_blank" rel="noopener noreferrer" class="text-link">Dang Mayer</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/shopcounter-varios.jpg?v=1739437955" alt="Retail counter Shop Counter Varios — Kiyomi Skin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Varios - <a href="https://www.instagram.com/kiyomiskin/" target="_blank" rel="noopener noreferrer" class="text-link">Kiyomi Skin</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Shop_Counter-Java_MandaiDesign.jpg?v=1776755481" alt="Retail counter Shop Counter Java — Touristik Bad Ems-Nassau, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Java - <a href="https://www.instagram.com/badems_nassau.info/" target="_blank" rel="noopener noreferrer" class="text-link">Touristik Bad Ems-Nassau</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/saint_sofia_store_fixtures_retail_design_mandai_design4.jpg?v=1759844891" alt="Retail counter Shop counter Coco — Saint + Sofia, UK" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop counter Coco - <a href="https://www.instagram.com/saintandsofia/" target="_blank" rel="noopener noreferrer" class="text-link">Saint + Sofia</a>, UK</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-counter-matera-cosmetics-2.jpg?v=1746617372" alt="Retail counter Shop Counter Matera — Natürlich Kosmetikstudio, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Matera - <a href="https://www.natuerlich-kosmetikstudio.de/#slide-2" target="_blank" rel="noopener noreferrer" class="text-link">Natürlich Kosmetikstudio</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Varios_ohne_Tisch.png?v=1787128164" alt="Retail counter Shop Counter Varios — KOCO, Czech Republic" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Varios - <a href="https://www.instagram.com/koco.cz/" target="_blank" rel="noopener noreferrer" class="text-link">KOCO</a>, Czech Republic</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Verkaufstresen_Coco.jpg?v=1787740617" alt="Retail counter Shop Counter Coco — Relevé Movement Company, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Coco - <a href="https://www.instagram.com/relevemovementco/" target="_blank" rel="noopener noreferrer" class="text-link">Relevé Movement Company</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Cozy-Mood-Verkaufstresen-Wide.jpg?v=1725610210" alt="Retail counter Shop Counter Varios — Cozy Mood, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Varios - <a href="https://www.instagram.com/cozymood_conceptstore/" target="_blank" rel="noopener noreferrer" class="text-link">Cozy Mood</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retai-counter-mandai-design.jpg?v=1725610165" alt="Retail counter Shop Counter Varios Classic — Cien Fragrancias, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Varios Classic - <a href="https://www.100fragancias.de/" target="_blank" rel="noopener noreferrer" class="text-link">Cien Fragrancias</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/valescart-berlin-retail-display-design_3.jpg?v=1750919241" alt="Retail counter Shop counter Matera — Valescart Berlin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop counter Matera - <a href="https://www.instagram.com/valescart_berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Valescart Berlin</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/finest-interiors-fashion-retail-display-mandai-design_1.jpg?v=1730555212" alt="Retail counter Shop counter Matera — Fine Designs, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop counter Matera - <a href="https://www.instagram.com/finedesigns.deutschland/" target="_blank" rel="noopener noreferrer" class="text-link">Fine Designs</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/kosi-concept-store_3.jpg?v=1747830212" alt="Retail counter Shop counter Matera — Kosi Concept Store, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop counter Matera - <a href="https://www.instagram.com/kosiconceptstore/" target="_blank" rel="noopener noreferrer" class="text-link">Kosi Concept Store</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-matera-mode-stoss.jpg?v=1726045856" alt="Retail counter Shop Counter Matera — Mode Stoss, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Matera - <a href="https://www.instagram.com/mode_stoss/" target="_blank" rel="noopener noreferrer" class="text-link">Mode Stoss</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mooonhub-mandai-design-ladeneinrichtung-retail-design_7.jpg?v=1732089912" alt="Retail counter Shop Counter Coco — Moonhub, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Coco - <a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Switzerland<br>Photo: <a href="https://www.instagram.com/dangmayer/" target="_blank" rel="noopener noreferrer" class="text-link">Dang Mayer</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosa-concept-lounge-mandai-design_14.jpg?v=1734605387" alt="Retail counter Shop Counter Matera — Cosa Concept Lounge, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Matera - <a href="https://www.instagram.com/cosa.conceptlounge/" target="_blank" rel="noopener noreferrer" class="text-link">Cosa Concept Lounge</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/finest-interiors-fashion-retail-display-mandai-design_5.jpg?v=1730555212" alt="Retail counter Shop Counter Matera — Fine Designs, Deutschland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Matera - <a href="https://www.instagram.com/finedesigns.deutschland/" target="_blank" rel="noopener noreferrer" class="text-link">Fine Designs</a>, Deutschland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-counter-mandai-design.jpg?v=1725610165" alt="Retail counter Shop Counter Varios Classic — Cien Fragrancias, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Varios Classic - <a href="https://www.100fragancias.de/" target="_blank" rel="noopener noreferrer" class="text-link">Cien Fragrancias</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/varios-kassentheke-apotheke-st-gallus.jpg?v=1733820369" alt="Retail counter Shop Counter Varios Classic — Apotheke St Gallus, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Varios Classic - <a href="https://www.instagram.com/apotheke_st_gallus/" target="_blank" rel="noopener noreferrer" class="text-link">Apotheke St Gallus</a>, Germany<br>Concept | Planning | Execution: Carola Semmler DESIGN13</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-verkaufstresen.jpg?v=1741596485" alt="Retail counter Shop Counter Matera — Hafenspezerei, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop Counter Matera - <a href="https://www.instagram.com/hafenspezerei/" target="_blank" rel="noopener noreferrer" class="text-link">Hafenspezerei</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/valescart-berlin-retail-display-design_9.jpg?v=1750919242" alt="Retail counter Shop counter Matera — Valescart Berlin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Shop counter Matera - <a href="https://www.instagram.com/valescart_berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Valescart Berlin</a>, Germany</p>
             </li>
           </ul>
-
-          <div class="reviews__dots" data-reviews-dots></div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Can shop counters be made to measure?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes. Since we manufacture all counters in our own factory in Germany, we can adapt sizes, materials and design to your individual requirements at your request.</p>
-              </div>
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+          <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+        </div>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
             </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
             </div>
           </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
           </div>
-        </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Configure your counter</h2>
-          <p class="sector-cta__text">Tell us your requirements - size, material and design are all adaptable. We look forward to your request.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
+  <!-- ══════════ Individual Cash Register Counters Made in Germany ══════════ -->
+  <section class="sector-alt" aria-labelledby="sct-de-heading">
+    <div class="container">
+      <h2 id="sct-de-heading" class="sector-alt__title sct-center">Individual Cash Register Counters Made in Germany</h2>
+      <p class="sct-lead">Mandai Design retail counters stand for <strong>quality, functionality</strong> and <strong>attractive design</strong> that blends seamlessly into any environment. Whether for retail, medical practices, or beauty salons &ndash; our custom-made solutions meet the requirements of different industries.</p>
+      <p class="sct-lead">With our in-house production capabilities, our cashier counters can be precisely tailored to your unique requirements and the specific needs of your industry. We use high-quality materials and rely on precise workmanship to ensure <strong>durability and quality</strong>. We are also happy to support you in planning your individual retail counter.</p>
+      <div class="sct-cols">
+        <div>
+          <h3>Customized Retail Counters in Convincing Quality</h3>
+          <p>Retail counters that you buy from Mandai Design are <strong>produced in our own factory</strong> and are therefore guaranteed to stand for convincing quality Made in Germany. Like all our high-quality shopfitting furniture, we also offer our retail counters at fair prices. If you need a custom-made counter for your reception or service area, you can have it made to measure by us to fit your interior perfectly.</p>
+        </div>
+        <div>
+          <h3>Retail Counters for Shops, Offices and Reception</h3>
+          <p>You can expect competent and professional advice from us. We can offer you many options for <strong>customizing our retail counters</strong> so that they precisely meet your <strong>expectations and the requirements of your business</strong>. You will find a quick selection online &ndash; from checkout counters, standard counters to sales tables for commercial use. Choose conveniently from our range and upgrade your equipment with a Mandai Design retail counter.</p>
+        </div>
+        <div>
+          <h3>Checkout Counters with Special Equipment</h3>
+          <p>On request, we can equip your counter with a display or a glass cabinet. Or would you like a retail counter with a monitor screen, cash drawer, or bag rack? Backlit plinths, logos or fronts also give a store counter that certain something. Or are you not quite sure what your reception counter should look like? We will be happy to advise you.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Individual cash register counters made in Germany</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Made in our own factory</h3>
-            <p>We manufacture all counters in-house and rely on high-quality materials and precise workmanship - for furniture that lasts.</p>
+  <!-- ══════════ FAQ — ۷ سؤال، ورداشتی از مرجع ══════════ -->
+  <section class="faq sct-faq" aria-labelledby="sct-faq-heading">
+    <div class="container">
+      <div class="faq__inner">
+        <h2 id="sct-faq-heading" class="faq__heading">FAQ: Retail Counters</h2>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-0" id="sct-faq-button-0">
+                <span>What Is a Retail Counter?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-0" role="region" aria-labelledby="sct-faq-button-0" hidden>
+              <p>A retail counter is the central piece of furniture in a store, where consultations take place and the purchasing process is completed. However, it serves not only as a work surface, but also as a visual flagship for your store. Ideally, its design conveys professionalism and emphasizes the character of the interior.</p>
+            </div>
           </div>
-          <div>
-            <h3>Functionality meets elegance</h3>
-            <p>Plenty of storage, easy-to-clean surfaces and a design that reflects your brand - counters that work reliably in everyday use.</p>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-1" id="sct-faq-button-1">
+                <span>What Is The Standard Height of a Checkout Counter?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-1" role="region" aria-labelledby="sct-faq-button-1" hidden>
+              <p>The height of a retail counter is based on ergonomic standards and should be comfortable for both customers and employees to use. At Mandai Design, our retail counters have a standard height of 92 to 95 cm. Since the retail counters are custom-made, dimensions and designs can be flexibly adapted. This means you get a solution that fits your space concept perfectly. Please contact us directly.</p>
+            </div>
           </div>
-          <div>
-            <h3>Harmonious room concepts</h3>
-            <p>Counters, shelves and tables from one modular system: combine pieces freely for a consistent look across your store.</p>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-2" id="sct-faq-button-2">
+                <span>What Are the Optimal Dimensions for a Retail Counter?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-2" role="region" aria-labelledby="sct-faq-button-2" hidden>
+              <p>The ideal dimensions depend on the layout of the room and how you want to use the retail counter. Thanks to Mandai Design's custom manufacturing, the height, width, and depth can be tailored precisely to your requirements. This allows the counter to blend harmoniously into your store while also meeting functional requirements.</p>
+            </div>
           </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-3" id="sct-faq-button-3">
+                <span>Where Is the Best Place to Position a Retail Counter?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-3" role="region" aria-labelledby="sct-faq-button-3" hidden>
+              <p>The store counter should be positioned where it is clearly visible to customers and complements the layout of the store. A good location is often in the entrance or exit area, as this is where purchases are made. It is important that the counter supports the overall impression of the store and complements it harmoniously.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-4" id="sct-faq-button-4">
+                <span>Which Aspects Are Important to Consider When Planning a Store Counter?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-4" role="region" aria-labelledby="sct-faq-button-4" hidden>
+              <p>When planning a checkout counter, its functionality and appeal are crucial. Ideally, surfaces should be easy to clean and offer sufficient space for technology and various equipment. Simultaneously, the retail counter should serve as an elegant design element and emphasize your business concept.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-5" id="sct-faq-button-5">
+                <span>How Does the Delivery of Retail Counters Work?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-5" role="region" aria-labelledby="sct-faq-button-5" hidden>
+              <p>Our retail counters are delivered fully assembled on disposable pallets. As a rule, the shipping company will deliver the counter to the curb of the corresponding delivery address. You can see how long delivery will take on the product page for each respective item. If you would like a different delivery option, please contact us.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="sct-faq-panel-6" id="sct-faq-button-6">
+                <span>Is It Possible to Customize a Retail Counter According to My Preferences?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="sct-faq-panel-6" role="region" aria-labelledby="sct-faq-button-6" hidden>
+              <p>Yes, at Mandai Design, we individually manufacture counters in our own factory. This means you can freely choose the dimensions and design you want. This way, you will receive a unique piece of furniture that exactly meets your expectations and reflects your business.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- ══════════ فوتر ══════════ -->
+  <!-- ══════════ Get advice now ══════════ -->
+  <section class="sector-alt sct-advice" aria-labelledby="sct-advice-heading">
+    <div class="container">
+      <h3 id="sct-advice-heading" class="cl-h3">Get advice now</h3>
+      <p>Do you have any questions about our products or require support?</p>
+      <p><strong><a href="tel:+49343414070950" class="text-link">+ 49 (0) 34341 40 70 950</a></strong></p>
+      <p><strong>Mon-Fri 8.30 AM to 5.00 PM</strong></p>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
@@ -611,11 +1073,11 @@
         </nav>
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
-            <li><a href="retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="racks-and-rails.html">Clothing Racks</a></li>
-            <li><a href="display-tables.html">Display Tables</a></li>
-            <li><a href="shop-counters.html">Shop Counters</a></li>
-            <li><a href="display-pedestals.html">Display Pedestals</a></li>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
@@ -670,6 +1132,37 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  <script>
+
+    /* فلش‌های اسلایدرهای ردیفی: وضعیت ابتدا/انتها */
+    (function () {
+      document.querySelectorAll('.fsh-grid-wrap').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

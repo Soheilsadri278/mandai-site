@@ -11,7 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slimline shelving system - Minimalist &amp; light | Mandai Design</title>
+  <title>Retail shelving systems Slimline - Delicate elegance | Mandai Design</title>
   <meta name="description" content="The Slimline shelving system: minimalist and light with glass or wooden shelves. Ideal for smaller spaces. Made in Germany. Order online now.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -36,13 +36,34 @@
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../images/systems/slimline.jpg" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو: تصویر دسکتاپ پهن؛ در موبایل تصویر مربع جایگزین می‌شود (مثل مرجع) */
+    .sli-hero-mobile { display: none; }
+    @media (max-width: 767px) {
+      .sli-hero-desktop { display: none; }
+      .sli-hero-mobile { display: block; }
+      .sys-hero { height: auto; }
+      .sys-hero .sli-hero-mobile { height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    }
+    /* ✏️ ویرایش: در مرجع، کارت‌های محصول تصویر مربع را بدون بریدگی نشان می‌دهند؛ قاب
+       مشترک .mini-grid با نسبت ۳:۴ بود و لبه‌های عکس مربع محصول را می‌برید →
+       برای اسلیملاین قاب کارت مربع شده تا عکس مثل مرجع کامل دیده شود */
+    .sli-grid .product__media { aspect-ratio: 1 / 1; }
+    /* نشان Quick delivery روی کارت‌های محصول (مثل مرجع) */
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Slimline shelving and shelving system",
+      "name": "Shelving System Slimline",
       "url": "https://www.example.com/systems/slimline.html",
       "description": "The Slimline shelving system: minimalist and light with glass or wooden shelves. Ideal for smaller spaces. Made in Germany. Order online now.",
       "inLanguage": "en",
@@ -345,251 +366,159 @@
     </div>
   </header>
 
-  <main id="main-content">
+    <main id="main-content">
 
-    <!-- ══════════ هیرو — تصویر تمام‌عرض بدون تیتر (مثل سایت اصلی) ══════════
-         ✏️ ویرایش: تصویر images/slimline.jpg -->
+    <!-- ══════════ هیرو — مثل مرجع: تصویر پهن (دسکتاپ) + تصویر مربع (موبایل) ══════════ -->
     <section class="sys-hero" aria-label="Slimline shelving and shelving system">
-      <img src="../images/systems/slimline.jpg" alt="Slimline shelving system with glass and wooden shelves and accessories" class="sys-hero__img" width="1800" height="1800" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design_1.jpg?v=1689238982&width=1800" alt="Slimline shelving system with slender steel shelves in a retail space" class="sys-hero__img sli-hero-desktop" width="1800" height="1058" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design_2.jpg?v=1689239000&width=1200" alt="Slimline shelving system with slender steel shelves in a retail space" class="sys-hero__img sli-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
-    <!-- ══════════ معرفی + ویژگی‌ها ══════════ -->
+    <!-- ══════════ معرفی — در مرجع H1 مخفی است و فقط توضیحات کالکشن دیده می‌شود ══════════ -->
     <section class="sys-intro" aria-labelledby="sys-intro-heading">
       <div class="container">
-        <h1 id="sys-intro-heading" class="sys-intro__title">Slimline shelving and shelving system</h1>
-        <p class="sys-intro__lead">Slim. Reserved. Timeless. Slimline is the right display shelf when the product should take centre stage: open shelving with glass shelves creates an open, airy atmosphere, while wooden shelves can be mixed in depending on the range.</p>
-        <ul class="feat-grid">
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-modular.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Minimalist design</h3>
-            <p class="feat-card__text">Slim profiles hold back and let your merchandise shine.</p>
+        <h1 id="sys-intro-heading" class="sr-only">Shelving System Slimline</h1>
+        <p class="sys-intro__lead">The Slimline shelving system features a slender tubular steel construction and various creative configurations. Renowned for its bold aesthetic, this shopfitting system offers limitless variations for impeccable product display across diverse retail sectors.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ گرید ۶ محصول (عین ترتیب لایو، با نشان Quick delivery) ══════════ -->
+    <section class="sector-alt" aria-labelledby="sli-products">
+      <div class="container">
+        <div class="sector-alt__grid-head">
+          <h3 class="sr-only" id="sli-products">Slimline shelving products</h3>
+        </div>
+        <ul class="mini-grid sli-grid">
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline, W 62">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_00.1_H2600_B62_mit_Accessoires.jpg?v=1709893806" alt="Shelving System Slimline, W 62" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Shelving System Slimline, W 62</h3>
+              <p class="product__price">from &euro;1,257.00</p>
+            </a>
           </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-assembly.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Glass or wood shelves</h3>
-            <p class="feat-card__text">Choose per shelf - airy glass or warm wood decor.</p>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline, W 122">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_00.2_H2600_B122_mit_Accessoires.jpg?v=1709893892" alt="Shelving System Slimline, W 122" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Shelving System Slimline, W 122</h3>
+              <p class="product__price">from &euro;1,405.00</p>
+            </a>
           </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-support.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Ideal for smaller spaces</h3>
-            <p class="feat-card__text">Maximum presentation with minimum visual weight.</p>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Cosmetics - Style 1">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_01.1_H2600_B242_mit_Accessoires.jpg?v=1709894924" alt="Shelving System Slimline - Cosmetics - Style 1" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Shelving System Slimline - Cosmetics - Style 1</h3>
+              <p class="product__price">from &euro;2,592.00</p>
+            </a>
           </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-germany.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Made in Germany</h3>
-            <p class="feat-card__text">Durable quality from our own factory.</p>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Accessories - Style 2">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_02.1_H2600_B362_mit_Accessoires.jpg?v=1709894590" alt="Shelving System Slimline - Accessories - Style 2" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Shelving System Slimline - Accessories - Style 2</h3>
+              <p class="product__price">from &euro;3,132.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Fashion - Style 3">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_03.1_H2600_B362_mit_Accessoires.jpg?v=1709894353" alt="Shelving System Slimline - Fashion - Style 3" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Shelving System Slimline - Fashion - Style 3</h3>
+              <p class="product__price">from &euro;2,835.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Homeware - Style 4">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_04.1_H2600_B362_mit_Accessoires.jpg?v=1709893980" alt="Shelving System Slimline - Homeware - Style 4" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Shelving System Slimline - Homeware - Style 4</h3>
+              <p class="product__price">from &euro;3,047.00</p>
+            </a>
           </li>
         </ul>
       </div>
     </section>
 
+    <!-- ══════════ بلوک متنی پس از گرید (در مرجع با ویدیو/متن تکراری است) ══════════
+         ✏️ ویرایش: در مرجع این ناحیه ویدیو دارد؛ در نسخهٔ استاتیک فقط عنوان بازتاب شده است. -->
+    <section class="sector-alt" aria-labelledby="sli-strip">
+      <div class="container">
+        <div class="sector-alt__copy" style="max-width:880px;margin-inline:auto;text-align:center">
+          <h2 class="sector-alt__title" id="sli-strip">Slimline makes store displays quick, stylish and easy to build and adapt.</h2>
+        </div>
+      </div>
+    </section>
 
-
-    <section class="sector-alt" aria-labelledby="sector-0-heading">
+    <!-- ══════════ «A shelving system for many sectors» (تصویر + متن) ══════════ -->
+    <section class="sector-alt" aria-labelledby="sli-feature-0">
       <div class="container">
         <div class="sector-alt__row">
-
-          <div class="sector-alt__media"><img src="../images/sectors/homeware.jpg" alt="Slimline shelving displaying homeware" width="1024" height="1024" loading="lazy"></div>
+          <div class="sector-alt__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-industrialshelf-shopfitting-mandaidesign.jpg?v=1669884747" alt="Slimline shelving system in a store interior" width="1080" height="1080" style="aspect-ratio:1/1" loading="lazy"></div>
           <div class="sector-alt__copy">
-            <h3 class="sector-alt__title">Homeware & gifts</h3>
-            <p class="sector-alt__text">Timeless and reserved: Slimline stages homeware, gifts and finely curated ranges without competing with the product.</p>
-            <a href="../sectors/homeware.html" class="btn btn--outline btn--sm">Discover Homeware & gifts solutions</a>
+            <h2 class="sector-alt__title" id="sli-feature-0">A shelving system for many sectors</h2>
+            <p class="sector-alt__text">With the Slimline shop shelf, you have a shop fitting system with many advantages. The deliberately unobtrusive design allows it to be used for many retail sectors. Whether homeware, fashion or decoration, with the Slimline shelving system you are guaranteed to have an extraordinary interior.</p>
           </div>
         </div>
-        <div class="sector-alt__grid-head">
-          <h3 class="sr-only" id="sector-0-heading">Products for Homeware & gifts</h3>
-        </div>
-        <ul class="mini-grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Style 1">
-              <div class="product__media"><img src="../images/products/slimline-style1.jpg" alt="Shelving System Slimline - Style 1" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Slimline - Style 1</h3>
-              <p class="product__price">from &euro;1,384.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Style 2">
-              <div class="product__media"><img src="../images/cat-shelving-systems.jpg" alt="Shelving System Slimline - Style 2" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Slimline - Style 2</h3>
-              <p class="product__price">from &euro;1,667.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline display pedestal">
-              <div class="product__media"><img src="../images/cat-pedestals.jpg" alt="Slimline display pedestal" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline display pedestal</h3>
-              <p class="product__price">from &euro;211.00</p>
-            </a>
-          </li>
-        </ul>
       </div>
     </section>
-    <section class="sector-alt" aria-labelledby="sector-1-heading">
+
+    <!-- ══════════ «Flexible set up for beauty and hair salons» (تصویر + متن) ══════════ -->
+    <section class="sector-alt" aria-labelledby="sli-feature-1">
       <div class="container">
         <div class="sector-alt__row sector-alt__row--flip">
-
+          <div class="sector-alt__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-slimline-cosmetics.jpg?v=1667391558" alt="Slimline shelving system with cosmetics" width="1080" height="1080" style="aspect-ratio:1/1" loading="lazy"></div>
           <div class="sector-alt__copy">
-            <h3 class="sector-alt__title">Cosmetics & pharmacies</h3>
-            <p class="sector-alt__text">Glass shelves create an airy atmosphere for cosmetics, wellness products and pharmacies - easy to clean and elegant.</p>
-            <a href="../sectors/cosmetics.html" class="btn btn--outline btn--sm">Discover Cosmetics & pharmacies solutions</a>
-          </div>
-          <div class="sector-alt__media"><img src="../images/sectors/cosmetics.jpg" alt="Slimline shelving with glass shelves in a studio" width="1024" height="1024" loading="lazy"></div>
-        </div>
-        <div class="sector-alt__grid-head">
-          <h3 class="sr-only" id="sector-1-heading">Products for Cosmetics & pharmacies</h3>
-        </div>
-        <ul class="mini-grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline wall unit with glass shelves">
-              <div class="product__media"><img src="../images/products/slimline-detail.jpg" alt="Slimline wall unit with glass shelves" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline wall unit with glass shelves</h3>
-              <p class="product__price">from &euro;1,529.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline shop counter">
-              <div class="product__media"><img src="../images/cat-shop-counters.jpg" alt="Slimline shop counter" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline shop counter</h3>
-              <p class="product__price">from &euro;1,872.00</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ سفارشی‌سازی ══════════ -->
-    <section class="custom-sec" aria-labelledby="custom-heading">
-      <div class="container">
-        <div class="custom-sec__head">
-          <h2 id="custom-heading" class="h-serif-lg">Create your own customized shelving</h2>
-          <p>Mix glass and wooden shelves, wall units and pedestals into your own Slimline configuration - everything is height-adjustable without tools. Our team plans your configuration with you - free of charge.</p>
-          <p></p>
-        </div>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline - Individual configuration 1">
-              <div class="product__media"><img src="../images/products/slimline-style1.jpg" alt="Slimline - Individual configuration 1" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline - Individual configuration 1</h3>
-              <p class="product__price">from &euro;1,384.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline glass shelf board">
-              <div class="product__media"><img src="../images/products/wall-unit-w50.jpg" alt="Slimline glass shelf board" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline glass shelf board</h3>
-              <p class="product__price">from &euro;49.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline - Individual configuration 2">
-              <div class="product__media"><img src="../images/cat-pedestals.jpg" alt="Slimline - Individual configuration 2" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline - Individual configuration 2</h3>
-              <p class="product__price">from &euro;1,102.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Slimline shop counter">
-              <div class="product__media"><img src="../images/cat-shop-counters.jpg" alt="Slimline shop counter" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Slimline shop counter</h3>
-              <p class="product__price">from &euro;1,872.00</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ سوالات متداول (وسط‌چین مثل سایت اصلی) ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq faq--centered" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Commonly asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+            <h2 class="sector-alt__title" id="sli-feature-1">Flexible set up for beauty and hair salons</h2>
+            <p class="sector-alt__text">The Slimline shelving system is the ideal solution for a filigree design in shop fitting for cosmetics and spa areas. With Slimline, you can set up your studio or spa area quickly and easily, and display products such as cosmetics beautifully.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ══════════ «See Slimline shelving in our customers' stores» — گالری ۷ کارت لایو ══════════ -->
     <section class="references" aria-labelledby="refs-heading">
       <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
         <div class="references__head">
           <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">See this shelving system in real stores</h2>
-            <p class="references__desc">A selection of our customers&rsquo; stores equipped with our systems. More on our <a href="../index.html#references" class="text-link">references page</a>.</p>
+            <h2 id="refs-heading" class="h-serif-lg">See Slimline shelving in our customers&rsquo; stores</h2>
+            <p class="references__desc">Here&rsquo;s a few examples of our Slimline shelving in our customer&rsquo;s stores. Check out our <a href="https://www.instagram.com/mandai_design_de/" target="_blank" rel="noopener noreferrer" class="text-link">Instagram</a> for more inspiration and explore more client store photos in our <a href="https://www.mandai-design.com/pages/references" target="_blank" rel="noopener noreferrer" class="text-link">references gallery</a>.</p>
           </div>
         </div>
         <ul class="ref-grid">
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad Säckingen, Germany</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-susanne-gollmer_1.jpg?v=1733482535" alt="Shelving system Slimline &mdash; Susanne Gollmer Cosmetics, Germany" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store"><a href="https://www.instagram.com/susannegollmer/" target="_blank" rel="noopener noreferrer" class="text-link">Susanne Gollmer Cosmetics</a>, Germany</p>
         </li>
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-moonhub.jpg" alt="Shelving system Addison, Display table Addison — Moonhub, Zurich, Switzerland" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison, Display table Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Zurich, Switzerland</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/store-interior-design-duijvestein-winterstore-mandai-design-5_801020bd-5334-48a6-adb1-5afa1e3f74be.jpg?v=1708328607" alt="Shelving system Slimline &mdash; Duijvestein Winterstore, Holland" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store"><a href="https://www.instagram.com/duijvesteinwinterstore/" target="_blank" rel="noopener noreferrer" class="text-link">Duijvestein Winterstore</a>, Holland</p>
         </li>
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-thread-seed.jpg" alt="Thread + Seed concept store, La Jolla, US" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Wall rail system Ontario/Glasgow</p>
-          <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/paperplane-mandai-design-slimline_e9583f41-922b-43b7-a0e8-6b4456ba2170.jpg?v=1708328722" alt="Shelving system Slimline &mdash; Paperplane Shop, Germany" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store">Paperplane Shop, Germany</p>
         </li>
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-susanne-gollmer_1.jpg?v=1733482535" alt="Shelving system Slimline &mdash; Susanne Gollmer Cosmetics, Germany" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store"><a href="https://www.instagram.com/susannegollmer/" target="_blank" rel="noopener noreferrer" class="text-link">Susanne Gollmer Cosmetics</a>, Germany</p>
+        </li>
+        <li class="ref-card">
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/slimline-Mandai-Design-LBL.jpg?v=1708328745" alt="Shelving system Slimline &mdash; Lüne Beauty, Germany" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store"><a href="https://www.instagram.com/luenebeauty/" target="_blank" rel="noopener noreferrer" class="text-link">Lüne Beauty</a>, Germany</p>
+        </li>
+        <li class="ref-card">
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/slimline-regal.jpg?v=1728906271" alt="Shelving system Slimline &mdash; Die Deko Rieger Concept Store, Germany" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store"><a href="https://www.instagram.com/diedekorieger/" target="_blank" rel="noopener noreferrer" class="text-link">Die Deko Rieger Concept Store</a>, Germany</p>
+        </li>
+        <li class="ref-card">
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-susanne-gollmer_2.jpg?v=1733482535" alt="Shelving system Slimline &mdash; Susanne Gollmer Cosmetics, Germany" width="768" height="1024" loading="lazy"></div>
+          <p class="ref-card__store"><a href="https://www.instagram.com/susannegollmer/" target="_blank" rel="noopener noreferrer" class="text-link">Susanne Gollmer Cosmetics</a>, Germany</p>
         </li>
         </ul>
       </div>
     </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Shelving system Slimline - minimalist display shelving</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Let your products shine</h3>
-            <p>Timeless and reserved: Slimline holds back so your merchandise takes centre stage.</p>
-          </div>
-          <div>
-            <h3>Glass or wood - you decide</h3>
-            <p>Open glass shelves create an airy look; wooden shelves add warmth - mix them as you like.</p>
-          </div>
-          <div>
-            <h3>Ideal for smaller spaces</h3>
-            <p>The slim profile brings maximum presentation to boutiques, studios and smaller sales floors.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
     <section class="sector-cta" aria-labelledby="cta-heading">

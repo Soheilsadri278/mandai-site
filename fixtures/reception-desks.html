@@ -1,10 +1,12 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ دستهٔ تجهیزات: Reception Desks
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در fixtures/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن: Reception Desks (میز پذیرش)
+  (بازسازی موبه‌مو از mandai-design.com/collections/modern-reception-desks-front-desks — 2026-09)
+  هیرو → معرفی → نوار Sort → گرید ۱۲ میز پذیرش → About → ۲ ردیف (Hotel/Beauty) → نوار خاکستری Practical + دکمه
+  → The Right Reception Desk → Explore Colors and Materials (اسلایدر مقایسهٔ روکش‌ها + دکمه) → اسلایدر ۶ عکس مشتری
+  → Contact Us (فرم) → Designed with every detail in mind (۲ ستون) → FAQ خاکستری ۹تایی → Get advice now
+  ✏️ دکمه‌ها/کارت‌ها به‌جای صفحات محصول و صفحهٔ samples مرجع، به فرم تماس/بخش help همین سایت لینک شده‌اند
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,44 +14,242 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>Modern Reception Desks and Front Desks | Mandai Design</title>
-  <meta name="description" content="Modern reception desks for hotels, salons and spas: functional, elegant, made in Germany. Configure your front desk online now.">
+  <meta name="description" content="High-quality reception desks made in Germany: custom-made front desks for hotels, beauty salons, offices and medical practices. Discover reception desks by Mandai Design.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/fixtures/reception-desks.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/fixtures/reception-desks.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="Modern Reception Desks and Front Desks | Mandai Design">
-  <meta property="og:description" content="Modern reception desks for hotels, salons and spas: functional, elegant, made in Germany. Configure your front desk online now.">
-  <meta property="og:image" content="https://www.example.com/images/fixtures/reception-desks.jpg">
+  <meta property="og:description" content="High-quality reception desks made in Germany: custom-made front desks for hotels, beauty salons, offices and medical practices. Discover reception desks by Mandai Design.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/reception-desk-front-desk-reception-counter-beauty-salon-reception-desk.jpg?v=1786607702&width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Modern reception desk in a bright interior">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Modern reception desk by Mandai Design in a beauty salon">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Modern Reception Desks and Front Desks | Mandai Design">
-  <meta name="twitter:description" content="Modern reception desks for hotels, salons and spas: functional, elegant, made in Germany. Configure your front desk online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/fixtures/reception-desks.jpg">
-
+  <meta name="twitter:description" content="High-quality reception desks made in Germany: custom-made front desks for hotels, beauty salons, offices and medical practices. Discover reception desks by Mandai Design.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/reception-desk-front-desk-reception-counter-beauty-salon-reception-desk.jpg?v=1786607702&width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/fixtures/reception-desks.jpg" as="image">
-
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/reception-desk-front-desk-reception-counter-beauty-salon-reception-desk.jpg?v=1786607702&width=1800" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__swatch-more {
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(26, 26, 26, 0.6); background: #fff;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
 
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+    /* ── صفحهٔ Reception Desks (مثل مرجع) ── */
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* ردیف دوستونه */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    @media (min-width: 900px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: -1; }
+    }
+    /* عنوان‌های وسط‌چین + پاراگراف باریک وسط */
+    .sct-center { text-align: center; margin-inline: auto; }
+    .sct-lead { max-width: 780px; margin: 18px auto 0; text-align: center; font-size: 13.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .sct-lead a { color: inherit; }
+    /* نوار Sort */
+    .crp-toolbar { display: flex; justify-content: flex-end; margin-top: 26px; }
+    .crp-sort { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(26, 26, 26, 0.25); padding: 10px 14px; font-size: 12.5px; color: rgba(26, 26, 26, 0.8); }
+    .crp-sort svg { width: 10px; height: 10px; }
+    /* گرید ۴ستونی محصولات */
+    .crp-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 20px; }
+    @media (max-width: 1280px) { .crp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) { .crp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .crp-grid { grid-template-columns: 1fr; } }
+    .crp-grid .product__media { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+    .product__media .product__img--alt { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .crp-count { margin-top: 34px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    /* بج روی گوشهٔ تصویر */
+    .product__badge {
+      position: absolute; top: 10px; left: 10px; z-index: 2; margin: 0; background: #fff;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    /* اسلایدر تک‌ردیفه با فلش‌های شناور */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+      color: var(--foreground); cursor: pointer;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* نوار خاکستری «Practical…» مثل مرجع: پس‌زمینهٔ روشن یکپارچه، بدون قاب بژ دور تصویر */
+    .rcpt-band { background: var(--bg-grey); }
+    .rcpt-band .container { padding-block: 56px; }
+    .rcpt-band .fsh-sys__media { background: transparent; }
+    /* تیترهای سِریف + ابرو + کپشن دو عکس */
+    .cl-h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: var(--foreground); }
+    .rcpt-eyebrow { margin-bottom: 8px; font-family: var(--font-serif); font-size: 15px; color: rgba(26, 26, 26, 0.75); }
+    /* اسلایدر مقایسهٔ روکش‌ها (مثل مرجع: خط عمودی + دستگیرهٔ گرد + چیپ‌های سفید) */
+    .rcpt-compare {
+      position: relative; aspect-ratio: 1 / 1; overflow: hidden;
+      background: var(--bg-media); touch-action: none; cursor: ew-resize;
+    }
+    .rcpt-compare .rcpt-compare__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .rcpt-compare__top { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0); }
+    .rcpt-compare__divider { position: absolute; top: 0; bottom: 0; left: var(--split, 50%); width: 1px; background: var(--foreground); transform: translateX(-0.5px); }
+    .rcpt-compare__handle {
+      position: absolute; top: 50%; left: var(--split, 50%); transform: translate(-50%, -50%);
+      width: 36px; height: 36px; border-radius: 50%; background: var(--foreground); color: #fff;
+      display: flex; align-items: center; justify-content: center; cursor: ew-resize; z-index: 2;
+    }
+    .rcpt-compare__handle svg { width: 18px; height: 10px; }
+    .rcpt-compare__chip { position: absolute; z-index: 2; background: #fff; padding: 7px 12px; font-size: 12px; color: rgba(26, 26, 26, 0.85); }
+    .rcpt-compare__chip--tl { top: 14px; left: 14px; }
+    .rcpt-compare__chip--br { bottom: 14px; right: 14px; }
+    .rcpt-cta { margin-top: 18px; }
+    /* دو ستون پایین */
+    .sct-cols { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 44px 56px; }
+    @media (max-width: 900px) { .sct-cols { grid-template-columns: 1fr; } }
+    .sct-cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 19px; }
+    .sct-cols p { margin-top: 10px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* Get advice now */
+    .sct-advice { padding-top: 0; }
+    .sct-advice .cl-h3 { font-size: 19px; }
+    .sct-advice p { margin-top: 10px; font-size: 13.5px; color: rgba(26, 26, 26, 0.85); }
+    /* FAQ: نوارهای خاکستری مثل مرجع */
+    .sct-faq .faq__inner { max-width: 880px; }
+    .sct-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .sct-faq .faq__button { padding: 17px 22px; }
+    .sct-faq .faq__panel { padding: 0 22px 18px; }
+    </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,12 +258,12 @@
       "@type": "WebPage",
       "name": "Modern Reception Desks and Front Desks",
       "url": "https://www.example.com/fixtures/reception-desks.html",
-      "description": "Modern reception desks for hotels, salons and spas: functional, elegant, made in Germany. Configure your front desk online now.",
+      "description": "High-quality reception desks made in Germany: custom-made front desks for hotels, beauty salons, offices and medical practices. Discover reception desks by Mandai Design.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/fixtures/reception-desks.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/reception-desk-front-desk-reception-counter-beauty-salon-reception-desk.jpg?v=1786607702"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,7 +278,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Store Fixtures",
-          "item": "https://www.example.com/#categories"
+          "item": "https://www.example.com/index.html#categories"
         },
         {
           "@type": "ListItem",
@@ -90,23 +290,77 @@
     },
     {
       "@type": "FAQPage",
-      "url": "https://www.example.com/fixtures/reception-desks.html",
-      "inLanguage": "en",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "Which industries are reception desks suitable for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our reception desks are used in hotels, beauty salons, spas, practices, offices and retail stores. Size, materials and design are adapted to your industry and interior."
+            "text": "Reception desks are used wherever visitors, guests, clients, or patients are welcomed first, including hotels, beauty salons, medical practices, offices, and fitness studios. We adapt the design and functionality to suit the requirements of your industry."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I order material samples?",
+          "name": "What is the difference between a reception desk, front desk, and office reception desk?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, we provide up to three free samples of our wood finishes. This allows you to evaluate materials and surfaces directly in your retail space. A powder-coated steel sample is also available on request."
+            "text": "The terminology varies mainly by industry and context, but the basic purpose is the same: a functional workspace that welcomes visitors while presenting your business professionally. \\u201cFront desk\\u201d is especially common in hotels and hospitality, while \\u201creception desk\\u201d is widely used for the furniture itself across offices, salons, clinics, and other commercial spaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which materials and colors are available for reception desks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can choose from high-quality finishes, warm wood decors, and elegant front panels. Additional options include front-mounted logos, lockable drawers, and glass display covers. Free decor samples can be ordered directly from us."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a reception desk be customized to my needs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. At Mandai Design, your reception desk can be customized to suit your available space, interior concept, and practical requirements. Get in touch to let us know your requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a reception desk weigh?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depending on its size, shape, and configuration, our reception desks weigh between 250 and 650 kg. We take the weight into account when planning the location so that delivery and installation can be handled smoothly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I consider when arranging delivery?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Where possible, we ship our reception desks fully assembled on disposable pallets. Before delivery, please check that doors, corridors, and other access points at the destination are wide enough for the desk to be brought in without difficulty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is the best place for power and data connections at a reception desk?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ideal solution is a floor box positioned within the plinth area of the reception desk. This allows power and data connections to remain concealed while still being easy to access at the workstation. Contact us early in the planning process so we can prepare cable outlets to match your planned connection points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a reception desk include a company logo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. If you provide the correct vector artwork, we can offer a front-mounted logo as an additional option."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What reception desk storage options are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We can integrate pull-outs, mobile pedestals, and drawers to create practical storage for documents, reception supplies, and technology."
           }
         }
       ]
@@ -185,38 +439,38 @@
             </div>
           </li>
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="retail-shelving.html">Retail Shelving</a></li>
-                <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-                <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-                <li><a href="shop-counters.html">Shop Counters</a></li>
-                <li><a href="reception-desks.html" aria-current="page">Reception Desks</a></li>
-                <li><a href="display-tables.html">Display Tables</a></li>
-                <li><a href="display-pedestals.html">Display Pedestals</a></li>
-                <li><a href="quick-delivery.html">Quick Delivery</a></li>
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html" aria-current="page">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
               </ul>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="../systems/addison.html">Addison</a></li>
-                <li><a href="../systems/ceres.html">Ceres</a></li>
-                <li><a href="../systems/cetus.html">Cetus</a></li>
-                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-                <li><a href="../systems/slimline.html">Slimline</a></li>
-                <li><a href="../systems/ontario.html">Ontario</a></li>
-                <li><a href="../systems/bergen.html">Bergen</a></li>
-                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                <li><a href="addison.html">Addison</a></li>
+                <li><a href="ceres.html">Ceres</a></li>
+                <li><a href="cetus.html">Cetus</a></li>
+                <li><a href="brooklyn.html">Brooklyn</a></li>
+                <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="bergen.html">Bergen</a></li>
+                <li><a href="customize.html">Customize your shelf</a></li>
               </ul>
             </div>
           </li>
@@ -287,29 +541,29 @@
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="#main-content">Store Fixtures</a>
+            <a href="../index.html#categories">Store Fixtures</a>
             <ul class="mobile-menu__sub">
-              <li><a href="retail-shelving.html">Retail Shelving</a></li>
-              <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-              <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-              <li><a href="shop-counters.html">Shop Counters</a></li>
-              <li><a href="reception-desks.html" aria-current="page">Reception Desks</a></li>
-              <li><a href="display-tables.html">Display Tables</a></li>
-              <li><a href="display-pedestals.html">Display Pedestals</a></li>
-              <li><a href="quick-delivery.html">Quick Delivery</a></li>
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html" aria-current="page">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../systems/addison.html">Addison</a></li>
-              <li><a href="../systems/ceres.html">Ceres</a></li>
-              <li><a href="../systems/cetus.html">Cetus</a></li>
-              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-              <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
-              <li><a href="../systems/bergen.html">Bergen</a></li>
-              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+              <li><a href="addison.html">Addison</a></li>
+              <li><a href="ceres.html">Ceres</a></li>
+              <li><a href="cetus.html">Cetus</a></li>
+              <li><a href="brooklyn.html">Brooklyn</a></li>
+              <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+              <li><a href="bergen.html">Bergen</a></li>
+              <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -358,212 +612,445 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
-
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#categories">Store Fixtures</a></li>
-          <li><span aria-current="page">Reception Desks</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/fixtures/reception-desks.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/fixtures/reception-desks.jpg" alt="Modern reception desk in a bright interior" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Modern Reception Desks and Front Desks</h1>
-        </div>
-      </div>
+    <!-- ══════════ هیرو ══════════ -->
+    <section class="sys-hero" aria-label="Modern reception desks by Mandai Design">
+      <img src="https://www.mandai-design.com/cdn/shop/files/reception-desk-front-desk-reception-counter-beauty-salon-reception-desk.jpg?v=1786607702&width=1800" alt="Modern reception desk by Mandai Design in a beauty salon" class="sys-hero__img fsh-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200" alt="Reception desk with wooden front in a med spa" class="sys-hero__img fsh-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
     <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">STORE FIXTURES</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">The right reception desk for your business</h2>
-        <div class="intro__text">
-          <p>A hotel front desk is much more than a place to check in. It welcomes guests on arrival, supports them throughout their stay and remains a central point of contact until departure. A well-designed hotel reception desk makes all the difference.</p>
-          <p>In a beauty salon, the first personal interaction with a client often takes place at the reception desk. Whether you run a beauty salon, spa or beauty lounge - the desk brings appointment management, client consultations and checkout together in one place.</p>
+    <section class="sys-intro" aria-labelledby="rcp-intro-heading">
+      <div class="container">
+        <h1 id="rcp-intro-heading" class="sys-intro__title">Modern Reception Desks and Front Desks</h1>
+        <h2 class="fsh-sys__sub">High-Quality Reception Desks Made in Germany</h2>
+        <p class="sector-alt__text">A <a href="../index.html#contact" class="text-link"><strong>reception desk</strong></a> is often one of the first points of contact guests, customers, or patients have with your business, so it plays an important role in creating a professional first impression. As a central feature of the <strong>reception area</strong>, it should fit seamlessly into the interior while meeting your day-to-day requirements for both function and design.</p>
+        <p class="sector-alt__text">Whether you are furnishing a hotel lobby, beauty salon, medical practice, or retail space, every <strong>reception area</strong> has different needs. Mandai Design creates <a href="../fixtures/shop-counters.html" class="text-link"><strong>high-quality reception desks</strong></a> for a wide range of commercial interiors. Each desk is manufactured in our own facility in Germany, combining timeless design with durable quality.</p>
+        <div class="crp-toolbar" aria-hidden="true">
+          <span class="crp-sort">Sort: <strong>Featured</strong>
+            <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ محصولات ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ گرید محصولات (۱۲ میز پذیرش — کل کالکشن) ══════════ -->
+    <section class="sector-alt" id="rcp-grid" aria-label="All reception desks and front desks">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our reception desks</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Reception Desks">
-              <div class="product__media">
-                <img src="../images/cat-reception-desks.jpg" alt="Reception desk Malé with solid wood front" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Reception Desks</h3>
-              <p class="product__variants">Solid wood fronts</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter alternative for reception areas" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Versatile</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Gondola Shelving">
-              <div class="product__media">
-                <img src="../images/cat-gondola.jpg" alt="Gondola shelving for the waiting area" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Gondola Shelving</h3>
-              <p class="product__variants">For waiting areas</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Pedestals">
-              <div class="product__media">
-                <img src="../images/cat-pedestals.jpg" alt="Display pedestals for the reception area" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Pedestals</h3>
-              <p class="product__variants">Accents</p>
-            </a>
-          </li>
-        </ul>
+        <div class="crp-grid">
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Male, solid wood front">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-checkout-desk-male_2.jpg?v=1758091221&width=900" alt="Shop Counter Malé, solid wood front" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/1_Male_Shop_Counter_White_Solid_Wood_092025.jpg?v=1758091221&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Mal&eacute;, solid wood front</h3>
+            <p class="product__price">$3,058.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Coco, Oval, decor of choice">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-coco-retail_7.jpg?v=1758105411&width=900" alt="Shop Counter Coco, Oval, decor of choice" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/coco-retail-counter-salon_2.jpg?v=1758105411&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Coco, Oval, decor of choice</h3>
+            <p class="product__price">$4,570.00</p>
+            <p class="product__options">4 decors</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Matera, wood and anthracite">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-checkout-desk-wood_2.jpg?v=1758091763&width=900" alt="Shop Counter Matera, wood and anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/04_Matera_Fashion_Store_022025.jpg?v=1758091763&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Matera, wood and anthracite</h3>
+            <p class="product__price">$2,072.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Varios Classic, White">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/varios-classic-shop-counter-white_7.jpg?v=1732196183&width=900" alt="Shop Counter Varios Classic, White" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-varios-classic-white-wood-mandaidesign.jpg?v=1746609634&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Varios Classic, White</h3>
+            <p class="product__price">$2,874.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Matera, white and wood">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-white-wood-checkout-desk_2.jpg?v=1758091667&width=900" alt="Shop Counter Matera, white and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-cash-desk-checkout-counter-shopfitting-mandai-design_-_Kopie.jpg?v=1758091667&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Matera, white and wood</h3>
+            <p class="product__price">$2,072.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Varios, White">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-counter-checkout-desk-varios-white_2.jpg?v=1758092301&width=900" alt="Shop Counter Varios, White" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/verkaufstresen-varios-verkaufstheke-tresen-weiss-8.jpg?v=1758092301&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Varios, White</h3>
+            <p class="product__price">$2,147.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Java, anthracite and wood">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/checkout-counter-java-black-wood_2.jpg?v=1758095365&width=900" alt="Shop Counter Java, anthracite and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/verkaufstresen-java-verkaufstheke-tresen-menswear.jpg?v=1758095365&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Java, anthracite and wood</h3>
+            <p class="product__price">$1,997.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Vienna, Country House Style, Solid Wood">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-vienna_2.jpg?v=1758097085&width=900" alt="Shop Counter Vienna, Country House Style, Solid Wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/verkaufstresen-vienna-verkaufstheke-tresen-landhausstil-holz-grau-122-Kopie.jpg?v=1758097085&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Vienna, Country House Style, Solid Wood</h3>
+            <p class="product__price">$4,258.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Java, white and wood">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/java-white-wood-retail-counter_2.jpg?v=1758096973&width=900" alt="Shop Counter Java, white and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-retail-shopfitting-cash-wrap-white-wood.jpg?v=1758096973&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Java, white and wood</h3>
+            <p class="product__price">$1,997.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Tokyo, anthracite and wood">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/tokyo-retail-counter-checkout-desk_2.jpg?v=1758091321&width=900" alt="Shop Counter Tokyo, anthracite and wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/1_Tokyo_Shop_Counter_Halifax_Oak_052025.jpg?v=1758091321&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Tokyo, anthracite and wood</h3>
+            <p class="product__price">$2,285.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Java, white and marble look">
+            <span class="product__badge">More Colours</span>
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/java-checkout-counter-white-marble-retail-desk_2.jpg?v=1758096329&width=900" alt="Shop Counter Java, white and marble look" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/verkaufstresen-java-verkaufstheke-tresen-weiss-6.jpg?v=1758096329&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Java, white and marble look</h3>
+            <p class="product__price">$1,997.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Shop Counter Varios Classic, Anthracite">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/varios-checkout-desk-black-wood-classic_2.jpg?v=1758092783&width=900" alt="Shop Counter Varios Classic, Anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-varios-classic.jpg?v=1758092783&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Shop Counter Varios Classic, Anthracite</h3>
+            <p class="product__price">$2,874.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+        </div>
+        <p class="crp-count">You&rsquo;re viewing 1-12 of 12 products</p>
       </div>
     </section>
 
-    <!-- ══════════ متن راهنما ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
+    <!-- ══════════ About Reception Desks ══════════ -->
+    <section class="sector-alt" aria-labelledby="rcp-about-heading">
       <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Designed with every detail in mind</h2>
-          <p>Alongside design and high-quality construction, reception desk furniture needs to work reliably in everyday use. Easy-to-clean surfaces and sufficient storage for documents, reception supplies and technology help keep the reception area organized.</p>
-          <p>Explore colors and materials: from solid wood fronts to sleek steel - we build the desk that matches your interior and your brand.</p>
+        <h2 id="rcp-about-heading" class="sector-alt__title sct-center">About Reception Desks from Mandai Design</h2>
+        <p class="sct-lead">Depending on the industry, you may call it a <strong>reception desk, front desk, reception counter, or office reception desk</strong>. The purpose is the same: a practical workspace that also represents your business. Used at the entrance to an <strong>office, hotel, salon, or store</strong>, it becomes the central point between your team and the people you welcome.</p>
+        <div class="fsh-sys__row" style="margin-top: 56px;">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/reception-desk-hotel-front-desk-reception-area.jpg?v=1786607312&width=1200" alt="Hotel front desk Coco in a dark hotel lobby" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <p class="rcpt-eyebrow">Hotel Front Desk Coco</p>
+            <h3 class="cl-h3">Hotel Front Desks and Reception Desks</h3>
+            <p class="sector-alt__text">A hotel front desk is much <strong>more than a place to check in</strong>. It welcomes guests on arrival, supports them throughout their stay, and remains a central point of contact until departure.</p>
+            <p class="sector-alt__text">A well-designed hotel reception desk creates an <strong>efficient workspace</strong> while helping define the atmosphere of the lobby. From boutique hotels to premium resorts, the front desk should work naturally with the wider hotel lobby design, support daily operations, and reinforce the <strong>character of the property.</strong></p>
+          </div>
+        </div>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 72px;">
+          <div class="fsh-sys__copy">
+            <p class="rcpt-eyebrow">Reception Desk Mal&eacute;</p>
+            <h3 class="cl-h3">Reception Desks for Beauty Salons and Spas</h3>
+            <p class="sector-alt__text">In a beauty salon, the <strong>first personal interaction</strong> with a client often takes place at the reception desk. Whether you run a beauty salon, spa, or beauty lounge, the desk brings appointment management, client consultations, and product sales together in one central location while supporting your <strong>brand identity</strong>.</p>
+            <p class="sector-alt__text">Beyond its practical role, a beauty salon reception desk helps shape the atmosphere of the space. High-quality materials and a cohesive design communicate <strong>professionalism and trust</strong> from the moment clients enter your reception area.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk.jpg?v=1786607510&width=1200" alt="Reception desk Malé with solid wood front in a med spa" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════ Practical — نوار خاکستری تمام‌عرض مثل مرجع ══════════ -->
+    <section class="sector-alt rcpt-band" aria-labelledby="rcp-practical-heading">
+      <div class="container">
+        <div class="fsh-sys__row">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/reception-desk-front-desk-reception-counter.png?v=1786607559&width=1200" alt="Reception counter with drawers and storage space" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <h3 id="rcp-practical-heading" class="cl-h3">Practical Reception Desk Furniture with Storage and Comfort</h3>
+            <p class="sector-alt__text">Alongside design and high-quality construction, reception desk furniture needs to <strong>work reliably in everyday use</strong>. Easy-to-clean surfaces and sufficient storage for documents, reception supplies, and technology help keep the front desk organized and efficient. High-quality full-extension drawers and pull-out trays add practical storage exactly where your team needs it.</p>
+            <p class="sector-alt__text">We can <strong>plan and customize</strong> your reception desk around the needs of your space and team.</p>
+            <!-- ✏️ GET DESIGN SUPPORT در مرجع به صفحهٔ Design Service لینک است؛ اینجا به بخش help -->
+            <p class="rcpt-cta"><a href="../index.html#help" class="btn btn--outline">GET DESIGN SUPPORT</a></p>
+          </div>
         </div>
       </div>
     </section>
 
 
-
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
+    <!-- ══════════ The Right Reception Desk for Your Business ══════════ -->
+    <section class="sector-alt" aria-labelledby="rcp-right-heading">
       <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
-
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
+        <h2 id="rcp-right-heading" class="sector-alt__title">The Right Reception Desk for Your Business</h2>
+        <p class="sector-alt__text">Hotels and beauty salons are only two of the many places where a reception desk can be used. Whatever your industry, the desk should feel like a natural part of the overall interior. In an <a href="../index.html#sectors" class="text-link"><strong>office reception area</strong></a>, for example, it is often the first place clients, business partners, and job candidates encounter. A well-designed office reception desk creates a professional first impression and elevates the entrance area as a whole.</p>
+        <p class="sector-alt__text">Mandai Design offers a range of models, finishes, and configurations for different requirements. From medical practices and physical therapy clinics to hair salons, offices, showrooms, and fitness studios, <strong>we work with you to turn your reception area concept into reality</strong>.</p>
+        <div class="fsh-sys__row" style="margin-top: 56px;">
+          <div class="fsh-sys__media">
+            <!-- ✏️ اسلایدر مقایسهٔ دو روکش — مثل مرجع: پایه = Black Pietra Grigia، لایهٔ بالا (سمت چپ) = Oak Halifax Nature -->
+            <div class="rcpt-compare" id="rcpCompare" style="--split: 50%;">
+              <img class="rcpt-compare__img" src="https://www.mandai-design.com/cdn/shop/files/shop-counter-coco-retail_11.jpg?v=1758105411&width=1200" alt="Reception counter Coco with Black Pietra Grigia front" width="1200" height="1200" loading="lazy">
+              <div class="rcpt-compare__top">
+                <img class="rcpt-compare__img" src="https://www.mandai-design.com/cdn/shop/files/shop-counter-coco-retail_9.jpg?v=1758180420&width=1200" alt="Reception counter Coco with Oak Halifax Nature front" width="1200" height="1200" loading="lazy">
               </div>
+              <span class="rcpt-compare__chip rcpt-compare__chip--tl">Oak Halifax Nature</span>
+              <span class="rcpt-compare__chip rcpt-compare__chip--br">Black Pietra Grigia</span>
+              <div class="rcpt-compare__divider" aria-hidden="true"></div>
+              <div class="rcpt-compare__handle" role="slider" tabindex="0" aria-label="Compare finishes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <svg viewBox="0 0 20 10" fill="none" aria-hidden="true"><path d="M6 1 2 5l4 4M14 1l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Explore Colors and Materials</h3>
+            <p class="sector-alt__text">Your reception desk can be <strong>customized</strong> to suit your floor plan and interior concept. <strong>Choose from high-quality finishes, warm wood decors</strong>, and elegant front panels, and use our free sample service to compare materials before you decide.</p>
+            <p class="sector-alt__text">You can also add options such as a front-mounted logo, lockable drawers, or other practical features. <strong>Size is flexible too</strong>, from a small reception desk for compact reception areas to a larger solution for spacious, representative entrances.</p>
+            <!-- ✏️ ORDER FREE SAMPLES در مرجع به کالکشن samples لینک است؛ اینجا به بخش help -->
+            <p class="rcpt-cta"><a href="../index.html#help" class="btn btn--dark">ORDER FREE SAMPLES</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Customer Photos ══════════ -->
+    <section class="sector-alt" aria-labelledby="rcp-cust-heading">
+      <div class="container">
+        <h2 id="rcp-cust-heading" class="sector-alt__title">Customer Photos: Reception Area Ideas and Inspiration</h2>
+        <p class="sector-alt__text">Looking for reception area ideas for a beauty salon, pharmacy, or another commercial space? Explore our customer photos and reference projects for inspiration.</p>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="rcpRefsSlider" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="rcpRefsSlider" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fsh-slider-row" id="rcpRefsSlider">
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/shopcounter-varios_ba20f013-c0b2-4d7e-bfa4-c8640636b2a9.jpg?v=1786607947" alt="Reception desk Varios — Kiyomi Skin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Varios - <a href="https://www.instagram.com/kiyomiskin/" target="_blank" rel="noopener noreferrer" class="text-link">Kiyomi Skin</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mooonhub-mandai-design-ladeneinrichtung-retail-design_4.jpg?v=1732089911" alt="Reception desk Coco — Moonhub, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Coco - <a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Switzerland<br>Foto: <a href="https://www.instagram.com/dangmayer/" target="_blank" rel="noopener noreferrer" class="text-link">Dang Mayer</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/reception-desk-java-front-desk.jpg?v=1786607983" alt="Reception desk Java — Touristik Bad Ems-Nassau, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Java - <a href="https://www.instagram.com/badems_nassau.info/" target="_blank" rel="noopener noreferrer" class="text-link">Touristik Bad Ems-Nassau</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/saint_sofia_store_fixtures_retail_design_mandai_design4.jpg?v=1759844891" alt="Reception desk Coco — Saint+Sofia, UK" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Coco - <a href="https://www.instagram.com/saintandsofia/" target="_blank" rel="noopener noreferrer" class="text-link">Saint+Sofia</a>, UK</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-angled.jpg?v=1786608062" alt="Reception desk Matera — Natürlich Kosmetikstudio, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Matera - <a href="https://www.natuerlich-kosmetikstudio.de/" target="_blank" rel="noopener noreferrer" class="text-link">Natürlich Kosmetikstudio</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/reception-desk-pharmacy.jpg?v=1786608108" alt="Reception desk Vienna — Apotheke Windischgarsten, Austria" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Vienna - <a href="https://www.instagram.com/apotheke_windischgarsten/" target="_blank" rel="noopener noreferrer" class="text-link">Apotheke Windischgarsten</a>, Austria</p>
             </li>
           </ul>
-
-          <div class="reviews__dots" data-reviews-dots></div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Which industries are reception desks suitable for?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Our reception desks are used in hotels, beauty salons, spas, practices, offices and retail stores. Size, materials and design are adapted to your industry and interior.</p>
-              </div>
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl sct-center">Contact Us</h2>
+          <p>Do you have questions about a product or need help planning your reception desk? We are happy to help.</p>
+        </div>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
             </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order material samples?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, we provide up to three free samples of our wood finishes. This allows you to evaluate materials and surfaces directly in your retail space. A powder-coated steel sample is also available on request.</p>
-              </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
             </div>
           </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
           </div>
-        </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Plan your reception area</h2>
-          <p class="sector-cta__text">Our team of interior designers plans your reception area with our products - free of charge.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
+  <!-- ══════════ Designed with every detail in mind ══════════ -->
+  <section class="sector-alt" aria-labelledby="rcp-detail-heading">
+    <div class="container">
+      <h2 id="rcp-detail-heading" class="sector-alt__title sct-center">Designed with every detail in mind</h2>
+      <div class="sct-cols">
+        <div>
+          <h3>Reception Desk Features at a Glance</h3>
+          <p>A modern reception desk should look good, but it also needs to perform well every day. Mandai Design offers flexible <strong>customization options</strong>: our reception desks are modular and can be expanded with additional elements as needed, such as <strong>extra counter space</strong>. Drawers and pull-outs can also be integrated and configured around your workflow.</p>
+          <p>If required, we can equip your reception desk with an <strong>electrically height-adjustable work surface</strong>. This makes it easy for employees to alternate between sitting and standing and supports a more <strong>ergonomic reception</strong> workspace. The overall layout is flexible too: in addition to straight desks, we can create L-shaped reception desks and corner configurations to suit your floor plan.</p>
+        </div>
+        <div>
+          <h3>Quality and Construction</h3>
+          <p>We use <strong>high-quality furniture hardware</strong> throughout. Soft-close fittings and 3D-adjustable concealed hinges are standard rather than optional extras. <strong>Cable outlets</strong> and access points are prepared in advance, helping make on-site installation quick and straightforward. If required, your reception desk can also be supplied with pre-wired <strong>LED lighting</strong>.</p>
+          <p>Because each reception desk is <strong>individually produced in our own facility</strong>, we fully assemble it before shipping, check that everything is complete, and carry out a final quality inspection. The cabinet bodies and pull-outs are generally permanently bonded. Depending on the size of the desk, individual modules may need to be packed separately on pallets for transport, but final assembly on site remains minimal and <strong>saves valuable time</strong>.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Reception desks and front desks made in Germany</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>More than a desk</h3>
-            <p>A reception desk welcomes guests, supports them throughout their visit and remains a central point of contact - design it accordingly.</p>
+  <!-- ══════════ FAQ — ۹ سؤال، ورداشتی از مرجع ══════════ -->
+  <section class="faq sct-faq" aria-labelledby="rcp-faq-heading">
+    <div class="container">
+      <div class="faq__inner">
+        <h2 id="rcp-faq-heading" class="faq__heading">FAQ: Reception Desk &amp; Front Desk</h2>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-0" id="rcp-faq-button-0">
+                <span>Which industries are reception desks suitable for?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-0" role="region" aria-labelledby="rcp-faq-button-0" hidden>
+              <p>Reception desks are used wherever visitors, guests, clients, or patients are welcomed first, including hotels, beauty salons, medical practices, offices, and fitness studios. We adapt the design and functionality to suit the requirements of your industry.</p>
+            </div>
           </div>
-          <div>
-            <h3>Storage and comfort included</h3>
-            <p>Practical reception desk furniture offers sufficient storage for documents, supplies and technology and keeps the reception area tidy.</p>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-1" id="rcp-faq-button-1">
+                <span>What is the difference between a reception desk, front desk, and office reception desk?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-1" role="region" aria-labelledby="rcp-faq-button-1" hidden>
+              <p>The terminology varies mainly by industry and context, but the basic purpose is the same: a functional workspace that welcomes visitors while presenting your business professionally. &ldquo;Front desk&rdquo; is especially common in hotels and hospitality, while &ldquo;reception desk&rdquo; is widely used for the furniture itself across offices, salons, clinics, and other commercial spaces.</p>
+            </div>
           </div>
-          <div>
-            <h3>Quality and construction</h3>
-            <p>High-quality materials and precise workmanship from our own factory in Germany - for reception furniture that lasts.</p>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-2" id="rcp-faq-button-2">
+                <span>Which materials and colors are available for reception desks?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-2" role="region" aria-labelledby="rcp-faq-button-2" hidden>
+              <p>You can choose from high-quality finishes, warm wood decors, and elegant front panels. Additional options include front-mounted logos, lockable drawers, and glass display covers. <a href="../index.html#help" class="text-link"><strong>Free decor samples</strong></a> can be ordered directly from us.</p>
+            </div>
           </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-3" id="rcp-faq-button-3">
+                <span>Can a reception desk be customized to my needs?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-3" role="region" aria-labelledby="rcp-faq-button-3" hidden>
+              <p>Yes. At Mandai Design, your reception desk can be customized to suit your available space, interior concept, and practical requirements. <a href="../index.html#contact" class="text-link"><strong>Get in touch</strong></a> to let us know your requirements.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-4" id="rcp-faq-button-4">
+                <span>How much does a reception desk weigh?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-4" role="region" aria-labelledby="rcp-faq-button-4" hidden>
+              <p>Depending on its size, shape, and configuration, our reception desks weigh between 250 and 650 kg. We take the weight into account when planning the location so that delivery and installation can be handled smoothly.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-5" id="rcp-faq-button-5">
+                <span>What should I consider when arranging delivery?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-5" role="region" aria-labelledby="rcp-faq-button-5" hidden>
+              <p>Where possible, we ship our reception desks fully assembled on disposable pallets. Before delivery, please check that doors, corridors, and other access points at the destination are wide enough for the desk to be brought in without difficulty.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-6" id="rcp-faq-button-6">
+                <span>Where is the best place for power and data connections at a reception desk?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-6" role="region" aria-labelledby="rcp-faq-button-6" hidden>
+              <p>The ideal solution is a floor box positioned within the plinth area of the reception desk. This allows power and data connections to remain concealed while still being easy to access at the workstation. Contact us early in the planning process so we can prepare cable outlets to match your planned connection points.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-7" id="rcp-faq-button-7">
+                <span>Can a reception desk include a company logo?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-7" role="region" aria-labelledby="rcp-faq-button-7" hidden>
+              <p>Yes. If you provide the correct vector artwork, we can offer a front-mounted logo as an additional option.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="rcp-faq-panel-8" id="rcp-faq-button-8">
+                <span>What reception desk storage options are available?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="rcp-faq-panel-8" role="region" aria-labelledby="rcp-faq-button-8" hidden>
+              <p>We can integrate pull-outs, mobile pedestals, and drawers to create practical storage for documents, reception supplies, and technology.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- ══════════ فوتر ══════════ -->
+  <!-- ══════════ Get advice now ══════════ -->
+  <section class="sector-alt sct-advice" aria-labelledby="rcp-advice-heading">
+    <div class="container">
+      <h3 id="rcp-advice-heading" class="cl-h3">Get advice now</h3>
+      <p>Do you have any questions about our products or require support?</p>
+      <p><strong><a href="tel:+49343414070950" class="text-link">+ 49 (0) 34341 40 70 950</a></strong></p>
+      <p><strong>Mon-Fri 8.30 AM to 5.00 PM</strong></p>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
@@ -611,11 +1098,11 @@
         </nav>
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
-            <li><a href="retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="racks-and-rails.html">Clothing Racks</a></li>
-            <li><a href="display-tables.html">Display Tables</a></li>
-            <li><a href="shop-counters.html">Shop Counters</a></li>
-            <li><a href="display-pedestals.html">Display Pedestals</a></li>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
@@ -670,6 +1157,65 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  <script>
+
+    /* فلش‌های اسلایدرهای ردیفی: وضعیت ابتدا/انتها */
+    (function () {
+      document.querySelectorAll('.fsh-grid-wrap').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+
+    /* اسلایدر مقایسهٔ روکش‌ها — کشیدن با ماوس/لمس + کلیدهای چپ/راست */
+    (function () {
+      var cmp = document.getElementById('rcpCompare');
+      if (!cmp) return;
+      var handle = cmp.querySelector('.rcpt-compare__handle');
+      var dragging = false;
+      function setSplit(pct) {
+        pct = Math.max(4, Math.min(96, pct));
+        cmp.style.setProperty('--split', pct + '%');
+        if (handle) handle.setAttribute('aria-valuenow', String(Math.round(pct)));
+      }
+      function fromEvent(e) {
+        var r = cmp.getBoundingClientRect();
+        var x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+        setSplit(x / r.width * 100);
+      }
+      cmp.addEventListener('pointerdown', function (e) { dragging = true; try { cmp.setPointerCapture(e.pointerId); } catch (err) {} fromEvent(e); });
+      cmp.addEventListener('pointermove', function (e) { if (dragging) fromEvent(e); });
+      ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (ev) {
+        cmp.addEventListener(ev, function () { dragging = false; });
+      });
+      if (handle) handle.addEventListener('keydown', function (e) {
+        var cur = parseFloat(getComputedStyle(cmp).getPropertyValue('--split')) || 50;
+        if (e.key === 'ArrowLeft') { setSplit(cur - 4); e.preventDefault(); }
+        if (e.key === 'ArrowRight') { setSplit(cur + 4); e.preventDefault(); }
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

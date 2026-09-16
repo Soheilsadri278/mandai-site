@@ -1,10 +1,12 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ دستهٔ تجهیزات: Display Tables
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در fixtures/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن: Display Tables (میزهای نمایش)
+  (بازسازی موبه‌مو از mandai-design.com/collections/retail-display-tables — 2026-09)
+  هیرو → معرفی → گرید ۲۱ میز (کل کالکشن؛ «Load more» ادغام شد)
+  → ¶ وسط‌چین → About (H۲ وسط + ۳ ردیف + Key Benefits) → اسلایدر ۲۲ عکس مشتری
+  → فرم Get in touch → Furniture that Elegantly Presents (۵ بولت) + ۳ ستون H3 → FAQ خاکستری ۸تایی
+  ✏️ کارت‌ها/لینک‌ها به فرم تماس همین سایت لینک شده‌اند
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,44 +14,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>High-quality display tables for retail stores | Mandai Design</title>
-  <meta name="description" content="Stylish display tables for retail stores: wood, metal and stone finishes, made in Germany. Order your display table online now.">
+  <meta name="description" content="Stylish, modern display tables for retail stores - Made in Germany. Discover high-quality retail display tables by Mandai Design.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/fixtures/display-tables.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/fixtures/display-tables.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="High-quality display tables for retail stores | Mandai Design">
-  <meta property="og:description" content="Stylish display tables for retail stores: wood, metal and stone finishes, made in Germany. Order your display table online now.">
-  <meta property="og:image" content="https://www.example.com/images/fixtures/display-tables.jpg">
+  <meta property="og:description" content="Stylish, modern display tables for retail stores - Made in Germany. Discover high-quality retail display tables by Mandai Design.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-2.jpg?v=1673356508&width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Display table in a retail store">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Display tables by Mandai Design in a retail store">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="High-quality display tables for retail stores | Mandai Design">
-  <meta name="twitter:description" content="Stylish display tables for retail stores: wood, metal and stone finishes, made in Germany. Order your display table online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/fixtures/display-tables.jpg">
-
+  <meta name="twitter:description" content="Stylish, modern display tables for retail stores - Made in Germany. Discover high-quality retail display tables by Mandai Design.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-2.jpg?v=1673356508&width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/fixtures/display-tables.jpg" as="image">
-
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-2.jpg?v=1673356508&width=1800" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__swatch-more {
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(26, 26, 26, 0.6); background: #fff;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
 
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+    /* ── صفحهٔ Display Tables (مثل مرجع) ── */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    @media (min-width: 900px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: -1; }
+    }
+    .sct-center { text-align: center; margin-inline: auto; }
+    .sct-lead { max-width: 780px; margin: 18px auto 0; text-align: center; font-size: 13.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .sct-lead a { color: inherit; }
+    .crp-grid { margin-top: 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 20px; }
+    @media (max-width: 1280px) { .crp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) { .crp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .crp-grid { grid-template-columns: 1fr; } }
+    .crp-grid .product__media { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+    .product__media .product__img--alt { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .crp-count { margin-top: 34px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+      color: var(--foreground); cursor: pointer;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    .cl-h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: var(--foreground); }
+    .dsp-bullets { margin-top: 16px; display: grid; gap: 10px; list-style: none; padding: 0; max-width: 860px; }
+    .dsp-bullets li { position: relative; padding-left: 18px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .dsp-bullets li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--foreground); }
+    .sct-cols { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 24px; text-align: left; }
+    @media (max-width: 900px) { .sct-cols { grid-template-columns: 1fr; } }
+    .sct-cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 19px; }
+    .sct-cols p { margin-top: 10px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .sct-advice { padding-top: 0; }
+    .sct-advice .cl-h3 { font-size: 19px; }
+    .sct-advice p { margin-top: 10px; font-size: 13.5px; color: rgba(26, 26, 26, 0.85); }
+    .dsp-faq .faq__inner { max-width: 880px; }
+    .dsp-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .dsp-faq .faq__button { padding: 17px 22px; }
+    .dsp-faq .faq__panel { padding: 0 22px 18px; }
+    </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,12 +218,12 @@
       "@type": "WebPage",
       "name": "Display Tables for Retail Stores",
       "url": "https://www.example.com/fixtures/display-tables.html",
-      "description": "Stylish display tables for retail stores: wood, metal and stone finishes, made in Germany. Order your display table online now.",
+      "description": "Stylish, modern display tables for retail stores - Made in Germany. Discover high-quality retail display tables by Mandai Design.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/fixtures/display-tables.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-2.jpg?v=1673356508"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,7 +238,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Store Fixtures",
-          "item": "https://www.example.com/#categories"
+          "item": "https://www.example.com/index.html#categories"
         },
         {
           "@type": "ListItem",
@@ -90,23 +250,69 @@
     },
     {
       "@type": "FAQPage",
-      "url": "https://www.example.com/fixtures/display-tables.html",
-      "inLanguage": "en",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can display tables be made in custom sizes?",
+          "name": "What Is a Display Table for Retail Stores?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Because we manufacture all tables in our own factory, custom dimensions, alternative tabletop finishes and individual designs are possible at your request."
+            "text": "A retail table is not just a storage unit as it presents goods in an appealing way and attracts customers' attention. It helps to emphasize brand identity and enrich the shopping experience. This makes it an important part of the sales area."
           }
         },
         {
           "@type": "Question",
-          "name": "Which countries do you deliver to?",
+          "name": "What Type of Store Display Table Is Best for My Business?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
+            "text": "Our sales tables are versatile and suitable for various industries, such as fashion, delicatessen, or gift items. Materials and designs can be customized to suit your business concept. This allows the table to be perfectly tailored to your brand."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Does the Ordering Process for Display Tables Work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At Mandai Design, you can conveniently order your display table online and choose between different designs. For example, we offer round, square, or rectangular display tables for retail stores, giving you plenty of options. There are also three wood finishes available; we will be happy to send you samples of other finishes upon request."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Will the Display Table for My Retail Store Be Delivered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our furniture is designed for easy handling. The display tables come with assembly instructions and can be set up in just a few steps. This minimizes the effort required for assembly when setting up and saves you valuable time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is It Possible to Customize a Display Table for My Retail Store According to My Preferences?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we manufacture our tables in our own factory, and if required, we can design them according to your wishes. Whether it's dimensions, colors, or materials, all important aspects can be tailored to your needs. This results in a display table that fits perfectly into your store concept."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Should I Look for When Choosing a Store Display Table?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look for a design that highlights your brand, as well as sturdy and durable construction. The table should offer enough space for professional presentation while also being visually appealing. If you keep this in mind, you can combine functionality with an inviting look."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Sturdy and Durable Are Display Tables?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We manufacture our store sales tables from high-quality materials that offer impressive stability. They are designed for daily use in retail and can reliably withstand even heavy loads. This means you benefit from durable store fixtures that retain their appearance over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Types of Display Tables Are Available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is a wide variety of sales tables available. Our models include everything from round presentation tables to rectangular display tables with integrated shelves. Depending on the intended use, they can be designed to be simple and functional or particularly representative. This means there is a suitable solution for every requirement."
           }
         }
       ]
@@ -185,38 +391,38 @@
             </div>
           </li>
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="retail-shelving.html">Retail Shelving</a></li>
-                <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-                <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-                <li><a href="shop-counters.html">Shop Counters</a></li>
-                <li><a href="reception-desks.html">Reception Desks</a></li>
-                <li><a href="display-tables.html" aria-current="page">Display Tables</a></li>
-                <li><a href="display-pedestals.html">Display Pedestals</a></li>
-                <li><a href="quick-delivery.html">Quick Delivery</a></li>
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html" aria-current="page">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
               </ul>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="../systems/addison.html">Addison</a></li>
-                <li><a href="../systems/ceres.html">Ceres</a></li>
-                <li><a href="../systems/cetus.html">Cetus</a></li>
-                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-                <li><a href="../systems/slimline.html">Slimline</a></li>
-                <li><a href="../systems/ontario.html">Ontario</a></li>
-                <li><a href="../systems/bergen.html">Bergen</a></li>
-                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                <li><a href="addison.html">Addison</a></li>
+                <li><a href="ceres.html">Ceres</a></li>
+                <li><a href="cetus.html">Cetus</a></li>
+                <li><a href="brooklyn.html">Brooklyn</a></li>
+                <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="bergen.html">Bergen</a></li>
+                <li><a href="customize.html">Customize your shelf</a></li>
               </ul>
             </div>
           </li>
@@ -287,29 +493,29 @@
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="#main-content">Store Fixtures</a>
+            <a href="../index.html#categories">Store Fixtures</a>
             <ul class="mobile-menu__sub">
-              <li><a href="retail-shelving.html">Retail Shelving</a></li>
-              <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-              <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-              <li><a href="shop-counters.html">Shop Counters</a></li>
-              <li><a href="reception-desks.html">Reception Desks</a></li>
-              <li><a href="display-tables.html" aria-current="page">Display Tables</a></li>
-              <li><a href="display-pedestals.html">Display Pedestals</a></li>
-              <li><a href="quick-delivery.html">Quick Delivery</a></li>
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html" aria-current="page">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../systems/addison.html">Addison</a></li>
-              <li><a href="../systems/ceres.html">Ceres</a></li>
-              <li><a href="../systems/cetus.html">Cetus</a></li>
-              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-              <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
-              <li><a href="../systems/bergen.html">Bergen</a></li>
-              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+              <li><a href="addison.html">Addison</a></li>
+              <li><a href="ceres.html">Ceres</a></li>
+              <li><a href="cetus.html">Cetus</a></li>
+              <li><a href="brooklyn.html">Brooklyn</a></li>
+              <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+              <li><a href="bergen.html">Bergen</a></li>
+              <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -358,202 +564,519 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
-
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#categories">Store Fixtures</a></li>
-          <li><span aria-current="page">Display Tables</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/fixtures/display-tables.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/fixtures/display-tables.jpg" alt="Display table in a retail store" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Display Tables for Retail Stores</h1>
-        </div>
-      </div>
+    <!-- ══════════ هیرو ══════════ -->
+    <!-- ✏️ تصویر دسکتاپ هیرو: آدرسِ «جمع» استخراج‌شده از رندر متن روی CDN موجود نیست؛ جفتِ صحیح همان صحنه با نام «مفرد» (-2 دسکتاپ / -3 موبایل) تأیید و استفاده شد -->
+    <section class="sys-hero" aria-label="Display tables for retail stores by Mandai Design">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-2.jpg?v=1673356508&width=1800" alt="Wooden display tables by Mandai Design in a showroom" class="sys-hero__img fsh-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-3.jpg?v=1673356532&width=1200" alt="Wooden display tables by Mandai Design in a showroom" class="sys-hero__img fsh-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
     <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">STORE FIXTURES</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Furniture that elegantly presents your products</h2>
-        <div class="intro__text">
-          <p>Carefully planned retail space design goes beyond functional aspects: it emphasizes the identity of your brand and contributes significantly to sales success. Our striking table designs help create a special flair with a high recognition value in your salesrooms.</p>
-          <p>Display tables offer an ideal opportunity to present products in the best light and attract customers' attention in a targeted manner. By positioning them in the middle of the sales area, they highlight new arrivals and curated selections.</p>
+    <section class="sys-intro" aria-labelledby="dsp-intro-heading">
+      <div class="container">
+        <h1 id="dsp-intro-heading" class="sys-intro__title">Display Tables for Retail Stores</h1>
+        <h2 class="fsh-sys__sub">Stylish, Modern Retail Display Tables - Made in Germany</h2>
+        <p class="sector-alt__text">A high-quality, <strong>aesthetically designed display table</strong> for retail stores showcases your products in the best light and sparks the curiosity of customers. As a retail display table, it is more than just a display: it makes a significant contribution to improving the shopping experience and positively influences purchasing decisions. At Mandai Design, you will find <strong>stylish display tables for retail stores in modern designs</strong> &ndash; Made in Germany quality from our own production.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ گرید محصولات (۲۱ میز — کل کالکشن؛ «Load more» مرجع ادغام شد) ✏️ ══════════ -->
+    <section class="sector-alt" id="dsp-grid" aria-label="All display tables">
+      <div class="container">
+        <div class="crp-grid">
+          <a href="../index.html#contact" class="product" aria-label="Display Table Como, Round, Black Base">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign-Como-Halifax_acc.jpg?v=1706097607&width=900" alt="Display Table Como, Round, Black Base" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/displaytable-salestable-shoptable-presentationtable-shopfitting-mandaidesign-2.jpg?v=1746525780&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Como, Round, Black Base</h3>
+            <p class="product__price">from $618.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Como, Round, White Base">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign-Como-white-acc.jpg?v=1706097336&width=900" alt="Display Table Como, Round, White Base" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/displaytable-salestable-shoptable-presentationtable-shopfitting-mandaidesign-W3.jpg?v=1739456043&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Como, Round, White Base</h3>
+            <p class="product__price">from $618.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Como, Round, Marble Look">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign-marble-Como-acc.jpg?v=1706097897&width=900" alt="Display Table Como, Round, Marble Look" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-round-marble-look-white-6_6.jpg?v=1739456106&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Como, Round, Marble Look</h3>
+            <p class="product__price">from $618.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Addison">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign-Addison-Halifax_acc.jpg?v=1706100953&width=900" alt="Display Table Addison" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/athleisure-store-retail-design-display-table-gym-design-flagship-store_8_ba0a2d39-ff2d-4935-ab61-31cb122ea364.jpg?v=1742302005&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Addison</h3>
+            <p class="product__price">from $918.00</p>
+            <p class="product__options">3 wood decors</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table York, rectangular">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign-York_acc.jpg?v=1706101270&width=900" alt="Display Table York, rectangular" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/retail-display-table-shopfitting-mandai-design-4.jpg?v=1739456066&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table York, rectangular</h3>
+            <p class="product__price">from $902.00</p>
+            <p class="product__options">3 wood decors</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Magic Table Z">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign_Magic_Halifax_Acc.jpg?v=1706101112&width=900" alt="Display Table Magic Table Z" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/display-table-presentation-table-shopfitting-mandai-design.jpg?v=1739456082&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Magic Table Z</h3>
+            <p class="product__price">$678.00</p>
+            <p class="product__options">3 wood decors</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Jade, white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-jade-white-retail-design.jpg?v=1717139223&width=900" alt="Display Table Jade, white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/jade-displaytable-white-website-1.jpg?v=1739455920&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Jade, white</h3>
+            <p class="product__price">$710.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Jade, black">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-store-interior-retail-design-jade.jpg?v=1734526201&width=900" alt="Display Table Jade, black" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/jade-displaytable-black-website-2.jpg?v=1739455873&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Jade, black</h3>
+            <p class="product__price">$710.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Clothing Rack & Display Table, Series Magic Z">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/displaytable-presentationtable-shopfitting-MandaiDesign-Magic-Halifax_2_5fc2ed61-3de6-4cc2-9b62-287e93250206.jpg?v=1695733718&width=900" alt="Clothing Rack & Display Table, Series Magic Z" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Display-table-shopfitting-retail-table-mandai-design.jpg?v=1739456055&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Clothing Rack &amp; Display Table, Series Magic Z</h3>
+            <p class="product__price">$1,076.00</p>
+            <p class="product__options">3 wood decors</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Fargo, black with wood">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-fargo-cubes-retail-display_3.jpg?v=1744875242&width=900" alt="Display Table Fargo, black with wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-fargo-2.jpg?v=1744875242&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Fargo, black with wood</h3>
+            <p class="product__price">from $454.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Fargo, glass shelves">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-fargo-black-glass_2.jpg?v=1744719912&width=900" alt="Display Table Fargo, glass shelves" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-fargo-black-glass_5.jpg?v=1744719912&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Fargo, glass shelves</h3>
+            <p class="product__price">from $454.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Modena, Rectangular, black steel">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/displaytable-presentationtable-shopfitting-MandaiDesign-Modena_acc.jpg?v=1706101853&width=900" alt="Display Table Modena, Rectangular, black steel" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/products/displaytable-shoptable-shopfitting-mandaidesign_f7c01446-fa06-465d-8231-c3d893897fcf.jpg?v=1739456004&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Modena, Rectangular, black steel</h3>
+            <p class="product__price">$1,525.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Modena, Rectangular, white steel">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-modena-white-wood_6.jpg?v=1725276423&width=900" alt="Display Table Modena, Rectangular, white steel" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/modena-display-table-white-r1.jpg?v=1739455900&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Modena, Rectangular, white steel</h3>
+            <p class="product__price">$1,525.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Modena, Square, black steel">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-modena-black-sq_1.jpg?v=1725523160&width=900" alt="Display Table Modena, Square, black steel" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/modena-square-table-retail-display_2.jpg?v=1739456033&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Modena, Square, black steel</h3>
+            <p class="product__price">$1,130.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Modena, Square, white steel">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-modena-white-square_1_af72cda4-4a5f-4a89-bf88-aa3ce46194a4.jpg?v=1725521844&width=900" alt="Display Table Modena, Square, white steel" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/display-table-modena-white-sq-pottery-2.jpg?v=1739455890&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Modena, Square, white steel</h3>
+            <p class="product__price">$1,130.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Como with wooden shelves, white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-como-rectangular-white-wood-acc.jpg?v=1706097819&width=900" alt="Display Table Como with wooden shelves, white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-display-table-white-kids-store-1.jpg?v=1739524636&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Como with wooden shelves, white</h3>
+            <p class="product__price">$774.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Como with wooden shelves, black">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-como-black-wood_2.jpg?v=1728543332&width=900" alt="Display Table Como with wooden shelves, black" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/table-como.jpg?v=1750843587&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Como with wooden shelves, black</h3>
+            <p class="product__price">$774.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Como with glass shelves">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-shopfittings-mandai-design-como-black.jpg?v=1706097739&width=900" alt="Display Table Como with glass shelves" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-table-black-glass-boutique-ws.jpg?v=1739455965&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Como with glass shelves</h3>
+            <p class="product__price">$774.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table & Clothing Rail Como, in white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/displaytable-presentationtable-shopfitting-MandaiDesign-Como-Halifax_7_3fc8805e-402e-4aa7-987a-10711d4c227e.jpg?v=1695733698&width=900" alt="Display Table & Clothing Rail Como, in white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/Como_Kids_Store_Shop_03.jpg?v=1739455980&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table &amp; Clothing Rail Como, in white</h3>
+            <p class="product__price">$1,174.00</p>
+            <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table & Clothing Rail Como, in black">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-clothing-rack-table-como-set-mandai-design_4.jpg?v=1742884553&width=900" alt="Display Table & Clothing Rail Como, in black" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/como-table-set_6cf78d6f-b464-41ba-b9a8-a48dd72091a4.jpg?v=1742884553&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table &amp; Clothing Rail Como, in black</h3>
+            <p class="product__price">$1,174.00</p>
+            <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table & Clothing Rail Como, black with glass shelves">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoDisplayTableandRackBlackSteelandGlass1.jpg?v=1695733706&width=900" alt="Display Table & Clothing Rail Como, black with glass shelves" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/display-table-clothing-rack-shopfittings-mandai-design.jpg?v=1739455938&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table &amp; Clothing Rail Como, black with glass shelves</h3>
+            <p class="product__price">$1,174.00</p>
+          </a>
         </div>
+        <p class="crp-count">You&rsquo;re viewing 1-21 of 21 products</p>
       </div>
     </section>
 
-    <!-- ══════════ محصولات ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ ¶ وسط‌چین + About ══════════ -->
+    <section class="sector-alt" aria-labelledby="dsp-about-heading">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our display tables</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Tables">
-              <div class="product__media">
-                <img src="../images/cat-display-tables.jpg" alt="Display table Addison" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Tables</h3>
-              <p class="product__variants">Various shapes</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Addison">
-              <div class="product__media">
-                <img src="../images/product-addison-style5.jpg" alt="Shelving system Addison to combine with tables" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving System Addison</h3>
-              <p class="product__price">from &euro;2,252.00</p>
-              <p class="product__variants">3 wood decors</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Pedestals">
-              <div class="product__media">
-                <img src="../images/cat-pedestals.jpg" alt="Display pedestals as an alternative to tables" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Pedestals</h3>
-              <p class="product__variants">Flexible alternative</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter from the same product line" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Same product line</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ متن راهنما ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Custom-made display tables</h2>
-          <p>We manufacture wooden and metal display tables in our own factory. Different table dimensions and designs are therefore no problem. High-quality tabletops made in wood or stone finishes are an excellent option for displaying your products.</p>
-          <p>Boutique display tables are silent sellers: they present new arrivals, highlights and curated combinations exactly where customers cannot miss them.</p>
+        <p class="sct-lead">Carefully planned retail space design goes beyond functional aspects: it emphasizes the <strong>identity of your brand</strong> and contributes significantly to <strong>sales success</strong>. Mandai Design offers modular <a href="../fixtures/retail-shelving.html" class="text-link">shopfitting systems</a> that combine aesthetics with functionality and, thanks to their modern, minimalist design, can be used in a wide variety of sectors. In addition to display tables, our range for retails stores includes sophisticated, tried-and-tested shelving systems, <a href="../fixtures/shop-counters.html" class="text-link">retail counters</a>, <a href="../fixtures/racks-and-rails.html" class="text-link">clothing racks for retail stores</a> and much more. This allows you to create an <strong>aesthetic overall look</strong> and a room concept that enhances your brand and boosts sales.</p>
+        <h2 id="dsp-about-heading" class="sector-alt__title sct-center" style="margin-top: 64px;">Retail Display Tables from Mandai Design</h2>
+        <p class="sct-lead">Modern Look &amp; Flexible Use</p>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 56px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Store Display Tables with a Distinct Signature</h3>
+            <p class="sector-alt__text">Our striking table designs help to create a special flair with a high recognition value in your salesrooms. Our display tables for retail stores impress with their <strong>materials and finishes</strong>. Modern, sleek, and functional design seamlessly blends with industrial-inspired elements, transforming the presentation of goods on mid-space tables into something extraordinary.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/table-como-2.jpg?v=1750843587&width=1200" alt="Display table Como in a fashion store" width="1200" height="1200" loading="lazy"></div>
         </div>
-      </div>
-    </section>
-
-
-
-    <section class="references" aria-labelledby="refs-heading">
-      <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
-        <div class="references__head">
-          <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">Our products in real stores</h2>
-            <p class="references__desc">Need some inspiration? Here are a few examples of our products in our customers&rsquo; stores. Explore more on our <a href="../index.html#references" class="text-link">references page</a>.</p>
+        <div class="fsh-sys__row" style="margin-top: 72px;">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/modena-square-table-retail-display_1.jpg?v=1739456033&width=1200" alt="Square display table Modena presenting ceramics" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Optimal Presentation of Your Products with Tables from Mandai Design</h3>
+            <p class="sector-alt__text">Display tables for retail stores offer an ideal opportunity to <strong>present products in the best light</strong> and attract customers&rsquo; attention in a targeted manner. By positioning them in the middle of the sales area, they highlight goods, draw customers&rsquo; attention to the products on display and encourage them to buy. Our stylish designs also enhance the ambience of your store.</p>
           </div>
         </div>
-        <ul class="ref-grid">
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-moonhub.jpg" alt="Shelving system Addison, Display table Addison — Moonhub, Zurich, Switzerland" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison, Display table Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Zurich, Switzerland</p>
-            <p class="ref-card__credit">Photo: <a href="https://www.instagram.com/dangmayer/" target="_blank" rel="noopener noreferrer" class="text-link">Dang Mayer</a></p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-thread-seed.jpg" alt="Shelving system Ceres — Thread + Seed, La Jolla, US" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
-            <p class="ref-card__credit">Photo: <a href="https://dianarosephoto.com/" target="_blank" rel="noopener noreferrer" class="text-link">Diana Rose Photography</a></p>
-        </li>
-        </ul>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 72px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Custom-made Display Tables</h3>
+            <p class="sector-alt__text">We manufacture <strong>wooden and metal display tables</strong> in our own factory. Different table dimensions and designs are therefore no problem. High-quality tabletops made in wood or stone finishes are an excellent option for display tables for retail stores. Depending on the intended use, the color and, if required, the design of the table frame can be matched to existing store fittings.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-sales-table-shop-table-presentation-table-shopfitting-mandaidesign_bc34cecd-1881-4d38-a4ba-a0c3ba8495b4.jpg?v=1705413729&width=1200" alt="Custom-made wooden display tables in a store" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <div style="margin-top: 64px;">
+          <h3 class="cl-h3">Commercial Display Tables from Mandai Design - Key Benefits</h3>
+          <p class="sector-alt__text">Tables from Mandai Design offer versatile solutions for a variety of different sectors. You benefit from high-quality materials and precise workmanship &ndash; and therefore <strong>durability and stability</strong>. Thanks to simple assembly and our planning support, your <a href="../index.html#categories" class="text-link">store fixtures</a> will be functional as well as <strong>modern and inviting</strong>.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
+    <!-- ══════════ Customer Images ══════════ -->
+    <section class="sector-alt" aria-labelledby="dsp-cust-heading">
       <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Can display tables be made in custom sizes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes. Because we manufacture all tables in our own factory, custom dimensions, alternative tabletop finishes and individual designs are possible at your request.</p>
-              </div>
+        <h2 id="dsp-cust-heading" class="sector-alt__title">Customer Images: Our Display Tables in Retail Stores</h2>
+        <p class="sector-alt__text">Need some inspiration? Here&rsquo;s a selection of customer photos that were kindly made available to us. Check out our <a href="../index.html#references" class="text-link">reference page</a> for more.</p>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="dspRefsSlider" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="dspRefsSlider" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fsh-slider-row" id="dspRefsSlider">
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Regalsystem_Ceres_Praesentationstisch_Como_eckig.jpg?v=1787744292" alt="Display Table Como — Relevé Movement Company, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display Table Como - <a href="https://www.instagram.com/relevemovementco/" target="_blank" rel="noopener noreferrer" class="text-link">Relevé Movement Company</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-displays-azani-boutique_13.jpg?v=1746688259" alt="Retail display table York — Azani Boutique, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Retail display table York - <a href="https://azani.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Azani Boutique</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Display_table_Mandai_Design_01.jpg?v=1776256282" alt="Display table custom solution — Iberostar Beachfront Resorts, Spain" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table custom solution - <a href="https://www.instagram.com/iberostar/" target="_blank" rel="noopener noreferrer" class="text-link">Iberostar Beachfront Resorts</a>, Spain</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Belis_Fashion_Como_rund_MandaiDesign_02_max200KB.jpg?v=1788265077" alt="Dispaly Table Como round — Belis Fashion, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Dispaly Table Como round - <a href="https://www.instagram.com/belis_fashion/" target="_blank" rel="noopener noreferrer" class="text-link">Belis Fashion</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-tables-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-1_f8820241-d676-4013-89ce-f7e3063b64e8.jpg?v=1708003567" alt="Display table Addison — Hornmanufaktur Petz, Austria" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/hornmanufaktur_petz/" target="_blank" rel="noopener noreferrer" class="text-link">Hornmanufaktur Petz</a>, Austria</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/neve-Ceres_display_table_mandai-design-04.jpg?v=1779102550" alt="Display table Como — Neve Antwerp, Belgium" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Como - <a href="https://www.instagram.com/neve.antwerp/" target="_blank" rel="noopener noreferrer" class="text-link">Neve Antwerp</a>, Belgium</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/saint_sofia_store_fixtures_retail_design_mandai_design.jpg?v=1759846075" alt="Display table Como — Saint + Sofia, UK" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Como - <a href="https://www.instagram.com/saintandsofia/" target="_blank" rel="noopener noreferrer" class="text-link">Saint + Sofia</a>, UK</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-tables-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-5_be06a71a-a903-40f7-8261-8716bbff6f97.jpg?v=1708003738" alt="Display table Magic — L´Couture, Dubai" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Magic - <a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L&Cacute;Couture</a>, Dubai</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Regalsystem_Ceres_Praesentationstisch_Como.jpg?v=1787744292" alt="Display Table Como — Relevé Movement Company, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display Table Como - <a href="https://www.instagram.com/relevemovementco/" target="_blank" rel="noopener noreferrer" class="text-link">Relevé Movement Company</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/zwei-herz-fashion-store-mandai-design_5.jpg?v=1748069720" alt="Display table Como — Zwei Herz, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Como - <a href="https://www.instagram.com/zweiherz_/" target="_blank" rel="noopener noreferrer" class="text-link">Zwei Herz</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-tables-sales-table-shop-table-presentation-table-shopfitting-mandaidesign-6_3ce4e3b6-048b-422d-89c2-6ceb0b8a24fa.jpg?v=1708003673" alt="Display table Addison — Nexxt Mode, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/nexxtmode/" target="_blank" rel="noopener noreferrer" class="text-link">Nexxt Mode</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/tee_tea_thee_berlin_mandai_design_3.jpg?v=1750936815" alt="Display table Fargo — Tee Tea The, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Fargo - <a href="https://www.instagram.com/tee.tea.the/" target="_blank" rel="noopener noreferrer" class="text-link">Tee Tea The</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/como-table-white-round-website-LK.jpg?v=1726746821" alt="Display table Como — Little Karlis, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Como - <a href="https://www.instagram.com/littlekarlisherrsching/" target="_blank" rel="noopener noreferrer" class="text-link">Little Karlis</a>, Germany<br>Photo by <a href="https://julia-richter-fotografie.de/" target="_blank" rel="noopener noreferrer" class="text-link">Julia Richter</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/tee_tea_thee_berlin_mandai_design_8.jpg?v=1750936815" alt="Display table Fargo — Tee Tea The, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Fargo - <a href="https://www.instagram.com/tee.tea.the/" target="_blank" rel="noopener noreferrer" class="text-link">Tee Tea The</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mooonhub-mandai-design-ladeneinrichtung-retail-design_1.jpg?v=1732089911" alt="Display table Addison — Moonhub, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Switzerland<br>Photo <a href="https://www.instagram.com/dangmayer/" target="_blank" rel="noopener noreferrer" class="text-link">Dang Mayer</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-tables-sales-table-shop-table-modewerk.jpg?v=1708003635" alt="Display table Como — ModeWerk, Italy" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Como - <a href="https://www.instagram.com/modewerk.it/" target="_blank" rel="noopener noreferrer" class="text-link">ModeWerk</a>, Italy</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-Addison-mandai-thebeigebee.jpg?v=1779267586" alt="Display table Addison — The Beige Bee, US" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/the_beige_bee/" target="_blank" rel="noopener noreferrer" class="text-link">The Beige Bee</a>, US</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/homeware-shelving-retail-mandai-design-nike-home-1.jpg?v=1718696211" alt="Display table Addison — NIKA Home, UK" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/nikahomesalcombe/" target="_blank" rel="noopener noreferrer" class="text-link">NIKA Home</a>, UK</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-retail-fashion-store-mode-stoss.jpg?v=1725082292" alt="Display table Modena — Mode Stoss, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Modena - <a href="https://www.instagram.com/mode_stoss/" target="_blank" rel="noopener noreferrer" class="text-link">Mode Stoss</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/como-table-white-rectangle-website-LK.jpg?v=1726746821" alt="Display table Como — Little Karlis, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Como - <a href="https://www.instagram.com/littlekarlisherrsching/" target="_blank" rel="noopener noreferrer" class="text-link">Little Karlis</a>, Germany<br>Photo by <a href="https://julia-richter-fotografie.de/" target="_blank" rel="noopener noreferrer" class="text-link">Julia Richter</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-store-fixtures_fb55064b-1ce9-4bd4-8f8d-de59ee9feec7.jpg?v=1712749537" alt="Display table Addison — Marlon's Kids, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/marlons_kids/" target="_blank" rel="noopener noreferrer" class="text-link">Marlon's Kids</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-retail-table-mandaidesign.jpg?v=1774003224" alt="Display table Addison — Eifach Fashion, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display table Addison - <a href="https://www.instagram.com/eifach_fashion/" target="_blank" rel="noopener noreferrer" class="text-link">Eifach Fashion</a>, Switzerland</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+          <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+        </div>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
             </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
             </div>
           </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
           </div>
-        </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Configure your display table</h2>
-          <p class="sector-cta__text">Tell us your desired dimensions and finish - we manufacture display tables in our own factory.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
+  <!-- ══════════ Furniture that Elegantly Presents Your Products ══════════ -->
+  <section class="sector-alt" aria-labelledby="dsp-furn-heading">
+    <div class="container">
+      <h2 id="dsp-furn-heading" class="sector-alt__title">Furniture that Elegantly Presents Your Products</h2>
+      <p class="sector-alt__text">Whether boutique, retail, delicatessen, or pet supplies: at Mandai Design you will find the right display table for every retail store for an individual presentation of goods that meets both your functional requirements and the identity of your brand. With Mandai Design, you benefit from numerous advantages:</p>
+      <ul class="dsp-bullets">
+        <li><strong>Modular shopfitting systems</strong>: Our modular shopfitting systems guarantee individual product presentation that exactly meets your requirements.</li>
+        <li><strong>Flexible combination of different components</strong>: The various shelving modules can be recombined as required, for example in the event of seasonal changes to the product range, in just a few simple steps.</li>
+        <li><strong>Uncomplicated assembly</strong>: The furniture from Mandai Design is easy to assemble, so you can increase your cost efficiency at this point. Our sales counters and decorative cubes are even delivered ready-made.</li>
+        <li><strong>Professional planning support</strong>: Our competent team will be happy to assist you with the planning &ndash; for effective use of the available space and stylish brand presentation.</li>
+        <li><strong>Durability and quality</strong>: We only use high-quality materials and place great importance on sustainability.</li>
+      </ul>
+      <p class="sector-alt__text">Order display tables for retail stores, store shelves and more from Mandai Design and present your products in a stylish ambience!</p>
+      <div class="sct-cols">
+        <div>
+          <h3>Boutique Display Tables are Silent Sellers</h3>
+          <p>Display tables play an important role in the store concept. An attractively designed table invites customers to stop, touch, and take a closer look at the goods &ndash; so they can experience the product directly and develop their desire to buy it. In addition, the retail display table offers excellent opportunities to highlight specific items or product groups. This makes it an indispensable <strong>table for special offers</strong> and a focal point for sales promotions. As silent sellers, they present newly arrived goods, act as a stopper, and extend the time the customer spends in the store.</p>
+        </div>
+        <div>
+          <h3>Boost Sales with Stylish and Functional Display Tables</h3>
+          <p>A stylishly decorated center table increases the likelihood of a purchase. This is because, in addition to its function as a product display, <strong>customer discussions</strong> also take place at the display table. Sales assistants show and explain the benefits of individual items to customers. You can clearly demonstrate functions and product details at the display table. There is no more convincing way to advise customers. Whether you use our display tables for retail stores, the fashion industry or in your delicatessen &ndash; the minimalist designs ensure attractive, flexible product presentation in a variety of sectors.</p>
+        </div>
+        <div>
+          <h3>Mid-space Tables Promote Sales and Increase Turnover</h3>
+          <p>A sales-promoting, <strong>high-quality store ambience</strong> ensures customer confidence. If you also demonstrate your commitment to high quality, excellent workmanship and attractive design with your retail display table, this will <strong>underline</strong> the <strong>quality of your product range</strong>. Increase sales in your store with your individual and unmistakable furnishing style. Your furnishings will be even more effective if they are complemented by other elements in the same style. This creates a <strong>harmonious overall concept</strong> that conveys professionalism and style. For example, discover our popular <a href="../systems/ceres.html" class="text-link">Ceres shopfitting system</a>, which fits perfectly with our display tables for retail stores.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Display tables for retail stores - silent sellers</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>A stage in the middle of your store</h3>
-            <p>Positioned centrally, display tables draw customers in and present curated selections exactly where they cannot be missed.</p>
+  <!-- ══════════ FAQ — ۸ سؤال، ورداشتی از مرجع ══════════ -->
+  <section class="faq dsp-faq" aria-labelledby="dsp-faq-heading">
+    <div class="container">
+      <div class="faq__inner">
+        <h2 id="dsp-faq-heading" class="faq__heading">FAQ: Display Tables for Retail Stores</h2>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-0" id="dsp-faq-button-0">
+                <span>What Is a Display Table for Retail Stores?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-0" role="region" aria-labelledby="dsp-faq-button-0" hidden>
+              <p>A retail table is not just a storage unit as it presents goods in an appealing way and attracts customers' attention. It helps to emphasize brand identity and enrich the shopping experience. This makes it an important part of the sales area.</p>
+            </div>
           </div>
-          <div>
-            <h3>Wood, metal or stone</h3>
-            <p>High-quality tabletops in wood or stone finishes on stable steel frames - materials that suit your brand.</p>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-1" id="dsp-faq-button-1">
+                <span>What Type of Store Display Table Is Best for My Business?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-1" role="region" aria-labelledby="dsp-faq-button-1" hidden>
+              <p>Our sales tables are versatile and suitable for various industries, such as fashion, delicatessen, or gift items. Materials and designs can be customized to suit your business concept. This allows the table to be perfectly tailored to your brand.</p>
+            </div>
           </div>
-          <div>
-            <h3>Easy assembly, durable build</h3>
-            <p>High-quality materials and precise workmanship ensure durability and stability - and assembly stays simple.</p>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-2" id="dsp-faq-button-2">
+                <span>How Does the Ordering Process for Display Tables Work?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-2" role="region" aria-labelledby="dsp-faq-button-2" hidden>
+              <p>At Mandai Design, you can conveniently order your display table online and choose between different designs. For example, we offer round, square, or rectangular display tables for retail stores, giving you plenty of options. There are also three wood finishes available; we will be happy to send you samples of other finishes upon request.</p>
+            </div>
           </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-3" id="dsp-faq-button-3">
+                <span>How Will the Display Table for My Retail Store Be Delivered?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-3" role="region" aria-labelledby="dsp-faq-button-3" hidden>
+              <p>Our furniture is designed for easy handling. The display tables come with assembly instructions and can be set up in just a few steps. This minimizes the effort required for assembly when setting up and saves you valuable time.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-4" id="dsp-faq-button-4">
+                <span>Is It Possible to Customize a Display Table for My Retail Store According to My Preferences?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-4" role="region" aria-labelledby="dsp-faq-button-4" hidden>
+              <p>Yes, we manufacture our tables in our own factory, and if required, we can design them according to your wishes. Whether it's dimensions, colors, or materials, all important aspects can be tailored to your needs. This results in a display table that fits perfectly into your store concept.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-5" id="dsp-faq-button-5">
+                <span>What Should I Look for When Choosing a Store Display Table?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-5" role="region" aria-labelledby="dsp-faq-button-5" hidden>
+              <p>Look for a design that highlights your brand, as well as sturdy and durable construction. The table should offer enough space for professional presentation while also being visually appealing. If you keep this in mind, you can combine functionality with an inviting look.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-6" id="dsp-faq-button-6">
+                <span>How Sturdy and Durable Are Display Tables?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-6" role="region" aria-labelledby="dsp-faq-button-6" hidden>
+              <p>We manufacture our store sales tables from high-quality materials that offer impressive stability. They are designed for daily use in retail and can reliably withstand even heavy loads. This means you benefit from durable <a href="../index.html#categories" class="text-link">store fixtures</a> that retain their appearance over time.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="dsp-faq-panel-7" id="dsp-faq-button-7">
+                <span>What Types of Display Tables Are Available?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="dsp-faq-panel-7" role="region" aria-labelledby="dsp-faq-button-7" hidden>
+              <p>There is a wide variety of sales tables available. Our models include everything from round presentation tables to rectangular display tables with integrated shelves. Depending on the intended use, they can be designed to be simple and functional or particularly representative. This means there is a suitable solution for every requirement.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- ══════════ فوتر ══════════ -->
+  <!-- ══════════ Get advice now ══════════ -->
+  <section class="sector-alt sct-advice" aria-labelledby="dsp-advice-heading">
+    <div class="container">
+      <h3 id="dsp-advice-heading" class="cl-h3">Get advice now</h3>
+      <p>Do you have any questions about our products or require support?</p>
+      <p><strong><a href="tel:+49343414070950" class="text-link">+ 49 (0) 34341 40 70 950</a></strong></p>
+      <p><strong>Mon-Fri 8.30 AM to 5.00 PM</strong></p>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
@@ -601,11 +1124,11 @@
         </nav>
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
-            <li><a href="retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="racks-and-rails.html">Clothing Racks</a></li>
-            <li><a href="display-tables.html">Display Tables</a></li>
-            <li><a href="shop-counters.html">Shop Counters</a></li>
-            <li><a href="display-pedestals.html">Display Pedestals</a></li>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
@@ -660,6 +1183,37 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  <script>
+
+    /* فلش‌های اسلایدرهای ردیفی: وضعیت ابتدا/انتها */
+    (function () {
+      document.querySelectorAll('.fsh-grid-wrap').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
