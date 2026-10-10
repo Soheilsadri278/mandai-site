@@ -9,4 +9,6 @@ class Handler(SimpleHTTPRequestHandler):
         super().end_headers()
 
 if __name__ == "__main__":
-    ThreadingHTTPServer(("0.0.0.0", 8123), Handler).serve_forever()
+    import os
+    port = int(os.environ.get("PORT", "8123"))
+    ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
