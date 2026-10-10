@@ -1,0 +1,753 @@
+<!doctype html>
+<!--
+  ============================================================
+  MANDAI DESIGN — صفحهٔ Sample Service (کالکشن نمونه‌های چوب)
+  (بازسازی موبه‌مو از mandai-design.com/collections/samples — 2026-09)
+  H1 معرفی → ۴ کارت خاکستری «How our sample services works» → گرید ۱۴ سواچ EGGER ($0.00)
+  → شمارنده «You're viewing 1-14 of 14 products» → «About our wooden elements» (۲ تصویر + متن + دکمه)
+  → فرم تماس
+  ▸ راهنمای کامل: README-FA.html
+  ============================================================
+-->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sample Service | Wooden Elements | Mandai Design</title>
+  <meta name="description" content="We understand how important it is to select the right colors for your retail fixtures. Order up to three free A4 sample sheets of our wood finishes and experience the quality of our wooden elements.">
+  <meta name="author" content="Mandai Design">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#ffffff">
+  <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
+  <link rel="canonical" href="https://www.example.com/pages/samples.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://www.example.com/pages/samples.html">
+  <meta property="og:site_name" content="Mandai Design">
+  <meta property="og:title" content="Sample Service | Wooden Elements | Mandai Design">
+  <meta property="og:description" content="We understand how important it is to select the right colors for your retail fixtures. Order up to three free A4 sample sheets of our wood finishes and experience the quality of our wooden elements.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/wooden-elements-sample-service-mandai-design.jpg?v=1718108538&width=1800">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:alt" content="Wooden elements sample service by Mandai Design">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sample Service | Wooden Elements | Mandai Design">
+  <meta name="twitter:description" content="We understand how important it is to select the right colors for your retail fixtures. Order up to three free A4 sample sheets of our wood finishes and experience the quality of our wooden elements.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/wooden-elements-sample-service-mandai-design.jpg?v=1718108538&width=1800">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/wooden-elements-sample-service-mandai-design.jpg?v=1718108538&width=1800" as="image">
+  <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+    /* ── Sample Service — کلون mandai-design.com/collections/samples ── */
+    .sp-intro { padding-top: 38px; }
+    .sp-intro__txt { margin-top: 16px; max-width: 1100px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* ۴ کارت خاکستری راهنما */
+    .sp-how { padding-top: 46px; }
+    .sp-how__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
+    .sp-how__card { background: #efedea; padding: 24px 20px 28px; min-height: 205px; display: flex; flex-direction: column; }
+    .sp-how__card svg { width: 30px; height: 30px; flex: none; }
+    .sp-how__card h3 { margin-top: 18px; font-family: var(--font-serif); font-weight: 400; font-size: 20px; line-height: 1.3; }
+    .sp-how__card p { margin-top: 8px; font-size: 12.5px; line-height: 1.55; color: rgba(26, 26, 26, 0.72); }
+    @media (max-width: 1024px) { .sp-how__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .sp-how__grid { grid-template-columns: 1fr; } .sp-how__card { min-height: 0; } .sp-how__card h3 { padding-top: 20px; } }
+    /* گرید ۱۴ سواچ (۵ ستونه مثل مرجع) */
+    .sp-select { padding-top: 58px; }
+    .sp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 40px 14px; margin-top: 26px; }
+    @media (max-width: 1280px) { .sp-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 1024px) { .sp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px) { .sp-grid { grid-template-columns: repeat(2, 1fr); } }
+    .sp-card { display: block; color: inherit; text-decoration: none; }
+    .sp-card__media { display: block; aspect-ratio: 1 / 1; background: #f4f3f1; overflow: hidden; }
+    .sp-card__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .sp-card__name { display: block; margin-top: 13px; font-size: 13px; font-weight: 400; line-height: 1.4; }
+    .sp-card__price { margin-top: 5px; font-size: 12.5px; color: rgba(26, 26, 26, 0.72); }
+    .sp-count { margin-top: 42px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    /* About our wooden elements */
+    .sp-wood { padding-top: 40px; }
+    .sp-wood__row { display: grid; gap: 34px; align-items: center; margin-top: 28px; }
+    .sp-wood__media { position: relative; }
+    .sp-wood__media > img:first-child { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    /* نوار ۳ سواچ — مثل مرجع روی گوشهٔ پایین‌راست تصویر بزرگ */
+    .sp-wood__strip { position: absolute; right: -20px; bottom: -20px; width: 47%; height: auto; }
+    .sp-wood__title { font-family: var(--font-serif); font-weight: 400; font-size: 21px; }
+    .sp-wood__txt { margin-top: 12px; max-width: 560px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .sp-wood .btn { margin-top: 24px; }
+    .sp-wood__rule { border: 0; border-top: 1px solid rgba(26, 26, 26, 0.12); margin: 10px 0 0; }
+    @media (min-width: 1024px) { .sp-wood__row { grid-template-columns: 1.04fr 0.96fr; gap: 68px; } }
+    @media (max-width: 640px) { .sp-wood__strip { right: -8px; bottom: -10px; width: 52%; } .sp-wood__rule { margin-top: 24px; } }
+  
+    /* Get in touch — فرم باریک‌تر مثل مرجع + reCAPTCHA ویژوال */
+    .sp-contact .contact__form { max-width: 540px; }
+    .sp-contact .ct-captcha { display: flex; align-items: center; gap: 12px; background: #f9f9f9; border: 1px solid #d3d3d3; border-radius: 3px; padding: 12px 14px; width: fit-content; margin-inline: auto; }
+    .sp-contact .ct-captcha__box { width: 24px; height: 24px; border: 2px solid #c1c1c1; border-radius: 2px; background: #fff; }
+    .sp-contact .ct-captcha__label { font-size: 13px; }
+    .sp-contact .ct-captcha__brand { margin-inline-start: 18px; font-size: 10px; color: #555; display: grid; justify-items: center; }
+    .sp-contact .ct-captcha__brand small { color: #555; }
+  </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "Sample Service | Wooden Elements",
+      "url": "https://www.example.com/pages/samples.html",
+      "description": "We understand how important it is to select the right colors for your retail fixtures. Order up to three free A4 sample sheets of our wood finishes and experience the quality of our wooden elements.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://www.example.com/#website"
+      },
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/wooden-elements-sample-service-mandai-design.jpg?v=1718108538"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.example.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Sample Service",
+          "item": "https://www.example.com/pages/samples.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ══════════ نوار اعلان ══════════ -->
+  <div class="topbar" role="region" aria-label="Announcements" data-topbar>
+    <div class="topbar__inner">
+      <button type="button" class="topbar__arrow topbar__arrow--prev" data-topbar-prev aria-label="Previous announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <p class="topbar__text" data-topbar-text aria-live="polite">Order Free Samples</p>
+      <button type="button" class="topbar__arrow topbar__arrow--next" data-topbar-next aria-label="Next announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <script type="application/json" data-topbar-data>
+    [
+      { "text": "Order Free Samples", "href": "samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
+    ]
+  </script>
+
+  <!-- ══════════ هدر ══════════ -->
+  <header class="site-header" id="site-header" data-header>
+    <div class="site-header__utility">
+      <div class="container site-header__utility-inner">
+        <nav aria-label="Utility navigation">
+          <ul class="utility-nav">
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="samples.html" class="link-underline" aria-current="page">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
+          <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="container site-header__main">
+      <a href="../index.html" class="site-header__logo" aria-label="Mandai Design — home">
+        <img src="../images/logo.png" alt="Mandai Design — Home of Shopfitting" width="220" height="56" class="site-header__logo-img" loading="eager">
+      </a>
+
+      <nav aria-label="Main navigation" class="site-header__nav">
+        <ul class="nav">
+          <li class="nav__item">
+            <a href="../index.html#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Retail Sectors
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fashion.html">Fashion</a></li>
+                <li><a href="../sectors/menswear.html">Menswear</a></li>
+                <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/shoes.html">Shoes</a></li>
+                <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+                <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bakery هنوز ساخته نشده؛ موقتاً Fine Foods -->
+                <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+                <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Store Fixtures
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Shelving Systems
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../systems/addison.html">Addison</a></li>
+                <li><a href="../systems/ceres.html">Ceres</a></li>
+                <li><a href="../systems/cetus.html">Cetus</a></li>
+                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
+                <li><a href="../systems/slimline.html">Slimline</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/bergen.html">Bergen</a></li>
+                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../index.html#references" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              References
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
+          </li>
+          <li class="nav__item">
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button type="button" class="icon-btn" data-search-open aria-label="Open search">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button type="button" class="icon-btn hide-sm" data-demo="Account" aria-label="My account">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button type="button" class="icon-btn" data-demo="Cart" aria-label="Shopping cart, 0 items">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </button>
+        <button type="button" class="icon-btn site-header__menu-toggle" data-mobile-open aria-label="Open menu">
+          <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── منوی موبایل ── -->
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true">
+      <div class="mobile-menu__head">
+        <span class="mobile-menu__title">Mandai Design</span>
+        <button type="button" class="icon-btn" data-mobile-close aria-label="Close menu">
+          <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation" class="mobile-menu__body">
+        <ul>
+          <li class="mobile-menu__item">
+            <a href="../index.html#sectors">Retail Sectors</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../sectors/fashion.html">Fashion</a></li>
+              <li><a href="../sectors/menswear.html">Menswear</a></li>
+              <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/shoes.html">Shoes</a></li>
+              <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+              <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+              <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="../index.html#categories">Store Fixtures</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#main-content">Shelving Systems</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../systems/addison.html">Addison</a></li>
+              <li><a href="../systems/ceres.html">Ceres</a></li>
+              <li><a href="../systems/cetus.html">Cetus</a></li>
+              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
+              <li><a href="../systems/slimline.html">Slimline</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
+              <li><a href="../systems/bergen.html">Bergen</a></li>
+              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="../index.html#references">References</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
+        </ul>
+
+        <ul class="mobile-menu__utility">
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="samples.html" aria-current="page">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
+        </ul>
+
+        <div class="mobile-menu__contact">
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
+        </div>
+      </nav>
+    </div>
+    <div class="overlay" data-overlay hidden></div>
+
+    <!-- ── دیالوگ جستجو ── -->
+    <div class="search-dialog" id="search-dialog" data-search-dialog role="dialog" aria-modal="true" aria-label="Search" hidden>
+      <div class="search-dialog__box">
+        <button type="button" class="icon-btn search-dialog__close" data-search-close aria-label="Close search">
+          <svg class="icon-18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <h2 class="search-dialog__title">Search</h2>
+        <p class="search-dialog__desc">Looking for a specific fixture? Type a keyword below.</p>
+        <form class="search-dialog__form" role="search" data-search-form>
+          <label class="sr-only" for="site-search">Search products</label>
+          <input id="site-search" type="search" placeholder="e.g. shelving, counter, rack…" class="search-dialog__input">
+          <button type="submit" class="btn btn--dark search-dialog__submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
+<main id="main-content">
+
+  <!-- ── معرفی (مثل مرجع: H1 + پاراگراف با لینک contact us) ── -->
+  <section class="sp-intro">
+    <div class="container">
+      <h1 class="h-serif-xl">Discover our Sample Service</h1>
+      <p class="sp-intro__txt">We understand how important it is to select the right colors for your retail fixtures to harmonize with your store&rsquo;s interior. That&rsquo;s why we offer up to three free A4 sample sheets of our finishes for the wooden elements in our furniture. Choose from the options below or <a href="../pages/contact.html" class="text-link" title="Contact us">contact us</a> for more choices.</p>
+    </div>
+  </section>
+
+  <!-- ── How our sample services works (۴ کارت خاکستری با آیکون خطی) ── -->
+  <section class="sp-how" aria-labelledby="sp-how-heading">
+    <div class="container">
+      <h2 id="sp-how-heading" class="h-serif-xl">How our sample services works</h2>
+      <div class="sp-how__grid">
+          <div class="sp-how__card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <h3>Choose up to 3 samples</h3>
+            <p>The selection below offers our most popular finishes. If you&rsquo;re not sure what would suit your space, let us know - our interior architects are happy to help.</p>
+          </div>
+          <div class="sp-how__card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <h3>Experiment in your space</h3>
+            <p>Once received, take your time deciding which materials work best in your space. Feel free to reach out to us with questions anytime throughout the process.</p>
+          </div>
+          <div class="sp-how__card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <h3>Let us know your decision</h3>
+            <p>and we&rsquo;ll take care of the rest. If you&rsquo;d prefer to place your order directly in our online store, simply put your chosen colour code in the comments when checking out.</p>
+          </div>
+          <div class="sp-how__card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><line x1="8" y1="11.5" x2="8.01" y2="11.5"/><line x1="12" y1="11.5" x2="12.01" y2="11.5"/><line x1="16" y1="11.5" x2="16.01" y2="11.5"/></svg>
+            <h3>Looking for more?</h3>
+            <p>Can&rsquo;t quite find what you are looking for? Let us know and we&rsquo;ll get back to you with a link where you can discover many more samples.</p>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Select your samples below (گرید ۱۴ سواچ EGGER — ۵ ستون دسکتاپ) ── -->
+  <section class="sp-select" aria-labelledby="sp-select-heading">
+    <div class="container">
+      <h2 id="sp-select-heading" class="h-serif-xl">Select your samples below</h2>
+      <div class="sp-grid">
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Natural Halifax Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1180ST37HalifaxOakNature.jpg?v=1718098313&amp;width=640" alt="EGGER Natural Halifax Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Natural Halifax Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Natural Hamilton Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H3303ST10NaturalHamiltonOak.jpg?v=1718112705&amp;width=640" alt="EGGER Natural Hamilton Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Natural Hamilton Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Tobacco Halifax Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1181ST37TobaccoHalifaxOak.jpg?v=1718099959&amp;width=640" alt="EGGER Tobacco Halifax Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Tobacco Halifax Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Marone Casella Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1369ST40MaroneCasellaOak.jpg?v=1718110968&amp;width=640" alt="EGGER Marone Casella Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Marone Casella Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Brown Casella Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1386ST40BrownCasellaOak.jpg?v=1718112309&amp;width=640" alt="EGGER Brown Casella Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Brown Casella Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Brown Cuneo Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H3317ST28BrownCuneoOak.jpg?v=1718113988&amp;width=640" alt="EGGER Brown Cuneo Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Brown Cuneo Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Natural Casella Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1385ST40NaturalCasellaOak.jpg?v=1718277628&amp;width=640" alt="EGGER Natural Casella Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Natural Casella Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Bleached Cuneo Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H3311ST28BleachedCuneoOak.jpg?v=1718113713&amp;width=640" alt="EGGER Bleached Cuneo Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Bleached Cuneo Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Bleached Vicenza Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H3152ST19BleachedVicenzaOak.jpg?v=1718112499&amp;width=640" alt="EGGER Bleached Vicenza Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Bleached Vicenza Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Light Natural Casella Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1367ST40LightNaturellCasellaOak.jpg?v=1718107533&amp;width=640" alt="EGGER Light Natural Casella Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Light Natural Casella Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER White Casella Oak sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/H1384ST40WhiteCasellaOak.jpg?v=1718111418&amp;width=640" alt="EGGER White Casella Oak" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER White Casella Oak</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Black Pietra Grigia sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/F206ST9BlackPietraGrigia.jpg?v=1718176170&amp;width=640" alt="EGGER Black Pietra Grigia" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Black Pietra Grigia</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Graphite Grey sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/U961ST9GraphiteGrey.jpg?v=1718176811&amp;width=640" alt="EGGER Graphite Grey" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Graphite Grey</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+          <a href="../index.html#contact" class="sp-card" aria-label="EGGER Premium White sample">
+            <!-- ✏️ ویرایش: لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+            <span class="sp-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/W1000ST9PremiumWhite.jpg?v=1718176997&amp;width=640" alt="EGGER Premium White" width="640" height="640" loading="lazy"></span>
+            <span class="sp-card__name">EGGER Premium White</span>
+            <span class="sp-card__price">$0.00</span>
+          </a>
+      </div>
+      <p class="sp-count">You&rsquo;re viewing 1-14 of 14 products</p>
+    </div>
+  </section>
+
+  <!-- ── About our wooden elements (۲ تصویر + متن + دکمه) ── -->
+  <section class="sp-wood">
+    <div class="container">
+      <div class="sp-wood__row">
+        <div class="sp-wood__media">
+          <img src="https://www.mandai-design.com/cdn/shop/files/wooden-elements-sample-service-mandai-design.jpg?v=1718108538&amp;width=1000" alt="wooden-elements-sample-service-mandai-design" width="1000" height="1000" loading="lazy">
+          <!-- ✏️ نوار سواچ‌ها — مثل مرجع روی گوشهٔ پایین‌راست تصویر -->
+          <img class="sp-wood__strip" src="https://www.mandai-design.com/cdn/shop/files/wooddecor-samples_8587864c-61ba-4e48-aec7-ee562dfdf9ee.png?v=1718108562&amp;width=600" alt="wooddecor-samples" width="600" height="200" loading="lazy">
+        </div>
+        <div class="sp-wood__copy">
+          <h3 class="sp-wood__title">About our wooden elements</h3>
+          <p class="sp-wood__txt">The wooden elements used in our furniture consist of high quality melamine coated chipboard, available in many different wood decors. Featured on our website are our most popular wood decors. Many more options are available on request.<br>
+          Of course we can also produce solid wood.</p>
+          <a href="../pages/contact.html" class="btn btn--outline">Contact us</a>
+        </div>
+      </div>
+      <hr class="sp-wood__rule">
+    </div>
+  </section>
+
+  <!-- ── فرم تماس (مثل مرجع: بدون پاراگراف urgent) ── -->
+  <section id="contact" class="contact" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="contact__head">
+        <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+        <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+      </div>
+
+      <div class="contact__status" role="status" data-contact-status hidden></div>
+
+      <form class="contact__form" data-contact-form novalidate>
+        <div class="contact__row">
+          <div>
+            <label class="sr-only" for="cf-name">Name (required)</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+          </div>
+          <div>
+            <label class="sr-only" for="cf-email">Email (required)</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
+          </div>
+        </div>
+
+        <div>
+          <label class="sr-only" for="cf-phone">Phone</label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
+        </div>
+
+        <div>
+          <label class="sr-only" for="cf-message">Message (required)</label>
+          <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+        </div>
+
+        <div>
+          <label class="sr-only" for="cf-source">How did you hear about us?</label>
+          <select id="cf-source" name="source" class="field field--select">
+            <option value="" disabled selected hidden>How did you hear about us?</option>
+            <option value="Google">Google</option>
+            <option value="Other search engine">Other search engine</option>
+            <option value="Pinterest">Pinterest</option>
+            <option value="Instagram">Instagram</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Referral">Referral</option>
+            <option value="AI platform (e.g. ChatGPT, Perplexity)">AI platform (e.g. ChatGPT, Perplexity)</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+          <!-- ✏️ reCAPTCHA — جای‌نگهدار بصری (غیرفعال) -->
+          <div class="ct-captcha" aria-hidden="true">
+            <span class="ct-captcha__box"></span>
+            <span class="ct-captcha__label">I&rsquo;m not a robot</span>
+            <span class="ct-captcha__brand">
+              <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="#1c3aa9" d="M16 4a12 12 0 0 1 10.9 7H16z"/><path fill="#4285f4" d="M28 16a12 12 0 0 1-7 10.9V16z"/><path fill="#ababab" d="M16 28A12 12 0 0 1 5.1 21H16z"/><path fill="#c9c9c9" d="M4 16a12 12 0 0 1 7-10.9V16z"/></svg>
+              reCAPTCHA
+              <small>Privacy - Terms</small>
+            </span>
+          </div>
+
+        <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+        <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+        <div class="contact__submit">
+          <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <span class="btn__label">Submit</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__top">
+        <div class="site-footer__contact">
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
+          <ul class="site-footer__socials" aria-label="Social media">
+            <li><a href="#" aria-label="Facebook" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Instagram" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="LinkedIn" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Pinterest" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M9.2 20.2c.6-2.4 1.5-6.1 1.5-6.1"/><path d="M10.7 14.1c.3 1 1.2 1.6 2.3 1.6 2.1 0 3.6-1.9 3.6-4.3A4.6 4.6 0 0 0 8.6 9c-.7 1.2-.4 2.4.2 3"/><path d="M9.2 20.2c.1-.5.3-1.1.4-1.6"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="YouTube" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <nav aria-label="Footer column 1" class="site-footer__col">
+          <ul>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="samples.html">Sample Service</a></li>
+            <li><a href="../index.html#help">Assembly Instructions</a></li>
+            <li><a href="../index.html#categories">Wardrobe Systems</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer column 2" class="site-footer__col">
+          <ul>
+            <li><a href="#">Payment And Shipping</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Imprint</a></li>
+            <li><a href="#">CCPA Opt Out</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer column 3" class="site-footer__col">
+          <ul>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+          </ul>
+        </nav>
+
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
+      </div>
+
+      <div class="newsletter">
+        <p class="newsletter__text">Subscribe to our newsletter for product launches, inspiration and more.</p>
+        <form class="newsletter__form" data-newsletter-form action="../contact.php" novalidate>
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" name="email" type="email" required autocomplete="email" placeholder="Your email" class="newsletter__input">
+          <button type="submit" class="newsletter__btn" data-newsletter-submit>Subscribe</button>
+        </form>
+      </div>
+
+      <div class="secondary-site">
+        <img src="../images/flag-de.png" alt="" width="22" height="14" class="secondary-site__flag">
+        <p>Looking for our German website? <a href="https://www.mandai-design.de/" target="_blank" rel="noopener noreferrer" class="text-link-strong">Visit mandai-design.de</a></p>
+      </div>
+
+      <div class="site-footer__bottom">
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
+          <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
+        <ul class="site-footer__payments" aria-label="Accepted payment methods">
+          <li>Amex</li>
+          <li>Apple Pay</li>
+          <li>Diners</li>
+          <li>Discover</li>
+          <li>Google Pay</li>
+          <li>Maestro</li>
+          <li>Mastercard</li>
+          <li>PayPal</li>
+          <li>Shop Pay</li>
+          <li>Union Pay</li>
+          <li>Visa</li>
+        </ul>
+      </div>
+
+      <nav aria-label="Footer keyword links" class="sr-only">
+        <ul>
+          <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
+          <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast-container" data-toasts aria-live="polite"></div>
+
+      <script src="../assets/js/main.js" defer></script>
+</body>
+</html>

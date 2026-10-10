@@ -56,6 +56,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.example.com/sectors/athleisure.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.example.com/sectors/yoga.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.example.com/sectors/pet-stores.html</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>

@@ -1,10 +1,12 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ دستهٔ تجهیزات: Display Pedestals
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در fixtures/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن: Display Pedestals (پایه‌های نمایش)
+  (بازسازی موبه‌مو از mandai-design.com/collections/display-pedestals — 2026-09)
+  هیرو → معرفی → گرید ۱۲ پایه نمایش → About (H۲ وسط + ۳ ردیف)
+  → «Our display pedestals in clients' stores» + اسلایدر ۲۹ عکس مشتری
+  → فرم Get in touch → FAQ خاکستری ۹تایی → Get advice now
+  ✏️ نوار «Watch us build…» مرجع نمایش داده نمی‌شود؛ کارت‌ها/لینک‌ها به فرم تماس همین سایت لینک‌اند
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,44 +14,198 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>Display pedestals &amp; podiums as furnishing accessories | Mandai Design</title>
-  <meta name="description" content="Display pedestals and cube tables for retail: individually or as sets, many sizes and finishes. Made in Germany - order online now.">
+  <meta name="description" content="Display pedestals and cube tables for retail stores: flexible product presentation in many sizes and finishes. Discover display pedestals by Mandai Design.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/fixtures/display-pedestals.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/fixtures/display-pedestals.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="Display pedestals &amp; podiums as furnishing accessories | Mandai Design">
-  <meta property="og:description" content="Display pedestals and cube tables for retail: individually or as sets, many sizes and finishes. Made in Germany - order online now.">
-  <meta property="og:image" content="https://www.example.com/images/fixtures/display-pedestals.jpg">
+  <meta property="og:description" content="Display pedestals and cube tables for retail stores: flexible product presentation in many sizes and finishes. Discover display pedestals by Mandai Design.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design.jpg?v=1706879502&width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Display pedestals and cube table in a retail store">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Display pedestals and cube tables by Mandai Design in a store">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Display pedestals &amp; podiums as furnishing accessories | Mandai Design">
-  <meta name="twitter:description" content="Display pedestals and cube tables for retail: individually or as sets, many sizes and finishes. Made in Germany - order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/fixtures/display-pedestals.jpg">
-
+  <meta name="twitter:description" content="Display pedestals and cube tables for retail stores: flexible product presentation in many sizes and finishes. Discover display pedestals by Mandai Design.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design.jpg?v=1706879502&width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/fixtures/display-pedestals.jpg" as="image">
-
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design.jpg?v=1706879502&width=1800" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__swatch-more {
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(26, 26, 26, 0.6); background: #fff;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
 
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+    /* ── صفحهٔ Display Pedestals (مثل مرجع) ── */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    @media (min-width: 900px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: -1; }
+    }
+    .sct-center { text-align: center; margin-inline: auto; }
+    .sct-lead { max-width: 780px; margin: 18px auto 0; text-align: center; font-size: 13.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .sct-lead a { color: inherit; }
+    .crp-toolbar { display: flex; justify-content: flex-end; margin-top: 26px; }
+    .crp-sort { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(26, 26, 26, 0.25); padding: 10px 14px; font-size: 12.5px; color: rgba(26, 26, 26, 0.8); }
+    .crp-sort svg { width: 10px; height: 10px; }
+    .crp-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 20px; }
+    @media (max-width: 1280px) { .crp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) { .crp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .crp-grid { grid-template-columns: 1fr; } }
+    .crp-grid .product__media { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+    .product__media .product__img--alt { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .crp-count { margin-top: 34px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+      color: var(--foreground); cursor: pointer;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    .cl-h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: var(--foreground); }
+    .sct-advice { padding-top: 0; }
+    .sct-advice .cl-h3 { font-size: 19px; }
+    .sct-advice p { margin-top: 10px; font-size: 13.5px; color: rgba(26, 26, 26, 0.85); }
+    .ped-faq .faq__inner { max-width: 880px; }
+    .ped-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .ped-faq .faq__button { padding: 17px 22px; }
+    .ped-faq .faq__panel { padding: 0 22px 18px; }
+    </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,12 +214,12 @@
       "@type": "WebPage",
       "name": "Display Pedestals for Retail Stores",
       "url": "https://www.example.com/fixtures/display-pedestals.html",
-      "description": "Display pedestals and cube tables for retail: individually or as sets, many sizes and finishes. Made in Germany - order online now.",
+      "description": "Display pedestals and cube tables for retail stores: flexible product presentation in many sizes and finishes. Discover display pedestals by Mandai Design.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/fixtures/display-pedestals.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design.jpg?v=1706879502"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,7 +234,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Store Fixtures",
-          "item": "https://www.example.com/#categories"
+          "item": "https://www.example.com/index.html#categories"
         },
         {
           "@type": "ListItem",
@@ -90,23 +246,77 @@
     },
     {
       "@type": "FAQPage",
-      "url": "https://www.example.com/fixtures/display-pedestals.html",
-      "inLanguage": "en",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Are pedestals available as sets?",
+          "name": "What Are Cube Tables and Display Pedestals Used for?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes - our pedestals are available individually or as practical sets in different sizes. Sets can be combined freely and rearranged whenever your displays change."
+            "text": "Cube tables and pedestals are used for versatile and appealing product presentation in retail stores, boutiques, and salesrooms. They serve as a flexible alternative to traditional sales tables and allow products such as bags, shoes, accessories, or decorative items to be showcased."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
+          "name": "What Are the Benefits of Cube Tables and Display Pedestals?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
+            "text": "The main advantages of cube tables and pedestals are their versatility and flexibility. They can be combined in any way or used individually, fit into any room concept, and are easy to transport."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is the Best Material for Cube Tables?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best material for cube tables is high-quality decorative chipboard, as used by Mandai Design. This surface is durable, easy to clean, and available in many appealing designs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Sturdy Are Display Pedestals for Product Presentation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Display pedestals for product presentation from Mandai Design are extremely stable and suitable for daily use in retail. The precise workmanship and high-quality, melamine-coated chipboard ensure long-lasting stability, even with frequent rearrangement or intensive use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Size Pedestal is Best for My Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our cube tables and display pedestals are available in many practical sizes. The smallest size is suitable for individual presentation of smaller products, while the larger versions are ideal for bigger items as well as mannequins. All sizes are available individually or as practical sets and can be optimally adapted to your space requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Pedestals Easy to Assemble?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pedestals are firmly glued together at the factory and delivered on a disposable pallet by a shipping company. They can be used immediately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Display Pedestals Also Available with Storage Space?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Display pedestals are usually closed and without storage space as free-standing presentation elements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Do I Optimally Place Decorative Cube Tables in Product Displays?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For optimal presentation, use multiple levels in height and depth, an odd number of pieces, and groups of three. This creates a sense of excitement and dynamic effect. Top-sellers and branded goods should always be showcased. Decorative cube tables support optimal product presentation, whether as a pedestal for mannequins or in combination with clothing racks for retail stores in the middle of the room."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Mandai Design Offer Advice on Product Presentation with Pedestals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We are happy to offer advice on your product presentation upon request. Our design and planning service includes detailed 2D and 3D drawings as well as professional support for optimal store design."
           }
         }
       ]
@@ -133,8 +343,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -144,15 +354,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
-            <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -170,8 +380,9 @@
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fashion.html">Fashion</a></li>
                 <li><a href="../sectors/menswear.html">Menswear</a></li>
                 <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
@@ -179,36 +390,63 @@
                 <li><a href="../sectors/shoes.html">Shoes</a></li>
                 <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
                 <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bakery هنوز ساخته نشده؛ موقتاً Fine Foods -->
+                <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
                 <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Store Fixtures
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html" aria-current="page">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
             <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
-              Store Fixtures
-              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-            </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="retail-shelving.html">Retail Shelving</a></li>
-                <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-                <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-                <li><a href="shop-counters.html">Shop Counters</a></li>
-                <li><a href="reception-desks.html">Reception Desks</a></li>
-                <li><a href="display-tables.html">Display Tables</a></li>
-                <li><a href="display-pedestals.html" aria-current="page">Display Pedestals</a></li>
-                <li><a href="quick-delivery.html">Quick Delivery</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../systems/addison.html">Addison</a></li>
                 <li><a href="../systems/ceres.html">Ceres</a></li>
                 <li><a href="../systems/cetus.html">Cetus</a></li>
@@ -217,7 +455,15 @@
                 <li><a href="../systems/ontario.html">Ontario</a></li>
                 <li><a href="../systems/bergen.html">Bergen</a></li>
                 <li><a href="../systems/customize.html">Customize your shelf</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -225,22 +471,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-                <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-                <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -283,31 +541,37 @@
               <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
               <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
               <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
               <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="#main-content">Store Fixtures</a>
+            <a href="../index.html#categories">Store Fixtures</a>
             <ul class="mobile-menu__sub">
-              <li><a href="retail-shelving.html">Retail Shelving</a></li>
-              <li><a href="gondola-shelving.html">Gondola Shelving</a></li>
-              <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-              <li><a href="shop-counters.html">Shop Counters</a></li>
-              <li><a href="reception-desks.html">Reception Desks</a></li>
-              <li><a href="display-tables.html">Display Tables</a></li>
-              <li><a href="display-pedestals.html" aria-current="page">Display Pedestals</a></li>
-              <li><a href="quick-delivery.html">Quick Delivery</a></li>
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html" aria-current="page">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
               <li><a href="../systems/addison.html">Addison</a></li>
               <li><a href="../systems/ceres.html">Ceres</a></li>
               <li><a href="../systems/cetus.html">Cetus</a></li>
               <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
               <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
               <li><a href="../systems/bergen.html">Bergen</a></li>
               <li><a href="../systems/customize.html">Customize your shelf</a></li>
             </ul>
@@ -315,28 +579,28 @@
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-              <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-              <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
-          <li><a href="../index.html#faq">FAQ</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -358,219 +622,470 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
-
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#categories">Store Fixtures</a></li>
-          <li><span aria-current="page">Display Pedestals</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/fixtures/display-pedestals.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/fixtures/display-pedestals.jpg" alt="Display pedestals and cube table in a retail store" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Display Pedestals for Retail Stores</h1>
-        </div>
-      </div>
+    <!-- ══════════ هیرو ══════════ -->
+    <section class="sys-hero" aria-label="Display pedestals by Mandai Design">
+      <img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design.jpg?v=1706879502&width=1800" alt="Display pedestals and cube tables by Mandai Design with products" class="sys-hero__img fsh-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design-2.jpg?v=1706879522&width=1200" alt="Display pedestals and cube tables by Mandai Design with products" class="sys-hero__img fsh-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
     <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">STORE FIXTURES</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Enhance your store with practical display pedestals</h2>
-        <div class="intro__text">
-          <p>Our retail display pedestals can be purchased individually or as practical sets. Explore a wide range of shapes and sizes, ranging from sleek and slim designs to square cube tables, catering to your unique needs.</p>
-          <p>With our stylish display pedestals and cube tables, new and interesting product displays can be created anytime and without effort. The sets can be combined in any way you like and can be rearranged again and again.</p>
+    <section class="sys-intro" aria-labelledby="ped-intro-heading">
+      <div class="container">
+        <h1 id="ped-intro-heading" class="sys-intro__title">Display Pedestals for Retail Stores</h1>
+        <h2 class="fsh-sys__sub">Enhance your store with practical display pedestals</h2>
+        <p class="sector-alt__text">Whether as a standalone or as a landscape, display pedestals are a practical addition across a wide variety of retail industries, offering the flexibility to create beautiful product displays. By simply re-arranging the pedestals, new and interesting product displays can be put together at any time in the centre of your store, in the shop window or against a wall.</p>
+        <div class="crp-toolbar" aria-hidden="true">
+          <span class="crp-sort">Sort: <strong>Featured</strong>
+            <svg viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ محصولات ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ گرید محصولات (۱۲ پایه نمایش — کل کالکشن) ══════════ -->
+    <section class="sector-alt" id="ped-grid" aria-label="All display pedestals and cube tables">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our display pedestals</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Pedestals">
-              <div class="product__media">
-                <img src="../images/cat-pedestals.jpg" alt="Display pedestals in many sizes" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Pedestals</h3>
-              <p class="product__variants">Individually or as sets</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Cube Tables">
-              <div class="product__media">
-                <img src="../images/cat-display-tables.jpg" alt="Cube tables in different sizes" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Cube Tables</h3>
-              <p class="product__variants">Square designs</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shelving Systems">
-              <div class="product__media">
-                <img src="../images/cat-shelving-systems.jpg" alt="Shelving system to combine with pedestals" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving Systems</h3>
-              <p class="product__variants">Combine freely</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter for a complete look" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Complete the look</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ متن راهنما ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Create eye-catching shop window displays</h2>
-          <p>Display accessories, shoes, homeware and more on our stylish pedestals to spotlight new arrivals, sale highlights or curated collections. By playing with different heights, shapes and colours, you can build visually compelling displays.</p>
-          <p>Cube tables and pedestals serve as a flexible alternative to traditional sales tables and allow products to be presented at eye level - in the shop window and on the sales floor alike.</p>
+        <div class="crp-grid">
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Mana, in wood decor">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/dekowuerfel-cube-dekopodest-ladeneinrichtung-mandaidesign-holz-mitprodukten.jpg?v=1659519829&width=900" alt="Cube Table Mana, in wood decor" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/cube-fashion.jpg?v=1750855369&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Mana, in wood decor</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Mana, in white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/dekowuerfel-cube-dekopodest-ladeneinrichtung-mandaidesign-weiss-mitprodukten.jpg?v=1659519820&width=900" alt="Cube Table Mana, in white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/cube-mana-ceramics-website-3.jpg?v=1739540587&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Mana, in white</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Mana, in anthracite">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/dekowuerfel-cube-dekopodest-ladeneinrichtung-anthrazit-mandaidesign-renderingmitprodukten.jpg?v=1659519813&width=900" alt="Cube Table Mana, in anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/menswear-retail-store-clothing-display-cubes.jpg?v=1751434375&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Mana, in anthracite</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in wood decor Oak">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-oak-1.jpg?v=1693465168&width=900" alt="Cube Table Toro, in wood decor Oak" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/athleisure-store-retail-design-shelving-gym-design-flagship-store_10_c273d3ae-6b80-4604-a1ef-5ff4258b3ea2.jpg?v=1742301852&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Toro, in wood decor Oak</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white-1.jpg?v=1693464401&width=900" alt="Cube Table Toro, in white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white.jpg?v=1739540526&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Toro, in white</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in anthracite">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-anthracite-1.jpg?v=1693464948&width=900" alt="Cube Table Toro, in anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/toro-cubes-website-anth_4.jpg?v=1739540542&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Toro, in anthracite</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in marble look">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cubes-cubetable-displaytable-marble-mandaidesign-6.jpg?v=1698240288&width=900" alt="Cube Table Toro, in marble look" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/cube-toro-marble-website.jpg?v=1739540429&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Toro, in marble look</h3>
+            <p class="product__price">from $145.00</p>
+            <p class="product__options">4 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Logan, in wood decor Oak">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-raised-edges-mandai-design-oak-1_096edf67-2507-4864-999d-6804b756251c.jpg?v=1693467844&width=900" alt="Cube Table Logan, in wood decor Oak" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/logan-display-podest-wood_3.jpg?v=1739540447&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Logan, in wood decor Oak</h3>
+            <p class="product__price">from $179.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Logan, in white">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-raised-edges-mandai-design-white-1.jpg?v=1693468004&width=900" alt="Cube Table Logan, in white" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white-4_f3c91f26-0fb6-4fb5-8d71-30fe83e9c145.jpg?v=1739777541&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Logan, in white</h3>
+            <p class="product__price">from $179.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Cube Table Logan, in anthracite">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-raised-edges-mandai-design-anthracite-1.jpg?v=1694074953&width=900" alt="Cube Table Logan, in anthracite" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-cube-logan-website-2.jpg?v=1739540497&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Cube Table Logan, in anthracite</h3>
+            <p class="product__price">from $179.00</p>
+            <p class="product__options">3 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Fargo, black with wood">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-table-fargo-cubes-retail-display_3.jpg?v=1744875242&width=900" alt="Display Table Fargo, black with wood" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-fargo-2.jpg?v=1744875242&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Fargo, black with wood</h3>
+            <p class="product__price">from $454.00</p>
+            <p class="product__options">2 options</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Display Table Fargo, glass shelves">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-fargo-black-glass_2.jpg?v=1744719912&width=900" alt="Display Table Fargo, glass shelves" width="900" height="900" loading="lazy">
+              <img src="https://www.mandai-design.com/cdn/shop/files/retail-display-table-fargo-black-glass_5.jpg?v=1744719912&width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+            <h3 class="product__name">Display Table Fargo, glass shelves</h3>
+            <p class="product__price">from $454.00</p>
+            <p class="product__options">2 options</p>
+          </a>
         </div>
+        <p class="crp-count">You&rsquo;re viewing 1-12 of 12 products</p>
       </div>
     </section>
 
-
-
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
+    <!-- ══════════ About Display Pedestals ══════════ -->
+    <section class="sector-alt" aria-labelledby="ped-about-heading">
       <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
-
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
-              </div>
+        <h2 id="ped-about-heading" class="sector-alt__title sct-center">About Display Pedestals from Mandai Design</h2>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 56px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Diverse sizes and finishes to suit your space</h3>
+            <p class="sector-alt__text">Our retail display pedestals can be purchased individually or as practical sets. Explore a wide range of shapes and sizes, ranging from sleek and slim designs to square cube tables, catering to your unique needs.</p>
+            <p class="sector-alt__text">Select the perfect display pedestal to showcase your products, whether it&rsquo;s bags, accessories, cosmetics, or decorative items. From shorter options to taller display stands, find the ideal fit for your space and merchandise. Customize further by choosing from an array of colors and finishes &ndash; classic white and anthracite for timeless elegance, rustic wood decors for a natural touch, or stay on-trend with a luxurious marble-like finish. Other materials, such as solid wood, are available on request.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-toro-marble-website.jpg?v=1739540429&width=1200" alt="Cube table Toro in marble look" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <div class="fsh-sys__row" style="margin-top: 72px;">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-display.jpg?v=1745585355&width=1200" alt="Display pedestal sets presenting products in a store" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Flexible product presentation</h3>
+            <p class="sector-alt__text">With our stylish <strong>display pedestals and cube tables</strong>, new and interesting product displays can be created anytime and without effort. The sets can be combined in any way you like and can be rearranged again and again. Stack the cubes on top of each other or nest them together, experimenting with different colours to create an eye-catching product display in your window or at the center of your store. Whether for a specific promotion, a change of collection or simply to refresh the look - with our display cubes, changes in the shop can be made quickly and easily.</p>
+          </div>
+        </div>
+        <div class="fsh-sys__row fsh-sys__row--flip" style="margin-top: 72px;">
+          <div class="fsh-sys__copy">
+            <h3 class="cl-h3">Create eye-catching shop window displays</h3>
+            <p class="sector-alt__text">Display accessories, shoes, homeware and more on our stylish pedestals to spotlight new arrivals, sale highlights or curated collections. By playing with different heights, shapes and colours, you can build visually compelling scenes that stop passersby in their tracks. A well-designed shop window doesn&rsquo;t just elevate your brand - it <strong>captures attention, increases footfall</strong>, and helps turn window-shoppers into customers.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestal-cubes-shop-window-mandaidesign.jpg?v=1756105380&width=1200" alt="Display pedestal cubes in a shop window" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <div style="margin-top: 72px;">
+          <h3 class="cl-h3">Our display pedestals in clients&rsquo; stores</h3>
+          <p class="sector-alt__text">Get inspired and collect more ideas from seeing our products in action on our <a href="../index.html#references" class="text-link">references page</a>.</p>
+        </div>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="pedRefsSlider" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="pedRefsSlider" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fsh-slider-row" id="pedRefsSlider">
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-pedestal-mandai-design.jpg?v=1717053233" alt="Display pedestal Cube special order — ĹCouture, Dubai" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube special order - <a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L&acute;Couture</a>, Dubai</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/unbekannt-18.jpg?v=1788259098" alt="Display pedestal Cube Mana (customized) — Modeatelier Wagler, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana (customized) - <a href="https://www.instagram.com/wagler.leipzig" target="_blank" rel="noopener noreferrer" class="text-link">Modeatelier Wagler</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design-3_e5f224b2-b417-47ee-8f70-d7802fe9aa53.jpg?v=1708004402" alt="Display pedestal Cube Mana — 110 Quadrat, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/110quadrat/" target="_blank" rel="noopener noreferrer" class="text-link">110 Quadrat</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Unbenannt-1_e3bdae56-fc74-471b-9108-34fe4b3776a4.jpg?v=1787127324" alt="Display pedestal Cube Logan — KOCO, Czech Repubic" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Logan - <a href="https://www.instagram.com/koco.cz/" target="_blank" rel="noopener noreferrer" class="text-link">KOCO</a>, Czech Repubic</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Hotel_Park_Split_Cubes_Mandai_Design_1.jpg?v=1783074918" alt="Display pedestal Cube Toro — Hotel Park Split, Croatia" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Toro - <a href="https://www.instagram.com/hotelparksplit/" target="_blank" rel="noopener noreferrer" class="text-link">Hotel Park Split</a>, Croatia</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/weitblick-workwear_2.jpg?v=1744793085" alt="Display pedestal Cube Mana and Logan — Weitblick Workwear, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana and Logan - <a href="https://www.instagram.com/weitblickworkwear/?hl=en" target="_blank" rel="noopener noreferrer" class="text-link">Weitblick Workwear</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Messe-Offenbach-Display-Cubes-Trade-Show-Pop-up-Store-Mandai-Design.jpg?v=1758717639" alt="Display pedestal Cube Toro — Messe Offenbach, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Toro - <a href="https://www.instagram.com/messeoffenbach/" target="_blank" rel="noopener noreferrer" class="text-link">Messe Offenbach</a>, Germany<br>Photo by: Messe Offenbach / ILM / Laura Brichta</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/addison-regalsystem-flowershop-cube.jpg?v=1741603428" alt="Display pedestal Cube — Stefanie Kehr Floristik, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube - <a href="https://www.instagram.com/stefanie_kehr/" target="_blank" rel="noopener noreferrer" class="text-link">Stefanie Kehr Floristik</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/linda-fiore-jewelry-pop-up-display_1.jpg?v=1758614332" alt="Display pedestal Toro — Linda Fiore Jewelry, Sweden" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Toro - <a href="https://lindafiore.com/" target="_blank" rel="noopener noreferrer" class="text-link">Linda Fiore Jewelry</a>, Sweden</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/valescart-berlin-retail-display-design_4.jpg?v=1750919241" alt="Display pedestal Cube table Mana — Valescart Berlin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube table Mana - <a href="https://www.instagram.com/valescart_berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Valescart Berlin</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/dear-petite-mandai-design-cubes.jpg?v=1730189170" alt="Display pedestal Cube Mana — Dear Petite, USA" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/dearpetite/" target="_blank" rel="noopener noreferrer" class="text-link">Dear Petite</a>, USA</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/hejlenki-white-website-1.jpg?v=1758438664" alt="Display pedestal Cube Mana — HejLenki, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/hejlenki/" target="_blank" rel="noopener noreferrer" class="text-link">HejLenki</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosa-concept-lounge-mandai-design_5.jpg?v=1734605388" alt="Display pedestal Cube Toro — Cosa Concept Lounge, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Toro - <a href="https://www.instagram.com/cosa.conceptlounge/" target="_blank" rel="noopener noreferrer" class="text-link">Cosa Concept Lounge</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/valescart-berlin-retail-display-design_6.jpg?v=1750919242" alt="Display pedestal Cube table Mana — Valescart Berlin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube table Mana - <a href="https://www.instagram.com/valescart_berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Valescart Berlin</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-mode-stoss-portr.jpg?v=1725871019" alt="Display pedestal Cube Toro — Mode Stoss, Switzerland" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Toro - <a href="https://www.instagram.com/mode_stoss/" target="_blank" rel="noopener noreferrer" class="text-link">Mode Stoss</a>, Switzerland</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/cosa-concept-lounge-mandai-design_3.jpg?v=1734605387" alt="Display pedestal Cube Toro — Cosa Concept Lounge, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Toro - <a href="https://www.instagram.com/cosa.conceptlounge/" target="_blank" rel="noopener noreferrer" class="text-link">Cosa Concept Lounge</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-display-pedestal-jk-talyor-boutique-mandai-design.jpg?v=1715945510" alt="Display pedestal Cube Mana — JK Taylor, USA" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/jktaylorcullman/" target="_blank" rel="noopener noreferrer" class="text-link">JK Taylor</a>, USA</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/dear-petite-mandai-design.jpg?v=1730189170" alt="Display pedestal Cube Mana — Dear Petite, USA" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/dearpetite/" target="_blank" rel="noopener noreferrer" class="text-link">Dear Petite</a>, USA</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/kids-store-heljenki.jpg?v=1730293803" alt="Display pedestal Cube Mana — Hejlenki, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/hejlenki/" target="_blank" rel="noopener noreferrer" class="text-link">Hejlenki</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelving-maehre-wolle-mandai-design.jpg?v=1727073286" alt="Display pedestal Cube Logan — Mährle Wolle Showroom, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Logan - <a href="https://www.instagram.com/stories/maehrlewolle/" target="_blank" rel="noopener noreferrer" class="text-link">M&auml;hrle Wolle Showroom</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/st_gallus_apotheke.jpg?v=1733905907" alt="Display pedestal Cube Mana — St Gallus Pharmacy, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.apotheke-stgallus.de/" target="_blank" rel="noopener noreferrer" class="text-link">St Gallus Pharmacy</a>, Germany<br>Design: <a href="https://design-13.de/" target="_blank" rel="noopener noreferrer" class="text-link">Carola Semmler, Design 13</a></p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design-7_4cc3d78e-648a-469c-beca-0154b3cef364.jpg?v=1708004198" alt="Display pedestal Cube special order — ĹCouture, Dubai" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube special order - <a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L&acute;Couture</a>, Dubai</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design-10_5c56cca3-5d59-4c3e-8dfe-805359c8c7a4.jpg?v=1708004107" alt="Display pedestal Cube Mana — Red Sail Sports, Aruba" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.aruba-redsail.com/" target="_blank" rel="noopener noreferrer" class="text-link">Red Sail Sports</a>, Aruba</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-cube-table-mandai-design-5_d1741646-42e1-4b0b-af3a-ff63f12e0bc6.jpg?v=1708004273" alt="Display pedestal Cube Mana — Textilium, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/textilium_official/" target="_blank" rel="noopener noreferrer" class="text-link">Textilium</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mana-display-pedestals-white-byklaas.jpg?v=1756822778" alt="Display pedestal Mana cube tables — KIaas Fashion, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Mana cube tables - <a href="https://www.instagram.com/byklaas/" target="_blank" rel="noopener noreferrer" class="text-link">KIaas Fashion</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/focus_on_cube.jpg?v=1739438070" alt="Display pedestal Cube Toro — Kiyomi Skin, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Toro - <a href="https://www.instagram.com/kiyomiskin/" target="_blank" rel="noopener noreferrer" class="text-link">Kiyomi Skin</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/b.o.d-cube-mana-2.jpg?v=1740737216" alt="Display pedestal Cube Mana — Brothers of Denim, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana - <a href="https://www.instagram.com/b.o.d_kaiserslautern/" target="_blank" rel="noopener noreferrer" class="text-link">Brothers of Denim</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/home-deko-deko-wurfel-mana-toro-cube.jpg?v=1741089338" alt="Display pedestal Cube Mana, Toro — Wohn.Style, Germany" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Cube Mana, Toro - <a href="https://www.instagram.com/wohn.style_bamberg/" target="_blank" rel="noopener noreferrer" class="text-link">Wohn.Style</a>, Germany</p>
+            </li>
+            <li class="ref-card">
+              <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/display-pedestals-retail-cubes-mandaidesign.jpg?v=1756105160" alt="Display pedestal Display pedestal Toro — Havana Boutique, Dublin" width="768" height="1024" loading="lazy"></div>
+              <p class="ref-card__store">Display pedestal Toro - <a href="https://www.instagram.com/havanaboutique" target="_blank" rel="noopener noreferrer" class="text-link">Havana Boutique</a>, Dublin</p>
             </li>
           </ul>
-
-          <div class="reviews__dots" data-reviews-dots></div>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Are pedestals available as sets?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes - our pedestals are available individually or as practical sets in different sizes. Sets can be combined freely and rearranged whenever your displays change.</p>
-              </div>
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+          <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+        </div>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
             </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
             </div>
           </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
           </div>
-        </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Compose your pedestal set</h2>
-          <p class="sector-cta__text">Tell us what you want to display - we will recommend the right combination of sizes and finishes.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
+  <!-- ══════════ FAQ — ۹ سؤال، ورداشتی از مرجع ══════════ -->
+  <section class="faq ped-faq" aria-labelledby="ped-faq-heading">
+    <div class="container">
+      <div class="faq__inner">
+        <h2 id="ped-faq-heading" class="faq__heading">FAQ: Display Pedestals and Cube Tables</h2>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-0" id="ped-faq-button-0">
+                <span>What Are Cube Tables and Display Pedestals Used for?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-0" role="region" aria-labelledby="ped-faq-button-0" hidden>
+              <p>Cube tables and pedestals are used for versatile and appealing product presentation in retail stores, boutiques, and salesrooms. They serve as a flexible alternative to traditional sales tables and allow products such as bags, shoes, accessories, or decorative items to be showcased.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-1" id="ped-faq-button-1">
+                <span>What Are the Benefits of Cube Tables and Display Pedestals?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-1" role="region" aria-labelledby="ped-faq-button-1" hidden>
+              <p>The main advantages of cube tables and pedestals are their versatility and flexibility. They can be combined in any way or used individually, fit into any room concept, and are easy to transport.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-2" id="ped-faq-button-2">
+                <span>What Is the Best Material for Cube Tables?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-2" role="region" aria-labelledby="ped-faq-button-2" hidden>
+              <p>The best material for cube tables is high-quality decorative chipboard, as used by Mandai Design. This surface is durable, easy to clean, and available in many appealing designs.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-3" id="ped-faq-button-3">
+                <span>How Sturdy Are Display Pedestals for Product Presentation?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-3" role="region" aria-labelledby="ped-faq-button-3" hidden>
+              <p>Display pedestals for product presentation from Mandai Design are extremely stable and suitable for daily use in retail. The precise workmanship and high-quality, melamine-coated chipboard ensure long-lasting stability, even with frequent rearrangement or intensive use.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-4" id="ped-faq-button-4">
+                <span>Which Size Pedestal is Best for My Store?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-4" role="region" aria-labelledby="ped-faq-button-4" hidden>
+              <p>Our cube tables and display pedestals are available in many practical sizes. The smallest size is suitable for individual presentation of smaller products, while the larger versions are ideal for bigger items as well as mannequins. All sizes are available individually or as practical sets and can be optimally adapted to your space requirements.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-5" id="ped-faq-button-5">
+                <span>Are Pedestals Easy to Assemble?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-5" role="region" aria-labelledby="ped-faq-button-5" hidden>
+              <p>Pedestals are firmly glued together at the factory and delivered on a disposable pallet by a shipping company. They can be used immediately.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-6" id="ped-faq-button-6">
+                <span>Are Display Pedestals Also Available with Storage Space?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-6" role="region" aria-labelledby="ped-faq-button-6" hidden>
+              <p>Display pedestals are usually closed and without storage space as free-standing presentation elements.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-7" id="ped-faq-button-7">
+                <span>How Do I Optimally Place Decorative Cube Tables in Product Displays?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-7" role="region" aria-labelledby="ped-faq-button-7" hidden>
+              <p>For optimal presentation, use multiple levels in height and depth, an odd number of pieces, and groups of three. This creates a sense of excitement and dynamic effect. Top-sellers and branded goods should always be showcased. Decorative cube tables support optimal product presentation, whether as a pedestal for mannequins or in combination with <a href="../fixtures/racks-and-rails.html" class="text-link">clothing racks for retail stores</a> in the middle of the room.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="ped-faq-panel-8" id="ped-faq-button-8">
+                <span>Does Mandai Design Offer Advice on Product Presentation with Pedestals?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="ped-faq-panel-8" role="region" aria-labelledby="ped-faq-button-8" hidden>
+              <p>We are happy to offer advice on your product presentation upon request. Our design and planning service includes detailed 2D and 3D drawings as well as professional support for optimal store design.</p>
+            </div>
+          </div>
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Display pedestals and cube tables for retail stores</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Flexible product presentation</h3>
-            <p>From slim pedestals to square cube tables: combine shapes and heights to build displays that always look new.</p>
-          </div>
-          <div>
-            <h3>Spotlight what matters</h3>
-            <p>New arrivals, sale highlights or curated collections - pedestals put exactly those products on a stage that deserve attention.</p>
-          </div>
-          <div>
-            <h3>Shop window to sales floor</h3>
-            <p>Pedestals work in the shop window and on the sales floor alike - a flexible alternative to traditional sales tables.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- ══════════ Get advice now ══════════ -->
+  <section class="sector-alt sct-advice" aria-labelledby="ped-advice-heading">
+    <div class="container">
+      <h3 id="ped-advice-heading" class="cl-h3">Get advice now</h3>
+      <p>Do you have any questions about our products or require expert advice?</p>
+      <p><strong><a href="tel:+4963419420920" class="text-link">+ 49 (0) 6341 94209 20</a></strong></p>
+      <p><strong>Mon-Fri 8.30 AM to 5.00 PM</strong></p>
+    </div>
+  </section>
 
-  <!-- ══════════ فوتر ══════════ -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -592,10 +1107,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -611,15 +1126,15 @@
         </nav>
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
-            <li><a href="retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="racks-and-rails.html">Clothing Racks</a></li>
-            <li><a href="display-tables.html">Display Tables</a></li>
-            <li><a href="shop-counters.html">Shop Counters</a></li>
-            <li><a href="display-pedestals.html">Display Pedestals</a></li>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -637,12 +1152,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -662,7 +1177,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -670,6 +1185,38 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
+  <script>
+
+    /* فلش‌های اسلایدرهای ردیفی: وضعیت ابتدا/انتها */
+    (function () {
+      document.querySelectorAll('.fsh-grid-wrap').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+    </main>
 </body>
 </html>

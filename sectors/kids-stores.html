@@ -1,10 +1,11 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ سکتور: Kids Stores
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در sectors/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن Concept Stores
+  (بازسازی موبه‌مو از mandai-design.com/collections/shopfittings-for-concept-stores — 2026-09)
+  هیرو → H1 + معرفی → بخش «Concept store shelving» (تصویر+متن) → bestsellers ۹ محصول
+  → Shop the Look (۵ محصول، شمارنده 1/5، نقاط تعاملی) → ۵ دسته‌بندی → گالری ۱۷ عکس مشتری
+  → CTA مشاوره → فرم تماس
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,58 +13,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
-  <title>Retail fixtures for kids stores - modular &amp; high quality | Mandai Design</title>
-  <meta name="description" content="Modular retail fixtures for kids stores: clothing rails, gondola shelving, pedestals and counters. Made in Germany - order online now.">
+  <title>Retail fixtures for kids stores - modular & high quality | Mandai Design</title>
+  <meta name="description" content="Showcase kids clothing, shoes and toys beautifully with retail fixtures and display furniture from Mandai Design. From modular shelving to wall clothing rails, our fixtures adapt beautifully to baby and children’s stores.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/sectors/kids-stores.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/sectors/kids-stores.html">
   <meta property="og:site_name" content="Mandai Design">
-  <meta property="og:title" content="Retail fixtures for kids stores - modular &amp; high quality | Mandai Design">
-  <meta property="og:description" content="Modular retail fixtures for kids stores: clothing rails, gondola shelving, pedestals and counters. Made in Germany - order online now.">
-  <meta property="og:image" content="https://www.example.com/images/sectors/kids-stores.jpg">
+  <meta property="og:title" content="Retail fixtures for kids stores - modular & high quality | Mandai Design">
+  <meta property="og:description" content="Showcase kids clothing, shoes and toys beautifully with retail fixtures and display furniture from Mandai Design. From modular shelving to wall clothing rails, our fixtures adapt beautifully to baby and children’s stores.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-childrens-store.jpg?v=1714140288&amp;width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Kids store with retail fixtures displaying children's clothes">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Concept store shopfittings by Mandai Design">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Retail fixtures for kids stores - modular &amp; high quality | Mandai Design">
-  <meta name="twitter:description" content="Modular retail fixtures for kids stores: clothing rails, gondola shelving, pedestals and counters. Made in Germany - order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/sectors/kids-stores.jpg">
-
+  <meta name="twitter:title" content="Retail fixtures for kids stores - modular & high quality | Mandai Design">
+  <meta name="twitter:description" content="Showcase kids clothing, shoes and toys beautifully with retail fixtures and display furniture from Mandai Design. From modular shelving to wall clothing rails, our fixtures adapt beautifully to baby and children’s stores.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-childrens-store.jpg?v=1714140288&amp;width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/sectors/kids-stores.jpg" as="image">
-
+  
   <link rel="stylesheet" href="../assets/css/style.css">
-
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
-  <script type="application/ld+json">
+            <style>
+    /* ── Concept Stores Collection — کلون mandai-design.com/collections/shopfittings-for-concept-stores ── */
+    /* هیرو زیر هدر (عادی) — تصویر با نسبت طبیعی خودش، بدون برش */
+    .mw-hero-desktop { display: block; width: 100%; height: auto; }
+    .mw-hero-mobile { display: none; }
+    @media (max-width: 767px) {
+      .mw-hero-desktop { display: none; }
+      .mw-hero-mobile { display: block; width: 100%; height: auto; background: #e9e7e3; }
+    }
+    .hw-intro { padding-top: 40px; }
+    .hw-intro h1 { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1.2; }
+    .hw-intro p { margin-top: 14px; max-width: 980px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* بخش هر سیستم: تصویر چپ + متن راست */
+    .hw-sec { padding-top: 84px; }
+    .hw-sec__row { display: grid; gap: 40px; align-items: center; }
+    .hw-sec__media img { display: block; width: 100%; height: auto; }
+    .hw-sec__txt h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; }
+    .hw-sec__txt h3 { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: 23px; line-height: 1.35; color: rgba(26, 26, 26, 0.9); }
+    .hw-sec__txt p { margin-top: 16px; font-size: 15px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .hw-sec__txt .btn { margin-top: 26px; text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px; padding: 15px 32px; }
+    .hw-sec__viewall { display: inline-block; margin-top: 18px; font-size: 15px; color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
+    /* «View all…» مثل مرجع زیر عکس می‌آید */
+    .hw-sec__media .hw-sec__viewall { margin-top: 18px; }
+    @media (min-width: 1024px) { .hw-sec__row { grid-template-columns: 1.02fr 0.98fr; gap: 64px; } }
+    /* تب‌های رنگ/گروه (مثل مرجع: Homeware/Floral، in White/in Black) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    /* اسلایدر محصولات هر سیستم */
+    .hw-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 18px 0 0; padding: 2px 2px 6px; scrollbar-width: none; }
+    .hw-track::-webkit-scrollbar { display: none; }
+    .hw-track > li { flex: 0 0 46%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .hw-track > li { flex-basis: 31%; } }
+    @media (min-width: 1024px) { .hw-track > li { flex-basis: 23%; } }
+    @media (min-width: 1280px) { .hw-track > li { flex-basis: 15.4%; } }
+    .product { display: block; color: inherit; text-decoration: none; position: relative; }
+    .product__media { display: block; aspect-ratio: 1 / 1; position: relative; overflow: hidden; background: #f4f3f1; }
+    .product__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .product__media .product__img--alt { position: absolute; inset: 0; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .product__name { margin-top: 12px; font-size: 13px; font-weight: 400; line-height: 1.4; }
+    .product__price { margin-top: 5px; font-size: 12.5px; color: rgba(26, 26, 26, 0.72); }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    /* Shop the look */
+    .hw-look { padding-top: 64px; }
+    .hw-look { padding-top: 56px; }
+    .hw-look h3 { font-family: var(--font-serif); font-weight: 400; font-size: 22px; }
+    .hw-look__row { display: grid; gap: 40px; align-items: center; margin-top: 22px; }
+    .hw-look__row img { display: block; width: 100%; height: auto; }
+    .hw-look__track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 2px 2px 6px; scrollbar-width: none; }
+    .hw-look__track::-webkit-scrollbar { display: none; }
+    .hw-look__track > li { flex: 0 0 100%; scroll-snap-align: start; }
+    .hw-look__count { margin-top: 8px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .hw-look__arrows { display: flex; gap: 14px; margin-top: 12px; }
+    @media (min-width: 768px) {
+      .hw-look__row { display: flex !important; align-items: center; gap: 40px !important; }
+      .hw-look__row > div:first-child { flex: 1 1 auto !important; min-width: 0; }
+      .hw-look__row > div:last-child { flex: 0 0 340px !important; max-width: 340px; }
+    }
+    @media (min-width: 1200px) {
+      .hw-look__row { gap: 150px !important; }
+      .hw-look__row > div:last-child { flex: 0 0 360px !important; max-width: 360px; }
+    }
+    @media (min-width: 1024px) { .hw-look--flip .hw-look__row { grid-template-columns: 1fr 2.14fr; } }
+    .hw-look--flip .hw-look__media { order: 0; }
+    /* Shop-the-look: کارت حاشیه‌دار + فلش‌های کنار کارت + QUICK VIEW (مثل مرجع) */
+    .hw-look__cardwrap { display: flex; align-items: center; gap: 14px; margin-top: 22px; }
+    .hw-look__nav { border: 0; background: none; padding: 8px 2px; cursor: pointer; color: var(--foreground); flex: none; }
+    .hw-look__nav svg { width: 11px; height: 20px; display: block; }
+    .hw-look__cardwrap .hw-look__track { flex: 1; min-width: 0; }
+    .hw-look__cardwrap .hw-look__track > li { border: 1px solid var(--foreground); background: #fff; padding: 18px 16px 24px; text-align: center; }
+    .hw-look__cardwrap .product__name { margin-top: 16px; font-size: 14px; line-height: 1.5; text-align: center !important; }
+    .hw-look__cardwrap .product__price { margin-top: 8px; text-align: center !important; }
+    .hw-look__cardwrap .product { text-align: center; }
+    .hw-look__cardwrap .hw-quick { display: inline-block; }
+    .hw-quick { display: inline-block; margin-top: 14px; border: 1px solid var(--foreground); padding: 9px 16px; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+    .hw-look__count { text-align: center; font-size: 12px; }
+    /* نقاط تعاملی (hotspot) روی عکس — مثل مرجع */
+    .hw-look__media { position: relative; }
+    .hw-dot { position: absolute; z-index: 2; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; background: rgba(26, 26, 26, 0.45); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3); cursor: pointer; padding: 0; transition: background 0.2s; }
+    .hw-dot:hover { background: rgba(26, 26, 26, 0.7); }
+    /* گالری مشتریان */
+    .hw-gallery { padding-top: 76px; }
+    .hw-gallery__lead { margin-top: 10px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.75); }
+    .hw-gallery__lead a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .fref-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 24px 0 0; padding: 2px 2px 10px; scrollbar-width: none; }
+    .fref-track::-webkit-scrollbar { display: none; }
+    .fref-track > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fref-track > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fref-track > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fref-track > li { flex-basis: 23.5%; } }
+    .fref-grid { position: relative; }
+    .fref-grid figure { margin: 0; }
+    .fref-grid img { width: 100%; height: auto; display: block; }
+    .hw-gallery .fref-track img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .fref-grid figcaption { margin-top: 7px; font-size: 11.5px; line-height: 1.5; color: rgba(26, 26, 26, 0.6); }
+    .fref-grid figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .fref-grid .fsh-grid__btn { position: absolute; top: 30%; transform: translateY(-50%); z-index: 2; border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px; }
+    .fref-grid .fsh-grid__btn--prev { left: -14px; }
+    .fref-grid .fsh-grid__btn--next { right: -14px; }
+    .fref-grid .fsh-grid__btn svg { width: 27px; height: 15px; }
+    /* فرم */
+    .hw-contact { padding-top: 76px; }
+    /* متن SEO پایین */
+    .hw-seo { padding-top: 70px; }
+    .hw-seo h2 { font-family: var(--font-serif); font-weight: 400; font-size: 24px; text-align: center; }
+    .hw-seo__cols { margin-top: 30px; display: grid; gap: 32px; }
+    .hw-seo__cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 17px; }
+    .hw-seo__cols p { margin-top: 10px; font-size: 12.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.8); }
+    .hw-seo__cols a { color: inherit; font-weight: 600; }
+    @media (min-width: 1024px) { .hw-seo__cols { grid-template-columns: repeat(3, 1fr); gap: 48px; } }
+    /* ── Concept Stores — بخش‌های اختصاصی ── */
+    .hw-look__cardwrap .product__media { aspect-ratio: 4 / 3 !important; }
+    .hw-look__cardwrap .product__media img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    .cs-sub { margin-top: 8px; font-size: 14px; line-height: 1.6; color: rgba(26, 26, 26, 0.75); }
+    .hw-look__sub { margin-top: 4px; font-size: 13px; color: rgba(26, 26, 26, 0.7); }
+    .cs-cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; list-style: none; margin: 26px 0 0; padding: 0; }
+    .cs-cats a { display: block; color: inherit; text-decoration: none; }
+    .cs-cats img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    .cs-cats span { display: block; margin-top: 10px; font-size: 13.5px; }
+    @media (min-width: 1024px) { .cs-cats { grid-template-columns: repeat(5, 1fr); gap: 20px; } }
+    .cs-help { padding-top: 84px; }
+    .cs-help__row { display: grid; gap: 32px; align-items: center; }
+    .cs-help__row img { display: block; width: 100%; height: auto; }
+    .cs-help__txt h3 { font-family: var(--font-serif); font-weight: 400; font-size: 23px; line-height: 1.3; }
+    .cs-help__txt p { margin-top: 12px; font-size: 15px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); max-width: 46ch; }
+    .cs-help__txt .btn { margin-top: 18px; }
+    @media (min-width: 1024px) { .cs-help__row { grid-template-columns: 1fr 1fr; gap: 56px; } }
+    .hw-look__media img { aspect-ratio: 5 / 4; object-fit: cover; }
+    /* ── Shoes — SEO با Benefits ── */
+    .sh-seo h2 { text-align: left; font-size: clamp(26px, 3vw, 36px); }
+    .sh-seo__lead { margin-top: 16px; font-size: 13.5px; line-height: 1.85; color: rgba(26, 26, 26, 0.85); max-width: 96ch; }
+    .sh-seo ul { margin: 12px 0 6px; padding-left: 22px; font-size: 13px; line-height: 2; color: rgba(26, 26, 26, 0.85); list-style: disc; }
+    .kd-look .hw-look__media img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .hw-look h3 { text-align: center; }
+    /* ── Kids — گرید محصولات + ردیف‌های Other Fixtures ── */
+    .kid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 16px; margin-top: 30px; list-style: none; padding: 0; }
+    .kid-grid .product__name { font-size: 13px; text-align: center; }
+    .kid-grid .product__price, .kid-grid .product__options { text-align: center; }
+    @media (min-width: 1024px) { .kid-grid { grid-template-columns: repeat(4, 1fr); gap: 30px 20px; } }
+    .kf-row { padding-top: 88px; }
+    .kf-row .cs-help__txt h3 { font-size: 21px; }
+    .kf-row .cs-help__txt p { font-size: 14px; max-width: 40ch; }
+    @media (min-width: 1024px) {
+      .kf-row .cs-help__row { gap: 80px; }
+      .kf-row.kf-img-left .cs-help__row { grid-template-columns: 1.35fr 1fr; }
+      .kf-row.kf-img-right .cs-help__row { grid-template-columns: 1fr 1.35fr; }
+    }
+  </style>
+            <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Retail Fixtures for Kids Stores",
+      "name": "Retail fixtures for kids stores - modular & high quality | Mandai Design",
       "url": "https://www.example.com/sectors/kids-stores.html",
-      "description": "Modular retail fixtures for kids stores: clothing rails, gondola shelving, pedestals and counters. Made in Germany - order online now.",
+      "description": "Showcase kids clothing has unique requirements in terms of fixtures that depend on their product mix and target customers. At Mandai Design, you’ll find stylish retail shoe displays that fixtures adapt beautifully to baby and children’s stores.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/sectors/kids-stores.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-childrens-store.jpg?v=1714140288"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,36 +224,13 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Retail Sectors",
-          "item": "https://www.example.com/#sectors"
+          "item": "https://www.example.com/index.html#sectors"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Kids Stores",
-          "item": "https://www.example.com/sectors/kids-stores.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "url": "https://www.example.com/sectors/kids-stores.html",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
+          "name": "Homeware & Decorations",
+          "item": "https://www.example.com/sectors/homeware.html"
         }
       ]
     }
@@ -133,8 +256,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -144,15 +267,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
             <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -166,22 +289,39 @@
       <nav aria-label="Main navigation" class="site-header__nav">
         <ul class="nav">
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="fashion.html">Fashion</a></li>
-                <li><a href="menswear.html">Menswear</a></li>
-                <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="shoes.html">Shoes</a></li>
-                <li><a href="kids-stores.html" aria-current="page">Kids Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
-                <li><a href="fine-foods.html">Fine Foods</a></li>
-                <li><a href="pet-stores.html">Pet Stores</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fashion.html">Fashion</a></li>
+                <li><a href="../sectors/menswear.html">Menswear</a></li>
+                <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/shoes.html">Shoes</a></li>
+                <li><a href="../sectors/kids-stores.html" aria-current="page">Kids Stores</a></li>
+                <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bakery هنوز ساخته نشده؛ موقتاً Fine Foods -->
+                <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+                <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -189,8 +329,9 @@
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
                 <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
                 <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
@@ -198,17 +339,27 @@
                 <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
                 <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
                 <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
                 <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../systems/addison.html">Addison</a></li>
                 <li><a href="../systems/ceres.html">Ceres</a></li>
                 <li><a href="../systems/cetus.html">Cetus</a></li>
@@ -217,7 +368,15 @@
                 <li><a href="../systems/ontario.html">Ontario</a></li>
                 <li><a href="../systems/bergen.html">Bergen</a></li>
                 <li><a href="../systems/customize.html">Customize your shelf</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -225,22 +384,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="fashion.html">Fashion Stores</a></li>
-                <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="homeware.html">Homeware Stores</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -273,17 +444,22 @@
       <nav aria-label="Mobile navigation" class="mobile-menu__body">
         <ul>
           <li class="mobile-menu__item">
-            <a href="#main-content">Retail Sectors</a>
+            <a href="../index.html#sectors">Retail Sectors</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion</a></li>
-              <li><a href="menswear.html">Menswear</a></li>
-              <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="shoes.html">Shoes</a></li>
-              <li><a href="kids-stores.html" aria-current="page">Kids Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
-              <li><a href="fine-foods.html">Fine Foods</a></li>
-              <li><a href="pet-stores.html">Pet Stores</a></li>
+              <li><a href="../sectors/fashion.html">Fashion</a></li>
+              <li><a href="../sectors/menswear.html">Menswear</a></li>
+              <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/shoes.html">Shoes</a></li>
+              <li><a href="../sectors/kids-stores.html" aria-current="page">Kids Stores</a></li>
+              <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+              <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -296,18 +472,19 @@
               <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
               <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
               <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
               <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
               <li><a href="../systems/addison.html">Addison</a></li>
               <li><a href="../systems/ceres.html">Ceres</a></li>
               <li><a href="../systems/cetus.html">Cetus</a></li>
               <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
               <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
               <li><a href="../systems/bergen.html">Bergen</a></li>
               <li><a href="../systems/customize.html">Customize your shelf</a></li>
             </ul>
@@ -315,28 +492,28 @@
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion Stores</a></li>
-              <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="homeware.html">Homeware Stores</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
           <li><a href="../index.html#faq">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -358,220 +535,472 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
+  <!-- ── هیرو ── -->
+  <div class="mw-hero">
+    <!-- ✏️ هیرو: فایل دوم DOM با برش 2:1 (الگوی تأییدشده) + fallback خودکار در صورت خطای لود -->
+    <img class="mw-hero-desktop" src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-childrens-store.jpg?v=1714140288&amp;width=1800" alt="kids-store-retail-fixtures-display-childrens-store" width="1800" height="1200" loading="eager" fetchpriority="high">
+    <img class="mw-hero-mobile" src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&amp;width=1200" alt="kids-store-retail-fixtures-display-mandai-design" width="1200" height="1200" loading="eager">
+  </div>
 
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#sectors">Retail Sectors</a></li>
-          <li><span aria-current="page">Kids Stores</span></li>
-        </ol>
+  <!-- ── H1 + معرفی ── -->
+  <section class="hw-intro">
+    <div class="container">
+      <!-- ✏️ H1 طبق اسکرین‌شات مرجع (استخراج متنی DOM عنوان دیگری نشان می‌داد) -->
+  <h1>Retail Fixtures for Kids Stores</h1>
+      <p>Showcase kids clothing, shoes and toys beautifully with retail fixtures and display furniture from Mandai Design. From modular shelving to wall clothing rails, our fixtures adapt beautifully to baby and children&rsquo;s stores. With adjustable shelves, rails, and extendable units - plus clever space-saving designs that make the most of areas other displays overlook - you can create a setup that&rsquo;s truly your own.</p>
+      <p>Choose from our pre-configured styles below, or <a href="../pages/contact.html" class="text-link-strong">contact us</a> for a custom solution tailored to your space.</p>
+    </div>
+  </section>
+
+  <!-- ── گرید ۱۲ محصول ── -->
+  <section class="hw-sec" aria-label="Kids store fixtures">
+    <div class="container">
+      <ul class="kid-grid">
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-kids-store-ceres-style-1-details.jpg?v=1714643544&amp;width=900" alt="Shelving System Ceres - Kids - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-shelving-children-retail-ceres-style-1-mandai-design.jpg?v=1739541432&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Ceres - Kids - Style 1</h3>
+        <p class="product__price">from $742.00</p>
+        <p class="product__options">3 wood decors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 2">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Ceres_Kids_Fashion_Style_02_H2300_HN_6.jpg?v=1714643589&amp;width=900" alt="Shelving System Ceres - Kids - Style 2" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-shelving-children-retail-ceres-style-2-mandai-design.jpg?v=1739541437&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Ceres - Kids - Style 2</h3>
+        <p class="product__price">from $1,253.00</p>
+        <p class="product__options">3 wood decors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 3">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Ceres_Kids_Fashion_Style_03_H2300_ACC_8.jpg?v=1714643723&amp;width=900" alt="Shelving System Ceres - Kids - Style 3" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-shelving-children-retail-ceres-style-3-mandai-design_863dfb65-edaa-4ee0-af39-38e73a3ed594.jpg?v=1739541445&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Ceres - Kids - Style 3</h3>
+        <p class="product__price">from $2,255.00</p>
+        <p class="product__options">3 wood decors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 4">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Ceres_Kids_Fashion_Style_04_H2600_HN_7.jpg?v=1714643920&amp;width=900" alt="Shelving System Ceres - Kids - Style 4" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-shelving-children-retail-ceres-style-4-mandai-design_81bac7ec-064d-4424-b64f-ff507ade3abb.jpg?v=1739541450&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Ceres - Kids - Style 4</h3>
+        <p class="product__price">from $2,144.00</p>
+        <p class="product__options">3 wood decors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, White, With Pedestal">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1.jpg?v=1753253409&amp;width=900" alt="Clothing Rail Ontario, W103, White, With Pedestal" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1_d56e1b8a-d45a-4c24-bb82-2915599e19c0.jpg?v=1753253409&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Clothing Rail Ontario, W103, White, With Pedestal</h3>
+        <p class="product__price">from $509.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W165, White, With Pedestals">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_e31d0c18-c5c2-43b2-85c6-6d334dc1515f.jpg?v=1753253762&amp;width=900" alt="Clothing Rail Ontario, W165, White, With Pedestals" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_fa7ef4da-1467-4807-83b0-d3dd5a9638ca.jpg?v=1753253762&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Clothing Rail Ontario, W165, White, With Pedestals</h3>
+        <p class="product__price">from $842.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W203, White, With Pedestals">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_26385e02-d53b-4905-b750-164b04f8a1a0.jpg?v=1753254044&amp;width=900" alt="Clothing Rail Ontario, W203, White, With Pedestals" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_876feae9-88f7-490e-89ff-8917eeeb8fc1.jpg?v=1753254044&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Clothing Rail Ontario, W203, White, With Pedestals</h3>
+        <p class="product__price">from $891.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W265, White, With Pedestals">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/05_VER_1_d364d312-3738-45d4-a62e-907ac8a8b053.jpg?v=1753254087&amp;width=900" alt="Clothing Rail Ontario, W265, White, With Pedestals" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/05_VER_1_deb362b0-1141-476f-83cd-e60394e66ce7.jpg?v=1753254095&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Clothing Rail Ontario, W265, White, With Pedestals</h3>
+        <p class="product__price">from $1,224.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, White, With Pedestal">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1.jpg?v=1753187964&amp;width=900" alt="Clothing Rail Ontario, W65, White, With Pedestal" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1_8a871c9b-7330-41cb-a9a6-dd5574e8a106.jpg?v=1753187980&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Clothing Rail Ontario, W65, White, With Pedestal</h3>
+        <p class="product__price">from $459.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Kids Store - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style01_Mandai_Design_white.jpg?v=1780906262&amp;width=900" alt="Gondola Shelving Lugano - Kids Store - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style01_Mandai_Design_Shop1.jpg?v=1780906279&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Gondola Shelving Lugano - Kids Store - Style 1</h3>
+        <p class="product__price">$1,074.00</p>
+        <p class="product__options">2 steel colors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Kids Store - Style 2">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style02_Mandai_Design_white.jpg?v=1780906837&amp;width=900" alt="Gondola Shelving Lugano - Kids Store - Style 2" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style02_Mandai_Design_Shop1.jpg?v=1780906854&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Gondola Shelving Lugano - Kids Store - Style 2</h3>
+        <p class="product__price">$1,048.00</p>
+        <p class="product__options">2 steel colors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Kids Store - Style 3">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style03_Mandai_Design_white.jpg?v=1780907558&amp;width=900" alt="Gondola Shelving Lugano - Kids Store - Style 3" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style03_Mandai_Design_Shop1.jpg?v=1780907578&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Gondola Shelving Lugano - Kids Store - Style 3</h3>
+        <p class="product__price">$1,204.00</p>
+        <p class="product__options">2 steel colors</p>
+        </a></li>
+      </ul>
+      <p class="cs-sub" style="margin-top:26px;text-align:center">You&rsquo;re viewing 1-12 of 12 products</p>
+    </div>
+  </section>
+
+  <!-- ── Other Fixtures for Kids Stores ── -->
+  <section aria-labelledby="kf-other">
+    <div class="container">
+      <h2 id="kf-other" class="h-serif-lg">Other Fixtures for Kids Stores</h2>
+      <p class="cs-sub" style="max-width:96ch">From eye-catching display pedestal sets to clothing racks and sleek shop counters, we offer a wide range of stylish product display furniture for your childrens store.</p>
+      <div class="cs-help__row kf-row kf-img-left">
+        <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-fixtures-wall-rails-ontario.jpg?v=1754987796&amp;width=1200" alt="kids-store-fixtures-wall-rails-ontario" loading="lazy">
+        <div class="cs-help__txt"><h3>Wall-mounted rails</h3><p>Our Ontario clothing rail system features a sleek, minimalist design that seamlessly fits into a wide range of store concepts. It offers generous hanging space, complemented by a glass shelf, perfect for showcasing toys, folded clothes, or other children&rsquo;s accessories. Optional wooden pedestals provide even more space to present kids&rsquo; shoes or additional products at the bottom.</p><a href="../fixtures/racks-and-rails.html" class="btn btn--outline">Shop Ontario clothing rails</a></div>
       </div>
-    </nav>
+      <div class="cs-help__row kf-row kf-img-right">
+        <div class="cs-help__txt"><h3>Gondola shelving</h3><p>Lugano gondola shelving helps create clear and attractive product presentation within the store. The open, freestanding design keeps products visible and easily accessible from multiple sides, making it ideal for children&rsquo;s clothing, toys, gifts, and changing seasonal collections. Height-adjustable shelf boards provide the flexibility to accommodate different product sizes and evolving assortments, supporting efficient and versatile merchandising throughout the retail space.</p><a href="../fixtures/gondola-shelving.html" class="btn btn--outline">Shop gondola shelving units</a></div>
+        <img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style03_Mandai_Design_Shop3.jpg?v=1780907604&amp;width=1200" alt="Lugano gondola shelving Kids Store" loading="lazy">
+      </div>
+      <div class="cs-help__row kf-row kf-img-left">
+        <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-clothing-rack.jpg?v=1714031544&amp;width=1200" alt="kids-store-retail-fixtures-display-clothing-rack" loading="lazy">
+        <div class="cs-help__txt"><h3>Free-standing racks</h3><p>Showcase childrens clothing and accessories with our sleek racks and rails. Perfect for shop windows, central displays, or wall arrangements, they guide clients towards new combinations and related products.</p><a href="../fixtures/racks-and-rails.html" class="btn btn--outline">Shop clothing racks</a></div>
+      </div>
+      <div class="cs-help__row kf-row kf-img-right">
+        <div class="cs-help__txt"><h3>Display pedestals and cubes</h3><p>Discover our display pedestal collection, available in many sizes and styles. Easy to mix, match and rearrange, creating exciting new displays is a breeze.</p><a href="../fixtures/display-pedestals.html" class="btn btn--outline">Shop display pedestals</a></div>
+        <img src="https://www.mandai-design.com/cdn/shop/files/kids-stores-retail-display-mandai-design-pedestal_26946126-549e-417e-86c0-cdb8c2aea239.jpg?v=1714133247&amp;width=1200" alt="kids-stores-retail-display-mandai-design-pedestal" loading="lazy">
+      </div>
+      <div class="cs-help__row kf-row kf-img-left">
+        <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-store-counter.jpg?v=1714031298&amp;width=1200" alt="kids-store-retail-fixtures-display-store-counter" loading="lazy">
+        <div class="cs-help__txt"><h3>Retail store counters for kids stores</h3><p>The sales counter is the heart of your kids store, providing a central space for clients to pay and seek assistance. Our counters, designed as beautiful points of purchase, optimize space and enhance organization.</p><a href="../fixtures/shop-counters.html" class="btn btn--outline">Discover shop counters</a></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/sectors/kids-stores.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/sectors/kids-stores.jpg" alt="Kids store with retail fixtures displaying children's clothes" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Retail Fixtures for Kids Stores</h1>
+  <!-- ── Shop the look ── -->
+  <section class="hw-sec" aria-label="Shop the look">
+    <div class="container">
+      <div class="hw-look kd-look">
+        <div class="hw-look__row">
+          <div class="hw-look__media"><img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-childrens-clothes_a5d23205-60de-41fa-9b1a-2fb33cf0d0a9.jpg?v=1714206778&amp;width=1400" alt="kids-store-retail-fixtures-display-childrens-clothes" loading="lazy">
+            <!-- ✏️ نقاط تعاملی — مختصات تقریبی؛ اعداد inspect مرجع را بدهید تا دقیق شود -->
+            <button type="button" class="hw-dot" data-slider="kdL" data-index="1" style="left:14.9%;top:34.7%" aria-label="Shelving System Ceres - Kids - Style 4"></button>
+            <button type="button" class="hw-dot" data-slider="kdL" data-index="0" style="left:16.7%;top:79.8%" aria-label="Cube Table Mana, in wood decor"></button>
+            <button type="button" class="hw-dot" data-slider="kdL" data-index="2" style="left:90%;top:88.5%" aria-label="Clothing Rail Como white, W 120, 3 heights"></button>
+            <button type="button" class="hw-dot" data-slider="kdL" data-index="3" style="left:60%;top:34%" aria-label="Shelving System Ceres - Kids - Style 3"></button>
+          </div>
+          <div>
+            <h3>Shop the look</h3>
+            <div class="hw-look__cardwrap">
+            <button type="button" class="slider-btn hw-look__nav" data-slider="kdL" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <ul class="hw-look__track" id="kdL">
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Cube Table Mana, in wood decor">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/dekowuerfel-cube-dekopodest-ladeneinrichtung-mandaidesign-holz-mitprodukten.jpg?v=1659519829&amp;width=900" alt="Cube Table Mana, in wood decor" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Cube Table Mana, in wood decor</h4>
+                <p class="product__price">from $142.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 4">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Ceres_Kids_Fashion_Style_04_H2600_HN_7.jpg?v=1714643920&amp;width=900" alt="Shelving System Ceres - Kids - Style 4" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shelving System Ceres - Kids - Style 4</h4>
+                <p class="product__price">from $2,144.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Clothing Rail Como white, W 120, 3 heights">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAcc2weiss1.jpg?v=1669906375&amp;width=900" alt="Clothing Rail Como white, W 120, 3 heights" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Clothing Rail Como white, W 120, 3 heights</h4>
+                <p class="product__price">from $392.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 3">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Ceres_Kids_Fashion_Style_03_H2300_ACC_8.jpg?v=1714643723&amp;width=900" alt="Shelving System Ceres - Kids - Style 3" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shelving System Ceres - Kids - Style 3</h4>
+                <p class="product__price">from $2,255.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+            </ul>
+                        <button type="button" class="slider-btn hw-look__nav" data-slider="kdL" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <p class="hw-look__count" id="cnt-kdL">1 / 4</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">RETAIL SECTORS</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Modular fixtures for kids stores</h2>
-        <div class="intro__text">
-          <p>From eye-catching display pedestal sets to clothing racks and sleek shop counters, we offer a wide range of stylish product display furniture for your children's store.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ تجهیزات پیشنهادی ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
-      <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our fixtures for kids stores</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Clothing Rail Ontario">
-              <div class="product__media">
-                <img src="../images/product-ontario.jpg" alt="Clothing Rail Ontario, W203, Black" width="1024" height="1024" loading="lazy">
-                <span class="product__badge">Quick delivery</span>
-              </div>
-              <h3 class="product__name">Clothing Rail Ontario</h3>
-              <p class="product__price">from &euro;556.00</p>
-              <p class="product__variants">2 options</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Gondola Shelving Lugano">
-              <div class="product__media">
-                <img src="../images/cat-gondola.jpg" alt="Lugano gondola shelving, open and freestanding" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Gondola Shelving Lugano</h3>
-              <p class="product__variants">Accessible from all sides</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Pedestals">
-              <div class="product__media">
-                <img src="../images/cat-pedestals.jpg" alt="Display pedestal collection in many sizes" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Pedestals</h3>
-              <p class="product__variants">Mix &amp; match sets</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter as point of purchase" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Points of purchase</p>
-            </a>
-          </li>
+  <!-- ── گالری مشتریان ── -->
+  <section class="hw-gallery" aria-labelledby="kf-gallery">
+    <div class="container">
+      <h2 id="kf-gallery" class="h-serif-xl">Our store fixtures in kids stores</h2>
+      <p class="hw-gallery__lead">Here are photos kindly made available to us by our customers. Check out the <a href="../index.html#references">reference gallery</a> for more or follow us on <a href="https://www.instagram.com/mandai_design_de/" title="MD Instagram Link">Instagram</a> for weekly inspiration!</p>
+      <div class="fref-grid">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="kgG" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="kgG" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="fref-track" id="kgG">
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/glasgow-como-sh.jpg?v=1727178296&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Wall rail system Ontario/Glasgow, display table set Como - <a href="https://www.instagram.com/littlekarlisherrsching/" title="Little Karlis">Little Karlis</a>, Germany<br>Photo by <a href="https://julia-richter-fotografie.de/" title="Julia Richter">Julia Richter</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/hejlenki-white-website-2.jpg?v=1758438663&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Display pedestals Mana, clothing rack Kansas - <a href="https://www.instagram.com/hejlenki/" title="HejLenki">HejLenki</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-stores-display-fixtures-retail-lieve.jpg?v=1714031672&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Clothing Rail System Ontario/Glasgow - <a href="https://www.instagram.com/lieve_concept_store/" title="Lieve Concept Store">Lieve Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/oktopulli-kids-store-retail-interior-mandai-design_1.jpg?v=1751261716&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Table and rack set Como - <a href="https://www.instagram.com/oktopulli/" title="Oktopulli Kids Store">Oktopulli Kids Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-interior-anton-punktchen-mandai-design_3.jpg?v=1751011004&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres - <a href="https://www.instagram.com/pundanton/" title="P&uuml;nktchen &amp; Anton Kids Concept Store">P&uuml;nktchen &amp; Anton Kids Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-heljenki-2.jpg?v=1730465262&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Cube Mana - <a href="https://www.instagram.com/hejlenki/" title="Hejlenki Pop Up Store">Hejlenki Pop Up Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-stores-display-fixtures-retail-mapali-3.jpg?v=1714031978&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres - <a href="https://www.instagram.com/mapali_dein_trageladen/" title="MaPaLi Kids Store">MaPaLi Kids Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/oktopulli-kids-store-retail-interior-mandai-design_2.jpg?v=1751261716&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Ceres - <a href="https://www.instagram.com/oktopulli/" title="Oktopulli Kids Store">Oktopulli Kids Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Ceres-shelving-sh.jpg?v=1727166198&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres - <a href="https://www.instagram.com/littlekarlisherrsching/" title="Little Karlis">Little Karlis</a>, Germany<br>Photo by <a href="https://julia-richter-fotografie.de/" title="Julia Richter">Julia Richter</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-interior-anton-punktchen-mandai-design_2.jpg?v=1751011004&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres - <a href="https://www.instagram.com/pundanton/" title="P&uuml;nktchen &amp; Anton Kids Concept Store">P&uuml;nktchen &amp; Anton Kids Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-stores-display-fixtures-retail-mapali-2.jpg?v=1714032309&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Display Table and Rack Como - <a href="https://www.instagram.com/mapali_dein_trageladen/" title="MaPaLi Kids Store">MaPaLi Kids Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/zwei-herz-fashion-store-mandai-design_6.jpg?v=1748069721&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Ceres<br><a href="https://www.instagram.com/zweiherz_/" title="Zwei Herz">Zwei Herz</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-display-romi-juli.jpg?v=1714034875&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Cube special order - <a href="https://www.instagram.com/romiundjuli.store/" title="Romi &amp; Juli Concept Store">Romi &amp; Juli Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-shelving-marlons-concept-store.jpg?v=1724153799&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Addison - <a href="https://www.instagram.com/marlons_kids/" title="Marlon&#39;s Kids">Marlon&#39;s Kids</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Ceres-shelving-2-sh.jpg?v=1727176048&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Ceres - <a href="https://www.instagram.com/littlekarlisherrsching/" title="Little Karlis">Little Karlis</a>, Germany<br>Photo by <a href="https://julia-richter-fotografie.de/" title="Julia Richter">Julia Richter</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-interior-anton-punktchen-mandai-design_4.jpg?v=1751011004&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Display table and clohing rack set Como - <a href="https://www.instagram.com/pundanton/" title="P&uuml;nktchen &amp; Anton Kids Concept Store">P&uuml;nktchen &amp; Anton Kids Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/como-rectang-sh.jpg?v=1727179240&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Rack and table set Como - <a href="https://www.instagram.com/littlekarlisherrsching/" title="Little Karlis">Little Karlis</a>, Germany<br>Photo by <a href="https://julia-richter-fotografie.de/" title="Julia Richter">Julia Richter</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kids-store-retail-display-romi-juli-childrens-store.jpg?v=1714034945&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Cetus - <a href="https://www.instagram.com/romiundjuli.store/" title="Romi &amp; Juli Concept Store">Romi &amp; Juli Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/for-sarah-glasgow-mandai-design.jpg?v=1710324133&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Clothing Rail System Ontario/Glasgow - <a href="https://www.instagram.com/boutique_sarah___/" title="Boutique Sarah">Boutique Sarah</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/heljenki-cubes-website.jpg?v=1730465009&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Cube Mana - <a href="https://www.instagram.com/hejlenki/" title="Hejlenki Pop Up Store">Hejlenki Pop Up Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/ceres-kids-store_2.jpg?v=1741609907&amp;width=900" alt="Kids store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres - Kaeptnknirps, Germany</figcaption>
+            </figure></li>
         </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن راهنمای سکتور ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Clear presentation for ever-changing ranges</h2>
-          <p>Our Ontario clothing rail system features a sleek, minimalist design that seamlessly fits into a wide range of store concepts. It offers generous hanging space, complemented by a glass shelf - perfect for showcasing toys, folded clothes or other children's accessories.</p>
-          <p>Lugano gondola shelving helps create clear and attractive product presentation within the store. The open, freestanding design keeps products visible and easily accessible from multiple sides - ideal for children's clothing, toys, gifts and changing seasonal ranges.</p>
+  <!-- ── CTA ── -->
+  <section class="cs-help" aria-labelledby="kf-cta">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/bakery-shelving-bakery-display-bread-shelf-store-fixtures-mandai-design-11.jpg?v=1708414476&amp;width=1200" alt="Planning a kids store" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="kf-cta">Need help planning your kids clothing store or baby shop?</h3>
+        <p>Not sure where to start? No problem. Our team of architects is here to help you plan your space with our products free of charge.</p>
+        <a href="../pages/design-support.html" class="btn btn--outline">FIND OUT MORE</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="hw-contact" aria-labelledby="contact-heading">
+    <div class="contact__head">
+      <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+      <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+    </div>
+
+    <div class="contact__status" role="status" data-contact-status hidden></div>
+
+    <form class="contact__form" data-contact-form novalidate>
+      <div class="contact__row">
+        <div>
+          <label class="sr-only" for="cf-name">Name (required)</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+        </div>
+        <div>
+          <label class="sr-only" for="cf-email">Email (required)</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
         </div>
       </div>
-    </section>
 
-
-
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
-      <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
-
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
-              </div>
-            </li>
-          </ul>
-
-          <div class="reviews__dots" data-reviews-dots></div>
-        </div>
+      <div>
+        <label class="sr-only" for="cf-phone">Phone</label>
+        <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
       </div>
-    </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: این دو سوال در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
-          </div>
-        </div>
+      <div>
+        <label class="sr-only" for="cf-message">Message (required)</label>
+        <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
       </div>
-    </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Planning a kids store?</h2>
-          <p class="sector-cta__text">Our team of interior designers plans your space with our products - free of charge, using your floor plan and measurements.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
-        </div>
+      <div>
+        <label class="sr-only" for="cf-source">How did you hear about us?</label>
+        <select id="cf-source" name="source" class="field field--select">
+          <option value="" disabled selected hidden>How did you hear about us?</option>
+          <option value="Google">Google</option>
+          <option value="Other search engine">Other search engine</option>
+          <option value="Pinterest">Pinterest</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Referral">Referral</option>
+          <option value="AI platform (e.g. ChatGPT, Perplexity)">AI platform (e.g. ChatGPT, Perplexity)</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
-    </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Retail fixtures for kids stores - modular and high quality</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Racks and rails for little wardrobes</h3>
-            <p>Showcase children's clothing and accessories with sleek racks and rails - perfect for shop windows, central displays or wall arrangements.</p>
-          </div>
-          <div>
-            <h3>Pedestals that invite play</h3>
-            <p>Easy to mix, match and rearrange: our display pedestal collection creates exciting new displays whenever your ranges change.</p>
-          </div>
-          <div>
-            <h3>A counter that organizes</h3>
-            <p>The sales counter is the heart of your kids store - a beautiful point of purchase that optimizes space and enhances organization.</p>
-          </div>
-        </div>
+      <!-- ✏️ reCAPTCHA — جای‌نگهدار بصری (غیرفعال) -->
+      <div class="ct-captcha" aria-hidden="true">
+        <span class="ct-captcha__box"></span>
+        <span class="ct-captcha__label">I&rsquo;m not a robot</span>
+        <span class="ct-captcha__brand">
+          <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="#1c3aa9" d="M16 4a12 12 0 0 1 10.9 7H16z"/><path fill="#4285f4" d="M28 16a12 12 0 0 1-7 10.9V16z"/><path fill="#ababab" d="M16 28A12 12 0 0 1 5.1 21H16z"/><path fill="#c9c9c9" d="M4 16a12 12 0 0 1 7-10.9V16z"/></svg>
+          reCAPTCHA
+          <small>Privacy - Terms</small>
+        </span>
       </div>
-    </section>
-  </main>
 
-  <!-- ══════════ فوتر ══════════ -->
+      <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+      <div class="contact__submit">
+        <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+          <span class="btn__spinner" aria-hidden="true"></span>
+          <span class="btn__label">Submit</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ── متن SEO (مثل مرجع) ── -->
+  <!-- ── SEO: Shoe Store Displays ── -->
+  <section class="hw-seo sh-seo" aria-labelledby="sh-seo">
+    <div class="container">
+      <h2 id="sh-seo">Shoe Store Displays with Style and Quality by Mandai Design</h2>
+      <p class="sh-seo__lead">A cohesive design concept is essential for your <strong>shoe store&rsquo;s success</strong>. Furniture from Mandai Design allows you to create a retail environment that puts your footwear in the spotlight, supporting strong sales. At the same time, the elegant design and clean, timeless lines convey professionalism, inviting customers to browse, linger, and shop.</p>
+      <p class="sh-seo__lead"><strong>Your Benefits at a Glance</strong></p>
+      <ul>
+        <li>Modular system with freely combinable shelves and furniture</li>
+        <li>High-quality materials built for durability and long-term use</li>
+        <li>Timeless design that blends seamlessly into your store concept</li>
+        <li>Custom-made solutions available upon request</li>
+        <li>Adjustable shelves and open elements for flexible shoe display racks for retail store environments</li>
+        <li>Precision manufacturing in our own facility in Germany</li>
+        <li>Personalized consultation and free sample service to support your decision</li>
+        <li>Quick and easy self-assembly with minimal effort</li>
+      </ul>
+      <p class="sh-seo__lead">Choose Mandai Design fixtures for <strong>premium, flexible, and durable solutions</strong> that highlight your products and elevate the shopping experience in your shoe store. Get in touch today and order your custom shoe store displays!</p>
+    </div>
+  </section>
+  <script>
+    /* اسلایدرها + تب‌های Homeware/Floral و White/Black */
+    (function () {
+      var GAP = 18;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var dir = Number(btn.getAttribute('data-dir') || 1);
+          if (slider.classList.contains('hw-look__track')) {
+            var items = slider.querySelectorAll('li');
+            var cur = Math.round(slider.scrollLeft / Math.max(1, slider.clientWidth));
+            var nxt = Math.max(0, Math.min(cur + dir, items.length - 1));
+            items[nxt].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            var cnt = document.getElementById('cnt-' + slider.id);
+            if (cnt) cnt.textContent = (nxt + 1) + ' / ' + items.length;
+            return;
+          }
+          var card = slider.querySelector('li:not([hidden])');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * dir, behavior: 'smooth' });
+        });
+      });
+      document.querySelectorAll('.fsh-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var track = document.getElementById(tab.getAttribute('data-track'));
+          if (!track) return;
+          var val = tab.getAttribute('data-val');
+          tab.parentElement.querySelectorAll('.fsh-tab').forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          track.querySelectorAll('li[data-group]').forEach(function (li) {
+            li.hidden = li.getAttribute('data-group') !== val;
+          });
+          track.scrollLeft = 0;
+        });
+      });
+      document.querySelectorAll('.hw-dot').forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var slider = document.getElementById(dot.getAttribute('data-slider'));
+          if (!slider) return;
+          var items = slider.querySelectorAll('li');
+          if (!items.length) return;
+          var i = Math.min(Number(dot.getAttribute('data-index') || 0), items.length - 1);
+          items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          var cnt = document.getElementById('cnt-' + slider.id);
+          if (cnt) cnt.textContent = (i + 1) + ' / ' + items.length;
+        });
+      });
+    })();
+  </script>
+</main>
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -593,10 +1022,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
             <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -613,14 +1042,14 @@
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
             <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="../index.html#categories">Clothing Racks</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
             <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
             <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
             <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -638,12 +1067,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -663,7 +1092,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -671,6 +1100,6 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+      <script src="../assets/js/main.js" defer></script>
 </body>
 </html>

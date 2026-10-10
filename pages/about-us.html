@@ -1,0 +1,1119 @@
+<!doctype html>
+<!--
+  ============================================================
+  MANDAI DESIGN — صفحهٔ کالکشن: Racks and Rails (Clothing Racks)
+  (بازسازی موبه‌مو از mandai-design.com/collections/clothing-rails-racks — 2026-09)
+  هیرو → H1 + معرفی → نوار Sort → گرید ۳۲ محصول (سواچ/بج/هاور)   → About (H2 وسط‌چین + ۲ ردیف) → اسلایدر عکس مشتریان (۲۸) → wall-mounted rails + اسلایدر Ontario (۸)
+  → فرم تماس → FAQ خاکستری ۱۲تایی
+  ▸ راهنمای کامل: README-FA.html
+  ============================================================
+-->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About us - Your partner for modern store fittings | Mandai Design</title>
+  <meta name="description" content="We make retail furniture designed to display your products beautifully and enhance your store. All our products are customisable - helping you create the perfect display for your brand. Made in Germany.">
+  <meta name="author" content="Mandai Design">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#ffffff">
+  <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
+  <link rel="canonical" href="https://www.example.com/pages/about-us.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://www.example.com/pages/about-us.html">
+  <meta property="og:site_name" content="Mandai Design">
+  <meta property="og:title" content="About us - Your partner for modern store fittings | Mandai Design">
+  <meta property="og:description" content="We make retail furniture designed to display your products beautifully and enhance your store. All our products are customisable - helping you create the perfect display for your brand. Made in Germany.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/Firma.jpg?v=1666880155&width=1200">
+  <meta property="og:image:width" content="1800">
+  <meta property="og:image:alt" content="Retail clothing racks and rails by Mandai Design in a fashion store">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About us - Your partner for modern store fittings | Mandai Design">
+  <meta name="twitter:description" content="We make retail furniture designed to display your products beautifully and enhance your store. All our products are customisable - helping you create the perfect display for your brand. Made in Germany.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/Firma.jpg?v=1666880155&width=1200">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+
+    /* ── صفحهٔ Racks and Rails (مثل مرجع) ── */
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* ردیف دوستونه (About) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    @media (min-width: 900px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: -1; }
+    }
+    /* نوار Sort (سمت راست، مثل مرجع) */
+    .crp-toolbar { display: flex; justify-content: flex-end; margin-top: 26px; }
+    .crp-sort { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(26, 26, 26, 0.25); padding: 10px 14px; font-size: 12.5px; color: rgba(26, 26, 26, 0.8); }
+    .crp-sort svg { width: 10px; height: 10px; }
+    /* گرید ۴ستونی محصولات */
+    .crp-grid { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 46px 20px; }
+    @media (max-width: 1280px) { .crp-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 1024px) { .crp-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .crp-grid { grid-template-columns: 1fr; } }
+    .crp-grid .product__media, .crp-slider .product__media { aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
+    .product__media .product__img--alt { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .crp-count { margin-top: 34px; text-align: center; font-size: 12px; color: rgba(26, 26, 26, 0.55); }
+    /* درباره: H2 وسط‌چین + H3های سِریف */
+    .crp-about__title { text-align: center; margin-inline: auto; }
+    .cl-h3 { font-family: var(--font-serif); font-weight: 400; font-size: 21px; color: var(--foreground); }
+    .crp-about .fsh-sys__row + .crp-h3wrap { margin-top: 64px; }
+    .crp-h3wrap .cl-h3 { margin-bottom: 10px; }
+    /* سواچ‌ها + بج + گزینه‌ها (مثل مرجع) */
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      position: absolute; top: 10px; left: 10px; z-index: 2; margin: 0; background: #fff;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+    /* اسلایدرهای تک‌ردیفه با فلش‌های شناور (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+      color: var(--foreground); cursor: pointer;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    .crp-cta { margin-top: 14px; }
+    /* FAQ: نوارهای خاکستری مثل مرجع */
+    .crp-faq .faq__inner { max-width: 880px; }
+    .crp-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .crp-faq .faq__button { padding: 17px 22px; }
+    .crp-faq .faq__panel { padding: 0 22px 18px; }
+  
+    /* ── صفحهٔ About us (کلون مرجع) ── */
+    .ab-hero { padding-top: 46px; text-align: center; }
+    .ab-hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: 34px; line-height: 1.2; }
+    .ab-split { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 860px) { .ab-split { grid-template-columns: 1fr; gap: 24px; } }
+    .ab-split img { width: 100%; height: auto; display: block; }
+    .ab-split__txt h2 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; line-height: 1.25; }
+    .ab-split__txt h3 { font-family: var(--font-serif); font-weight: 400; font-size: 22px; line-height: 1.35; }
+    .ab-split__txt p { margin-top: 14px; font-size: 14.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); max-width: 460px; }
+    .ab-exp { margin-top: 72px; background: var(--bg-grey); }
+    .ab-exp .container { padding-block: 56px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+    @media (max-width: 860px) { .ab-exp .container { grid-template-columns: 1fr; gap: 24px; } }
+    .ab-exp img { width: 100%; height: auto; display: block; }
+    .ab-exp h2 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; }
+    .ab-exp p { margin-top: 12px; font-size: 14px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); max-width: 480px; }
+    .ab-exp .btn { margin-top: 18px; }
+    .ab-block { margin-top: 72px; max-width: 860px; margin-inline: auto; text-align: center; }
+    .ab-block h3 { font-family: var(--font-serif); font-weight: 400; font-size: 24px; }
+    .ab-block p { margin-top: 16px; font-size: 13.5px; line-height: 1.85; color: rgba(26, 26, 26, 0.85); text-align: left; }
+    .ab-testi { margin-top: 76px; }
+    .ab-testi h3 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; text-align: center; }
+    .ab-testi .fref-grid { margin-top: 34px; }
+    .ab-slide { display: grid; grid-template-columns: minmax(0, 420px) 1fr; gap: 40px; align-items: center; padding-inline: 8px; }
+    @media (max-width: 860px) { .ab-slide { grid-template-columns: 1fr; gap: 18px; } }
+    .ab-slide img { width: 100%; height: auto; display: block; }
+    .ab-slide__stars { color: #1a1a1a; font-size: 15px; letter-spacing: 4px; }
+    .ab-slide blockquote { margin: 10px 0 0; font-size: 15px; line-height: 1.75; color: rgba(26, 26, 26, 0.9); }
+    .ab-slide figcaption { margin-top: 12px; font-size: 12.5px; color: rgba(26, 26, 26, 0.6); }
+    .ab-track > li { flex: 0 0 92%; }
+    @media (min-width: 1280px) { .ab-track > li { flex: 0 0 86%; } }
+    .ab-team { margin-top: 76px; }
+    .ab-team h3 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; text-align: center; }
+    .ab-team__grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 32px; text-align: center; }
+    @media (max-width: 860px) { .ab-team__grid { grid-template-columns: repeat(2, 1fr); gap: 28px 18px; } }
+    .ab-team__grid img { width: 100%; aspect-ratio: 1 / 1.15; object-fit: cover; display: block; filter: grayscale(1); }
+    .ab-team__grid h3 { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: 17px; }
+    .ab-team__grid p { margin-top: 3px; font-size: 12px; color: rgba(26, 26, 26, 0.6); }
+    .ab-contact { margin-top: 76px; background: var(--bg-grey); }
+    .ab-contact .container { padding-block: 56px; }
+    .ab-contact h2 { font-family: var(--font-serif); font-weight: 400; font-size: 27px; text-align: center; }
+    .ab-contact__intro { margin: 12px auto 0; max-width: 640px; text-align: center; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .ab-contact .contact__form { margin-top: 30px; max-width: 640px; margin-inline: auto; display: grid; gap: 14px; }
+    .ab-contact .contact__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .ab-contact .contact__row { grid-template-columns: 1fr; } }
+    .ab-contact .contact__submit { text-align: center; }
+    .ab-contact .ct-captcha { display: flex; align-items: center; gap: 12px; background: #f9f9f9; border: 1px solid #d3d3d3; border-radius: 3px; padding: 12px 14px; width: fit-content; }
+    .ab-contact .ct-captcha__box { width: 24px; height: 24px; border: 2px solid #c1c1c1; border-radius: 2px; background: #fff; }
+    .ab-contact .ct-captcha__label { font-size: 13px; }
+    .ab-contact .ct-captcha__brand { margin-inline-start: 18px; font-size: 10px; color: #555; display: grid; justify-items: center; }
+    .ab-contact .ct-captcha__brand small { color: #555; }
+    /* اسلایدر */
+    .fref-grid { position: relative; text-align: left; }
+    .fref-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 2px 2px 10px; scrollbar-width: none; }
+    .fref-track::-webkit-scrollbar { display: none; }
+    .fref-track > li { flex: 0 0 78%; scroll-snap-align: start; }
+    .fref-grid .fsh-grid__btn { position: absolute; top: 40%; transform: translateY(-50%); z-index: 2; border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px; }
+    .fref-grid .fsh-grid__btn--prev { left: -14px; }
+    .fref-grid .fsh-grid__btn--next { right: -14px; }
+    .fref-grid .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fref-grid .fsh-grid__btn[disabled] { opacity: 0.3; }
+    </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "name": "About us",
+      "url": "https://www.example.com/pages/about-us.html",
+      "description": "We make retail furniture designed to display your products beautifully and enhance your store. All our products are customisable - helping you create the perfect display for your brand. Made in Germany.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://www.example.com/#website"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.example.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About us",
+          "item": "https://www.example.com/pages/about-us.html"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ══════════ نوار اعلان ══════════ -->
+  <div class="topbar" role="region" aria-label="Announcements" data-topbar>
+    <div class="topbar__inner">
+      <button type="button" class="topbar__arrow topbar__arrow--prev" data-topbar-prev aria-label="Previous announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <p class="topbar__text" data-topbar-text aria-live="polite">Order Free Samples</p>
+      <button type="button" class="topbar__arrow topbar__arrow--next" data-topbar-next aria-label="Next announcement">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <script type="application/json" data-topbar-data>
+    [
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
+    ]
+  </script>
+
+  <!-- ══════════ هدر ══════════ -->
+  <header class="site-header" id="site-header" data-header>
+    <div class="site-header__utility">
+      <div class="container site-header__utility-inner">
+        <nav aria-label="Utility navigation">
+          <ul class="utility-nav">
+            <li><a href="../pages/about-us.html" class="link-underline" aria-current="page">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
+          </ul>
+        </nav>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
+          <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="container site-header__main">
+      <a href="../index.html" class="site-header__logo" aria-label="Mandai Design — home">
+        <img src="../images/logo.png" alt="Mandai Design — Home of Shopfitting" width="220" height="56" class="site-header__logo-img" loading="eager">
+      </a>
+
+      <nav aria-label="Main navigation" class="site-header__nav">
+        <ul class="nav">
+          <li class="nav__item">
+            <a href="../index.html#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Retail Sectors
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fashion.html">Fashion</a></li>
+                <li><a href="../sectors/menswear.html">Menswear</a></li>
+                <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/shoes.html">Shoes</a></li>
+                <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+                <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bakery هنوز ساخته نشده؛ موقتاً Fine Foods -->
+                <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+                <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Store Fixtures
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Shelving Systems
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../systems/addison.html">Addison</a></li>
+                <li><a href="../systems/ceres.html">Ceres</a></li>
+                <li><a href="../systems/cetus.html">Cetus</a></li>
+                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
+                <li><a href="../systems/slimline.html">Slimline</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/bergen.html">Bergen</a></li>
+                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../index.html#references" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              References
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
+          </li>
+          <li class="nav__item">
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <button type="button" class="icon-btn" data-search-open aria-label="Open search">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button type="button" class="icon-btn hide-sm" data-demo="Account" aria-label="My account">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button type="button" class="icon-btn" data-demo="Cart" aria-label="Shopping cart, 0 items">
+          <svg class="icon-19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </button>
+        <button type="button" class="icon-btn site-header__menu-toggle" data-mobile-open aria-label="Open menu">
+          <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── منوی موبایل ── -->
+    <div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true">
+      <div class="mobile-menu__head">
+        <span class="mobile-menu__title">Mandai Design</span>
+        <button type="button" class="icon-btn" data-mobile-close aria-label="Close menu">
+          <svg class="icon-20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation" class="mobile-menu__body">
+        <ul>
+          <li class="mobile-menu__item">
+            <a href="../index.html#sectors">Retail Sectors</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../sectors/fashion.html">Fashion</a></li>
+              <li><a href="../sectors/menswear.html">Menswear</a></li>
+              <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/shoes.html">Shoes</a></li>
+              <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+              <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/fine-foods.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+              <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="../index.html#categories">Store Fixtures</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#main-content">Shelving Systems</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../systems/addison.html">Addison</a></li>
+              <li><a href="../systems/ceres.html">Ceres</a></li>
+              <li><a href="../systems/cetus.html">Cetus</a></li>
+              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
+              <li><a href="../systems/slimline.html">Slimline</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
+              <li><a href="../systems/bergen.html">Bergen</a></li>
+              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="../index.html#references">References</a>
+            <ul class="mobile-menu__sub">
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+            </ul>
+          </li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
+        </ul>
+
+        <ul class="mobile-menu__utility">
+          <li><a href="../pages/about-us.html" aria-current="page">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
+        </ul>
+
+        <div class="mobile-menu__contact">
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
+        </div>
+      </nav>
+    </div>
+    <div class="overlay" data-overlay hidden></div>
+
+    <!-- ── دیالوگ جستجو ── -->
+    <div class="search-dialog" id="search-dialog" data-search-dialog role="dialog" aria-modal="true" aria-label="Search" hidden>
+      <div class="search-dialog__box">
+        <button type="button" class="icon-btn search-dialog__close" data-search-close aria-label="Close search">
+          <svg class="icon-18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+        <h2 class="search-dialog__title">Search</h2>
+        <p class="search-dialog__desc">Looking for a specific fixture? Type a keyword below.</p>
+        <form class="search-dialog__form" role="search" data-search-form>
+          <label class="sr-only" for="site-search">Search products</label>
+          <input id="site-search" type="search" placeholder="e.g. shelving, counter, rack…" class="search-dialog__input">
+          <button type="submit" class="btn btn--dark search-dialog__submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </header>
+<main id="main-content">
+
+    <!-- ══════════ سرصفحه ══════════ -->
+    <section class="ab-hero">
+      <div class="container">
+        <h1>Find out more about us</h1>
+      </div>
+    </section>
+
+    <!-- ══════════ معرفی (۲ ردیف) ══════════ -->
+    <section aria-label="About Mandai Design">
+      <div class="container">
+        <div class="ab-split">
+          <img src="https://www.mandai-design.com/cdn/shop/files/Firma.jpg?v=1666880155&width=900" alt="Firma-Mandai-Design" loading="lazy">
+          <div class="ab-split__txt">
+            <h2>Hi, we&rsquo;re Mandai Design.</h2>
+            <p>We make retail furniture designed to display your products beautifully and enhance your store. All our products are customisable - helping you create the perfect display for your brand. Made in Germany.</p>
+          </div>
+        </div>
+        <div class="ab-split">
+          <div class="ab-split__txt">
+            <h3>Our collections are designed to display your products efficiently and beautifully, no matter what you sell.</h3>
+          </div>
+          <img src="https://www.mandai-design.com/cdn/shop/files/Design_ohne_Titel_15.jpg?v=1785919287&width=900" alt="Mandai Design collection" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ The Mandai Experience ══════════ -->
+    <section class="ab-exp" aria-labelledby="ab-exp-heading">
+      <div class="container">
+        <!-- ✏️ ویدئوی embed مرجع حذف شد (no-store)؛ فقط تصویر شاخص -->
+        <img src="https://www.mandai-design.com/cdn/shop/files/The_Mandai_Experience_Thumbnail_Website.jpg?v=1784715201&width=1200" alt="Video thumbnail" loading="lazy">
+        <div>
+          <h2 id="ab-exp-heading">The Mandai Experience</h2>
+          <p>See what a typical retail project with Mandai Design looks like - from the first idea and planning stages to production, delivery, setup and opening day.</p>
+          <p>Planning your own store? Let&rsquo;s bring your ideas to life.</p>
+          <!-- ✏️ مقصد در مرجع /pages/design-and-planning-service است؛ نزدیک‌ترین صفحهٔ محلی -->
+          <a href="../pages/our-process.html" class="btn btn--dark">Start your project</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Our Experience / Our Strategy ══════════ -->
+    <section class="ab-block" aria-label="Our experience and strategy">
+      <div class="container">
+        <h3>Our Experience</h3>
+        <p>Mandai Design is your online shop for shop fittings. As a medium-sized family business (Modern Collection), we have been developing, producing and selling shop fitting furniture and individual shop systems for retailers since 1996. 25 years of experience in retail, as interior designers and shopfitters have helped us to equip over 60,000 square meters of retail space. We have set up hundreds of shops - from small boutiques to department stores - with 100% customer satisfaction. With the focus on high-quality shop fittings, we offer unique shop design ideas for everything to do with shopfitting. Our flexible shopfitting systems enable you to furnish your shop in a modern and timeless style, in line with your individual ideas and needs.</p>
+        <h3 style="margin-top: 44px;">Our Strategy</h3>
+        <p>The rising competition in the retail sector makes it crucial to offer customers a unique shopping experience. Individual solutions are therefore required for furnishing stores. Well-designed shop fittings play an important role. In order not to lose sight of the costs, modular shop systems are becoming increasingly popular. Mandai Design offers products that can be used to easily put together an individual look for your store. And this includes all the advantages of pre-configured systems. Depending on the retail sector, individual pieces of furniture or entire systems can be put together in a tailor-made manner. Inspired by the latest international trends, you&rsquo;ll receive distinctive furniture and shop fittings for the point of sale.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ What Customers Say About Us ══════════ -->
+    <section class="ab-testi" aria-labelledby="ab-testi-heading">
+      <div class="container">
+        <h3 id="ab-testi-heading">What Customers Say About Us</h3>
+        <div class="fref-grid">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="abT" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="abT" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="fref-track ab-track" id="abT">
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/ladeneinrichtung-ikama-03_web.jpg?v=1780389047&width=900" alt="Customer store photo" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;An exceptional modular system offering numerous customization options. Impeccable quality and finishes. Fantastic customer service. Highly recommended.&quot;</blockquote>
+            <figcaption>– Josiane Lemofouet, Ikama Art &amp; Deco, Switzerland</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/Orelia-website-1.jpg?v=1730792354&width=900" alt="Orelia-website-1" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&quot;</blockquote>
+            <figcaption>– Collette Flood, Orelia Jewellery, UK</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/dear-petite-boutique-mandai-design.jpg?v=1730189170&width=900" alt="dear-petite-mandai-design" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;We absolutely love the fixtures! It was totally worth getting them shipped from Germany.&quot;</blockquote>
+            <figcaption>– Dear Petite, New Jersey, US</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-racks-clothing-rails-thebeigebee.jpg?v=1779266676&width=900" alt="Customer store photo" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;From helping design the layout of my boutique to delivering beautiful shelving and tables, the entire experience was seamless. Communication was excellent, everything shipped on time, and arrived in perfect condition. I receive so many compliments on Mandai shelving in my boutique.&quot;</blockquote>
+            <figcaption>– Brittney Dura, The Beige Bee, US</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-mandai-design-ceres-parthenis.jpg?v=1710749819&width=900" alt="retail-shelving-mandai-design-ceres-parthenis" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;It was a pleasure working with Mandai Design for my new retail store display needs. Your display systems are of exceptional quality, versatility, and ease of use.&quot;</blockquote>
+            <figcaption>- Darryl Miller, Parthenis, Greece</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/store-fixtures-shopfittings-retail-product-display-mandai-design-16.jpg?v=1705669065&width=900" alt="store-fixtures-shopfittings-retail-product-display-mandai-design-16" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;From start to finish Mandai Design has been so friendly and helpful and an absolute joy to work with. If you are building out a retail space, you need to chat with them and see how they can help you. I am so happy I did. Beautiful quality made products!&quot;</blockquote>
+            <figcaption>– Amy Sheffield, Pueo Boutique, Hawaii</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/Stillroom_Cetus_Mandai-Design_Ben-Horder_11.jpg?v=1785482546&width=900" alt="Customer store photo" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Great quality product and great service. Recommended.&quot;</blockquote>
+            <figcaption>– Alex Atkinson, Stillroom Apothecaries, UK</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/brautparadies-thun-bridal-fashion-mandai-design-client-photo-1.jpg?v=1757584775&width=900" alt="brautparadies-thun-bridal-fashion-mandai-design-client-photo-1" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;The new clothing rails are fantastic! They make everything more organized and showcase the clothes beautifully. The store now feels brighter, more modern, and more inviting – exactly the atmosphere we had hoped for. What impressed us most was the customer service we received in choosing the right options, as well as the possibility of custom-made solutions – simply outstanding!&quot;</blockquote>
+            <figcaption>– Brautparadies Thun, Switzerland</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/messe-offenbach-retail-display-mandai-design_1.jpg?v=1758868230&width=900" alt="messe-offenbach-retail-display-mandai-design_1" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;I was very satisfied with the collaboration.&quot;</blockquote>
+            <figcaption>- Alexandra Donnerstag, Messe Offenbach, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/concept-store-ladeneinrichtung-ladenregale-mandai-design-wohnreich-1.jpg?v=1707899211&width=900" alt="concept-store-ladeneinrichtung-ladenregale-mandai-design-wohnreich-1" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Very good consultation and service. Great design and quality. Enhances every store.&quot;</blockquote>
+            <figcaption>– Marion Hoffmann-Sommer, Wohnreich Concept Store, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/janet-church-ig-3.jpg?v=1730704554&width=900" alt="janet-church-ig-3" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Excellent quality shelving and customer service.&quot;</blockquote>
+            <figcaption>– Janet Church, Janet Church Interiors, UK</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/zwei-herz-fashion-store-mandai-design_5.jpg?v=1748069720&width=900" alt="zwei-herz-fashion-store-mandai-design_5" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Everything from planning and advice to execution was great! Delivery went smoothly too. The setup is easy to do on your own. We’re completely satisfied!&quot;</blockquote>
+            <figcaption>– Martina Kramer, Zwei Herz</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/ontario-appart-17-fur-website-mandai-design.jpg?v=1736953011&width=900" alt="ontario-appart-17-fur-website-mandai-design" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;We are delighted with our collaboration with Mandai. The service was quick, the furniture assembly was very easy, and the result perfectly matched our expectations.&quot;</blockquote>
+            <figcaption>– Appart 17 Concept Store, Belgium</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/Wohnstyle-referenz.jpg?v=1724138290&width=900" alt="Wohnstyle-referenz-ladeneinrichtung-mandaidesign" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Excellent service and advice, with the goods delivered right on time. I can only recommend Mandai Design!&quot;</blockquote>
+            <figcaption>– Manfred Rödamer, Wohn.style, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/raumverliebt-retail-shelf-cetus-mandai-design_4bdbe691-a25a-4b58-b19a-9d12d73b6843.jpg?v=1724138392&width=900" alt="raumverliebt-retail-shelf-cetus-mandai-design_4bdbe691-a25a-4b58-b19a-9d12d73b6843" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Mandai Design offers beautiful shelving solutions for both businesses and homes. I’m always happy to include them in my projects.&quot;</blockquote>
+            <figcaption>– Tina Rainer, Raumverliebt, Austria</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-fixtures-mandai-design-holiday-heimtex.jpg?v=1724138479&width=900" alt="retail-fixtures-mandai-design-holiday-heimtex" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;From start to finish, we were delighted with the service and helpfulness. Mrs. Saupe and her team provided excellent advice, and even custom products were no problem at all. The quality of the furniture is outstanding—durable and incredibly easy to assemble. Overall, great furniture, friendly and capable staff, and a smooth experience.&quot;</blockquote>
+            <figcaption>– Heiko Wagner, Holiday Heimtex, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/joneli-handmade-mandai-design-1_3e10f5db-4bf3-4446-af7c-24a946d39cf1.jpg?v=1724138679&width=900" alt="joneli-handmade-mandai-design-1_3e10f5db-4bf3-4446-af7c-24a946d39cf1" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;I had a shelving system designed for my small shop, and I’m more than satisfied with both the service and the quality of the shelves. Custom products were handled without any issues, and the result is absolutely beautiful.&quot;</blockquote>
+            <figcaption>– Kristina Sackmann, Joneli Handmade, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-fixtures-mandai-design.jpg?v=1734507946&width=900" alt="retail-fixtures-mandai-design" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;Super friendly support, beautiful and high-quality furniture. The assembly was super easy! They even included a bit for the drill! Top-notch! All in all, 12 out of 10 points.&quot;</blockquote>
+            <figcaption>- My An Ton, Boudoir Fashion Shop, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/wildfang-store-interior-mandaidesign.jpg?v=1757508739&width=900" alt="wildfang-store-interior-mandaidesign" loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;We are absolutely delighted! The service is excellent, the communication always friendly and reliable. Delivery was fast and without any issues. What impressed us most was the quality: modern and up to date. Assembly was surprisingly easy as well. We can wholeheartedly recommend this manufacturer without any reservations!&quot;</blockquote>
+            <figcaption>– Ferguson I., Wildfang Concept Store, Germany</figcaption>
+            </div>
+            </figure></li>
+            <li><figure class="ab-slide">
+            <img src="https://www.mandai-design.com/cdn/shop/files/Shop_Counter-Java_MandaiDesign.jpg?v=1776755481&width=900" alt="Wine display with bottles and glasses on shelves in a store setting." loading="lazy">
+            <div>
+            <div class="ab-slide__stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>&quot;The support was excellent all around. The team was available to answer any questions. The 2D and 3D drawings helped us clearly visualize the future setup. The assembly of the shelves is described in detail and can also be seen in videos on the website. We are very impressed with the quality: everything is high-end and very sturdy. Overall, we rate it as outstanding and would recommend it at any time.&quot;</blockquote>
+            <figcaption>Touristik Bad Ems-Nassau, Germany</figcaption>
+            </div>
+            </figure></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Meet The Team ══════════ -->
+    <section class="ab-team" aria-labelledby="ab-team-heading">
+      <div class="container">
+        <h3 id="ab-team-heading">Meet The Team</h3>
+        <div class="ab-team__grid">
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Dirk-mandai-design.jpg?v=1709556409&width=600" alt="Dirk-mandai-design" loading="lazy">
+            <h3>Dirk Heibutzki</h3>
+            <p>CEO &amp; Founder</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Daniela_MD.png?v=1690266242&width=600" alt="Daniela_Mandai_Design" loading="lazy">
+            <h3>Daniela Sutor</h3>
+            <p>Co-founder &amp; PR</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Kristoffer.jpg?v=1649062020&width=600" alt="Kristoffer-mandai-design" loading="lazy">
+            <h3>Kristoffer Fuglestad</h3>
+            <p>Finance &amp; IT</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Stephanie.jpg?v=1649061908&width=600" alt="Stephanie-mandai-design" loading="lazy">
+            <h3>Stephanie Heibutzki-Fuglestad</h3>
+            <p>Sales &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Anja-2.jpg?v=1655819738&width=600" alt="Anja-mandai-design" loading="lazy">
+            <h3>Anja Saupe</h3>
+            <p>Operations</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Luise_H_MD_2.jpg?v=1690378097&width=600" alt="Luise_Mandai_Design" loading="lazy">
+            <h3>Luise Weber</h3>
+            <p>Sales &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Saskia.jpg?v=1649062162&width=600" alt="Saskia-mandai-design" loading="lazy">
+            <h3>Saskia Heibutzki</h3>
+            <p>Marketing</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/mark-ainsworth-mandai-design.jpg?v=1695300232&width=600" alt="mark-ainsworth-mandai-design" loading="lazy">
+            <h3>Mark Ainsworth</h3>
+            <p>Process Optimisation &amp; Project Management</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Dana.jpg?v=1769760869&width=600" alt="" loading="lazy">
+            <h3>Dana Poitschke</h3>
+            <p>Logistics</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Arne-Mandai-Design.png?v=1706872657&width=600" alt="Arne-Mandai-Design" loading="lazy">
+            <h3>Arne Grabenhorst</h3>
+            <p>Product &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Franziska.jpg?v=1769760869&width=600" alt="" loading="lazy">
+            <h3>Franziska Pelikan</h3>
+            <p>Sales &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Maren.jpg?v=1770037852&width=600" alt="" loading="lazy">
+            <h3>Maren Klamser</h3>
+            <p>Product &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Inna.png?v=1769760871&width=600" alt="" loading="lazy">
+            <h3>Inna Stoll</h3>
+            <p>Sales &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Pauline.jpg?v=1769760869&width=600" alt="" loading="lazy">
+            <h3>Pauline Lange</h3>
+            <p>Sales &amp; Design</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Sophie.jpg?v=1769760869&width=600" alt="" loading="lazy">
+            <h3>Sophie Eger</h3>
+            <p>Marketing</p>
+          </div>
+          <div>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Karolin.jpg?v=1769760870&width=600" alt="" loading="lazy">
+            <h3>Karolin Helmecke</h3>
+            <p>Marketing</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ Get in touch ══════════ -->
+    <section class="ab-contact" aria-labelledby="ab-contact-heading">
+      <div class="container">
+        <h2 id="ab-contact-heading">Get in touch</h2>
+        <p class="ab-contact__intro">Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="ab-name">Name (required)</label>
+              <input id="ab-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+            </div>
+            <div>
+              <label class="sr-only" for="ab-email">Email (required)</label>
+              <input id="ab-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
+            </div>
+          </div>
+          <div>
+            <label class="sr-only" for="ab-phone">Phone</label>
+            <input id="ab-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
+          </div>
+          <div>
+            <label class="sr-only" for="ab-message">Message (required)</label>
+            <textarea id="ab-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+          <div>
+            <label class="sr-only" for="ab-source">How did you hear about us?</label>
+            <select id="ab-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google">Google</option>
+              <option value="Other search engine">Other search engine</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Referral">Referral</option>
+              <option value="AI platform (e.g. ChatGPT, Perplexity)">AI platform (e.g. ChatGPT, Perplexity)</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <!-- جای‌گذار بصری reCAPTCHA (بدون سرویس خارجی) -->
+          <div class="ct-captcha" aria-hidden="true">
+            <span class="ct-captcha__box"></span>
+            <span class="ct-captcha__label">I&rsquo;m not a robot</span>
+            <span class="ct-captcha__brand">
+              <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="#1c3aa9" d="M16 4a12 12 0 0 1 10.9 7H16z"/><path fill="#4285f4" d="M28 16a12 12 0 0 1-7 10.9V16z"/><path fill="#ababab" d="M16 28A12 12 0 0 1 5.1 21H16z"/><path fill="#c9c9c9" d="M4 16a12 12 0 0 1 7-10.9V16z"/></svg>
+              reCAPTCHA
+              <small>Privacy - Terms</small>
+            </span>
+          </div>
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <script>
+    /* فلش اسلایدر نظرات */
+    (function () {
+      document.querySelectorAll('.fref-grid').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+    (function () {
+      var GAP = 18;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+    </script>
+</main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__top">
+        <div class="site-footer__contact">
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
+          <ul class="site-footer__socials" aria-label="Social media">
+            <li><a href="#" aria-label="Facebook" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Instagram" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="LinkedIn" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="Pinterest" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.25"/><path d="M9.2 20.2c.6-2.4 1.5-6.1 1.5-6.1"/><path d="M10.7 14.1c.3 1 1.2 1.6 2.3 1.6 2.1 0 3.6-1.9 3.6-4.3A4.6 4.6 0 0 0 8.6 9c-.7 1.2-.4 2.4.2 3"/><path d="M9.2 20.2c.1-.5.3-1.1.4-1.6"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="YouTube" class="social-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <nav aria-label="Footer column 1" class="site-footer__col">
+          <ul>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
+            <li><a href="../index.html#help">Assembly Instructions</a></li>
+            <li><a href="../index.html#categories">Wardrobe Systems</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer column 2" class="site-footer__col">
+          <ul>
+            <li><a href="#">Payment And Shipping</a></li>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Imprint</a></li>
+            <li><a href="#">CCPA Opt Out</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Footer column 3" class="site-footer__col">
+          <ul>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+          </ul>
+        </nav>
+
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
+      </div>
+
+      <div class="newsletter">
+        <p class="newsletter__text">Subscribe to our newsletter for product launches, inspiration and more.</p>
+        <form class="newsletter__form" data-newsletter-form action="../contact.php" novalidate>
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" name="email" type="email" required autocomplete="email" placeholder="Your email" class="newsletter__input">
+          <button type="submit" class="newsletter__btn" data-newsletter-submit>Subscribe</button>
+        </form>
+      </div>
+
+      <div class="secondary-site">
+        <img src="../images/flag-de.png" alt="" width="22" height="14" class="secondary-site__flag">
+        <p>Looking for our German website? <a href="https://www.mandai-design.de/" target="_blank" rel="noopener noreferrer" class="text-link-strong">Visit mandai-design.de</a></p>
+      </div>
+
+      <div class="site-footer__bottom">
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
+          <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
+        <ul class="site-footer__payments" aria-label="Accepted payment methods">
+          <li>Amex</li>
+          <li>Apple Pay</li>
+          <li>Diners</li>
+          <li>Discover</li>
+          <li>Google Pay</li>
+          <li>Maestro</li>
+          <li>Mastercard</li>
+          <li>PayPal</li>
+          <li>Shop Pay</li>
+          <li>Union Pay</li>
+          <li>Visa</li>
+        </ul>
+      </div>
+
+      <nav aria-label="Footer keyword links" class="sr-only">
+        <ul>
+          <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
+          <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+
+  <div class="toast-container" data-toasts aria-live="polite"></div>
+
+      <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
