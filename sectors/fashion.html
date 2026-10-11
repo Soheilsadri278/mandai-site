@@ -1,10 +1,9 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ سکتور: Fashion
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در sectors/ است.
+  MANDAI DESIGN — Retail Sector: Fashion (بازسازی موبه‌مو از collections/shopfitting-for-clothes — 2026-09):
+  هیرو بدون تیتر → معرفی + ۴ ویژگی → بنر ویدیو → سکتورها با گرید محصول
+  → گرید «سفارشی‌سازی» → FAQ وسط‌چین → نمونه‌کار مشتری → فرم تماس
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,44 +11,135 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>Modern retail fixtures for textiles &amp; fashion | Mandai Design</title>
-  <meta name="description" content="Versatile retail fixtures for clothes, fashion &amp; textiles. Modular shopfitting systems, made in Germany. Order online now.">
+  <meta name="description" content="Present your clothes, fashion and textiles beautifully with shopfitting systems from Mandai Design. Whether bridal wear, evening dresses or casual clothes &ndash; our shelves, racks and rails showcase your assortment perfectly.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/sectors/fashion.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/sectors/fashion.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="Modern retail fixtures for textiles &amp; fashion | Mandai Design">
-  <meta property="og:description" content="Versatile retail fixtures for clothes, fashion &amp; textiles. Modular shopfitting systems, made in Germany. Order online now.">
-  <meta property="og:image" content="https://www.example.com/images/sectors/fashion.jpg">
+  <meta property="og:description" content="Present your clothes, fashion and textiles beautifully with shopfitting systems from Mandai Design. Whether bridal wear, evening dresses or casual clothes &ndash; our shelves, racks and rails showcase your assortment perfectly.">
+  <meta property="og:image" content="https://www.example.com/images/systems/ontario.jpg">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Fashion store interior with modular shelving and clothing rails">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Fashion store with modern Mandai Design retail fixtures">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Modern retail fixtures for textiles &amp; fashion | Mandai Design">
-  <meta name="twitter:description" content="Versatile retail fixtures for clothes, fashion &amp; textiles. Modular shopfitting systems, made in Germany. Order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/sectors/fashion.jpg">
-
+  <meta name="twitter:description" content="Present your clothes, fashion and textiles beautifully with shopfitting systems from Mandai Design. Whether bridal wear, evening dresses or casual clothes &ndash; our shelves, racks and rails showcase your assortment perfectly.">
+  <meta name="twitter:image" content="https://www.example.com/images/systems/ontario.jpg">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/sectors/fashion.jpg" as="image">
-
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/retail-fixtures-clothes-store-fashion-boutique-mandai-design.jpg?v=1730710299&width=1200" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
-
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__swatch-more {
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(26, 26, 26, 0.6); background: #fff;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,57 +148,17 @@
       "@type": "WebPage",
       "name": "Retail fixtures for clothes stores",
       "url": "https://www.example.com/sectors/fashion.html",
-      "description": "Versatile retail fixtures for clothes, fashion & textiles. Modular shopfitting systems, made in Germany. Order online now.",
+      "description": "Present your clothes, fashion and textiles beautifully with shopfitting systems from Mandai Design - shelves, racks and rails for fashion retail.",
       "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://www.example.com/#website"
-      },
-      "primaryImageOfPage": "https://www.example.com/images/sectors/fashion.jpg"
+      "isPartOf": { "@id": "https://www.example.com/#website" },
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/retail-fixtures-clothes-store-fashion-boutique-mandai-design.jpg?v=1730710299"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.example.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Retail Sectors",
-          "item": "https://www.example.com/#sectors"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Fashion",
-          "item": "https://www.example.com/sectors/fashion.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "url": "https://www.example.com/sectors/fashion.html",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Retail Sectors", "item": "https://www.example.com/#sectors" },
+        { "@type": "ListItem", "position": 3, "name": "Fashion", "item": "https://www.example.com/sectors/fashion.html" }
       ]
     }
   ]
@@ -133,8 +183,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -144,15 +194,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
-            <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -166,21 +216,21 @@
       <nav aria-label="Main navigation" class="site-header__nav">
         <ul class="nav">
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="fashion.html" aria-current="page">Fashion</a></li>
-                <li><a href="menswear.html">Menswear</a></li>
-                <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="shoes.html">Shoes</a></li>
-                <li><a href="kids-stores.html">Kids Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
-                <li><a href="fine-foods.html">Fine Foods</a></li>
-                <li><a href="pet-stores.html">Pet Stores</a></li>
+                <li><a href="../sectors/fashion.html" aria-current="page">Fashion</a></li>
+                <li><a href="../sectors/menswear.html">Menswear</a></li>
+                <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/shoes.html">Shoes</a></li>
+                <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+                <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
               </ul>
             </div>
           </li>
@@ -189,8 +239,9 @@
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
                 <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
                 <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
@@ -198,25 +249,34 @@
                 <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
                 <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
                 <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
                 <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="../systems/addison.html">Addison</a></li>
-                <li><a href="../systems/ceres.html">Ceres</a></li>
-                <li><a href="../systems/cetus.html">Cetus</a></li>
-                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-                <li><a href="../systems/slimline.html">Slimline</a></li>
-                <li><a href="../systems/ontario.html">Ontario</a></li>
-                <li><a href="../systems/bergen.html">Bergen</a></li>
-                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                <li><a href="addison.html">Addison</a></li>
+                <li><a href="ceres.html">Ceres</a></li>
+                <li><a href="cetus.html">Cetus</a></li>
+                <li><a href="brooklyn.html">Brooklyn</a></li>
+                <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="bergen.html">Bergen</a></li>
+                <li><a href="customize.html">Customize your shelf</a></li>
               </ul>
             </div>
           </li>
@@ -227,20 +287,20 @@
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="fashion.html">Fashion Stores</a></li>
-                <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="homeware.html">Homeware Stores</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
+                <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
                 <li><a href="../index.html#references">VIEW ALL</a></li>
               </ul>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -273,17 +333,17 @@
       <nav aria-label="Mobile navigation" class="mobile-menu__body">
         <ul>
           <li class="mobile-menu__item">
-            <a href="#main-content">Retail Sectors</a>
+            <a href="../index.html#sectors">Retail Sectors</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html" aria-current="page">Fashion</a></li>
-              <li><a href="menswear.html">Menswear</a></li>
-              <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="shoes.html">Shoes</a></li>
-              <li><a href="kids-stores.html">Kids Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
-              <li><a href="fine-foods.html">Fine Foods</a></li>
-              <li><a href="pet-stores.html">Pet Stores</a></li>
+              <li><a href="../sectors/fashion.html">Fashion</a></li>
+              <li><a href="../sectors/menswear.html">Menswear</a></li>
+              <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/shoes.html">Shoes</a></li>
+              <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+              <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -296,47 +356,48 @@
               <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
               <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
               <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
               <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../systems/addison.html">Addison</a></li>
-              <li><a href="../systems/ceres.html">Ceres</a></li>
-              <li><a href="../systems/cetus.html">Cetus</a></li>
-              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-              <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
-              <li><a href="../systems/bergen.html">Bergen</a></li>
-              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+              <li><a href="addison.html">Addison</a></li>
+              <li><a href="ceres.html">Ceres</a></li>
+              <li><a href="cetus.html">Cetus</a></li>
+              <li><a href="brooklyn.html">Brooklyn</a></li>
+              <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+              <li><a href="bergen.html">Bergen</a></li>
+              <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion Stores</a></li>
-              <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="homeware.html">Homeware Stores</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
               <li><a href="../index.html#references">VIEW ALL</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
-          <li><a href="../index.html#faq">FAQ</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -359,227 +420,863 @@
     </div>
   </header>
 
-  <main id="main-content">
+      <main id="main-content">
 
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
+    <!-- ══════════ هیرو — مثل مرجع: بنر پهن (دسکتاپ) + تصویر مربع (موبایل) ══════════ -->
+    <section class="sys-hero" aria-label="Modern retail fixtures for fashion stores">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-fixtures-clothes-store-fashion-boutique-mandai-design.jpg?v=1730710299&width=1800" alt="Fashion boutique with modern Mandai Design retail fixtures" class="sys-hero__img fsh-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shelf-shopfitting-mandaidesign_674bae71-5d0d-49bc-a8f3-5373f985e139.jpg?v=1728650195&width=1200" alt="Mandai Design shopfitting system in a fashion store" class="sys-hero__img fsh-hero-mobile" width="1200" height="1200" loading="eager">
+    </section>
+
+    <!-- ══════════ معرفی — عنوان و توضیحات صفحه (مثل مرجع) ══════════ -->
+    <section class="sys-intro" aria-labelledby="fsh-intro-heading">
       <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#sectors">Retail Sectors</a></li>
-          <li><span aria-current="page">Fashion</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/sectors/fashion.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/sectors/fashion.jpg" alt="Fashion store interior with modular shelving and clothing rails" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Retail fixtures for clothes stores</h1>
-        </div>
+        <h1 id="fsh-intro-heading" class="sys-intro__title">Retail fixtures for clothes stores</h1>
+        <p class="fsh-sys__sub">Displaying fashion beautifully.</p>
+        <p class="sys-intro__lead">Present your clothes, fashion and textiles beautifully with shopfitting systems from Mandai Design. Whether you sell bridal wear, evening dresses or casual clothes - our collection of shelves, racks and rails will showcase your assortment perfectly.</p>
       </div>
     </section>
 
-    <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">RETAIL SECTORS</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Displaying fashion beautifully.</h2>
-        <div class="intro__text">
-          <p>A shopfitting system for fashion boutiques has to fulfil many functions - from the correct shelf depth to the optimum hanging height, every detail matters at the planning stage. Our modular shopfitting systems for clothes stores have these crucial details already integrated: height-adjustable shelves, flexible clothing rails and display fittings tailored to fashion retail.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ تجهیزات پیشنهادی ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ Addison shelving system ══════════
+         ✏️ ویرایش: دکمهٔ «SHOP ALL ADDISON SHELVES» در مرجع به کالکشن خودش می‌رود؛ اینجا به صفحهٔ محلی همان سیستم. -->
+    <section class="sector-alt fsh-sys" aria-labelledby="fsh-addison">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our fixtures for fashion stores</h2>
-        <ul class="bestsellers__grid">
+        <div class="fsh-sys__row">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-fashion-addison-style-3.jpg?v=1750855426" alt="Addison shelving system in a fashion store" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+          <h2 class="sector-alt__title" id="fsh-addison">Addison shelving system</h2>
+          <p class="fsh-sys__sub">Timeless and elegant</p>
+          <p class="sector-alt__text">The Addison shopfitting system offers the ideal basis for the stylish presentation of products. A simple, clear silhouette and high-quality materials characterize this timeless shelving system. Metal in combination with wood or glass are the central elements and give the retail shelf its elegant look.</p>
+          <p class="fsh-sys__cta"><a href="addison.html" class="btn btn--outline">SHOP ALL ADDISON SHELVES</a></p>
+        </div>
+        </div>
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="fshG4" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="mini-grid fsh-grid fsh-slider-row" id="fshG4">
           <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Addison - Fashion - Style 5">
-              <div class="product__media">
-                <img src="../images/product-addison-style5.jpg" alt="Shelving System Addison - Fashion - Style 5" width="1024" height="1024" loading="lazy">
-              </div>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 1">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle1H260_mitAcc_3Halifax1.jpg?v=1670406672" alt="Shelving System Addison - Fashion - Style 1" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 1</h3>
+              <p class="product__price">from $806.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 2">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle2H260_mitAcc_2Halifax1.jpg?v=1670409163" alt="Shelving System Addison - Fashion - Style 2" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 2</h3>
+              <p class="product__price">from $1,948.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 3">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle3H260_mitAcc_Halifax1JPG.jpg?v=1670408538" alt="Shelving System Addison - Fashion - Style 3" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 3</h3>
+              <p class="product__price">from $1,394.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 4">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle4H260_mitAcc_Halifax1.jpg?v=1670415529" alt="Shelving System Addison - Fashion - Style 4" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 4</h3>
+              <p class="product__price">from $1,830.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 5">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle5H260_mitAcc_Halifax1.jpg?v=1670416089" alt="Shelving System Addison - Fashion - Style 5" width="900" height="900" loading="lazy"></div>
               <h3 class="product__name">Shelving System Addison - Fashion - Style 5</h3>
-              <p class="product__price">from &euro;2,252.00</p>
-              <p class="product__variants">3 wood decors</p>
+              <p class="product__price">from $2,613.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
             </a>
           </li>
           <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Ceres">
-              <div class="product__media">
-                <img src="../images/product-ceres-style4.jpg" alt="Shelving System Ceres - Homeware - Style 4, black" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving System Ceres</h3>
-              <p class="product__price">from &euro;2,109.00</p>
-              <p class="product__variants">Hanging or folded presentation</p>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 6">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle6H260_mitAcc_Halifax1.jpg?v=1670416843" alt="Shelving System Addison - Fashion - Style 6" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 6</h3>
+              <p class="product__price">from $2,510.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
             </a>
           </li>
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Clothing Rail Ontario, W203, Black">
-              <div class="product__media">
-                <img src="../images/product-ontario.jpg" alt="Clothing Rail Ontario, W203, Black" width="1024" height="1024" loading="lazy">
-                <span class="product__badge">Quick delivery</span>
-              </div>
+          </ul>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="fshG4" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ══════════ Ceres shelving system ══════════
+         ✏️ ویرایش: دکمهٔ «FIND OUT MORE ABOUT CERES» در مرجع به کالکشن خودش می‌رود؛ اینجا به صفحهٔ محلی همان سیستم. -->
+    <section class="sector-alt fsh-sys" aria-labelledby="fsh-ceres">
+      <div class="container">
+        <div class="fsh-sys__row fsh-sys__row--flip">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shelf-shopfitting-mandai-design_b3139bd7-3db2-423c-9160-bc99abbf47e9.jpg?v=1690190133" alt="Ceres shelving system in a fashion retail store" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+          <h2 class="sector-alt__title" id="fsh-ceres">Ceres shelving system</h2>
+          <p class="fsh-sys__sub">Modular and flexible</p>
+          <p class="sector-alt__text">With the Ceres shopfitting system, you can easily switch between displaying clothing is displayed hanging or lying down in just a few simple steps. Shelves and rails can be hooked into the vertical wall columns without the need for tools. These flexible presentation options are a great advantage, especially during seasonal changes or sales promotions. Details such as height-adjustable shelves and universally usable back bars ensure understated elegance.</p>
+          <p class="fsh-sys__cta"><a href="ceres.html" class="btn btn--outline">FIND OUT MORE ABOUT CERES</a></p>
+        </div>
+        </div>
+        <div class="fsh-tabbar">
+          <div class="fsh-tabs" role="group" aria-label="Filter by finish">
+            <button type="button" class="fsh-tab is-active" data-color="black" aria-pressed="true">Ceres in black</button>
+            <button type="button" class="fsh-tab" data-color="white" aria-pressed="false">Ceres in white</button>
+          </div>
+          <div class="slider-nav">
+            <button type="button" class="slider-btn slider-btn--long" data-slider="fshG0" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="slider-btn slider-btn--long" data-slider="fshG0" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="fsh-grid-wrap">
+          <ul class="mini-grid fsh-grid fsh-slider-row" id="fshG0" data-color-slider>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 1, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260_mitAcc_Halifax.jpg?v=1670489628" alt="Shelving system Ceres - Fashion - Style 1, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 1, black</h3>
+              <p class="product__price">from $723.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260_mitAcc_Halifax.jpg?v=1670489628" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260weissmitAcc_HalifaxEichenatur.jpg?v=1679479372" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 2, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260_mitAccHalifax.jpg?v=1670492389" alt="Shelving system Ceres - Fashion - Style 2, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 2, black</h3>
+              <p class="product__price">from $1,701.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260_mitAccHalifax.jpg?v=1670492389" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260weiss_mitAccHalifax.jpg?v=1679479975" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 3, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260_mitAccHalifax.jpg?v=1670490073" alt="Shelving system Ceres - Fashion - Style 3, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 3, black</h3>
+              <p class="product__price">from $1,401.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260_mitAccHalifax.jpg?v=1670490073" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260weiss_mitAccHalifax.jpg?v=1679490993" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 4, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260_mitAccHalifax.jpg?v=1670492701" alt="Shelving system Ceres - Fashion - Style 4, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 4, black</h3>
+              <p class="product__price">from $2,222.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260_mitAccHalifax.jpg?v=1670492701" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260weiss_mitAccHalifax.jpg?v=1679483287" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 5, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260_mitAccHalifax.jpg?v=1670491094" alt="Shelving system Ceres - Fashion - Style 5, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 5, black</h3>
+              <p class="product__price">from $1,332.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260_mitAccHalifax.jpg?v=1670491094" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260weiss_mitAccHalifax.jpg?v=1679483528" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 6, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle6H260_mitAccGlas.jpg?v=1670493197" alt="Shelving system Ceres - Fashion - Style 6, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 6, black</h3>
+              <p class="product__price">from $1,881.00</p>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 7, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle7H260_mitAccGlas.jpg?v=1670493793" alt="Shelving system Ceres - Fashion - Style 7, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 7, black</h3>
+              <p class="product__price">from $2,128.00</p>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 8, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle8H260_mitAccGlasHalifax.jpg?v=1670491779" alt="Shelving system Ceres - Fashion - Style 8, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 8, black</h3>
+              <p class="product__price">from $1,881.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 1, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260weissmitAcc_HalifaxEichenatur.jpg?v=1679479372" alt="Shelving system Ceres - Fashion - Style 1, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 1, white</h3>
+              <p class="product__price">from $723.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260_mitAcc_Halifax.jpg?v=1670489628" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260weissmitAcc_HalifaxEichenatur.jpg?v=1679479372" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 2, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260weiss_mitAccHalifax.jpg?v=1679479975" alt="Shelving system Ceres - Fashion - Style 2, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 2, white</h3>
+              <p class="product__price">from $1,701.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260_mitAccHalifax.jpg?v=1670492389" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle2H260weiss_mitAccHalifax.jpg?v=1679479975" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 3, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260weiss_mitAccHalifax.jpg?v=1679490993" alt="Shelving system Ceres - Fashion - Style 3, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 3, white</h3>
+              <p class="product__price">from $1,401.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260_mitAccHalifax.jpg?v=1670490073" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260weiss_mitAccHalifax.jpg?v=1679490993" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 4, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260weiss_mitAccHalifax.jpg?v=1679483287" alt="Shelving system Ceres - Fashion - Style 4, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 4, white</h3>
+              <p class="product__price">from $2,222.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260_mitAccHalifax.jpg?v=1670492701" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle4H260weiss_mitAccHalifax.jpg?v=1679483287" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 5, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260weiss_mitAccHalifax.jpg?v=1679483528" alt="Shelving system Ceres - Fashion - Style 5, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 5, white</h3>
+              <p class="product__price">from $1,332.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260_mitAccHalifax.jpg?v=1670491094" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle5H260weiss_mitAccHalifax.jpg?v=1679483528" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Bridal Fashion">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresWeddingStyle1H260_mitAccHalifaxeichenatur.jpg?v=1674482819" alt="Shelving System Ceres - Bridal Fashion" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Bridal Fashion</h3>
+              <p class="product__price">from $1,056.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 1">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-kids-store-ceres-style-1-details.jpg?v=1714643544" alt="Shelving System Ceres - Kids - Style 1" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Kids - Style 1</h3>
+              <p class="product__price">from $761.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Kids - Style 2">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Ceres_Kids_Fashion_Style_02_H2300_HN_6.jpg?v=1714643589" alt="Shelving System Ceres - Kids - Style 2" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Kids - Style 2</h3>
+              <p class="product__price">from $1,286.00</p>
+              <p class="product__options">3 wood decors</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ══════════ Ontario clothing rail system ══════════
+         ✏️ ویرایش: دکمهٔ «FIND OUT MORE ABOUT ONTARIO» در مرجع به کالکشن خودش می‌رود؛ اینجا به صفحهٔ محلی همان سیستم. -->
+    <section class="sector-alt fsh-sys" aria-labelledby="fsh-ontario">
+      <div class="container">
+        <div class="fsh-sys__row">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shelf-shopfitting_d2d4440d-c809-4ac8-b5ee-1250c8267c59.jpg?v=1754985989" alt="Ontario wall clothing rail system in a fashion store" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+          <h2 class="sector-alt__title" id="fsh-ontario">Ontario clothing rail system</h2>
+          <p class="fsh-sys__sub">Simple elegance, clean lines.</p>
+          <p class="sector-alt__text">Clothes rail systems can present plenty of clothing items without taking up much space, and score points with a modern look. As a wall-mounted clothing rail with a minimalist design, Ontario can be elegantly integrated into a wide variety of rooms. Simple but chic, the Ontario clothes rail is particularly well suited to back walls made of natural stone or other particularly attractive walls. However, the timeless, linear design also enhances plain walls and integrates harmoniously into rooms with different styles.</p>
+          <p class="fsh-sys__cta"><a href="ontario.html" class="btn btn--outline">FIND OUT MORE ABOUT ONTARIO</a></p>
+        </div>
+        </div>
+        <div class="fsh-tabbar">
+          <div class="fsh-tabs" role="group" aria-label="Filter by finish">
+            <button type="button" class="fsh-tab is-active" data-color="black" aria-pressed="true">Ontario in black</button>
+            <button type="button" class="fsh-tab" data-color="white" aria-pressed="false">Ontario in white</button>
+          </div>
+          <div class="slider-nav">
+            <button type="button" class="slider-btn slider-btn--long" data-slider="fshG2" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button type="button" class="slider-btn slider-btn--long" data-slider="fshG2" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+        </div>
+        <div class="fsh-grid-wrap">
+          <ul class="mini-grid fsh-grid fsh-slider-row" id="fshG2" data-color-slider>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, Black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_Black_Mens_Acc_WB_2048x2048_2690e634-7617-4ca4-b4d3-2d8596e6e560.jpg?v=1753185910" alt="Clothing Rail Ontario, W65, Black" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W65, Black</h3>
+              <p class="product__price">from $356.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_Black_Mens_Acc_WB_2048x2048_2690e634-7617-4ca4-b4d3-2d8596e6e560.jpg?v=1753185910" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_White_Womans_Acc_WB_2048x2048_f930fc65-3649-40a6-9159-96def84e08f2.jpg?v=1753366369" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, Black, With Pedestal">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1_ac0d0d9e-78de-498a-b7c4-79ead6ac514d.jpg?v=1753339774" alt="Clothing Rail Ontario, W65, Black, With Pedestal" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W65, Black, With Pedestal</h3>
+              <p class="product__price">from $471.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1_ac0d0d9e-78de-498a-b7c4-79ead6ac514d.jpg?v=1753339774" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1.jpg?v=1753187964" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, Black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_Black_Mens_Acc_WB_2048x2048_6e85ee53-d38a-43ba-b993-192006b444c5.jpg?v=1753188515" alt="Clothing Rail Ontario, W103, Black" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W103, Black</h3>
+              <p class="product__price">from $388.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_Black_Mens_Acc_WB_2048x2048_6e85ee53-d38a-43ba-b993-192006b444c5.jpg?v=1753188515" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_White_Womans_Acc_WB_2048x2048_2629d9f0-8a34-4546-a521-8c9c1769a289.jpg?v=1753366405" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, Black, With Pedestal">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1_81fb0e89-ae71-43e2-a98e-8325f3753ab1.jpg?v=1753340042" alt="Clothing Rail Ontario, W103, Black, With Pedestal" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W103, Black, With Pedestal</h3>
+              <p class="product__price">from $522.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1_81fb0e89-ae71-43e2-a98e-8325f3753ab1.jpg?v=1753340042" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1.jpg?v=1753253409" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W203, Black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04_Verkaufsregal_Ontarion_Style_04_H_1765_AM_1000_1000_Black_Mens_Acc_WB_2048x2048_731d852c-db66-4e9e-9bd2-df9a30d50b6e.jpg?v=1753189178" alt="Clothing Rail Ontario, W203, Black" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
               <h3 class="product__name">Clothing Rail Ontario, W203, Black</h3>
-              <p class="product__price">from &euro;556.00</p>
-              <p class="product__variants">2 options</p>
+              <p class="product__price">from $645.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_Verkaufsregal_Ontarion_Style_04_H_1765_AM_1000_1000_Black_Mens_Acc_WB_2048x2048_731d852c-db66-4e9e-9bd2-df9a30d50b6e.jpg?v=1753189178" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_Verkaufsregal_Ontarion_Style_04_H_1765_AM_1000_1000_White_Womans_Acc_WB_2048x2048_7ef6187d-8fe9-4527-87cf-02ceb9df54c7.jpg?v=1753430042" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W165, Black, With Pedestals">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_a3889324-058e-4b86-9a8e-925696a5c0f3.jpg?v=1753340186" alt="Clothing Rail Ontario, W165, Black, With Pedestals" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W165, Black, With Pedestals</h3>
+              <p class="product__price">from $864.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_a3889324-058e-4b86-9a8e-925696a5c0f3.jpg?v=1753340186" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_e31d0c18-c5c2-43b2-85c6-6d334dc1515f.jpg?v=1753253762" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W165, Black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03_Verkaufsregal_Ontarion_Style_03_H_1765_AM_1000_625_Black_Mens_Acc_WB_2048x2048_5a9b19f3-6eea-4d7a-b6d8-f50987391202.jpg?v=1753189044" alt="Clothing Rail Ontario, W165, Black" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W165, Black</h3>
+              <p class="product__price">from $614.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_Verkaufsregal_Ontarion_Style_03_H_1765_AM_1000_625_Black_Mens_Acc_WB_2048x2048_5a9b19f3-6eea-4d7a-b6d8-f50987391202.jpg?v=1753189044" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_Verkaufsregal_Ontarion_Style_03_H_1765_AM_1000_625_White_Womans_Acc_WB_2048x2048_da1fd111-9df0-4a11-b20b-b96b3e1b8614.jpg?v=1753366454" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="black">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W203, Black, With Pedestals">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_d9a341e3-4c14-4b56-889b-ee90c6911b0d.jpg?v=1753340330" alt="Clothing Rail Ontario, W203, Black, With Pedestals" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W203, Black, With Pedestals</h3>
+              <p class="product__price">from $915.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_d9a341e3-4c14-4b56-889b-ee90c6911b0d.jpg?v=1753340330" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_26385e02-d53b-4905-b750-164b04f8a1a0.jpg?v=1753254044" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, White, With Pedestal">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1.jpg?v=1753187964" alt="Clothing Rail Ontario, W65, White, With Pedestal" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W65, White, With Pedestal</h3>
+              <p class="product__price">from $471.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1_ac0d0d9e-78de-498a-b7c4-79ead6ac514d.jpg?v=1753339774" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_VER_1.jpg?v=1753187964" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W65, White">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_White_Womans_Acc_WB_2048x2048_f930fc65-3649-40a6-9159-96def84e08f2.jpg?v=1753366369" alt="Clothing Rail Ontario, W65, White" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W65, White</h3>
+              <p class="product__price">from $356.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_Black_Mens_Acc_WB_2048x2048_2690e634-7617-4ca4-b4d3-2d8596e6e560.jpg?v=1753185910" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_Verkaufsregal_Ontarion_Style_01_H_1765_AM_625_White_Womans_Acc_WB_2048x2048_f930fc65-3649-40a6-9159-96def84e08f2.jpg?v=1753366369" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, White">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_White_Womans_Acc_WB_2048x2048_2629d9f0-8a34-4546-a521-8c9c1769a289.jpg?v=1753366405" alt="Clothing Rail Ontario, W103, White" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W103, White</h3>
+              <p class="product__price">from $388.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_Black_Mens_Acc_WB_2048x2048_6e85ee53-d38a-43ba-b993-192006b444c5.jpg?v=1753188515" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_Verkaufsregal_Ontarion_Style_02_H_1765_AM_1000_White_Womans_Acc_WB_2048x2048_2629d9f0-8a34-4546-a521-8c9c1769a289.jpg?v=1753366405" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W103, White, With Pedestal">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1.jpg?v=1753253409" alt="Clothing Rail Ontario, W103, White, With Pedestal" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W103, White, With Pedestal</h3>
+              <p class="product__price">from $522.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1.jpg?v=1753253409" alt="White" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/02_VER_1_81fb0e89-ae71-43e2-a98e-8325f3753ab1.jpg?v=1753340042" alt="Black" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W165, White">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03_Verkaufsregal_Ontarion_Style_03_H_1765_AM_1000_625_White_Womans_Acc_WB_2048x2048_da1fd111-9df0-4a11-b20b-b96b3e1b8614.jpg?v=1753366454" alt="Clothing Rail Ontario, W165, White" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W165, White</h3>
+              <p class="product__price">from $614.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_Verkaufsregal_Ontarion_Style_03_H_1765_AM_1000_625_Black_Mens_Acc_WB_2048x2048_5a9b19f3-6eea-4d7a-b6d8-f50987391202.jpg?v=1753189044" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_Verkaufsregal_Ontarion_Style_03_H_1765_AM_1000_625_White_Womans_Acc_WB_2048x2048_da1fd111-9df0-4a11-b20b-b96b3e1b8614.jpg?v=1753366454" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W165, White, With Pedestals">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_e31d0c18-c5c2-43b2-85c6-6d334dc1515f.jpg?v=1753253762" alt="Clothing Rail Ontario, W165, White, With Pedestals" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W165, White, With Pedestals</h3>
+              <p class="product__price">from $864.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_e31d0c18-c5c2-43b2-85c6-6d334dc1515f.jpg?v=1753253762" alt="White" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/03_VER_1_a3889324-058e-4b86-9a8e-925696a5c0f3.jpg?v=1753340186" alt="Black" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W203, White">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04_Verkaufsregal_Ontarion_Style_04_H_1765_AM_1000_1000_White_Womans_Acc_WB_2048x2048_7ef6187d-8fe9-4527-87cf-02ceb9df54c7.jpg?v=1753430042" alt="Clothing Rail Ontario, W203, White" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Ontario, W203, White</h3>
+              <p class="product__price">from $645.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_Verkaufsregal_Ontarion_Style_04_H_1765_AM_1000_1000_Black_Mens_Acc_WB_2048x2048_731d852c-db66-4e9e-9bd2-df9a30d50b6e.jpg?v=1753189178" alt="Black" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_Verkaufsregal_Ontarion_Style_04_H_1765_AM_1000_1000_White_Womans_Acc_WB_2048x2048_7ef6187d-8fe9-4527-87cf-02ceb9df54c7.jpg?v=1753430042" alt="White" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li data-color="white">
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Ontario, W203, White, With Pedestals">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_26385e02-d53b-4905-b750-164b04f8a1a0.jpg?v=1753254044" alt="Clothing Rail Ontario, W203, White, With Pedestals" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Ontario, W203, White, With Pedestals</h3>
+              <p class="product__price">from $915.00</p>
+              <p class="product__options">2 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_26385e02-d53b-4905-b750-164b04f8a1a0.jpg?v=1753254044" alt="White" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/04_VER_1_d9a341e3-4c14-4b56-889b-ee90c6911b0d.jpg?v=1753340330" alt="Black" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ══════════ Racks and rails ══════════
+         ✏️ ویرایش: در مرجع این ناحیه ویدیو دارد (با همان تیتر)؛ اینجا پوستر تصویری + دکمهٔ پخش تزئینی.
+         ✏️ ویرایش: «SHOP ALL RAILS AND RACKS» مرجع به کالکشن clothing-rails-racks می‌رود؛ اینجا به صفحهٔ محلی. -->
+    <section class="sector-alt fsh-sys" aria-labelledby="fsh-racks">
+      <div class="container">
+        <div class="fsh-sys__row">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shelf-shopfitting-mandai-design-rack.jpg?v=1708286994" alt="Clothing racks and rails for fashion retail" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+          <h2 class="sector-alt__title" id="fsh-racks">Racks and rails</h2>
+          <p class="fsh-sys__sub">Distinctive designs</p>
+          <p class="sector-alt__text">Clothing rails and racks offer excellent opportunities to present clothes in a space-saving manner and sorted by size or color. They also provide valuable services when it comes to dividing up space within shops, thus helping to optimise the customer experience and systematically guiding people through the store. At Mandai Design, you will find a wide range of clothing rails for various uses - in distinctive, attractive designs and outstanding build quality.</p>
+          <p class="fsh-sys__cta"><a href="../fixtures/racks-and-rails.html" class="btn btn--outline">SHOP ALL RAILS AND RACKS</a></p>
+        </div>
+        </div>
+
+        <div class="fsh-grid-wrap">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="fshG5" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="mini-grid fsh-grid fsh-slider-row" id="fshG5">
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, black/wood finish, W 125, 3 heights">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/KansasB128H132_mitAccHamilton1.jpg?v=1669907518" alt="Clothing Rail Kansas, black/wood finish, W 125, 3 heights" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Kansas, black/wood finish, W 125, 3 heights</h3>
+              <p class="product__price">from $458.00</p>
+              <p class="product__options">6 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/KansasB125H139HalifaxNatur_white_ACC.jpg?v=1690965700" alt="white/wood finish 125 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/KansasB128H132_mitAccHamilton1.jpg?v=1669907518" alt="black/wood 125 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/07_01_Kansas_Rack_Unicolor_Anthrazit_B1250_H1390.jpg?v=1736245439" alt="Black/anthracite 125 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/Kanasa_Unicolor_Produktrender_30.jpg?v=1712582693" alt="white/unicolor 125 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/kansas-marmor-139-wide.jpg?v=1736778016" alt="white/marble finish 125 cm" width="22" height="22" loading="lazy"></li>
+                <li class="product__swatch-more" aria-label="1 more finish">+1</li>
+              </ul>
             </a>
           </li>
           <li>
-            <a href="../index.html#categories" class="product" aria-label="Racks and Rails">
-              <div class="product__media">
-                <img src="../images/cat-racks.jpg" alt="Free-standing clothing racks" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Racks and Rails</h3>
-              <p class="product__variants">Freestanding &amp; wall-mounted</p>
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Kansas, white/wood finish, W 65, 3 heights">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/KansasB65H139HalifaxNatur_white_ACC.jpg?v=1690983961" alt="Clothing Rail Kansas, white/wood finish, W 65, 3 heights" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing Rail Kansas, white/wood finish, W 65, 3 heights</h3>
+              <p class="product__price">from $402.00</p>
+              <p class="product__options">6 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/KansasB60H132_mitAccHalifax1.jpg?v=1669907257" alt="Black 65 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/08_01_Kansas_Rack_Unicolor_Anthrazit_B650_H1390.jpg?v=1739535103" alt="black/anthracite 65 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/Kanasa_Unicolor_Produktrender_21.jpg?v=1712645205" alt="White/unicolor 65 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/01_Kansas_Marmor_White_650_1390.jpg?v=1736866831" alt="white/marble look 65 cm" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/kansas-marble-look-black-W65_3.jpg?v=1736759201" alt="black/marble look 65 cm" width="22" height="22" loading="lazy"></li>
+                <li class="product__swatch-more" aria-label="1 more finish">+1</li>
+              </ul>
             </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Clothing Rail Como black, W 120, 3 heights">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAccschwarz1.jpg?v=1669905949" alt="Clothing Rail Como black, W 120, 3 heights" width="900" height="900" loading="lazy"></div>
+              <span class="product__badge">Quick delivery</span>
+              <h3 class="product__name">Clothing Rail Como black, W 120, 3 heights</h3>
+              <p class="product__price">from $402.00</p>
+              <p class="product__options">4 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAccschwarz1.jpg?v=1669905949" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/ComoW120H132blackHalifaxnaturewclothing.jpg?v=1699455349" alt="Black with wooden base" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAccweissHalifax1.jpg?v=1670334113" alt="White with wooden base" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/ComoH132_mitAcc2weiss1.jpg?v=1669906375" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Clothing rail Como white - wooden base - W 60, 3 heights">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAccweissHalifax1.jpg?v=1670244112" alt="Clothing rail Como white - wooden base - W 60, 3 heights" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Clothing rail Como white - wooden base - W 60, 3 heights</h3>
+              <p class="product__price">from $324.00</p>
+              <p class="product__options">5 options</p>
+              <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAccschwarz1.jpg?v=1669905822" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/ComoW60H132blackHalifaxNaturewclothing.jpg?v=1699453505" alt="Black with wooden base" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAcc2weiss1.jpg?v=1669906236" alt="White steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/como-B60-marble-look-h132.jpg?v=1699006762" alt="Marble Look" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/ComoB60H132_mitAccweissHalifax1.jpg?v=1670244112" alt="White with wooden base" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          </ul>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="fshG5" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ «Customer pictures» — اسلایدر ۲۰ عکس لایو ══════════ -->
+    <section class="references" aria-labelledby="fsh-refs-heading">
+      <div class="container">
+        <div class="references__head fsh-slider-head">
+          <div class="references__head-text">
+            <h2 id="fsh-refs-heading" class="h-serif-lg">Customer pictures</h2>
+            <p class="references__desc">Need some inspiration? Here's a few examples of our products in our customer's fabulous fashion stores. Check out our <a href="https://www.instagram.com/mandai_design_de/" target="_blank" rel="noopener noreferrer" class="text-link">Instagram</a> for more.</p>
+          </div>
+          <div class="slider-nav">
+            <button type="button" class="slider-btn" data-slider="fshRefsSlider" data-dir="-1" aria-label="Previous">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M6.5 1.5 3 5l3.5 3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="slider-btn" data-slider="fshRefsSlider" data-dir="1" aria-label="Next">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <ul class="ref-grid fsh-slider" id="fshRefsSlider">
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-displays-azani-boutique_10.jpg?v=1746688260" alt="Shelving system Ceres &mdash; Azani Boutique, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://azani.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Azani Boutique</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/mari-exclusive-store-fixtures-retail-displays-mandai-design_7.jpg?v=1776068106" alt="Shelving system Addison &mdash; MaRi Exclusive Mode, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">MaRi Exclusive Mode</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shelf-shopfitting-mandai-design-nexxtmode.jpg?v=1709044234" alt="Shelving system Addison &mdash; Nexxt Mode, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/nexxtmode/" target="_blank" rel="noopener noreferrer" class="text-link">Nexxt Mode</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Therapy_Boutique_Ceres_Mandai_Design_05.jpg?v=1782993637" alt="Shelving system Ceres &mdash; Therapy Boutique, US" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://www.instagram.com/therapytheboutique/" target="_blank" rel="noopener noreferrer" class="text-link">Therapy Boutique</a>, US</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/Unbenannt-3_bde62941-258d-47fb-84cb-b9b04321d320.jpg?v=1788256614" alt="Clothing rack Jade &mdash; Modeatelier Wagler, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Clothing rack Jade - <a href="https://www.instagram.com/wagler.leipzig" target="_blank" rel="noopener noreferrer" class="text-link">Modeatelier Wagler</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/clothing-rack-kansas-mandaidesign-custom-solution.jpg?v=1776258802" alt="Clothing Rack Kansas Custom solution &amp; Shelving system Ceres &mdash; Iberostar Beachfront Resorts, Spain" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Clothing Rack Kansas Custom solution &amp; Shelving system Ceres - <a href="https://www.instagram.com/iberostar/" target="_blank" rel="noopener noreferrer" class="text-link">Iberostar Beachfront Resorts</a>, Spain</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-displays-azani-boutique_13.jpg?v=1746688259" alt="Shelving system Ceres, display table York, clothing racks Kansas, display pedestal Toro &mdash; Azani Boutique, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres, display table York, clothing racks Kansas, display pedestal Toro - <a href="https://azani.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Azani Boutique</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/dear-petite-boutique-mandai-design.jpg?v=1730189170" alt="Clothing rack Kansas, display pedestals Mana &mdash; Dear Petite, USA" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Clothing rack Kansas, display pedestals Mana - <a href="https://www.instagram.com/dearpetite/" target="_blank" rel="noopener noreferrer" class="text-link">Dear Petite</a>, USA</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/store-fixtures-retail-furniture-mandai-design-eifach.jpg?v=1774002419" alt="Shelving system Addison, clothing racks Kansas, display pedestal Mana &mdash; Eifach Fashion, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison, clothing racks Kansas, display pedestal Mana - <a href="https://www.instagram.com/eifach_fashion/" target="_blank" rel="noopener noreferrer" class="text-link">Eifach Fashion</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-mandai-design-ceres-parthenis-2_ed4305d2-fa6a-48ea-8813-bc98b639907c.jpg?v=1711354839" alt="Shelving system Ceres &mdash; Parthenis, Greece" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://www.instagram.com/parthenisofficial/" target="_blank" rel="noopener noreferrer" class="text-link">Parthenis</a>, Greece</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/weitblick-workwear_1.jpg?v=1744793085" alt="Shelving system Ceres, clothing rack Como &mdash; Weitblick Workwear, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres, clothing rack Como - <a href="https://www.instagram.com/weitblickworkwear/?hl=en" target="_blank" rel="noopener noreferrer" class="text-link">Weitblick Workwear</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/saint_sofia_store_fixtures_retail_design_mandai_design1.jpg?v=1759843410" alt="Shelving system Addison, display pedestals Mana, clothing rack Kansas &mdash; Saint + Sofia, UK" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison, display pedestals Mana, clothing rack Kansas - <a href="https://www.instagram.com/saintandsofia/" target="_blank" rel="noopener noreferrer" class="text-link">Saint + Sofia</a>, UK</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/fashion-shelving-retail-shelf-mandai-design.jpg?v=1713356240" alt="Shelving system Addison &mdash; Kaisers Alpine Styles, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/kaisers_alpinestyles/" target="_blank" rel="noopener noreferrer" class="text-link">Kaisers Alpine Styles</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-store-fixtures-shopfitting-shelving-mandai-beigebee.jpg?v=1779266339" alt="Shelving system Addison, Ontario wall rail, Kansas rack &mdash; The Beige Bee, US" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison, Ontario wall rail, Kansas rack - <a href="https://www.instagram.com/the_beige_bee/" target="_blank" rel="noopener noreferrer" class="text-link">The Beige Bee</a>, US</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-displays-azani-boutique_12.jpg?v=1746688259" alt="Clothing racks Kansas &mdash; Azani Boutique, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Clothing racks Kansas - <a href="https://azani.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Azani Boutique</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/thread-and-seed-fashion-store-interior-design_1.jpg?v=1733814592" alt="Wall rail system Ontario/Glasgow &mdash; Thread &amp; Seed Concept Store, USA" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Wall rail system Ontario/Glasgow - <a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread &amp; Seed Concept Store</a>, USA</p>
+            <p class="ref-card__credit">Photo: <a href="https://dianarosephoto.com/" target="_blank" rel="noopener noreferrer" class="text-link">Diana Rose Photography</a></p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/fashion-store-shelving-mode-stoss.jpg?v=1725081870" alt="Shelving system Addison &mdash; Mode Stoss, Switzerland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Addison - <a href="https://www.instagram.com/mode_stoss/" target="_blank" rel="noopener noreferrer" class="text-link">Mode Stoss</a>, Switzerland</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shelf-shopfitting-mandai-design-modewerk.jpg?v=1708287892" alt="Shelving system Ceres &mdash; Modewerk, Italy" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://www.instagram.com/modewerk.it/" target="_blank" rel="noopener noreferrer" class="text-link">Modewerk</a>, Italy</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shelf-shopfitting-mandai-design-uw.jpg?v=1708288047" alt="Clothing rail Ontario/Glasgow &mdash; Unweit Berlin Concept Store, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Clothing rail Ontario/Glasgow - <a href="https://www.instagram.com/unweit_berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Unweit Berlin Concept Store</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/syltsneaker-ceres-website.jpg?v=1738587921" alt="Shelving system Ceres &mdash; Syltsneaker, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Shelving system Ceres - <a href="https://www.instagram.com/syltsneaker/" target="_blank" rel="noopener noreferrer" class="text-link">Syltsneaker</a>, Germany</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- ══════════ متن راهنمای سکتور ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Open or closed back wall - the question for your store design</h2>
-          <p>Depending on the style of furnishing and the nature of the salesroom, the question of the right wall system often arises. Years ago, walls in a textile shop were often completely covered with a closed shelf. In today's fashion industry, however, the trend is towards open shelving systems. If you have a beautiful brick wall, for example, an open system is the perfect solution to stage it.</p>
-          <p>With the trendy Addison shelving system or the timeless Ceres shopfitting system, you are ideally positioned for the fashion industry. Height adjustability and display units tailored to clothing retail are standard. Our modular shop systems can be perfectly adapted to your premises - and assembly is quick and easy thanks to the tool-free hook-in principle.</p>
-        </div>
-      </div>
-    </section>
+  </main>
 
-    <section class="video-banner" aria-labelledby="video-banner-heading">
-      <video class="video-banner__video" autoplay muted loop playsinline preload="metadata" poster="../images/banner-addison-poster.jpg" aria-hidden="true" tabindex="-1">
-        <source src="../images/banner-addison.mp4" type="video/mp4">
-      </video>
-      <div class="video-banner__overlay" aria-hidden="true"></div>
-      <div class="video-banner__content">
-        <h2 id="video-banner-heading" class="video-banner__title">See us build a fashion store display with our clothing racks.</h2>
-      </div>
-    </section>
-
-    <section class="references" aria-labelledby="refs-heading">
-      <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
-        <div class="references__head">
-          <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">Our products in real stores</h2>
-            <p class="references__desc">Need some inspiration? Here are a few examples of our products in our customers&rsquo; Fashion stores. Explore more on our <a href="../index.html#references" class="text-link">references page</a>.</p>
-          </div>
-        </div>
-        <ul class="ref-grid">
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-lcouture.jpg" alt="Shelving system Ceres — L´Couture, Dubai, UAE" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/lcofficial/" target="_blank" rel="noopener noreferrer" class="text-link">L´Couture</a>, Dubai, UAE</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad Säckingen, Germany</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-thread-seed.jpg" alt="Shelving system Ceres — Thread + Seed, La Jolla, US" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
-            <p class="ref-card__credit">Photo: <a href="https://dianarosephoto.com/" target="_blank" rel="noopener noreferrer" class="text-link">Diana Rose Photography</a></p>
-        </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: این دو سوال در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ CTA ══════════ -->
     <section class="sector-cta" aria-labelledby="cta-heading">
       <div class="container">
         <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Planning a fashion store?</h2>
-          <p class="sector-cta__text">Not sure where to start? Our team of interior designers plans your space with our products - free of charge, using your floor plan and measurements.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
+          <h2 id="cta-heading" class="h-serif-xl">Get in touch</h2>
+          <p class="sector-cta__text">Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+          <div class="contact__status" role="status" data-contact-status hidden></div>
+          <form class="contact__form contact__form--compact" data-contact-form action="../contact.php" novalidate>
+            <div class="contact__row">
+              <div>
+                <label class="sr-only" for="cf-name">Name (required)</label>
+                <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+              </div>
+              <div>
+                <label class="sr-only" for="cf-email">Email (required)</label>
+                <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
+              </div>
+            </div>
+            <div>
+              <label class="sr-only" for="cf-phone">Phone</label>
+              <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
+            </div>
+            <div>
+              <label class="sr-only" for="cf-message">Message (required)</label>
+              <textarea id="cf-message" name="message" required rows="4" placeholder="Message *" class="field field--textarea"></textarea>
+            </div>
+            <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+            <div class="contact__submit">
+              <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+                <span class="btn__spinner" aria-hidden="true"></span>
+                <span class="btn__label">Submit</span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Shop fittings for clothes stores - displaying fashion beautifully</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Important details for fashion stores</h3>
-            <p>From the correct depth of a shelf to the optimum height of the centre unit furniture, every detail should be taken into account at the planning stage. In our professional shopfitting systems for fashion and clothes, these crucial details are already integrated - so your merchandise is always staged perfectly.</p>
-          </div>
-          <div>
-            <h3>Modular and flexible</h3>
-            <p>Clothing rails and racks present clothes space-saving and sorted by size or color, and help divide up the salesroom - guiding customers systematically through your store. Because our systems are modular, they can be extended and redesigned at any time.</p>
-          </div>
-          <div>
-            <h3>Modern shop furnishings contribute to retail success</h3>
-            <p>Besides location and the right merchandise, the external appearance of your shop is a decisive success factor. With modern store fixtures from Mandai Design, your clothing store becomes an experience that attracts customers and encourages them to buy.</p>
-          </div>
+
+  <!-- ══════════ متن سئو — در مرجع بعد از فرم «Get in touch» قرار دارد ══════════ -->
+  <section class="seo-text" aria-labelledby="ont-seo-heading">
+    <div class="container">
+      <h2 id="ont-seo-heading" class="seo-text__heading">Clothing rail system Ontario - modern shop fittings with style</h2>
+      <div class="seo-text__grid">
+        <div>
+          <h3>Perfect use of retail space</h3>
+          <p>With rising prices for rented commercial space, the desire for effectively used sales space is increasing. Ontario, as a slim and straight-lined clothes rail system, offers a good alternative to the classic shelf or cupboard.</p>
+          <p>Another advantage is the uncomplicated design. Additional elements can be added flexibly and quickly when changing the product range or expanding.</p>
+        </div>
+        <div>
+          <h3>High-quality powder coating</h3>
+          <p>The powder-coated steel construction is scratch-resistant and available in black or white. Both surfaces are matt and have a high-quality fine structure.</p>
+          <p>Black reinforces a classic, industrial atmosphere, while white is lighter and more feminine. Both colours are classics and both timeless and modern.</p>
+        </div>
+        <div>
+          <h3>Uncomplicated assembly - DIY!</h3>
+          <p>Assembly is uncomplicated and can also be done by yourself. The Ontario clothes rail stands on the floor as a complete construction and is only mounted on the wall in the upper area.</p>
+          <p>Adjustable feet on the wall uprights facilitate accurate assembly if the floor is uneven. A fastening set with screws for wall mounting and assembly instructions are included in the delivery.</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+
+  <!-- ══════════ متن سئو — در مرجع بعد از فرم «Get in touch» ══════════ -->
+  <section class="seo-text" aria-labelledby="fsh-seo-heading">
+    <div class="container">
+      <h2 id="fsh-seo-heading" class="seo-text__heading">Shop fittings for clothes stores - displaying fashion beautifully</h2>
+      <div class="seo-text__grid">
+        <div>
+          <h3>Important details about shop fittings for clothes store</h3>
+          <p>A shopfitting system for fashion boutiques has to fulfil many additional functions that are important to consider when furnishing a clothes store. From the correct depth of a shelf to the optimum height of the centre unit furniture, every detail should be taken into account at the planning stage. In our professional shopfitting systems for fashion and clothes, we have already integrated these crucial practical functions.</p>
+          <p>Today's customers want to be surprised by emotionally appealing shopping experiences. Be successful and equip your fashion shop with modern shop fittings.</p>
+        </div>
+        <div>
+          <h3>Shopfitting systems for the back wall - open or closed?</h3>
+          <p>Depending on the style of furnishing and the nature of the salesroom, the question of the right wall system often arises. Years ago, walls in a textile shop were often completely covered with a closed shelf. In today's fashion industry, however, the trend is towards open shelving systems. If you have a beautiful old brick wall for example, the Glasgow open shopfitting system is the perfect solution for presenting hanging clothes. At the same time, you save a lot of money on expensive shopfitting.</p>
+        </div>
+        <div>
+          <h3>Modular and flexible - ideal shopfitting furniture for clothes stores</h3>
+          <p>With the trendy Addison shelving system or the timeless Ceres shopfitting system, you are ideally positioned for the fashion industry. Height adjustability and display units tailored to the clothing retail sector are standard. Our modular shop systems are flexibly constructed and can be perfectly adapted to the respective premises. Assembly and installation of our shelves are quick and easy thanks to a well thought-out design.</p>
+        </div>
+        <div>
+          <h3>Modern shop furnishings contribute to retail success</h3>
+          <p>The success of a boutique or fashion store depends on many factors. Besides the location and the right merchandise, it is mainly the external appearance of the shop. In stationary retail, the choice of shop fittings is paramount. Today, clothes are found on every corner. But in order to attract customers from your target group and ready to buy, the clothing shop must be perfectly staged. A modern shopfitting system stands out from the competition not only with beautiful design, but also with various design options it offers to set the stage in the shop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ══════════ فوتر ══════════ -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -601,10 +1298,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -621,14 +1318,14 @@
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
             <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="../index.html#categories">Clothing Racks</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
             <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
             <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
             <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -646,12 +1343,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -671,7 +1368,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -680,5 +1377,60 @@
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
   <script src="../assets/js/main.js" defer></script>
+
+  <script>
+    /* تب‌های رنگ: فیلتر کارت‌ها بر اساس black/white (مثل مرجع) */
+    (function () {
+      document.querySelectorAll('[data-color-slider]').forEach(function (ul) {
+        var tabs = ul.closest('section').querySelectorAll('.fsh-tab');
+        tabs.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            tabs.forEach(function (t) {
+              var active = t === tab;
+              t.classList.toggle('is-active', active);
+              t.setAttribute('aria-pressed', active ? 'true' : 'false');
+            });
+            var color = tab.getAttribute('data-color');
+            ul.querySelectorAll('li[data-color]').forEach(function (li) {
+              li.hidden = li.getAttribute('data-color') !== color;
+            });
+            ul.scrollTo({ left: 0 });
+            ul.dispatchEvent(new Event('scroll'));
+          });
+        });
+      });
+    })();
+
+    /* فلش‌های اسلایدرهای ردیفی: وضعیت ابتدا/انتها */
+    (function () {
+      document.querySelectorAll('.fsh-grid-wrap').forEach(function (wrap) {
+        var ul = wrap.querySelector('ul');
+        var prev = wrap.querySelector('.fsh-grid__btn--prev');
+        var next = wrap.querySelector('.fsh-grid__btn--next');
+        function sync() {
+          if (prev) prev.toggleAttribute('disabled', ul.scrollLeft <= 4);
+          if (next) next.toggleAttribute('disabled', ul.scrollLeft >= ul.scrollWidth - ul.clientWidth - 4);
+        }
+        ul.addEventListener('scroll', sync, { passive: true });
+        sync();
+      });
+    })();
+
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+
 </body>
 </html>
+

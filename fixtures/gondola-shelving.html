@@ -1,10 +1,10 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ دستهٔ تجهیزات: Gondola Shelving
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در fixtures/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن: Gondola Shelving
+  (بازسازی موبه‌مو از mandai-design.com/collections/gondola-shelving — 2026-09)
+  هیرو → H1 + معرفی → Lugano (متن/عکس) + گرید ۹ محصول → Capri (عکس/متن) + گرید ۹ محصول
+  → Right Gondola + CTA → Customize → FAQ نوار خاکستری (۱۷) → فرم تماس → متن سئو (۳ ستون)
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,58 +12,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
   <title>Modular Gondola Shelving and Displays for Retail Stores | Mandai Design</title>
-  <meta name="description" content="Freestanding gondola shelving for retail stores: open design, height-adjustable, made in Germany. Order online now.">
+  <meta name="description" content="Freestanding gondola shelving for retail stores: modular, accessible from multiple sides and height-adjustable. Discover Lugano and Capri gondola shelving by Mandai Design.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/fixtures/gondola-shelving.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/fixtures/gondola-shelving.html">
   <meta property="og:site_name" content="Mandai Design">
   <meta property="og:title" content="Modular Gondola Shelving and Displays for Retail Stores | Mandai Design">
-  <meta property="og:description" content="Freestanding gondola shelving for retail stores: open design, height-adjustable, made in Germany. Order online now.">
-  <meta property="og:image" content="https://www.example.com/images/fixtures/gondola-shelving.jpg">
+  <meta property="og:description" content="Freestanding gondola shelving for retail stores: modular, accessible from multiple sides and height-adjustable. Discover Lugano and Capri gondola shelving by Mandai Design.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style01_Mandai_Design_Shop3.jpg?v=1780905861&width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Gondola shelving unit in a retail store">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Modular gondola shelving Lugano by Mandai Design in a concept store">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Modular Gondola Shelving and Displays for Retail Stores | Mandai Design">
-  <meta name="twitter:description" content="Freestanding gondola shelving for retail stores: open design, height-adjustable, made in Germany. Order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/fixtures/gondola-shelving.jpg">
-
+  <meta name="twitter:description" content="Freestanding gondola shelving for retail stores: modular, accessible from multiple sides and height-adjustable. Discover Lugano and Capri gondola shelving by Mandai Design.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style01_Mandai_Design_Shop3.jpg?v=1780905861&width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/fixtures/gondola-shelving.jpg" as="image">
-
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ بنر پهن، موبایل تصویر مربع */
+    .fsh-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .fsh-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .fsh-hero-desktop { display: none; }
+      .fsh-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .fsh-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* بخش هر سیستم: ردیف دوستونه — تصویر یک‌سمت، متن+دکمه سمت دیگر (مثل مرجع) */
+    .fsh-sys__row { display: grid; gap: 40px; align-items: center; }
+    .fsh-sys__media { background: var(--bg-media); }
+    .fsh-sys__media img { display: block; width: 100%; height: auto; }
+    .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
+    .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
+    .fsh-sys__cta { margin-top: 24px; }
+    @media (min-width: 1024px) {
+      .fsh-sys__row { grid-template-columns: repeat(2, 1fr); gap: 64px; }
+      .fsh-sys__row--flip .fsh-sys__media { order: 2; }
+      .fsh-sys__row--flip .fsh-sys__copy { order: 1; }
+    }
+    /* تب‌های رنگ (مثل مرجع: «Ontario in black / in white» + فلش‌های بلند) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .fsh-slider-row > li[hidden] { display: none; }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    .slider-btn--long[disabled] { opacity: 0.3; }
+    /* ردیف‌های محصول: اسلایدر تک‌ردیفه با فلش‌های شناور دو طرف (مثل مرجع) */
+    .fsh-grid-wrap { position: relative; margin-top: 30px; }
+    .fsh-slider-row {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 10px;
+      scrollbar-width: none;
+    }
+    .fsh-slider-row::-webkit-scrollbar { display: none; }
+    .fsh-slider-row > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider-row > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider-row > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider-row > li { flex-basis: 23.5%; } }
+    .fsh-grid__btn {
+      position: absolute; top: 30%; transform: translateY(-50%); z-index: 2;
+      border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px;
+    }
+    .fsh-grid__btn--prev { left: -14px; }
+    .fsh-grid__btn--next { right: -14px; }
+    .fsh-grid__btn svg { width: 27px; height: 15px; }
+    .fsh-grid__btn[disabled] { opacity: 0.3; }
+    /* معرفی و متن سئو: چپ‌چین (مثل مرجع) */
+    .sys-intro__title, .sys-intro__lead { text-align: left; }
+    .seo-text__heading { text-align: left; margin-inline: 0; }
+    /* برچسب گروه رنگ (مثل مرجع: «Ceres in black» / «Ceres in white») */
+    .fsh-label { margin: 34px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    /* ✏️ ویرایش: تصاویر محصولات مربع هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .fsh-grid .product__media { aspect-ratio: 1 / 1; }
+    /* اسلایدر گالری مشتریان */
+    .fsh-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .fsh-slider::-webkit-scrollbar { display: none; }
+    .fsh-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fsh-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fsh-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fsh-slider > li { flex-basis: 23.5%; } }
+    .fsh-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* سواچ‌ها + حباب «+1» (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__swatch-more {
+      width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.2);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 9px; color: rgba(26, 26, 26, 0.6); background: #fff;
+    }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .product__badge {
+      display: inline-block; margin: 14px 0 6px;
+      font-size: 10.5px; line-height: 1; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #000; border: 1px solid #000; border-radius: 999px; padding: 5px 10px 4px;
+    }
 
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
+    /* ── صفحهٔ گوندولا (مثل مرجع) ── */
+    .gon-grid { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 20px; }
+    @media (max-width: 1024px) { .gon-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px)  { .gon-grid { grid-template-columns: 1fr; } }
+    .gon-grid .product__media { aspect-ratio: 1 / 1; }
+    .gon-label { margin: 56px 0 -6px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(26, 26, 26, 0.55); }
+    .gon-cta { margin-top: 26px; }
+    /* FAQ: نوارهای خاکستری مثل مرجع */
+    .gon-faq .faq__inner { max-width: 880px; }
+    .gon-faq .faq__item { background: var(--bg-grey); border: 0; margin-bottom: 10px; }
+    .gon-faq .faq__button { padding: 17px 22px; }
+    .gon-faq .faq__panel { padding: 0 22px 18px; }
+    /* متن سئو: سه ستون پایین مثل مرجع */
+    .gon-cols { margin-top: 34px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px 24px; }
+    @media (max-width: 900px) { .gon-cols { grid-template-columns: 1fr; } }
+    .gon-cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 19px; }
+    .gon-cols p { margin-top: 10px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .cl-bullets { margin-top: 20px; display: grid; gap: 10px; list-style: none; padding: 0; }
+    .cl-bullets li { position: relative; padding-left: 18px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .cl-bullets li::before { content: ""; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--foreground); }
+    </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Modular Gondola Shelving",
+      "name": "Modular Gondola Shelving and Displays for Retail Stores",
       "url": "https://www.example.com/fixtures/gondola-shelving.html",
-      "description": "Freestanding gondola shelving for retail stores: open design, height-adjustable, made in Germany. Order online now.",
+      "description": "Freestanding gondola shelving for retail stores: modular, accessible from multiple sides and height-adjustable. Discover Lugano and Capri gondola shelving by Mandai Design.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/fixtures/gondola-shelving.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style01_Mandai_Design_Shop3.jpg?v=1780905861"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,7 +189,7 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Store Fixtures",
-          "item": "https://www.example.com/#categories"
+          "item": "https://www.example.com/index.html#categories"
         },
         {
           "@type": "ListItem",
@@ -90,23 +201,141 @@
     },
     {
       "@type": "FAQPage",
-      "url": "https://www.example.com/fixtures/gondola-shelving.html",
-      "inLanguage": "en",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is gondola shelving?",
+          "name": "What Is Gondola Shelving?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Gondola shelving is a freestanding retail fixture that can be positioned anywhere on the sales floor. It is accessible from one or both sides and creates additional display space wherever it is needed."
+            "text": "Gondola shelving is a freestanding retail fixture that can be positioned throughout the sales floor to create additional display space wherever it is needed."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
+          "name": "What Are the Benefits of Gondola Shelving?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
+            "text": "Because gondola shelves can be accessed from multiple sides, they are ideal for creating central floor displays, product islands, promotional areas, and well-organized store layouts. They help retailers maximize floor space, improve product visibility, and guide customers through the store more effectively."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Makes Gondola Shelving Different from Wall Shelving?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unlike traditional wall shelving, gondola shelving offers greater flexibility when planning and organizing retail environments. With a variety of sizes, configurations, and finishes available, Mandai Design gondola shelving systems can be adapted to a wide range of products and store concepts, from small boutiques and specialty stores to larger retail environments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Types of Gondola Shelving Are Available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gondola shelving comes in a variety of configurations to suit different store layouts and merchandising needs. Depending on the products being showcased, retailers may choose between single-sided and double-sided display options."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Gondola Shelving Modular?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many modern gondola shelving systems are modular, allowing them to be adapted as requirements change. This makes it easy to reorganize and adjust sales floors over time, making gondola shelving a long-term solution for stores that regularly update their assortments and product displays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is Gondola Shelving Used For?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gondola shelving is used to create additional merchandising space throughout the sales floor. As freestanding fixtures, gondola shelves make effective use of central floor areas while keeping products organized and easily accessible from multiple sides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Products Can Be Displayed on Gondola Shelving?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depending on the configuration, retail gondolas can accommodate hanging apparel, folded garments, accessories, cosmetics, home goods, and many other product categories. Different shelving options and display fittings support a variety of presentation styles, making gondola shelving suitable for a wide range of stores and retail concepts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Gondola Shelving Be Adapted to Changing Requirements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mandai Design gondola shelving is designed to adapt to changing products and store requirements. Shelves and display fittings can be added, rearranged, or replaced as needed, while shelf heights can be adjusted in 50 mm (1.97\") increments to suit different products and presentation styles. This flexibility makes it easy to update product displays, introduce new collections, or adapt layouts over time without replacing entire fixtures. An additional advantage is that Lugano gondola shelving is compatible with the Ceres and Cetus retail shelving systems, providing greater freedom when creating cohesive store layouts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is the Ideal Height for Gondola Shelving?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The ideal height for gondola shelving depends on your product range, available floor space, and the shopping experience you want to create. For most retail environments, a height that provides sufficient display space while maintaining clear visibility across the sales floor is often the best solution. In many stores, a height of 155 cm (61\") has proven to be a practical choice. Lower configurations are particularly well suited to open shop concepts, as they allow for clearer views across the sales floor and create a more open feel throughout the store. Taller versions provide additional display space and are often a practical choice for stores with larger assortments or limited floor space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Gondola Shelving Is Right for My Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our gondola shelving is designed to balance display capacity, accessibility, and high-quality product presentation. Since every product range and store concept comes with its own requirements, we are happy to help you find the solution that best suits your store."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Much Weight Can Gondola Shelving Hold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mandai Design gondola shelving is designed for everyday use in retail environments and is suitable for a wide range of product categories. The maximum load capacity of a gondola shelving unit depends on its configuration and intended use. Each shelf can support up to 15 kg (33 lbs). With an additional support profile, the load capacity increases to up to 30 kg (66 lbs) per shelf."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Do I Choose the Right Shelves for My Products?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choosing the right gondola shelving starts with the products you want to display. Fashion rails are ideal for hanging apparel, while slanted shelves help showcase books, magazines and more in a front-facing position. Straight shelves are well suited to folded clothing, cosmetics, fragrances, and many other product categories."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why Should the System Be Adaptable Over Time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is also important to consider how easily the system can adapt over time. Modular retail gondolas can be reconfigured as assortments change, making it easier to update product displays and store layouts without investing in entirely new store fixtures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Size Gondola Shelving Do I Need for My Store?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The right gondola shelving depends on your product range, available floor space, and customer flow throughout the store. The size of the sales floor and the amount of space needed around the fixtures can help determine the most suitable configuration."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Gondola Shelving Suitable for Seasonal Promotions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In addition to adapting to changing assortments and store layouts, retail gondolas are particularly well suited for creating temporary promotional and seasonal displays throughout the year. Thanks to their freestanding and modular design, our retail gondolas can be repositioned and reconfigured as needed, making it easy to refresh product presentations without major changes to the overall store layout."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Gondola Shelving Be Adapted to Different Retail Sectors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Mandai Design gondola shelving can be adapted to suit different products, store concepts, and presentation goals. Thanks to its modular design, shelving and display fittings can be configured to support a wide range of retail sectors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Mandai Design Offer Custom Gondola Solutions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have specific requirements, we are also happy to develop custom solutions. Whether you need a particular size, a different finish, or a display tailored to a unique product, our team can help you find the right approach. Contact us for a personal consultation, and together we will develop a solution that fits your store and products."
           }
         }
       ]
@@ -133,8 +362,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -144,15 +373,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
-            <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -170,8 +399,9 @@
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fashion.html">Fashion</a></li>
                 <li><a href="../sectors/menswear.html">Menswear</a></li>
                 <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
@@ -179,44 +409,88 @@
                 <li><a href="../sectors/shoes.html">Shoes</a></li>
                 <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
                 <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- Bakery → bakery.html (ساخته شد؛ قبلاً موقتاً Fine Foods بود) -->
+                <li><a href="../sectors/bakery.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
                 <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
+              Store Fixtures
+              <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </a>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html" aria-current="page">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
+            </div>
+          </li>
+          <li class="nav__item">
+            <a href="../index.html#categories" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="retail-shelving.html">Retail Shelving</a></li>
-                <li><a href="gondola-shelving.html" aria-current="page">Gondola Shelving</a></li>
-                <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-                <li><a href="shop-counters.html">Shop Counters</a></li>
-                <li><a href="reception-desks.html">Reception Desks</a></li>
-                <li><a href="display-tables.html">Display Tables</a></li>
-                <li><a href="display-pedestals.html">Display Pedestals</a></li>
-                <li><a href="quick-delivery.html">Quick Delivery</a></li>
+                <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+                <li><a href="../fixtures/gondola-shelving.html" aria-current="page">Gondola Shelving</a></li>
+                <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+                <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+                <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+                <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+                <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
               </ul>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
             <div class="nav__dropdown">
               <ul>
-                <li><a href="../systems/addison.html">Addison</a></li>
-                <li><a href="../systems/ceres.html">Ceres</a></li>
-                <li><a href="../systems/cetus.html">Cetus</a></li>
-                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-                <li><a href="../systems/slimline.html">Slimline</a></li>
-                <li><a href="../systems/ontario.html">Ontario</a></li>
-                <li><a href="../systems/bergen.html">Bergen</a></li>
-                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                <li><a href="addison.html">Addison</a></li>
+                <li><a href="ceres.html">Ceres</a></li>
+                <li><a href="cetus.html">Cetus</a></li>
+                <li><a href="brooklyn.html">Brooklyn</a></li>
+                <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="bergen.html">Bergen</a></li>
+                <li><a href="customize.html">Customize your shelf</a></li>
               </ul>
             </div>
           </li>
@@ -225,22 +499,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-                <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-                <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -283,60 +569,65 @@
               <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
               <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
               <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/bakery.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
               <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="#main-content">Store Fixtures</a>
+            <a href="../index.html#categories">Store Fixtures</a>
             <ul class="mobile-menu__sub">
-              <li><a href="retail-shelving.html">Retail Shelving</a></li>
-              <li><a href="gondola-shelving.html" aria-current="page">Gondola Shelving</a></li>
-              <li><a href="racks-and-rails.html">Racks and Rails</a></li>
-              <li><a href="shop-counters.html">Shop Counters</a></li>
-              <li><a href="reception-desks.html">Reception Desks</a></li>
-              <li><a href="display-tables.html">Display Tables</a></li>
-              <li><a href="display-pedestals.html">Display Pedestals</a></li>
-              <li><a href="quick-delivery.html">Quick Delivery</a></li>
+              <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+              <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
+              <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
+              <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+              <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
+              <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+              <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../systems/addison.html">Addison</a></li>
-              <li><a href="../systems/ceres.html">Ceres</a></li>
-              <li><a href="../systems/cetus.html">Cetus</a></li>
-              <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
-              <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
-              <li><a href="../systems/bergen.html">Bergen</a></li>
-              <li><a href="../systems/customize.html">Customize your shelf</a></li>
+              <li><a href="addison.html">Addison</a></li>
+              <li><a href="ceres.html">Ceres</a></li>
+              <li><a href="cetus.html">Cetus</a></li>
+              <li><a href="brooklyn.html">Brooklyn</a></li>
+              <li><a href="slimline.html">Slimline</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
+              <li><a href="bergen.html">Bergen</a></li>
+              <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-              <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-              <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
-          <li><a href="../index.html#faq">FAQ</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -358,219 +649,485 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
-
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#categories">Store Fixtures</a></li>
-          <li><span aria-current="page">Gondola Shelving</span></li>
-        </ol>
-      </div>
-    </nav>
-
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/fixtures/gondola-shelving.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/fixtures/gondola-shelving.jpg" alt="Gondola shelving unit in a retail store" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Modular Gondola Shelving</h1>
-        </div>
-      </div>
+    <!-- ══════════ هیرو ══════════ -->
+    <section class="sys-hero" aria-label="Modular gondola shelving by Mandai Design">
+      <img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style01_Mandai_Design_Shop3.jpg?v=1780905861&width=1800" alt="Gondola shelving Lugano in a modern concept store" class="sys-hero__img" width="1800" height="1100" loading="eager">
     </section>
 
     <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">STORE FIXTURES</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">The right gondola shelving for your sales floor</h2>
-        <div class="intro__text">
-          <p>Gondola shelving is a freestanding retail fixture that can be positioned throughout the sales floor to create additional display space wherever it is needed.</p>
-          <p>Unlike traditional retail gondolas, our Lugano gondola shelving features an open design without a solid center panel. This creates a lighter visual appearance and keeps products visible from multiple angles.</p>
+    <section class="sys-intro" aria-labelledby="gon-intro-heading">
+      <div class="container">
+        <h1 id="gon-intro-heading" class="sys-intro__title">Modular Gondola Shelving</h1>
+        <p class="sector-alt__text">Gondola shelving is one of the most versatile merchandising solutions for retail stores. Freestanding gondola shelves create additional display space while helping organize products throughout the sales floor. Accessible from multiple sides, they make it easy to highlight merchandise and encourage product visibility. Adjustable shelves allow the system to accommodate different product sizes and changing assortments, making display gondolas a flexible solution for a wide range of retail environments.</p>
+      </div>
+    </section>
+
+    <!-- ══════════ Gondola Shelving Lugano ══════════ -->
+    <section class="sector-alt fsh-sys" aria-labelledby="gon-lugano-heading">
+      <div class="container">
+        <div class="fsh-sys__row fsh-sys__row--flip">
+          <div class="fsh-sys__copy">
+            <h2 id="gon-lugano-heading" class="sector-alt__title">Gondola Shelving Lugano</h2>
+            <p class="fsh-sys__sub"><strong>Open, modern design.</strong></p>
+            <p class="sector-alt__text">Unlike traditional retail gondolas, Lugano gondola shelving features an open design without a solid center panel. This creates a lighter visual appearance and keeps products visible from multiple angles. Its space-efficient design is particularly well suited to modern retail environments where product visibility and efficient use of floor space are key considerations.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style01_Mandai_Design_Shop3.jpg?v=1780905861&width=1200" alt="Gondola shelving Lugano in a concept store" width="1200" height="1200" loading="lazy"></div>
+        </div>
+        <p class="gon-label">Gondola Shelving Lugano</p>
+        <div class="gon-grid">
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Concept Store - Style 1">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style01_Mandai_Design.jpg?v=1780905504&width=900" alt="Gondola Shelving Lugano - Concept Store - Style 1" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Concept Store - Style 1</h3>
+            <p class="product__price">$591.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Concept Store - Style 2">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style02_Mandai_Design.jpg?v=1780908179&width=900" alt="Gondola Shelving Lugano - Concept Store - Style 2" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Concept Store - Style 2</h3>
+            <p class="product__price">$721.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Concept Store - Style 3">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Concept_Store_Style03_Mandai_Design.jpg?v=1780909307&width=900" alt="Gondola Shelving Lugano - Concept Store - Style 3" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Concept Store - Style 3</h3>
+            <p class="product__price">$828.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Cosmetics - Style 1">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Cosmetics_Style01_Mandai_Design.jpg?v=1780905032&width=900" alt="Gondola Shelving Lugano - Cosmetics - Style 1" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Cosmetics - Style 1</h3>
+            <p class="product__price">$670.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Cosmetics - Style 2">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Cosmetics_Style02_Mandai_Design.jpg?v=1780909681&width=900" alt="Gondola Shelving Lugano - Cosmetics - Style 2" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Cosmetics - Style 2</h3>
+            <p class="product__price">$787.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Cosmetics - Style 3">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Cosmetics_Style03_Mandai_Design.jpg?v=1780910428&width=900" alt="Gondola Shelving Lugano - Cosmetics - Style 3" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Cosmetics - Style 3</h3>
+            <p class="product__price">$905.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Kids Store - Style 1">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style01_Mandai_Design_white.jpg?v=1780906262&width=900" alt="Gondola Shelving Lugano - Kids Store - Style 1" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Kids Store - Style 1</h3>
+            <p class="product__price">$1,098.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Kids Store - Style 2">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style02_Mandai_Design_white.jpg?v=1780906837&width=900" alt="Gondola Shelving Lugano - Kids Store - Style 2" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Kids Store - Style 2</h3>
+            <p class="product__price">$1,071.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Kids Store - Style 3">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style03_Mandai_Design_white.jpg?v=1780907558&width=900" alt="Gondola Shelving Lugano - Kids Store - Style 3" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Lugano - Kids Store - Style 3</h3>
+            <p class="product__price">$1,129.00</p>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ══════════ محصولات ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
+    <!-- ══════════ Gondola Shelving Capri ══════════ -->
+    <section class="sector-alt fsh-sys" aria-labelledby="gon-capri-heading">
       <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our gondola shelving</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Gondola Shelving Lugano">
-              <div class="product__media">
-                <img src="../images/cat-gondola.jpg" alt="Gondola shelving Lugano, open design" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Gondola Shelving Lugano</h3>
-              <p class="product__variants">Open, double-sided</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Gondola Shelving Capri">
-              <div class="product__media">
-                <img src="../images/cat-shelving-systems.jpg" alt="Gondola shelving Capri with central divider" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Gondola Shelving Capri</h3>
-              <p class="product__variants">With central divider</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Pedestals">
-              <div class="product__media">
-                <img src="../images/cat-pedestals.jpg" alt="Display pedestals to combine with gondolas" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Pedestals</h3>
-              <p class="product__variants">Combine freely</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter to match the gondola shelving" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Matching pieces</p>
-            </a>
-          </li>
+        <div class="fsh-sys__row">
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/2026_06_capri_gondelregal_inspiration_v01_2048x2048_93e0461b-9c87-44d9-ae7f-989e9060a438.jpg?v=1780593581&width=1200" alt="Double-sided gondola shelving Capri" width="1200" height="1200" loading="lazy"></div>
+          <div class="fsh-sys__copy">
+            <h2 id="gon-capri-heading" class="sector-alt__title">Gondola Shelving Capri</h2>
+            <p class="fsh-sys__sub"><strong>Double-sided gondola shelving for maximum display space.</strong></p>
+            <p class="sector-alt__text">The Capri gondola shelving range features a central divider, creating two independent sides that can be merchandised separately. As classic centre-floor units, these gondolas provide generous shelving capacity while using retail space efficiently &ndash; making them ideal for structured product presentation within the store.</p>
+          </div>
+        </div>
+        <p class="gon-label">Gondola Shelving Capri</p>
+        <div class="gon-grid">
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Concept Store - Style 1">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_ConceptStore_Style01_Mandai_Design.jpg?v=1782395571&width=900" alt="Gondola Shelving Capri - Concept Store - Style 1" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Concept Store - Style 1</h3>
+            <p class="product__price">$826.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Concept Store - Style 2">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_ConceptStore_Style02_Mandai_Design.jpg?v=1782395785&width=900" alt="Gondola Shelving Capri - Concept Store - Style 2" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Concept Store - Style 2</h3>
+            <p class="product__price">$1,010.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Concept Store - Style 3">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_ConceptStore_Style03_Mandai_Design.jpg?v=1782396012&width=900" alt="Gondola Shelving Capri - Concept Store - Style 3" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Concept Store - Style 3</h3>
+            <p class="product__price">$1,166.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Fine Foods - Style 1">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_FineFoods_Style01_Mandai_Design.jpg?v=1782394583&width=900" alt="Gondola Shelving Capri - Fine Foods - Style 1" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Fine Foods - Style 1</h3>
+            <p class="product__price">$945.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Fine Foods - Style 2">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_FineFoods_Style02_Mandai_Design.jpg?v=1782394767&width=900" alt="Gondola Shelving Capri - Fine Foods - Style 2" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Fine Foods - Style 2</h3>
+            <p class="product__price">$1,114.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Fine Foods - Style 3">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_FineFoods_Style03_Mandai_Design.jpg?v=1782395388&width=900" alt="Gondola Shelving Capri - Fine Foods - Style 3" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Fine Foods - Style 3</h3>
+            <p class="product__price">$1,262.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Athleisure - Style 1">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_Athletics_Style01_Mandai_Design.jpg?v=1782393190&width=900" alt="Gondola Shelving Capri - Athleisure - Style 1" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Athleisure - Style 1</h3>
+            <p class="product__price">$1,491.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Athleisure - Style 2">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_Athletics_Style02_Mandai_Design.jpg?v=1782393398&width=900" alt="Gondola Shelving Capri - Athleisure - Style 2" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Athleisure - Style 2</h3>
+            <p class="product__price">$1,553.00</p>
+          </a>
+          <a href="../index.html#contact" class="product" aria-label="Gondola Shelving Capri - Athleisure - Style 3">
+            <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_Athletics_Style03_Mandai_Design.jpg?v=1782393558&width=900" alt="Gondola Shelving Capri - Athleisure - Style 3" width="900" height="900" loading="lazy"></div>
+            <h3 class="product__name">Gondola Shelving Capri - Athleisure - Style 3</h3>
+            <p class="product__price">$1,932.00</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ The Right Gondola Shelving for Your Sales Floor ══════════ -->
+    <section class="sector-alt" aria-labelledby="gon-right-heading">
+      <div class="container">
+        <h2 id="gon-right-heading" class="sector-alt__title">The Right Gondola Shelving for Your Sales Floor</h2>
+        <p class="sector-alt__text">Every retail space has different requirements. That&rsquo;s why we work with you to create a gondola shelving solution tailored to your products, available space, and merchandising goals. From the initial concept to the final configuration, we&rsquo;re here to help every step of the way.</p>
+        <p class="gon-cta"><a href="../index.html#contact" class="btn btn--dark">GET IN TOUCH</a></p>
+      </div>
+    </section>
+
+    <!-- ══════════ Customize Your Gondola Shelving ══════════ -->
+    <section class="sector-alt fsh-sys" aria-labelledby="gon-custom-heading">
+      <div class="container">
+        <div class="fsh-sys__row fsh-sys__row--flip">
+          <div class="fsh-sys__copy">
+            <h2 id="gon-custom-heading" class="sector-alt__title">Customize Your Gondola Shelving</h2>
+            <p class="sector-alt__text">Choose from black or white steel and a range of wood finishes to create a look that suits your retail space. <a href="../index.html#help" class="text-link"><strong>Free material samples</strong></a> help you compare options and find the right combination.</p>
+          </div>
+          <div class="fsh-sys__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Kids_Store_Style02_Mandai_Design_Shop3.jpg?v=1780906878&width=1200" alt="Gondola shelving Lugano in a kids store" width="1200" height="1200" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ══════════ FAQ ══════════ -->
+  <!-- ✏️ ویرایش: متن سؤال‌ها در خروجی مرجع رندر نمی‌شود؛ سؤال‌ها از روی پاسخ‌های ورداشتی بازسازی شده‌اند (پاسخ‌ها ورداشتی) -->
+  <section class="faq gon-faq" aria-labelledby="gon-faq-heading">
+    <div class="container">
+      <div class="faq__inner">
+        <h2 id="gon-faq-heading" class="faq__heading">FAQ: Gondola Retail Shelving</h2>
+        <div class="faq__list">
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-0" id="gon-faq-button-0">
+                <span>What Is Gondola Shelving?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-0" role="region" aria-labelledby="gon-faq-button-0" hidden>
+              <p>Gondola shelving is a freestanding retail fixture that can be positioned throughout the sales floor to create additional display space wherever it is needed.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-1" id="gon-faq-button-1">
+                <span>What Are the Benefits of Gondola Shelving?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-1" role="region" aria-labelledby="gon-faq-button-1" hidden>
+              <p>Because gondola shelves can be accessed from multiple sides, they are ideal for creating central floor displays, product islands, promotional areas, and well-organized store layouts. They help retailers maximize floor space, improve product visibility, and guide customers through the store more effectively.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-2" id="gon-faq-button-2">
+                <span>What Makes Gondola Shelving Different from Wall Shelving?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-2" role="region" aria-labelledby="gon-faq-button-2" hidden>
+              <p>Unlike traditional wall shelving, gondola shelving offers greater flexibility when planning and organizing retail environments. With a variety of sizes, configurations, and finishes available, Mandai Design gondola shelving systems can be adapted to a wide range of products and <a href="../index.html#sectors" class="text-link">store concepts</a>, from small boutiques and specialty stores to larger retail environments.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-3" id="gon-faq-button-3">
+                <span>What Types of Gondola Shelving Are Available?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-3" role="region" aria-labelledby="gon-faq-button-3" hidden>
+              <p>Gondola shelving comes in a variety of configurations to suit different store layouts and merchandising needs. Depending on the products being showcased, retailers may choose between single-sided and double-sided display options.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-4" id="gon-faq-button-4">
+                <span>Is Gondola Shelving Modular?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-4" role="region" aria-labelledby="gon-faq-button-4" hidden>
+              <p>Many modern gondola shelving systems are modular, allowing them to be adapted as requirements change. This makes it easy to reorganize and adjust sales floors over time, making gondola shelving a long-term solution for stores that regularly update their assortments and product displays.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-5" id="gon-faq-button-5">
+                <span>What Is Gondola Shelving Used For?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-5" role="region" aria-labelledby="gon-faq-button-5" hidden>
+              <p>Gondola shelving is used to create additional merchandising space throughout the sales floor. As freestanding fixtures, gondola shelves make effective use of central floor areas while keeping products organized and easily accessible from multiple sides.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-6" id="gon-faq-button-6">
+                <span>Which Products Can Be Displayed on Gondola Shelving?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-6" role="region" aria-labelledby="gon-faq-button-6" hidden>
+              <p>Depending on the configuration, retail gondolas can accommodate hanging apparel, folded garments, accessories, cosmetics, home goods, and many other product categories. Different shelving options and display fittings support a variety of presentation styles, making gondola shelving suitable for a wide range of stores and retail concepts.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-7" id="gon-faq-button-7">
+                <span>Can Gondola Shelving Be Adapted to Changing Requirements?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-7" role="region" aria-labelledby="gon-faq-button-7" hidden>
+              <p>Mandai Design gondola shelving is designed to adapt to changing products and store requirements. Shelves and display fittings can be added, rearranged, or replaced as needed, while shelf heights can be adjusted in 50 mm (1.97") increments to suit different products and presentation styles. This flexibility makes it easy to update product displays, introduce new collections, or adapt layouts over time without replacing entire fixtures.</p>
+              <p>An additional advantage is that Lugano gondola shelving is compatible with the <a href="../systems/ceres.html" class="text-link">Ceres</a> and <a href="../systems/cetus.html" class="text-link">Cetus</a> retail shelving systems, providing greater freedom when creating cohesive store layouts.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-8" id="gon-faq-button-8">
+                <span>What Is the Ideal Height for Gondola Shelving?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-8" role="region" aria-labelledby="gon-faq-button-8" hidden>
+              <p>The ideal height for gondola shelving depends on your product range, available floor space, and the shopping experience you want to create. For most retail environments, a height that provides sufficient display space while maintaining clear visibility across the sales floor is often the best solution. In many stores, a height of 155 cm (61") has proven to be a practical choice.</p>
+              <p>Lower configurations are particularly well suited to open shop concepts, as they allow for clearer views across the sales floor and create a more open feel throughout the store. Taller versions provide additional display space and are often a practical choice for stores with larger assortments or limited floor space.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-9" id="gon-faq-button-9">
+                <span>Which Gondola Shelving Is Right for My Store?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-9" role="region" aria-labelledby="gon-faq-button-9" hidden>
+              <p>Our gondola shelving is designed to balance display capacity, accessibility, and high-quality product presentation. Since every product range and store concept comes with its own requirements, we are happy to help you find the <a href="../index.html#help" class="text-link">solution that best suits your store</a>.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-10" id="gon-faq-button-10">
+                <span>How Much Weight Can Gondola Shelving Hold?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-10" role="region" aria-labelledby="gon-faq-button-10" hidden>
+              <p>Mandai Design gondola shelving is designed for everyday use in retail environments and is suitable for a wide range of product categories. The maximum load capacity of a gondola shelving unit depends on its configuration and intended use.</p>
+              <p>Each shelf can support up to 15 kg (33 lbs). With an additional support profile, the load capacity increases to up to 30 kg (66 lbs) per shelf.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-11" id="gon-faq-button-11">
+                <span>How Do I Choose the Right Shelves for My Products?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-11" role="region" aria-labelledby="gon-faq-button-11" hidden>
+              <p>Choosing the right gondola shelving starts with the products you want to display. Fashion rails are ideal for hanging apparel, while slanted shelves help showcase books, magazines and more in a front-facing position. Straight shelves are well suited to folded clothing, cosmetics, fragrances, and many other product categories.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-12" id="gon-faq-button-12">
+                <span>Why Should the System Be Adaptable Over Time?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-12" role="region" aria-labelledby="gon-faq-button-12" hidden>
+              <p>It is also important to consider how easily the system can adapt over time. Modular retail gondolas can be reconfigured as assortments change, making it easier to update product displays and store layouts without investing in entirely new store fixtures.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-13" id="gon-faq-button-13">
+                <span>What Size Gondola Shelving Do I Need for My Store?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-13" role="region" aria-labelledby="gon-faq-button-13" hidden>
+              <p>The right gondola shelving depends on your product range, available floor space, and customer flow throughout the store. The size of the sales floor and the amount of space needed around the fixtures can help determine the most suitable configuration.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-14" id="gon-faq-button-14">
+                <span>Is Gondola Shelving Suitable for Seasonal Promotions?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-14" role="region" aria-labelledby="gon-faq-button-14" hidden>
+              <p>In addition to adapting to changing assortments and store layouts, retail gondolas are particularly well suited for creating temporary promotional and seasonal displays throughout the year. Thanks to their freestanding and modular design, our retail gondolas can be repositioned and reconfigured as needed, making it easy to refresh product presentations without major changes to the overall store layout.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-15" id="gon-faq-button-15">
+                <span>Can Gondola Shelving Be Adapted to Different Retail Sectors?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-15" role="region" aria-labelledby="gon-faq-button-15" hidden>
+              <p>Yes, Mandai Design gondola shelving can be adapted to suit different products, store concepts, and presentation goals. Thanks to its modular design, shelving and display fittings can be configured to support a wide range of retail sectors.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3 class="faq__q">
+              <button type="button" class="faq__button" aria-expanded="false" aria-controls="gon-faq-panel-16" id="gon-faq-button-16">
+                <span>Does Mandai Design Offer Custom Gondola Solutions?</span>
+                <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              </button>
+            </h3>
+            <div class="faq__panel" id="gon-faq-panel-16" role="region" aria-labelledby="gon-faq-button-16" hidden>
+              <p>If you have specific requirements, we are also happy to develop custom solutions. Whether you need a particular size, a <a href="../index.html#help" class="text-link">different finish</a>, or a display tailored to a unique product, our team can help you find the right approach.</p>
+              <p>Contact us for a <a href="../index.html#contact" class="text-link">personal consultation</a>, and together we will develop a solution that fits your store and products.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact__head">
+          <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+          <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+        </div>
+
+        <div class="contact__status" role="status" data-contact-status hidden></div>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="contact__row">
+            <div>
+              <label class="sr-only" for="cf-name">Name (required)</label>
+              <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+            </div>
+            <div>
+              <label class="sr-only" for="cf-email">Email (required)</label>
+              <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
+            </div>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-phone">Phone</label>
+            <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-message">Message (required)</label>
+            <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+          </div>
+
+          <div>
+            <label class="sr-only" for="cf-source">How did you hear about us?</label>
+            <select id="cf-source" name="source" class="field field--select">
+              <option value="" disabled selected hidden>How did you hear about us?</option>
+              <option value="Google / Search engine">Google / Search engine</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Pinterest">Pinterest</option>
+              <option value="YouTube">YouTube</option>
+              <option value="Recommendation">Recommendation</option>
+              <option value="Trade fair">Trade fair</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+          <div class="contact__submit">
+            <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+              <span class="btn__spinner" aria-hidden="true"></span>
+              <span class="btn__label">Submit</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  <!-- ══════════ متن سئو — موبه‌مو مثل لایو ══════════ -->
+  <section class="seo-text" aria-labelledby="gon-seo-heading">
+    <div class="container">
+      <h2 id="gon-seo-heading" class="seo-text__heading">Gondola Shelving by Mandai Design</h2>
+      <div class="seo-text__body">
+        <p>Gondola shelving is one of the most versatile merchandising solutions for retail environments. It helps create clear product presentation, supports efficient use of floor space, and adapts easily to a wide range of product categories and store formats. Discover the features and benefits that make Mandai Design display gondolas a valuable addition to modern retail spaces.</p>
+        <p><strong>Gondola Shelving and Retail Gondolas</strong>&ndash;<strong>Benefits at a Glance:</strong></p>
+        <ul class="cl-bullets">
+          <li>Freestanding design for flexible merchandising throughout the store</li>
+          <li>Ideal for changing assortments and seasonal collections</li>
+          <li>Easy to reposition and rearrange</li>
+          <li>Versatile, modular, and highly adaptable</li>
+          <li>Available in a variety of finishes and configurations</li>
+          <li>Creates stylish product displays for a wide range of retail environments</li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ متن راهنما ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Long-term flexibility with gondola shelving</h2>
-          <p>The Capri gondola shelving range features a central divider, creating two independent sides that can be merchandised separately. As classic centre-floor units, these gondolas provide generous shelving capacity while using your floor space efficiently.</p>
-          <p>Every retail space has different requirements. That is why we work with you to create a gondola shelving solution tailored to your products, available space and merchandising goals - from the initial concept to the final layout. Choose from black or white steel and a range of wood finishes; free material samples help you find the right combination.</p>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
-      <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
-
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
-              </div>
-            </li>
-          </ul>
-
-          <div class="reviews__dots" data-reviews-dots></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>What is gondola shelving?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Gondola shelving is a freestanding retail fixture that can be positioned anywhere on the sales floor. It is accessible from one or both sides and creates additional display space wherever it is needed.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Plan your gondola shelving</h2>
-          <p class="sector-cta__text">Our team of interior designers plans your sales floor with our products - free of charge, using your floor plan and measurements.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Gondola shelving by Mandai Design</h2>
-        <div class="seo-text__grid">
+        <div class="gon-cols">
           <div>
-            <h3>Open design, light appearance</h3>
-            <p>Lugano gondolas do without a solid center panel - products stay visible from multiple angles, keeping your store open and airy.</p>
+            <h3>Long-Term Flexibility with Gondola Shelving</h3>
+            <p>Retail spaces are constantly evolving. Mandai Design gondola shelving is built to adapt to changing product assortments, seasonal collections, and new merchandising requirements. Shelves and display fittings can be repositioned or expanded as needed, creating a flexible foundation for retail environments that continue to grow and change over time. This helps minimize the need for replacement fixtures and keeps store layouts adaptable for years to come.</p>
           </div>
           <div>
-            <h3>Two sides, one unit</h3>
-            <p>Capri gondolas feature a central divider that creates two independent merchandising sides - classic centre-floor units with generous capacity.</p>
+            <h3>Retail Gondolas for Versatile Merchandising</h3>
+            <p>Every retail environment has unique merchandising needs. From fashion boutiques and concept stores to beauty retailers, Mandai Design gondola shelving provides the flexibility needed to create effective product displays across a variety of store formats. Different shelving options and display fittings support a wide range of product presentation needs. Their clean, modern design integrates naturally into a variety of retail settings.</p>
           </div>
           <div>
-            <h3>Tailored to your concept</h3>
-            <p>Black or white steel, a range of wood finishes and custom sizes: we build the gondola that fits your products and your space.</p>
+            <h3>Gondola Shelving for Every Concept and Style</h3>
+            <p>Different store concepts and brand identities call for different styles. Mandai Design gondola shelving is available with a selection of wood finishes and black or white steel frames, making it easy to complement a variety of retail concepts. For even greater design flexibility, additional colors and finishes are available upon request. We are happy to provide up to <a href="../index.html#help" class="text-link">three complimentary samples</a> and help you select the option that best fits your store.</p>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <!-- ══════════ فوتر ══════════ -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -592,10 +1149,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -611,15 +1168,15 @@
         </nav>
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
-            <li><a href="retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="racks-and-rails.html">Clothing Racks</a></li>
-            <li><a href="display-tables.html">Display Tables</a></li>
-            <li><a href="shop-counters.html">Shop Counters</a></li>
-            <li><a href="display-pedestals.html">Display Pedestals</a></li>
+            <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
+            <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
+            <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
+            <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -637,12 +1194,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -662,7 +1219,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -670,6 +1227,6 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+    <script src="../assets/js/main.js" defer></script>
 </body>
 </html>

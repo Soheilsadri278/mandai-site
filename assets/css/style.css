@@ -233,6 +233,7 @@ section[id] { scroll-margin-top: 88px; }
 .nav__item { position: relative; }
 .nav__link {
   display: flex; align-items: center; gap: 4px;
+  white-space: nowrap;
   padding-block: 8px;
   font-size: 13.5px;
   transition: color 0.2s;
@@ -1321,4 +1322,67 @@ section[id] { scroll-margin-top: 88px; }
 /* چاپ */
 @media print {
   .topbar, .site-header, .toast-container, .video-banner__video, .hero__video { display: none !important; }
+}
+
+/* ── مگا-منو (مطابق مرجع): لیست لینک‌ها + پنل تصویری با تیتر و دکمه ── */
+.nav__dropdown--mega {
+  inset-inline-start: -28px;
+  display: flex;
+  align-items: stretch;
+  max-width: calc(100vw - 32px);
+}
+.nav__mega-lists { display: flex; flex: 0 0 auto; padding-block: 10px; }
+.nav__dropdown--mega .nav__mega-lists ul { padding-block: 0; }
+.nav__dropdown--mega .nav__mega-lists a { padding: 6px 24px; font-size: 15px; line-height: 1.4; background: none; }
+.nav__dropdown--mega .nav__mega-lists a:hover { background: var(--bg-grey); }
+.nav__mega-col { width: 260px; min-width: 0; }
+.nav__mega-col + .nav__mega-col { border-inline-start: 1px solid var(--border); }
+.nav__mega-media {
+  position: relative;
+  flex: 0 0 min(var(--pw, 330px), 30vw);
+  width: min(var(--pw, 330px), 30vw);
+  min-height: min(var(--ph, 265px), 24vw);
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.32);
+}
+.nav__mega-media::before { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, var(--ov, 0.32)); }
+.nav__mega-media__inner {
+  position: relative;
+  width: 100%;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  padding: 16px 20px;
+  text-align: left;
+}
+.nav__mega-media__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.25;
+  color: #fff;
+}
+.nav__mega-media__btn {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color 0.2s, color 0.2s;
+}
+.nav__mega-media:hover .nav__mega-media__btn { background: #fff; color: var(--foreground); }
+@media (max-width: 1180px) {
+  .nav__mega-media { --pw: 300px !important; --ph: 240px !important; }
+  .nav__mega-col { width: 220px; }
+  .nav__dropdown--mega .nav__mega-lists a { padding: 6px 18px; }
+  .nav__mega-col { min-width: 200px; }
+  .nav__dropdown--mega .nav__mega-lists a { padding: 9px 20px; font-size: 14px; }
+  .nav__mega-media__title { font-size: 21px; }
 }

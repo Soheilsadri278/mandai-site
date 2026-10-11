@@ -1,10 +1,11 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ سکتور: Fine Foods
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در sectors/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن Fine Foods (صفحهٔ ۲۳)
+  (بازسازی موبه‌مو از mandai-design.com/collections/shopfittings-for-fine-foods — 2026-10)
+  هیرو (D/M مثل کازمتیک) → H1 + معرفی → ردیف Ceres + نوار ۴ محصول
+  → ردیف Addison + نوار ۴ محصول → Shop the look (۳ محصول، شمارنده 1/3، نقاط ✏️)
+  → ردیف Wine Rack → ردیف Gondola → گالری ۱۵ عکس مشتری → فرم تماس → SEO + Get advice now
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,58 +13,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
-  <title>Fixtures for Farm Shops | Deli Store Equipment | Mandai Design</title>
-  <meta name="description" content="Deli store equipment and fixtures for farm shops &amp; fine foods. Flexible shelving for seasonal ranges, made in Germany. Order online now.">
+  <title>Fixtures for Farm Shops | Deli Store Equipment</title>
+  <meta name="description" content="Attractive shop fittings for delicatessens, farm shops, and health food stores. Modular shelving systems, counters and display pedestals for fine foods stores by Mandai Design.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/sectors/fine-foods.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/sectors/fine-foods.html">
   <meta property="og:site_name" content="Mandai Design">
-  <meta property="og:title" content="Fixtures for Farm Shops | Deli Store Equipment | Mandai Design">
-  <meta property="og:description" content="Deli store equipment and fixtures for farm shops &amp; fine foods. Flexible shelving for seasonal ranges, made in Germany. Order online now.">
-  <meta property="og:image" content="https://www.example.com/images/sectors/fine-foods.jpg">
+  <meta property="og:title" content="Fixtures for Farm Shops | Deli Store Equipment">
+  <meta property="og:description" content="Attractive shop fittings for delicatessens, farm shops, and health food stores. Modular shelving systems, counters and display pedestals for fine foods stores by Mandai Design.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Mandai-Design_Retail.jpg?v=1768918053&amp;width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Fine foods store with shelving displaying delicatessen products">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Fine food store shopfittings by Mandai Design">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fixtures for Farm Shops | Deli Store Equipment | Mandai Design">
-  <meta name="twitter:description" content="Deli store equipment and fixtures for farm shops &amp; fine foods. Flexible shelving for seasonal ranges, made in Germany. Order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/sectors/fine-foods.jpg">
-
+  <meta name="twitter:title" content="Fixtures for Farm Shops | Deli Store Equipment">
+  <meta name="twitter:description" content="Attractive shop fittings for delicatessens, farm shops, and health food stores. Modular shelving systems, counters and display pedestals for fine foods stores by Mandai Design.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Mandai-Design_Retail.jpg?v=1768918053&amp;width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/sectors/fine-foods.jpg" as="image">
-
+  
   <link rel="stylesheet" href="../assets/css/style.css">
-
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
-  <script type="application/ld+json">
+            <style>
+    /* ── Cosmetics Collection — کلون mandai-design.com/collections/shopfitting-for-cosmetics ── */
+    /* هیرو image-hero مرجع با کلاس image-hero--image-aspect-original = نسبت اصلی، بدون هیچ کراپی */
+    .mw-hero-desktop { display: block; width: 100%; height: auto; }
+    .mw-hero-mobile { display: none; }
+    @media (max-width: 719px) {
+      .mw-hero-desktop { display: none; }
+      .mw-hero-mobile { display: block; width: 100%; height: auto; background: #e9e7e3; }
+    }
+    .hw-intro { padding-top: 40px; }
+    .hw-intro h1 { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1.2; }
+    .hw-intro p { margin-top: 14px; max-width: 980px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* بخش هر سیستم: تصویر چپ + متن راست */
+    .hw-sec { padding-top: 84px; }
+    .hw-sec__row { display: grid; gap: 40px; align-items: center; }
+    .hw-sec__media img { display: block; width: 100%; height: auto; }
+    .hw-sec__txt h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; }
+    .hw-sec__txt h3 { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: 23px; line-height: 1.35; color: rgba(26, 26, 26, 0.9); }
+    .hw-sec__txt p { margin-top: 16px; font-size: 15px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .hw-sec__txt .btn { margin-top: 26px; text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px; padding: 15px 32px; }
+    .hw-sec__viewall { display: inline-block; margin-top: 18px; font-size: 15px; color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
+    /* «View all…» مثل مرجع زیر عکس می‌آید */
+    .hw-sec__media .hw-sec__viewall { margin-top: 18px; }
+    @media (min-width: 1024px) { .hw-sec__row { grid-template-columns: 1.02fr 0.98fr; gap: 64px; } }
+    /* تب‌های رنگ/گروه (مثل مرجع: Homeware/Floral، in White/in Black) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    /* اسلایدر محصولات هر سیستم */
+    .hw-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 18px 0 0; padding: 2px 2px 6px; scrollbar-width: none; }
+    .hw-track::-webkit-scrollbar { display: none; }
+    .hw-track > li { flex: 0 0 46%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .hw-track > li { flex-basis: 31%; } }
+    @media (min-width: 1024px) { .hw-track > li { flex-basis: 23%; } }
+    @media (min-width: 1280px) { .hw-track > li { flex-basis: 15.4%; } }
+    .product { display: block; color: inherit; text-decoration: none; position: relative; }
+    .product__media { display: block; aspect-ratio: 1 / 1; position: relative; overflow: hidden; background: #f4f3f1; }
+    .product__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .product__media .product__img--alt { position: absolute; inset: 0; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .product__name { margin-top: 12px; font-size: 13px; font-weight: 400; line-height: 1.4; }
+    .product__price { margin-top: 5px; font-size: 12.5px; color: rgba(26, 26, 26, 0.72); }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    /* Shop the look */
+    .hw-look { padding-top: 64px; }
+    .hw-look { padding-top: 56px; }
+    .hw-look h3 { font-family: var(--font-serif); font-weight: 400; font-size: 22px; }
+    .hw-look__row { display: grid; gap: 40px; align-items: center; margin-top: 22px; }
+    .hw-look__row img { display: block; width: 100%; height: auto; }
+    .hw-look__track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 2px 2px 6px; scrollbar-width: none; }
+    .hw-look__track::-webkit-scrollbar { display: none; }
+    .hw-look__track > li { flex: 0 0 100%; scroll-snap-align: start; }
+    .hw-look__count { margin-top: 8px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .hw-look__arrows { display: flex; gap: 14px; margin-top: 12px; }
+    @media (min-width: 768px) {
+      .hw-look__row { display: flex !important; align-items: center; gap: 40px !important; }
+      .hw-look__row > div:first-child { flex: 1 1 auto !important; min-width: 0; }
+      .hw-look__row > div:last-child { flex: 0 0 340px !important; max-width: 340px; }
+    }
+    @media (min-width: 1200px) {
+      .hw-look__row { gap: 150px !important; }
+      .hw-look__row > div:last-child { flex: 0 0 360px !important; max-width: 360px; }
+    }
+    @media (min-width: 1024px) { .hw-look--flip .hw-look__row { grid-template-columns: 1fr 2.14fr; } }
+    .hw-look--flip .hw-look__media { order: 0; }
+    /* Shop-the-look: کارت حاشیه‌دار + فلش‌های کنار کارت + QUICK VIEW (مثل مرجع) */
+    .hw-look__cardwrap { display: flex; align-items: center; gap: 14px; margin-top: 22px; }
+    .hw-look__nav { border: 0; background: none; padding: 8px 2px; cursor: pointer; color: var(--foreground); flex: none; }
+    .hw-look__nav svg { width: 11px; height: 20px; display: block; }
+    .hw-look__cardwrap .hw-look__track { flex: 1; min-width: 0; }
+    .hw-look__cardwrap .hw-look__track > li { border: 1px solid var(--foreground); background: #fff; padding: 18px 16px 24px; text-align: center; }
+    .hw-look__cardwrap .product__name { margin-top: 16px; font-size: 14px; line-height: 1.5; text-align: center !important; }
+    .hw-look__cardwrap .product__price { margin-top: 8px; text-align: center !important; }
+    .hw-look__cardwrap .product { text-align: center; }
+    .hw-look__cardwrap .hw-quick { display: inline-block; }
+    .hw-quick { display: inline-block; margin-top: 14px; border: 1px solid var(--foreground); padding: 9px 16px; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+    .hw-look__count { text-align: center; font-size: 12px; }
+    /* نقاط تعاملی (hotspot) روی عکس — مثل مرجع */
+    .hw-look__media { position: relative; }
+    .hw-dot { position: absolute; z-index: 2; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; background: rgba(26, 26, 26, 0.45); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3); cursor: pointer; padding: 0; transition: background 0.2s; }
+    .hw-dot:hover { background: rgba(26, 26, 26, 0.7); }
+    /* گالری مشتریان */
+    .hw-gallery { padding-top: 76px; }
+    .hw-gallery__lead { margin-top: 10px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.75); }
+    .hw-gallery__lead a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .fref-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 24px 0 0; padding: 2px 2px 10px; scrollbar-width: none; }
+    .fref-track::-webkit-scrollbar { display: none; }
+    .fref-track > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fref-track > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fref-track > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fref-track > li { flex-basis: 23.5%; } }
+    .fref-grid { position: relative; }
+    .fref-grid figure { margin: 0; }
+    .fref-grid img { width: 100%; height: auto; display: block; }
+    .hw-gallery .fref-track img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .fref-grid figcaption { margin-top: 7px; font-size: 11.5px; line-height: 1.5; color: rgba(26, 26, 26, 0.6); }
+    .fref-grid figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .fref-grid .fsh-grid__btn { position: absolute; top: 30%; transform: translateY(-50%); z-index: 2; border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px; }
+    .fref-grid .fsh-grid__btn--prev { left: -14px; }
+    .fref-grid .fsh-grid__btn--next { right: -14px; }
+    .fref-grid .fsh-grid__btn svg { width: 27px; height: 15px; }
+    /* فرم */
+    .hw-contact { padding-top: 76px; }
+    /* متن SEO پایین */
+    .hw-seo { padding-top: 70px; }
+    .hw-seo h2 { font-family: var(--font-serif); font-weight: 400; font-size: 24px; text-align: center; }
+    .hw-seo__cols { margin-top: 30px; display: grid; gap: 32px; }
+    .hw-seo__cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 17px; }
+    .hw-seo__cols p { margin-top: 10px; font-size: 12.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.8); }
+    .hw-seo__cols a { color: inherit; font-weight: 600; }
+    @media (min-width: 1024px) { .hw-seo__cols { grid-template-columns: repeat(3, 1fr); gap: 48px; } }
+    /* ── Concept Stores — بخش‌های اختصاصی ── */
+    .hw-look__cardwrap .product__media { aspect-ratio: 4 / 3 !important; }
+    .hw-look__cardwrap .product__media img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    .cs-sub { margin-top: 8px; font-size: 14px; line-height: 1.6; color: rgba(26, 26, 26, 0.75); }
+    .hw-look__sub { margin-top: 4px; font-size: 13px; color: rgba(26, 26, 26, 0.7); }
+    .cs-cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; list-style: none; margin: 26px 0 0; padding: 0; }
+    .cs-cats a { display: block; color: inherit; text-decoration: none; }
+    .cs-cats img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    .cs-cats span { display: block; margin-top: 10px; font-size: 13.5px; }
+    @media (min-width: 1024px) { .cs-cats { grid-template-columns: repeat(5, 1fr); gap: 20px; } }
+    .cs-help { padding-top: 84px; }
+    .cs-help__row { display: grid; gap: 32px; align-items: center; }
+    .cs-help__row img { display: block; width: 100%; height: auto; }
+    .cs-help__txt h3 { font-family: var(--font-serif); font-weight: 400; font-size: 23px; line-height: 1.3; }
+    .cs-help__txt p { margin-top: 12px; font-size: 15px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); max-width: 46ch; }
+    .cs-help__txt .btn { margin-top: 18px; }
+    @media (min-width: 1024px) { .cs-help__row { grid-template-columns: 1fr 1fr; gap: 56px; } }
+    .hw-look__media img { aspect-ratio: 5 / 4; object-fit: cover; }
+    /* ── Shoes — SEO با Benefits ── */
+    .sh-seo h2 { text-align: left; font-size: clamp(26px, 3vw, 36px); }
+    .sh-seo__lead { margin-top: 16px; font-size: 13.5px; line-height: 1.85; color: rgba(26, 26, 26, 0.85); max-width: 96ch; }
+    .sh-seo ul { margin: 12px 0 6px; padding-left: 22px; font-size: 13px; line-height: 2; color: rgba(26, 26, 26, 0.85); list-style: disc; }
+    .kd-look .hw-look__media img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .hw-look h3 { text-align: center; }
+    .product__badge { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 9px; border: 1px solid rgba(26, 26, 26, 0.25); color: rgba(26, 26, 26, 0.75); }
+    .cm-seo p { margin-top: 12px; font-size: 13px; line-height: 1.85; color: rgba(26, 26, 26, 0.85); max-width: 100ch; }
+    /* ── Kids — گرید محصولات + ردیف‌های Other Fixtures ── */
+    .kid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 16px; margin-top: 30px; list-style: none; padding: 0; }
+    .kid-grid .product__name { font-size: 13px; text-align: center; }
+    .kid-grid .product__price, .kid-grid .product__options { text-align: center; }
+    @media (min-width: 1024px) { .kid-grid { grid-template-columns: repeat(4, 1fr); gap: 30px 20px; } }
+    .kf-row { padding-top: 88px; }
+    .kf-row .cs-help__txt h3 { font-size: clamp(28px, 3vw, 42px); line-height: 1.15; }
+    .kf-row .cs-help__txt p { max-width: none; }
+    .kf-row .cs-help__txt p.cm-rowsub { margin-top: 12px; font-family: var(--font-serif); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.35; color: var(--foreground); }
+    .hw-look h3 { font-size: 30px; }
+    .hw-look__media img { aspect-ratio: 1 / 1; }
+    /* زیگزاگ STL مرجع: کارت‌ها چپ، تصویر بزرگ راست (اسکرین‌شات‌های ۱ و ۳) */
+    @media (min-width: 768px) {
+      .cm-flip .hw-look__media { order: 2; }
+      .cm-flip .hw-look__row > div:last-child { order: 1; }
+    }
+    @media (min-width: 1024px) {
+      .kf-row .cs-help__row { gap: 80px; }
+      .kf-row.kf-img-left .cs-help__row { grid-template-columns: 1.35fr 1fr; }
+      .kf-row.kf-img-right .cs-help__row { grid-template-columns: 1fr 1.35fr; }
+    }
+    /* ── Fine Foods — ساب‌هد اینترو + نوارهای ۴تایی استاتیک + سواچ چوب + Quick View هاور + بلوک مشاوره ── */
+    .hw-intro h3 { margin-top: 18px; font-family: var(--font-serif); font-weight: 400; font-size: clamp(20px, 1.8vw, 25px); line-height: 1.35; color: rgba(26, 26, 26, 0.9); }
+    .fd-sec { padding-top: 44px; }
+    .fd-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px 18px; list-style: none; margin: 0; padding: 0; }
+    .fd-strip .product__media .hw-quick { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); margin: 0; background: #fff; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+    .fd-strip .product:hover .hw-quick { opacity: 1; }
+    .fd-swatch { display: flex; gap: 6px; margin-top: 9px; }
+    .fd-swatch img { display: block; width: 22px; height: 22px; border-radius: 50%; border: 1px solid rgba(26, 26, 26, 0.18); }
+    @media (max-width: 767px) { .fd-strip { grid-template-columns: repeat(2, 1fr); } }
+    .fd-advice { padding-top: 66px; text-align: center; }
+    .fd-advice h2 { font-family: var(--font-serif); font-weight: 400; font-size: 24px; }
+    .fd-advice p { margin-top: 12px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    .fd-advice a { font-weight: 600; color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
+    /* نسبت باکس تصویر بزرگ STL = اندازه‌گیری دقیق از اسکرین‌شات رفرنس کاربر (933×732) */
+    .hw-look__media img { aspect-ratio: 933 / 732; }
+  </style>
+            <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Fixtures for Farm Shops, Deli Stores and Fine Foods",
+      "name": "Fixtures for Farm Shops | Deli Store Equipment",
       "url": "https://www.example.com/sectors/fine-foods.html",
-      "description": "Deli store equipment and fixtures for farm shops & fine foods. Flexible shelving for seasonal ranges, made in Germany. Order online now.",
+      "description": "Attractive shop fittings for delicatessens, farm shops, and health food stores. Modular shelving systems, counters and display pedestals for fine foods stores by Mandai Design.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/sectors/fine-foods.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Mandai-Design_Retail.jpg?v=1768918053"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,36 +249,13 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Retail Sectors",
-          "item": "https://www.example.com/#sectors"
+          "item": "https://www.example.com/index.html#sectors"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": "Fine Foods",
           "item": "https://www.example.com/sectors/fine-foods.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "url": "https://www.example.com/sectors/fine-foods.html",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
         }
       ]
     }
@@ -133,8 +281,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -144,15 +292,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
             <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -166,22 +314,39 @@
       <nav aria-label="Main navigation" class="site-header__nav">
         <ul class="nav">
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="fashion.html">Fashion</a></li>
-                <li><a href="menswear.html">Menswear</a></li>
-                <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="shoes.html">Shoes</a></li>
-                <li><a href="kids-stores.html">Kids Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
-                <li><a href="fine-foods.html" aria-current="page">Fine Foods</a></li>
-                <li><a href="pet-stores.html">Pet Stores</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fashion.html">Fashion</a></li>
+                <li><a href="../sectors/menswear.html">Menswear</a></li>
+                <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/shoes.html">Shoes</a></li>
+                <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+                <li><a href="../sectors/cosmetics.html" aria-current="page">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- Bakery → bakery.html (ساخته شد؛ قبلاً موقتاً Fine Foods بود) -->
+                <li><a href="../sectors/bakery.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+                <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -189,8 +354,9 @@
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
                 <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
                 <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
@@ -198,17 +364,27 @@
                 <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
                 <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
                 <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
                 <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../systems/addison.html">Addison</a></li>
                 <li><a href="../systems/ceres.html">Ceres</a></li>
                 <li><a href="../systems/cetus.html">Cetus</a></li>
@@ -217,7 +393,15 @@
                 <li><a href="../systems/ontario.html">Ontario</a></li>
                 <li><a href="../systems/bergen.html">Bergen</a></li>
                 <li><a href="../systems/customize.html">Customize your shelf</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -225,22 +409,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="fashion.html">Fashion Stores</a></li>
-                <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="homeware.html">Homeware Stores</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -273,17 +469,22 @@
       <nav aria-label="Mobile navigation" class="mobile-menu__body">
         <ul>
           <li class="mobile-menu__item">
-            <a href="#main-content">Retail Sectors</a>
+            <a href="../index.html#sectors">Retail Sectors</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion</a></li>
-              <li><a href="menswear.html">Menswear</a></li>
-              <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="shoes.html">Shoes</a></li>
-              <li><a href="kids-stores.html">Kids Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
-              <li><a href="fine-foods.html" aria-current="page">Fine Foods</a></li>
-              <li><a href="pet-stores.html">Pet Stores</a></li>
+              <li><a href="../sectors/fashion.html">Fashion</a></li>
+              <li><a href="../sectors/menswear.html">Menswear</a></li>
+              <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/shoes.html">Shoes</a></li>
+              <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+              <li><a href="../sectors/cosmetics.html" aria-current="page">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/bakery.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+              <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -296,18 +497,19 @@
               <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
               <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
               <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
               <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
               <li><a href="../systems/addison.html">Addison</a></li>
               <li><a href="../systems/ceres.html">Ceres</a></li>
               <li><a href="../systems/cetus.html">Cetus</a></li>
               <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
               <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
               <li><a href="../systems/bergen.html">Bergen</a></li>
               <li><a href="../systems/customize.html">Customize your shelf</a></li>
             </ul>
@@ -315,28 +517,28 @@
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion Stores</a></li>
-              <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="homeware.html">Homeware Stores</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
           <li><a href="../index.html#faq">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -358,220 +560,457 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
+  <!-- ── هیرو ── -->
+  <div class="mw-hero">
+    <!-- مثل کازمتیک: ترتیب DOM مرجع (تصویر موبایل اول، دسکتاپ دوم)؛ D=Retail 16:9، M=Style_03 مربعی (ابعاد دقیق در انتظار ولیدیتور) -->
+    <img class="mw-hero-desktop" src="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Mandai-Design_Retail.jpg?v=1768918053&amp;width=1800" alt="Shelving-system_Addison_Finefoods_Mandai-Design_Retail" width="1920" height="1080" loading="lazy" fetchpriority="high">
+    <img class="mw-hero-mobile" src="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Style_03_Mandai-Design_Retail.jpg?v=1768918154&amp;width=1000" alt="Shelving-system_Addison_Finefoods_Style_03_Mandai-Design_Retail" width="1080" height="1080" loading="lazy" fetchpriority="high">
+  </div>
 
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#sectors">Retail Sectors</a></li>
-          <li><span aria-current="page">Fine Foods</span></li>
-        </ol>
+  <!-- ── H1 + معرفی ── -->
+  <section class="hw-intro">
+    <div class="container">
+      <h1>Fixtures for Farm Shops, Deli Stores and Fine Foods</h1>
+      <h3>Attractive Shop Fittings for Delicatessens, Farm Shops, and Health Food Stores</h3>
+      <p>Due to the increasing popularity of <strong>high-quality organic food</strong> and <strong>fine deli products</strong>, store equipment and <strong>fittings</strong> are gaining importance: More and more stores are opening in this sector these days, making it increasingly necessary to <strong>stand out</strong>. Attractive product presentation and appealing store fittings play a crucial role in the sale of delicatessen products. Modern customers appreciate both fresh, high-quality products and a <strong>special shopping experience</strong>, allowing them to feel completely at ease in your store.</p>
+      <p>Beyond sophisticated store design, the flexibility of your concept is also essential: delicatessen store equipment should always be <strong>adaptable to seasonal changes</strong>. That way, changing product ranges can be effectively displayed, from fruit and vegetables to international delicacies. At <strong>Mandai Design</strong>, you will find sophisticated deli store furnishings and versatile <strong>shopfitting systems</strong> for tasteful store designs.</p>
+    </div>
+  </section>
+
+  <!-- ── ردیف Shelving system Ceres (تصویر چپ) ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="ff-ceres">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/shopfitting-shelving-system-retail-shelf-display-mandaidesign-1.jpg?v=1692907178&amp;width=1200" alt="shopfitting-shelving-system-retail-shelf-display-mandaidesign" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="ff-ceres">Shelving system Ceres</h3>
+        <p class="cm-rowsub">Perfect for displaying organic produce and beverages</p>
+        <p>Available in <strong>various widths</strong> and heights, Ceres offers plenty of space for food, fruit, or delicatessen. Depending on the range and season, you can adjust the height of the shelves <strong>without tools</strong>. The chalkboard visually highlights the regional origin of your products and can be written on with standard chalk or chalk markers.</p>
+        <p>As a <strong>modular system</strong>, Ceres is well-suited for presenting organic products and deli foods &ndash; the store equipment is easily converted and extended with additional shelving modules. Additionally, this furnishing system lacks its back panel, creating stylish looks with its straightforward, timeless design.</p>
+        <a href="../systems/ceres.html" class="btn btn--outline">Discover Ceres now</a>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/sectors/fine-foods.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/sectors/fine-foods.jpg" alt="Fine foods store with shelving displaying delicatessen products" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Fixtures for Farm Shops, Deli Stores and Fine Foods</h1>
+  <!-- ── نوار ۴ محصول (featured collection — استاتیک ۴تایی مثل مرجع، بدون شمارنده) ── -->
+  <section class="hw-sec fd-sec" aria-label="Products">
+    <div class="container">
+      <ul class="fd-strip">
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fine Foods - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFeinkostStyle1mitAcc.jpg?v=1671024259&amp;width=900" alt="Shelving System Ceres - Fine Foods - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CeresFeinkostStyle1H260Halifaxnatur.jpg?v=1671024259&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Ceres - Fine Foods - Style 1</h3>
+        <p class="product__price">from $875.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fine Foods - Style 2">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFineFoodStyle2mitAccjpg.jpg?v=1671024839&amp;width=900" alt="Shelving System Ceres - Fine Foods - Style 2" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CeresFineFoodStyle2H2600Halifaxnatur.jpg?v=1739788071&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Ceres - Fine Foods - Style 2</h3>
+        <p class="product__price">from $1,721.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fine Foods - Style 3">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFineFoodStyle3mitAccH2600Halifaxnatur.jpg?v=1671025388&amp;width=900" alt="Shelving System Ceres - Fine Foods - Style 3" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/verkaufsregal-ceres-ladenregal-detail-2_9a011af9-84a8-4cf4-aafa-e74a536c9a6b.jpg?v=1739788053&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Ceres - Fine Foods - Style 3</h3>
+        <p class="product__price">from $2,413.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Fine Foods - Style 4">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFineFoodStyle4mitAccH2600Halifaxnatur.jpg?v=1671026066&amp;width=900" alt="Shelving System Ceres - Fine Foods - Style 4" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CeresFineFoodStyle4H2600Halifaxnatur.jpg?v=1671026066&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Ceres - Fine Foods - Style 4</h3>
+        <p class="product__price">from $2,235.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── ردیف Shelving system Addison (تصویر چپ) ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="ff-addison">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Mandai-Design_Retail_1.jpg?v=1768918394&amp;width=1200" alt="Shelving-system_Addison_Finefoods_Mandai-Design_Retail_1" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="ff-addison">Shelving system Addison</h3>
+        <p class="cm-rowsub">Flexible set-up of farm shops</p>
+        <p>While the assortments and products of farm shops change quickly, you can prepare yourself with our Addison sales shelves. Its <strong>adaptive, customizable shelving modules</strong>present your products in style. This versatility makes Addison suitable for the presentation of organic foods, coffee and tea, or delicatessen. This store equipment can be further varied with flexible accessories and modular carriers, fashioning creative shelving systemsin your store.</p>
+        <p>Whether you want to expand your product range or run seasonal sales promotions, the shelving units in the Addison range offer you the flexibility you are looking for. Addison can also be set up <strong>without wall mounting</strong>, making it a freestanding room divider.</p>
+        <a href="../systems/addison.html" class="btn btn--outline">Discover Addison now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── نوار ۴ محصول (featured collection — استاتیک ۴تایی مثل مرجع، بدون شمارنده) ── -->
+  <section class="hw-sec fd-sec" aria-label="Products">
+    <div class="container">
+      <ul class="fd-strip">
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle1H260_mitAccHalifax_2026.jpg?v=1769430727&amp;width=900" alt="Shelving System Addison - Fine Foods - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/verkaufsregal-ladenregal-addison-mandaidesign.jpg?v=1772704131&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Addison - Fine Foods - Style 1</h3>
+        <p class="product__price">from $1,270.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 2">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle2H260_inclAccHalifax_2026.jpg?v=1769503911&amp;width=900" alt="Shelving System Addison - Fine Foods - Style 2" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/verkaufsregal-ladenregal-feinkost-addison-mandai.jpg?v=1772704185&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Addison - Fine Foods - Style 2</h3>
+        <p class="product__price">from $2,957.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 3">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle3H260_inclAccHalifax_2026.jpg?v=1769506365&amp;width=900" alt="Shelving System Addison - Fine Foods - Style 3" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/fine-foods-shelving-addison-style3_2026.jpg?v=1769508146&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Addison - Fine Foods - Style 3</h3>
+        <p class="product__price">from $3,882.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Addison – Wine Shelf">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle4_Wine_H260_inclAccHalifax_2026.jpg?v=1769511981&amp;width=900" alt="Shelving System Addison – Wine Shelf" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-finefoods-addison-wine-shelf.jpg?v=1772704266&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"><span class="hw-quick">Quick View</span></div>
+        <h3 class="product__name">Shelving System Addison – Wine Shelf</h3>
+        <p class="product__price">from $3,425.00</p>
+        <p class="product__options">3 wood decors</p>
+            <div class="fd-swatch" aria-hidden="true"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048&amp;width=32" alt="" width="22" height="22" loading="lazy"><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915&amp;width=32" alt="" width="22" height="22" loading="lazy"></div>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Shop the look (تصویر چپ، کارت‌ها راست — پیش‌فرض hw-look بدون flip؛ نقاط ✏️ تقریبی، در انتظار مختصات دقیق کاربر) ── -->
+  <section class="hw-sec" aria-label="Shop the look">
+    <div class="container">
+      <div class="hw-look">
+        <div class="hw-look__row">
+          <div class="hw-look__media"><img src="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Mandai-Design_Retail.jpg?v=1768918053&amp;width=1400" alt="Shelving-system_Addison_Finefoods_Mandai-Design_Retail" loading="lazy">
+            <!-- نقاط تعاملی — اندازه‌گیری دقیق از اسکرین‌شات رفرنس کاربر 2026-10-07 (باکس 933×732):
+                 S1 29.5/49.9 · Tokyo 61.7/69.7 · S2 75.2/41.8 — ترتیب کارت‌ها [S1, Tokyo, S2] چون اسلاید ۱/۳ مرجع = S1 -->
+            <button type="button" class="hw-dot" data-slider="ffL" data-index="0" style="left:29.5%;top:49.9%" aria-label="Shelving System Addison - Fine Foods - Style 1"></button>
+            <button type="button" class="hw-dot" data-slider="ffL" data-index="1" style="left:61.7%;top:69.7%" aria-label="Shop Counter Tokyo, anthracite and wood"></button>
+            <button type="button" class="hw-dot" data-slider="ffL" data-index="2" style="left:75.2%;top:41.8%" aria-label="Shelving System Addison - Fine Foods - Style 2"></button>
+          </div>
+          <div>
+            <h3>Shop the look</h3>
+            <div class="hw-look__cardwrap">
+            <button type="button" class="slider-btn hw-look__nav" data-slider="ffL" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <ul class="hw-look__track" id="ffL">
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 1">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle1H260_mitAccHalifax_2026.jpg?v=1769430727&amp;width=900" alt="Shelving System Addison - Fine Foods - Style 1" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shelving System Addison - Fine Foods - Style 1</h4>
+                <p class="product__price">from $1,270.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shop Counter Tokyo, anthracite and wood">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/tokyo-retail-counter-checkout-desk_2.jpg?v=1758091321&amp;width=900" alt="Shop Counter Tokyo, anthracite and wood" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shop Counter Tokyo, anthracite and wood</h4>
+                <p class="product__price">$2,217.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fine Foods - Style 2">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/AddisonFineFoodStyle2H260_inclAccHalifax_2026.jpg?v=1769503911&amp;width=900" alt="Shelving System Addison - Fine Foods - Style 2" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shelving System Addison - Fine Foods - Style 2</h4>
+                <p class="product__price">from $2,957.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+            </ul>
+                        <button type="button" class="slider-btn hw-look__nav" data-slider="ffL" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <p class="hw-look__count" id="cnt-ffL">1 / 3</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">RETAIL SECTORS</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Flexible equipment for farm shops and deli stores</h2>
-        <div class="intro__text">
-          <p>Beyond sophisticated store design, the flexibility of your concept is also essential: delicatessen store equipment should always be adaptable to seasonal changes. That way, changing product ranges can be effectively displayed - from fruit and vegetables to international specialities.</p>
-        </div>
+  <!-- ── ردیف Wine Rack Addison (متن چپ، تصویر راست — مثل الگوی kids: متن اول در DOM، عکس دوم) ── -->
+  <section class="cs-help kf-row kf-img-right" aria-labelledby="ff-wine">
+    <div class="container cs-help__row">
+      <div class="cs-help__txt">
+        <h3 id="ff-wine">Wine Rack Addison</h3>
+        <p class="cm-rowsub">Perfect for wine bars, wine cellars or restaurants</p>
+        <p>Wooden shelves offer <strong>plenty of space</strong>to present wine bottles, spirits, or the corresponding glasses. The shelves are hooked into the vertical steel frame and can be adjusted in height every 5 cm, allowing you to make flexible changes as required.</p>
+        <p>Thanks to strong shelf consoles, the Addison wine rack can easily carry heavy goods such as wine bottles (up to 30 kg per shelf). In addition, a presentation box with diagonal dividers provides excellent storage for bottles and doubles as a <strong>stylish eye-catcher</strong>.</p>
+        <a href="../index.html#contact" class="btn btn--outline">SHOP ADDISON WINE SHELF</a><!-- ✏️ مقصد مرجع = صفحهٔ محصول؛ به فرم تماس -->
       </div>
-    </section>
+      <img src="https://www.mandai-design.com/cdn/shop/files/Shelving-system_Addison_Finefoods_Style_04_Wine-Shelf_Mandai-Design_Retail.jpg?v=1768919077&amp;width=1200" alt="Shelving-system_Addison_Finefoods_Style_04_Wine-Shelf_Mandai-Design_Retail" loading="lazy">
+    </div>
+  </section>
 
-    <!-- ══════════ تجهیزات پیشنهادی ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
-      <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our fixtures for fine foods stores</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Ceres">
-              <div class="product__media">
-                <img src="../images/product-ceres-style4.jpg" alt="Shelving System Ceres - Style 4, black" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving System Ceres</h3>
-              <p class="product__price">from &euro;2,109.00</p>
-              <p class="product__variants">With chalkboard option</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Addison">
-              <div class="product__media">
-                <img src="../images/product-addison-style5.jpg" alt="Shelving System Addison - Style 5" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving System Addison</h3>
-              <p class="product__price">from &euro;2,252.00</p>
-              <p class="product__variants">Free-standing possible</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Gondola Shelving">
-              <div class="product__media">
-                <img src="../images/cat-gondola.jpg" alt="Gondola shelving for deli products" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Gondola Shelving</h3>
-              <p class="product__variants">Accessible from all sides</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Shop Counters">
-              <div class="product__media">
-                <img src="../images/cat-shop-counters.jpg" alt="Shop counter for checkout and packing" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shop Counters</h3>
-              <p class="product__variants">Checkout &amp; packing</p>
-            </a>
-          </li>
+  <!-- ── ردیف Gondola Shelving (تصویر چپ) ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="ff-gon">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/Capri_gondola_shelving_FineFoods_Style03_Mandai_Design_Shop2.jpg?v=1782718606&amp;width=1200" alt="Capri_gondola_shelving_FineFoods_Style03_Mandai_Design_Shop2" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="ff-gon">Gondola Shelving</h3>
+        <p class="cm-rowsub">Perfect for Delicatessen Stores, Organic Food Shops &amp; Farm Shops</p>
+        <p>Gondola shelving is the ideal solution for displaying delicatessen products, organic foods and regional specialties in the center of your retail space. The double-sided design creates additional display space while allowing different product categories&mdash;such as oils, vinegars, spices, jams, or seasonal products&mdash;to be clearly organized and attractively presented.</p>
+        <p>At the same time, gondola shelving encourages a natural customer flow and allows shoppers to explore your assortment from different angles. Thanks to its modular design, the shelving can be easily adapted to new products or changing seasonal displays at any time. The result is a premium merchandise presentation that enhances the character of delicatessen stores, farm shops, and organic food retailers while creating a clear, welcoming shopping experience.</p>
+        <a href="../fixtures/gondola-shelving.html" class="btn btn--outline">discover gondola shelving</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── گالری مشتریان (۱۵ عکس، مثل مرجع) ── -->
+  <section class="hw-gallery" aria-labelledby="ff-gallery">
+    <div class="container">
+      <h2 id="ff-gallery" class="h-serif-xl">Customer Photos: Our Products in Fine Food Stores</h2>
+      <p class="hw-gallery__lead">Here is a selection of photos that were kindly made available to us by our customers. Discover more ideas on <a href="../index.html#references">reference page</a><!-- ✏️ مقصد مرجع = /pages/references --> and follow us on <a href="https://www.instagram.com/mandai_design_de/" title="MD Instagram Link">Instagram</a> for weekly inspiration!</p>
+      <div class="fref-grid">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="fdG" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="fdG" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="fref-track" id="fdG">
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/shopfitting-shelving-system-retail-shelf-display-mandaidesign-dkb_4df18aa0-d404-4ef3-8550-4d2db9af2a77.jpg?v=1708326876&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Addison - <a href="https://www.instagram.com/baerenwirt.und.derkleinebaer/" title="B&auml;renwirt &amp; Der kleine B&auml;r">B&auml;renwirt &amp; Der kleine B&auml;r</a>, Austria</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/shopfitting-shelving-system-retail-shelf-display-mandaidesign-mana_02128c12-78ec-4124-9197-cbaa6f0e5509.jpg?v=1708326946&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres- <a href="https://www.instagram.com/mana_ernaehrung/" title="Mana">Mana Ern&auml;hrung</a>, Switzerland</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Shelving-System-Ceres-Display-Pedestals-Mandai-Design.jpg?v=1776756461&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Ceres &amp; Display Pedestals, <a href="https://www.instagram.com/badems_nassau.info/" title="Touristik Bad Ems-Nassau">Touristik Bad Ems-Nassau</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelf-food-display-shopfitting-hafen-spezerei_7c4f8728-c4d4-47c0-86c9-a2adb2b0d9dd.jpg?v=1708326895&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Addison -<a href="https://www.instagram.com/hafenspezerei/" title="Hafen-Spezerei">Hafen-Spezerei</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/tee_tea_thee_berlin_mandai_design_9.jpg?v=1750936814&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus, display cubes Fargo - <a href="https://www.instagram.com/tee.tea.the/" title="Tee Tea The">Tee Tea The</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kinfolk-market-fine-foods-mandai-design_2.jpg?v=1759134554&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus<br><a href="https://www.instagram.com/kinfolkmarketandshop/" title="Kinfolk Market and Shop">Kinfolk Market and Shop</a>, USA</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/spring-valley-coffee-london-mandai-design_4.jpg?v=1753167613&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Addison - <a href="https://www.instagram.com/springvalleycoffee_london" title="Spring Valley Coffee">Spring Valley Coffee</a>, London</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/kinfolk-market-fine-foods-mandai-design_3.jpg?v=1759134553&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus<br><a href="https://www.instagram.com/kinfolkmarketandshop/" title="Kinfolk Market and Shop">Kinfolk Market and Shop</a>, USA</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/spring-valley-coffee-london-mandai-design_3.jpg?v=1753167636&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Addison - <a href="https://www.instagram.com/springvalleycoffee_london" title="Spring Valley Coffee">Spring Valley Coffee</a>, London</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/tee_tea_thee_berlin_mandai_design_5.jpg?v=1750936815&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus, display cubes Fargo - <a href="https://www.instagram.com/tee.tea.the/" title="Tee Tea The">Tee Tea The</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/peintner-tirol-addison.jpg?v=1730018892&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Addison - <a href="https://www.instagram.com/peintner.manufaktur/" title="Peintner Manufaktur">Peintner Manufaktur</a>, Austria</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/shelving-system-shelf-retail-display-shelf-mandaidesign-vin-hotel_3a6eceed-23d2-4ea4-9ad6-7806d0c8c077.jpg?v=1708326980&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Addison-<a href="https://www.instagram.com/vin.hotel/" title="Vin Hotel">VIN Hotel</a> &ndash; La Meridiana, Italy</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/finefood-feinkostladen-addison-wohnstyle.jpg?v=1741089268&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Addison - <a href="https://www.instagram.com/wohn.style_bamberg/" title="Wohn.Style">Wohn.Style</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Urkornpuristen-bakery-shop-website-new_adfbf046-63cf-4663-8e53-119073d1f34a.jpg?v=173828130&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Shelving System Cetus - <a href="https://www.instagram.com/urkornpuristen/" title="Urkornpuristen">Urkornpuristen</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/tee_tea_thee_berlin_mandai_design_3.jpg?v=1750936815&amp;width=900" alt="Fine food store by Mandai Design" loading="lazy">
+            <figcaption>Display tables Fargo - <a href="https://www.instagram.com/tee.tea.the/" title="Tee Tea The">Tee Tea The</a>, Germany</figcaption>
+            </figure></li>
         </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن راهنمای سکتور ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Regional products, beautifully staged</h2>
-          <p>Available in various widths and heights, Ceres offers plenty of space for food, fruit or delicatessen. Depending on the range and season, you can adjust the height of the shelves without tools - the chalkboard visually highlights the regional origin of your products.</p>
-          <p>Whether you want to expand your product range or run seasonal sales promotions, the shelving units in the Addison range offer you the flexibility you are looking for. Addison can also be set up without wall mounting, making it a freestanding room divider.</p>
+  <section id="contact" class="hw-contact" aria-labelledby="contact-heading">
+    <div class="contact__head">
+      <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+      <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+    </div>
+
+    <div class="contact__status" role="status" data-contact-status hidden></div>
+
+    <form class="contact__form" data-contact-form novalidate>
+      <div class="contact__row">
+        <div>
+          <label class="sr-only" for="cf-name">Name (required)</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+        </div>
+        <div>
+          <label class="sr-only" for="cf-email">Email (required)</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
         </div>
       </div>
-    </section>
 
+      <div>
+        <label class="sr-only" for="cf-phone">Phone</label>
+        <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
+      </div>
 
+      <div>
+        <label class="sr-only" for="cf-message">Message (required)</label>
+        <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
+      </div>
 
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
-      <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
+      <div>
+        <label class="sr-only" for="cf-source">How did you hear about us?</label>
+        <select id="cf-source" name="source" class="field field--select">
+          <option value="" disabled selected hidden>How did you hear about us?</option>
+          <option value="Google">Google</option>
+          <option value="Other search engine">Other search engine</option>
+          <option value="Pinterest">Pinterest</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Referral">Referral</option>
+          <option value="AI platform (e.g. ChatGPT, Perplexity)">AI platform (e.g. ChatGPT, Perplexity)</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
 
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
-              </div>
-            </li>
-          </ul>
+      <!-- ✏️ reCAPTCHA — جای‌نگهدار بصری (غیرفعال) -->
+      <div class="ct-captcha" aria-hidden="true">
+        <span class="ct-captcha__box"></span>
+        <span class="ct-captcha__label">I&rsquo;m not a robot</span>
+        <span class="ct-captcha__brand">
+          <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="#1c3aa9" d="M16 4a12 12 0 0 1 10.9 7H16z"/><path fill="#4285f4" d="M28 16a12 12 0 0 1-7 10.9V16z"/><path fill="#ababab" d="M16 28A12 12 0 0 1 5.1 21H16z"/><path fill="#c9c9c9" d="M4 16a12 12 0 0 1 7-10.9V16z"/></svg>
+          reCAPTCHA
+          <small>Privacy - Terms</small>
+        </span>
+      </div>
 
-          <div class="reviews__dots" data-reviews-dots></div>
+      <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+      <div class="contact__submit">
+        <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+          <span class="btn__spinner" aria-hidden="true"></span>
+          <span class="btn__label">Submit</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ── متن SEO (متن زندهٔ مرجع، تایپوی مرجع حفظ شده) + Get advice now ── -->
+  <section class="hw-seo sh-seo" aria-labelledby="ff-seo-h">
+    <div class="container">
+      <h2 id="ff-seo-h" style="text-align:left">Organic-,Farm-, and Deli Store Equipment from Mandai Design</h2>
+      <p class="sh-seo__lead">Mandai Design is your <strong>designer and manufacturer</strong> of high-quality modular retail fixtures that allow for aesthetic and functional store designs. Our sales shelves offer versatile solutions for various sectors and concepts: Present goods such as delicatessen with our store equipment and rely on <strong>quality and proven functionality</strong>!</p>
+      <p class="sh-seo__lead">Your benefits with Mandai Design at a glance:</p>
+      <ul>
+        <li>Flexible and versatile systems for customized interior designs</li>
+        <li>Robust and durable materials with precise workmanship</li>
+        <li>Manufactured in our own factory directly in Germany for high quality standards</li>
+        <li>Clear, minimalist designs that are flexible and functional</li>
+        <li>Modular design for easy adaptation to changing product ranges</li>
+        <li>Simple assembly due to intelligent design</li>
+        <li>Planning support to make the best and most stylish use of space</li>
+      </ul>
+      <p class="sh-seo__lead">Our <a href="../index.html#categories">store fixtures</a><!-- ✏️ مقصد مرجع = /collections/retail-furniture --> can be put together <strong>completely individually</strong> from various modules, giving you the chance to choose exactly the <a href="../fixtures/retail-shelving.html">retail display shelves</a>, tables, and counters that match your design ideas and functional requirements. Custom-made deli store equipment is also an option: We support you from the initial concept design to the final realization with our comprehensive know-how.</p>
+      <div class="hw-seo__cols">
+        <div>
+          <h3>Adjustments to Seasonal Changes</h3>
+          <p>In delicatessens as well as in organic food shops, the products usually change periodically &ndash; fresh fruit and vegetables, regional specialties, or new delicacies enrich the range depending on the season. Our modular deli store equipment is an excellent solution for flexible adaptation to these changes: It enables the flexible arrangement and presentation of your products in just <strong>a few simple steps</strong>. This means you always have space for the latest offers and seasonal delicatessen highlights, without having to spend time and money reorganizing the store fittings.</p>
+        </div>
+        <div>
+          <h3>Make the Most of Your Space and Sell More</h3>
+          <p>With Mandai Design&rsquo;s well-thought-out store fittings, you can <strong>use your available space efficiently</strong> and present products in an immediately eye-catching way. Our systems are designed to also make <strong>use of the central space</strong> in your store due to freestanding store fixtures. This helps maintain freedom of movement for your customers. This clever use of space increases the attractive display of delicatessen products, encouraging more impulse purchases and promoting the <strong>flow of goods</strong>.</p>
+        </div>
+        <div>
+          <h3>Stylish Presentation of High-Quality Delicacies</h3>
+          <p><strong>Aesthetic presentation</strong> is particularly important when it comes to delicatessen products. In addition to high product quality, customers expect a <strong>stylish ambience</strong> that emphasizes the value of the delicacies. Our timeless designs create a <strong>harmonious look</strong> and draw attention to the goods on display. Whether fine wines, handmade chocolates, or international delicacies - Mandai Design&rsquo;s store equipment creates an elegant and appealing setting for organic and fine foods.</p>
         </div>
       </div>
-    </section>
-
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: این دو سوال در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
-          </div>
-        </div>
+      <div class="fd-advice">
+        <h2>Get advice now</h2>
+        <p>Do you have any questions about our products or require support?</p>
+        <p><a href="tel:+49343414070950">+ 49 (0) 34341 40 70 950</a></p>
+        <p><strong>Mon-Fri 8.30 AM to 5.00 PM</strong></p>
       </div>
-    </section>
-
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Planning a farm shop or deli?</h2>
-          <p class="sector-cta__text">Our team of interior designers plans your space with our products - free of charge, using your floor plan and measurements.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Organic, farm and deli store equipment from Mandai Design</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Adapt to every season</h3>
-            <p>Fruit in summer, mulled wine in winter: shelf heights adjust without tools, and modular extensions grow with your range.</p>
-          </div>
-          <div>
-            <h3>Open shelving for fresh ranges</h3>
-            <p>As a modular system, Ceres is well-suited to presenting organic products and deli foods - the open design creates stylish looks through to the wall.</p>
-          </div>
-          <div>
-            <h3>The Addison wine rack</h3>
-            <p>Wooden shelves offer plenty of space for wine bottles, spirits or the corresponding glasses - perfect for wine bars, wine cellars or farm shops.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ══════════ فوتر ══════════ -->
+    </div>
+  </section>
+  <script>
+    /* اسلایدرها + تب‌های Homeware/Floral و White/Black */
+    (function () {
+      var GAP = 18;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var dir = Number(btn.getAttribute('data-dir') || 1);
+          if (slider.classList.contains('hw-look__track')) {
+            var items = slider.querySelectorAll('li');
+            var cur = Math.round(slider.scrollLeft / Math.max(1, slider.clientWidth));
+            var nxt = Math.max(0, Math.min(cur + dir, items.length - 1));
+            items[nxt].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            var cnt = document.getElementById('cnt-' + slider.id);
+            if (cnt) cnt.textContent = (nxt + 1) + ' / ' + items.length;
+            return;
+          }
+          var card = slider.querySelector('li:not([hidden])');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * dir, behavior: 'smooth' });
+        });
+      });
+      document.querySelectorAll('.fsh-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var track = document.getElementById(tab.getAttribute('data-track'));
+          if (!track) return;
+          var val = tab.getAttribute('data-val');
+          tab.parentElement.querySelectorAll('.fsh-tab').forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          track.querySelectorAll('li[data-group]').forEach(function (li) {
+            li.hidden = li.getAttribute('data-group') !== val;
+          });
+          track.scrollLeft = 0;
+        });
+      });
+      document.querySelectorAll('.hw-dot').forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var slider = document.getElementById(dot.getAttribute('data-slider'));
+          if (!slider) return;
+          var items = slider.querySelectorAll('li');
+          if (!items.length) return;
+          var i = Math.min(Number(dot.getAttribute('data-index') || 0), items.length - 1);
+          items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          var cnt = document.getElementById('cnt-' + slider.id);
+          if (cnt) cnt.textContent = (i + 1) + ' / ' + items.length;
+        });
+      });
+    })();
+  </script>
+</main>
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -593,10 +1032,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
             <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -613,14 +1052,14 @@
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
             <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="../index.html#categories">Clothing Racks</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
             <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
             <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
             <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -638,12 +1077,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -663,7 +1102,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -671,6 +1110,6 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+      <script src="../assets/js/main.js" defer></script>
 </body>
 </html>

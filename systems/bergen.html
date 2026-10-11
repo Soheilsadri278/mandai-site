@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ سیستم قفسه (قالب نسخهٔ ۲ — مثل سایت اصلی):
+  MANDAI DESIGN — Bergen Shelving System (بازسازی موبه‌مو از collections/shelving-system-bergen — 2026-09):
   هیرو بدون تیتر → معرفی + ۴ ویژگی → بنر ویدیو → سکتورها با گرید محصول
   → گرید «سفارشی‌سازی» → FAQ وسط‌چین → نمونه‌کار مشتری → فرم تماس
   ▸ راهنمای کامل: README-FA.html
@@ -11,8 +11,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bergen shelving system - Modular retail shelving | Mandai Design</title>
-  <meta name="description" content="The Bergen shelving system: modular, height-adjustable and made in Germany. Configure your retail shelving online now.">
+  <title>Retail shelving system Bergen - Impress in industrial style | Mandai Design</title>
+  <meta name="description" content="The Bergen shelving system: modular retail shelving in industrial style, combining open steel structures with premium wood finishes. Configure your store shelving online now.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
@@ -22,56 +22,89 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/systems/bergen.html">
   <meta property="og:site_name" content="Mandai Design">
-  <meta property="og:title" content="Bergen shelving system - Modular retail shelving | Mandai Design">
-  <meta property="og:description" content="The Bergen shelving system: modular, height-adjustable and made in Germany. Configure your retail shelving online now.">
-  <meta property="og:image" content="https://www.example.com/images/systems/bergen.jpg">
+  <meta property="og:title" content="Retail shelving system Bergen - Impress in industrial style | Mandai Design">
+  <meta property="og:description" content="The Bergen shelving system: modular retail shelving in industrial style, combining open steel structures with premium wood finishes. Configure your store shelving online now.">
+  <meta property="og:image" content="https://www.example.com/images/systems/ontario.jpg">
   <meta property="og:image:width" content="1800">
   <meta property="og:image:alt" content="Bergen modular shelving system in a retail store">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bergen shelving system - Modular retail shelving | Mandai Design">
-  <meta name="twitter:description" content="The Bergen shelving system: modular, height-adjustable and made in Germany. Configure your retail shelving online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/systems/bergen.jpg">
+  <meta name="twitter:title" content="Retail shelving system Bergen - Impress in industrial style | Mandai Design">
+  <meta name="twitter:description" content="The Bergen shelving system: modular retail shelving in industrial style, combining open steel structures with premium wood finishes. Configure your store shelving online now.">
+  <meta name="twitter:image" content="https://www.example.com/images/systems/ontario.jpg">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/systems/bergen.jpg" as="image">
+  <link rel="preload" href="https://www.mandai-design.com/cdn/shop/files/retail_shelving_system_mens_fashion_mandai_design_header.jpg?v=1779875898&width=1200" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو — مثل مرجع: دسکتاپ تصویر پهن/طبیعی، موبایل تصویر دوم */
+    .ber-hero-mobile { display: none; }
+    .sys-hero { height: auto; min-height: 0; }
+    .sys-hero .ber-hero-desktop { height: auto; object-fit: contain; }
+    @media (max-width: 767px) {
+      .ber-hero-desktop { display: none; }
+      .ber-hero-mobile { display: block; height: auto; }
+      .sys-hero { height: auto; }
+      .sys-hero .ber-hero-mobile { height: auto; object-fit: contain; background: #e9e7e3; }
+    }
+    /* ✏️ ویرایش: تصاویر محصولات مربع (۲۰۴۸×۲۰۴۸) هستند؛ قاب کارت مربع شد تا بدون برش دیده شوند */
+    .ber-grid .product__media { aspect-ratio: 1 / 1; }
+    /* ویژگی‌های «About» چهارستونه */
+    .ber-about__head { max-width: 768px; margin-inline: auto; text-align: center; }
+    .ber-about__grid { max-width: 1152px; margin: 40px auto 0; display: grid; gap: 32px 48px; }
+    .ber-about__grid h3 { font-size: 15.5px; font-weight: 600; letter-spacing: 0.02em; }
+    .ber-about__grid p { margin-top: 8px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.8); }
+    @media (min-width: 1024px) { .ber-about__grid { grid-template-columns: repeat(2, 1fr); } }
+    /* اسلایدرهای افقی (گالری مشتریان + کراس‌سل) — مثل مرجع: اسکرول-اسنپ + فلش */
+    .sys-slider {
+      display: flex; gap: 16px; margin-top: 28px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      list-style: none; padding: 2px 2px 14px;
+      scrollbar-width: none;
+    }
+    .sys-slider::-webkit-scrollbar { display: none; }
+    .sys-slider > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .sys-slider > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .sys-slider > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .sys-slider > li { flex-basis: 23.5%; } }
+    .sys-slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+    .slider-nav { display: flex; gap: 8px; flex: 0 0 auto; }
+    .slider-btn {
+      width: 40px; height: 40px; border: 1px solid rgba(26, 26, 26, 0.25); border-radius: 50%;
+      background: #fff; color: var(--foreground); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .slider-btn svg { width: 11px; height: 11px; }
+    .slider-btn:hover { border-color: var(--foreground); }
+    /* کراس‌سل: هدینگ کوچک + یک خط توضیح (مثل مرجع، بدون دکمه) */
+    .sys-cross__head-text { max-width: 768px; }
+    .sys-cross__title { font-family: var(--font-serif); font-weight: 400; font-size: 21px; line-height: 1.35; }
+    .sys-cross__text { margin-top: 10px; font-size: 13.5px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* دایره‌های گزینهٔ رنگ/چوب روی کارت‌های کراس‌سل (مثل مرجع) */
+    .product__swatches { display: flex; gap: 6px; margin-top: 10px; list-style: none; padding: 0; }
+    .product__swatches img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(26, 26, 26, 0.12); }
+    .product__price { margin-top: 2px; }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Bergen shelving and shelving system",
+      "name": "Retail Shelving System Bergen",
       "url": "https://www.example.com/systems/bergen.html",
-      "description": "The Bergen shelving system: modular, height-adjustable and made in Germany. Configure your retail shelving online now.",
+      "description": "The Bergen shelving system: modular retail shelving in industrial style, combining open steel structures with premium wood finishes. Configure your store shelving online now.",
       "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://www.example.com/#website"
-      },
-      "primaryImageOfPage": "https://www.example.com/images/systems/bergen.jpg"
+      "isPartOf": { "@id": "https://www.example.com/#website" },
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style_03-MandaiDesign-SI01.jpg?v=1779872138"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.example.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Shelving Systems",
-          "item": "https://www.example.com/#bestsellers"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Bergen",
-          "item": "https://www.example.com/systems/bergen.html"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Shelving Systems", "item": "https://www.example.com/#bestsellers" },
+        { "@type": "ListItem", "position": 3, "name": "Bergen", "item": "https://www.example.com/systems/bergen.html" }
       ]
     },
     {
@@ -79,22 +112,14 @@
       "url": "https://www.example.com/systems/bergen.html",
       "inLanguage": "en",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible."
-          }
-        }
+        { "@type": "Question", "name": "Can I modify the shelves shown online?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The shelving systems shown in our online shop are our standard products. You can adapt them to your products and floor plan and expand them with accessories and modules. We are happy to accommodate individual requests - contact us for a free, no-obligation design." } },
+        { "@type": "Question", "name": "Can I get my shelving in a different colour or finish?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Mandai Design shopfitting systems are almost infinitely customisable: a huge range of solid wood and wood decor finishes plus powder-coated steel frames and accessories in a selection of RAL colours. Order free samples online." } },
+        { "@type": "Question", "name": "Why should I choose modular shelving?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Modular shelving is easy to assemble and can be adapted and expanded at any time. Shelves and display fittings on most systems are height-adjustable in 50 mm increments. Exception: with Bergen, shelves and display fittings are adjusted in 345 mm (13.58\") increments." } },
+        { "@type": "Question", "name": "Can I get material/colour samples?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes - we are happy to send you samples of finishes so that you can see how they look in real life. Our design team can advise you if you need help selecting. Learn more about our free sample service." } }
       ]
     }
   ]
@@ -119,8 +144,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -130,15 +155,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
-            <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -156,8 +181,9 @@
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                                                                                                                                                                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fashion.html">Fashion</a></li>
                 <li><a href="../sectors/menswear.html">Menswear</a></li>
                 <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
@@ -165,9 +191,25 @@
                 <li><a href="../sectors/shoes.html">Shoes</a></li>
                 <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
                 <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- Bakery → bakery.html (ساخته شد؛ قبلاً موقتاً Fine Foods بود) -->
+                <li><a href="../sectors/bakery.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
                 <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -175,8 +217,9 @@
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
                 <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
                 <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
@@ -184,8 +227,17 @@
                 <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
                 <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
                 <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
                 <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -193,17 +245,26 @@
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="addison.html">Addison</a></li>
-                <li><a href="ceres.html">Ceres</a></li>
-                <li><a href="cetus.html">Cetus</a></li>
-                <li><a href="brooklyn.html">Brooklyn</a></li>
-                <li><a href="slimline.html">Slimline</a></li>
-                <li><a href="ontario.html">Ontario</a></li>
-                <li><a href="bergen.html" aria-current="page">Bergen</a></li>
-                <li><a href="customize.html">Customize your shelf</a></li>
-              </ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../systems/addison.html">Addison</a></li>
+                <li><a href="../systems/ceres.html">Ceres</a></li>
+                <li><a href="../systems/cetus.html">Cetus</a></li>
+                <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
+                <li><a href="../systems/slimline.html">Slimline</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/bergen.html" aria-current="page">Bergen</a></li>
+                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -211,22 +272,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-                <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-                <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -269,6 +342,11 @@
               <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
               <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
               <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/bakery.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
               <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
@@ -282,6 +360,7 @@
               <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
               <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
               <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
               <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
@@ -293,7 +372,7 @@
               <li><a href="cetus.html">Cetus</a></li>
               <li><a href="brooklyn.html">Brooklyn</a></li>
               <li><a href="slimline.html">Slimline</a></li>
-              <li><a href="ontario.html">Ontario</a></li>
+                <li><a href="ontario.html">Ontario</a></li>
               <li><a href="bergen.html" aria-current="page">Bergen</a></li>
               <li><a href="customize.html">Customize your shelf</a></li>
             </ul>
@@ -301,28 +380,28 @@
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-              <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-              <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
-          <li><a href="../index.html#faq">FAQ</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -345,251 +424,320 @@
     </div>
   </header>
 
-  <main id="main-content">
+      <main id="main-content">
 
-    <!-- ══════════ هیرو — تصویر تمام‌عرض بدون تیتر (مثل سایت اصلی) ══════════
-         ✏️ ویرایش: تصویر images/bergen.jpg -->
-    <section class="sys-hero" aria-label="Bergen shelving and shelving system">
-      <img src="../images/systems/bergen.jpg" alt="Bergen modular shelving system in a retail store" class="sys-hero__img" width="1800" height="1800" loading="eager">
+    <!-- ══════════ هیرو — مثل مرجع: تصویر اول (دسکتاپ) + تصویر دوم (موبایل) ══════════ -->
+    <section class="sys-hero" aria-label="Bergen industrial-style shelving system">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail_shelving_system_mens_fashion_mandai_design_header.jpg?v=1779875898&width=1800" alt="Bergen shelving system for menswear retail" class="sys-hero__img ber-hero-desktop" width="1800" height="1100" loading="eager">
+      <img src="https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style_03-MandaiDesign-SI01.jpg?v=1779872138&width=1200" alt="Bergen industrial-style shelving system in menswear store" class="sys-hero__img ber-hero-mobile" width="1200" height="1200" loading="eager">
     </section>
 
-    <!-- ══════════ معرفی + ویژگی‌ها ══════════ -->
-    <section class="sys-intro" aria-labelledby="sys-intro-heading">
+    <!-- ══════════ معرفی — عنوان و توضیحات کالکشن (مثل مرجع) ══════════ -->
+    <section class="sys-intro" aria-labelledby="ber-intro-heading">
       <div class="container">
-        <h1 id="sys-intro-heading" class="sys-intro__title">Bergen shelving and shelving system</h1>
-        <p class="sys-intro__lead">Modular. Adaptable. Solid. The Bergen shelving system is the flexible backbone for your retail space: a modular steel frame with shelves and display fittings that hook in without tools and adjust in 5 cm steps.</p>
-        <ul class="feat-grid">
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-modular.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Hook in, adjust, extend</h3>
-            <p class="feat-card__text">Modules extend your wall whenever the range grows.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-assembly.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Height-adjustable</h3>
-            <p class="feat-card__text">All shelves adjust in 5 cm steps - without tools.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-support.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Zone your sales floor</h3>
-            <p class="feat-card__text">Wall units plus free-standing elements structure your store.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-germany.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Made in Germany</h3>
-            <p class="feat-card__text">Black or white steel, range of wood finishes.</p>
-          </li>
-        </ul>
+        <h1 id="ber-intro-heading" class="sys-intro__title">Industrial-Style Shelving for Modern Stores</h1>
+        <p class="sys-intro__lead">Retail shelving system Bergen combines open steel structures with premium wood finishes, capturing the bold character of industrial-style interiors. With its clean lines and minimalist design, this display shelving system is especially effective in modern retail concepts and contemporary commercial spaces.</p>
       </div>
     </section>
 
-
-
-    <section class="sector-alt" aria-labelledby="sector-0-heading">
+    <!-- ══════════ گرید ۴ محصول (ترتیب لایو: Style 1 تا 4) ══════════
+         ✏️ ویرایش: در مرجع روی کارت‌ها تصویر دوم (hover) و Quick View هست؛ اینجا فقط تصویر اول. -->
+    <section class="sector-alt" aria-labelledby="ber-products">
       <div class="container">
-        <div class="sector-alt__row">
-
-          <div class="sector-alt__media"><img src="../images/sectors/fine-foods.jpg" alt="Bergen shelving in a farm shop" width="1024" height="1024" loading="lazy"></div>
-          <div class="sector-alt__copy">
-            <h3 class="sector-alt__title">Fine foods & farm shops</h3>
-            <p class="sector-alt__text">As a modular system, Bergen is easily converted and extended - ideal for changing product ranges in farm shops and delis.</p>
-            <a href="../sectors/fine-foods.html" class="btn btn--outline btn--sm">Discover Fine foods & farm shops solutions</a>
-          </div>
-        </div>
         <div class="sector-alt__grid-head">
-          <h3 class="sr-only" id="sector-0-heading">Products for Fine foods & farm shops</h3>
+          <h3 class="sr-only" id="ber-products">Bergen shelving system products</h3>
         </div>
-        <ul class="mini-grid">
+        <ul class="mini-grid ber-grid">
           <li>
             <a href="../index.html#contact" class="product" aria-label="Shelving System Bergen - Style 1">
-              <div class="product__media"><img src="../images/products/bergen-style1.jpg" alt="Shelving System Bergen - Style 1" width="900" height="900" loading="lazy"></div>
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style01-MandaiDesign-WB01.jpg?v=1778578923" alt="Shelving System Bergen - Style 1" width="900" height="900" loading="lazy"></div>
               <h3 class="product__name">Shelving System Bergen - Style 1</h3>
-              <p class="product__price">from &euro;1,744.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen gondola unit">
-              <div class="product__media"><img src="../images/cat-gondola.jpg" alt="Bergen gondola unit" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen gondola unit</h3>
-              <p class="product__price">from &euro;1,021.00</p>
+              <p class="product__price">$1,049.00</p>
             </a>
           </li>
           <li>
             <a href="../index.html#contact" class="product" aria-label="Shelving System Bergen - Style 2">
-              <div class="product__media"><img src="../images/cat-shelving-systems.jpg" alt="Shelving System Bergen - Style 2" width="900" height="900" loading="lazy"></div>
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style02-MandaiDesign-WB01.jpg?v=1778578955" alt="Shelving System Bergen - Style 2" width="900" height="900" loading="lazy"></div>
               <h3 class="product__name">Shelving System Bergen - Style 2</h3>
-              <p class="product__price">from &euro;1,988.00</p>
+              <p class="product__price">$1,715.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Bergen - Style 3">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style03-MandaiDesign-WB01.jpg?v=1778578989" alt="Shelving System Bergen - Style 3" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Bergen - Style 3</h3>
+              <p class="product__price">$2,466.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Bergen - Style 4">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style04-MandaiDesign-WB01.jpg?v=1778579017" alt="Shelving System Bergen - Style 4" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Bergen - Style 4</h3>
+              <p class="product__price">$2,521.00</p>
             </a>
           </li>
         </ul>
       </div>
     </section>
-    <section class="sector-alt" aria-labelledby="sector-1-heading">
+
+    <!-- ══════════ «About Retail Shelving System Bergen» — چهار ویژگی (مثل مرجع) ══════════ -->
+    <section class="sector-alt ber-about" aria-labelledby="ber-about-heading">
+      <div class="container">
+        <div class="ber-about__head">
+          <h2 class="sector-alt__title" id="ber-about-heading">About Retail Shelving System Bergen</h2>
+        </div>
+        <div class="ber-about__grid">
+          <div>
+            <h3>Modular Design</h3>
+            <p>Configure, assemble, expand, and rearrange &ndash; Bergen adapts effortlessly to different industries, retail environments, and product collections.</p>
+          </div>
+          <div>
+            <h3>Versatility</h3>
+            <p>Whether freestanding or wall-mounted, the Bergen shelving system offers versatile possibilities for a retail space tailored to your vision.</p>
+          </div>
+          <div>
+            <h3>Custom Finishes</h3>
+            <p>Choose from a range of colors and surface finishes to perfectly match Bergen to your store concept. Free material samples can be ordered <a href="../index.html#help" class="text-link">here</a>.</p>
+          </div>
+          <div>
+            <h3>Timeless Character</h3>
+            <p>From urban retail concepts and loft-inspired interiors to authentic industrial spaces, the Bergen shelving brings a distinctive atmosphere to modern stores.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ زیگزاگ: ردیف ۱ (تصویر چپ) — مثل مرجع: متن، سپس تصویرِ خودش ══════════ -->
+    <section class="sector-alt" aria-labelledby="ber-feature-0">
+      <div class="container">
+        <div class="sector-alt__row">
+          <div class="sector-alt__media"><img src="https://www.mandai-design.com/cdn/shop/files/Bergen-shelving-system-Style_04-MandaiDesign-SI02.jpg?v=1779872235" alt="Bergen industrial-style retail shelving" width="1080" height="1080" style="aspect-ratio:1/1" loading="lazy"></div>
+          <div class="sector-alt__copy">
+            <h2 class="sector-alt__title" id="ber-feature-0">A Timeless Industrial-Style Retail Shelving System</h2>
+            <p class="sector-alt__text">Industrial-style retail design takes inspiration from the distinctive architecture of former factory buildings. Metal surfaces, clean lines, and open constructions create a bold and authentic look. The Bergen retail shelving system embraces these design elements while softening them with the natural warmth of wood finishes. The result is a striking shopfitting feature that enhances the overall interior without distracting from the products on display.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ زیگزاگ: ردیف ۲ (تصویر راست) ══════════ -->
+    <section class="sector-alt" aria-labelledby="ber-feature-1">
       <div class="container">
         <div class="sector-alt__row sector-alt__row--flip">
-
           <div class="sector-alt__copy">
-            <h3 class="sector-alt__title">Homeware shops</h3>
-            <p class="sector-alt__text">A quiet, solid system that stages homeware ranges in clean rows - extendable at any time.</p>
-            <a href="../sectors/homeware.html" class="btn btn--outline btn--sm">Discover Homeware shops solutions</a>
+            <h2 class="sector-alt__title" id="ber-feature-1">Versatile Shelving for a Variety of Retail Concepts</h2>
+            <p class="sector-alt__text">The retail shelving system Bergen is suitable for a wide range of industries and interior concepts. It works particularly well in menswear stores, sporting goods stores, and coffee shops, where its industrial aesthetic naturally complements the overall interior concept. In yoga studios or shoe stores, it creates an interesting contrast and adds a unique visual identity to the space.</p>
           </div>
-          <div class="sector-alt__media"><img src="../images/sectors/homeware.jpg" alt="Bergen shelving displaying homeware" width="1024" height="1024" loading="lazy"></div>
+          <div class="sector-alt__media"><img src="https://www.mandai-design.com/cdn/shop/files/2026-05_bergen_regalsystem_mens_fashion_style_02_extra_SI_2k_export.jpg?v=1779889081" alt="Bergen shelving system in a menswear retail concept" width="1080" height="1080" style="aspect-ratio:1/1" loading="lazy"></div>
         </div>
-        <div class="sector-alt__grid-head">
-          <h3 class="sr-only" id="sector-1-heading">Products for Homeware shops</h3>
-        </div>
-        <ul class="mini-grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen wall unit, 4 levels">
-              <div class="product__media"><img src="../images/products/bergen-style1.jpg" alt="Bergen wall unit, 4 levels" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen wall unit, 4 levels</h3>
-              <p class="product__price">from &euro;1,078.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen display pedestal">
-              <div class="product__media"><img src="../images/cat-pedestals.jpg" alt="Bergen display pedestal" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen display pedestal</h3>
-              <p class="product__price">from &euro;231.00</p>
-            </a>
-          </li>
-        </ul>
       </div>
     </section>
 
-    <!-- ══════════ سفارشی‌سازی ══════════ -->
-    <section class="custom-sec" aria-labelledby="custom-heading">
+    <!-- ══════════ «Bergen in our customer's stores» — اسلایدر ۱۰ عکس لایو ══════════ -->
+    <section class="references" aria-labelledby="ber-refs-heading">
       <div class="container">
-        <div class="custom-sec__head">
-          <h2 id="custom-heading" class="h-serif-lg">Create your own customized shelving</h2>
-          <p>Combine wall units, gondolas and pedestals from the Bergen range into your own configuration - everything hooks in without tools. Choose from black or white steel and a range of wood finishes; free material samples help you decide.</p>
-          <p></p>
+        <div class="references__head sys-slider-head">
+          <div class="references__head-text">
+            <h2 id="ber-refs-heading" class="h-serif-lg">Bergen in our customer's stores</h2>
+            <!-- ✏️ ویرایش: لینک «reference page» در مرجع به /pages/references می‌رود؛ اینجا به بخش References سایت. -->
+            <p class="references__desc">For more photos of our furniture in customer's stores, check out our <a href="../index.html#references" class="text-link">reference page</a>.</p>
+          </div>
+          <div class="slider-nav">
+            <button type="button" class="slider-btn" data-slider="berRefsSlider" data-dir="-1" aria-label="Previous">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M6.5 1.5 3 5l3.5 3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="slider-btn" data-slider="berRefsSlider" data-dir="1" aria-label="Next">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
         </div>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen - Individual configuration 1">
-              <div class="product__media"><img src="../images/products/bergen-style1.jpg" alt="Bergen - Individual configuration 1" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen - Individual configuration 1</h3>
-              <p class="product__price">from &euro;1,744.00</p>
-            </a>
+        <ul class="ref-grid sys-slider" id="berRefsSlider">
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/store-fixtures-menswear-mandaidesign.jpg?v=1778152212" alt="Bergen shelving system in store &mdash; Brothers of Denim, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/b.o.d_kaiserslautern/" target="_blank" rel="noopener noreferrer" class="text-link">Brothers of Denim</a>, Germany</p>
           </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen gondola unit, double-sided">
-              <div class="product__media"><img src="../images/cat-gondola.jpg" alt="Bergen gondola unit, double-sided" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen gondola unit, double-sided</h3>
-              <p class="product__price">from &euro;1,021.00</p>
-            </a>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/yoga-studio-fixtures-shelving-mandaidesign.jpg?v=1777450928" alt="Bergen shelving system in store &mdash; Mindful Life, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/mindfullife.berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Mindful Life</a>, Germany</p>
           </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen - Individual configuration 2">
-              <div class="product__media"><img src="../images/cat-pedestals.jpg" alt="Bergen - Individual configuration 2" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen - Individual configuration 2</h3>
-              <p class="product__price">from &euro;1,355.00</p>
-            </a>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shopfitting-mandai-design-bergen-ginger.jpg?v=1695541175" alt="Bergen shelving system in store &mdash; Land of Green Ginger, Ireland" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store">Land of Green Ginger, Ireland</p>
+            <p class="ref-card__credit">Photo: <a href="https://www.facebook.com/PaulChambersPhotos/" target="_blank" rel="noopener noreferrer" class="text-link">Jackson Chambers Photography</a></p>
           </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Bergen shelf board, wood">
-              <div class="product__media"><img src="../images/products/wall-unit-w50.jpg" alt="Bergen shelf board, wood" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Bergen shelf board, wood</h3>
-              <p class="product__price">from &euro;44.00</p>
-            </a>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/brothers-of-denim-bergen-mandai-design-6.jpg?v=1730277610" alt="Bergen shelving system in store &mdash; Brothers of Denim, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/b.o.d_kaiserslautern/" target="_blank" rel="noopener noreferrer" class="text-link">Brothers of Denim</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/brothers-of-denim-bergen-mandai-design-1.jpg?v=1730277610" alt="Bergen shelving system in store &mdash; Brothers of Denim, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/b.o.d_kaiserslautern/" target="_blank" rel="noopener noreferrer" class="text-link">Brothers of Denim</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/brothers-of-denim-bergen-mandai-design.jpg?v=1730277610" alt="Bergen shelving system in store &mdash; Brothers of Denim, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/b.o.d_kaiserslautern/" target="_blank" rel="noopener noreferrer" class="text-link">Brothers of Denim</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/bergen-shelving-system.jpg?v=1740737121" alt="Bergen shelving system in store &mdash; Brothers of Denim, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/b.o.d_kaiserslautern/" target="_blank" rel="noopener noreferrer" class="text-link">Brothers of Denim</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design-bergen-mindful-life.jpg?v=1698306749" alt="Bergen shelving system in store &mdash; Mindful Life, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/mindfullife.berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Mindful Life</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-display-shopfitting-mandai-design-bergen-mindfullife-berlin-2.jpg?v=1695541139" alt="Bergen shelving system in store &mdash; Mindful Life, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/mindfullife.berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Mindful Life</a>, Germany</p>
+          </li>
+          <li class="ref-card">
+            <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/yoga-studio-fixtures-shelving.jpg?v=1777450859" alt="Shelves with bags, bottles, and clothing in a yoga studio setting &mdash; Mindful Life, Germany" width="768" height="1024" loading="lazy"></div>
+            <p class="ref-card__store"><a href="https://www.instagram.com/mindfullife.berlin/" target="_blank" rel="noopener noreferrer" class="text-link">Mindful Life</a>, Germany</p>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- ══════════ سوالات متداول (وسط‌چین مثل سایت اصلی) ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq faq--centered" aria-labelledby="faq-heading">
+    <!-- ══════════ پرسش‌های متداول (۴ سؤال لایو؛ وسط‌چین مثل قالب) ══════════ -->
+    <section class="faq faq--centered" aria-labelledby="ber-faq-heading">
       <div class="container">
         <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Commonly asked questions</h2>
+          <h2 id="ber-faq-heading" class="faq__heading">Frequently asked questions</h2>
           <div class="faq__list">
             <div class="faq__item">
               <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="ber-faq-panel-0" id="ber-faq-button-0">
+                  <span>Can I modify the shelves shown online?</span>
                   <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                 </button>
               </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
+              <div class="faq__panel" id="ber-faq-panel-0" role="region" aria-labelledby="ber-faq-button-0" hidden>
+                <p>Yes. The shelving systems shown in our online shop are our standard products. You can adapt a shelving system to suit what you sell and your shop floor plan, and expand it with accessories and modules.</p>
+                <p>As we design and manufacture everything ourselves, we&rsquo;re happy to accommodate individual requests. Please <a href="../index.html#contact" class="text-link">contact us</a> to talk about your vision and to share sketches and photos, and we&rsquo;ll plan the perfect shop shelving system for you free of charge and with no obligation.</p>
               </div>
             </div>
             <div class="faq__item">
               <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="ber-faq-panel-1" id="ber-faq-button-1">
+                  <span>Can I get my shelving in a different colour or finish?</span>
                   <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                 </button>
               </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible.</p>
+              <div class="faq__panel" id="ber-faq-panel-1" role="region" aria-labelledby="ber-faq-button-1" hidden>
+                <p>Yes. Mandai Design shopfitting systems are almost infinitely customisable. We have a huge range of solid wood and wood decor finishes, and steel frames and accessories can be powder-coated in a selection of RAL colours. Discover our <a href="../index.html#help" class="text-link">free sample service</a> and order your selection directly online!</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="ber-faq-panel-2" id="ber-faq-button-2">
+                  <span>Why should I choose modular shelving?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="ber-faq-panel-2" role="region" aria-labelledby="ber-faq-button-2" hidden>
+                <p>All shelving systems from Mandai Design are modular. As well as being easy to put together, that means they can be adapted and expanded to suit your needs. Shelves and display fittings on most systems are height-adjustable in 50&nbsp;mm (1.97") increments and can be flexibly arranged. Exceptions include the Bergen shelving system and the Ontario clothing rail system. With Bergen, shelves and display fittings can be adjusted in 345&nbsp;mm (13.58") increments, while their positions on Ontario are fixed.</p>
+                <p>Mandai Design shelving can therefore be extended and quickly redesigned at any time when product ranges change, new collections arrive, or even if you move premises.</p>
+              </div>
+            </div>
+            <div class="faq__item">
+              <h3 class="faq__q">
+                <button type="button" class="faq__button" aria-expanded="false" aria-controls="ber-faq-panel-3" id="ber-faq-button-3">
+                  <span>Can I get material/colour samples?</span>
+                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                </button>
+              </h3>
+              <div class="faq__panel" id="ber-faq-panel-3" role="region" aria-labelledby="ber-faq-button-3" hidden>
+                <p>We want you to be happy with your Mandai Design shelving. That&rsquo;s why we&rsquo;re happy to send you samples of finishes so that you can see how they look in real life. Our design team can advise you if you need help selecting.</p>
+                <p>Learn more about our <a href="../index.html#help" class="text-link">free sample service</a>.</p>
               </div>
             </div>
           </div>
+          <!-- ✏️ ویرایش: دکمهٔ «More questions» در مرجع به /pages/contact می‌رود؛ اینجا به فرم تماس سایت. -->
           <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+            <p>Do you have more questions? We&rsquo;re happy to help &mdash; <a href="../index.html#contact" class="text-link-strong">Get in touch</a>.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="references" aria-labelledby="refs-heading">
+    <!-- ══════════ «Discover more shelving systems» — اسلایدر ۵ کارت لایو (بدون دکمه، مثل مرجع) ══════════ -->
+    <section class="sector-alt ber-cross" aria-labelledby="ber-cross">
       <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
-        <div class="references__head">
-          <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">See this shelving system in real stores</h2>
-            <p class="references__desc">A selection of our customers&rsquo; stores equipped with our systems. More on our <a href="../index.html#references" class="text-link">references page</a>.</p>
+        <div class="sys-cross__head-text sys-slider-head">
+          <div>
+            <h3 class="sys-cross__title" id="ber-cross">Discover more shelving systems from us</h3>
+            <p class="sys-cross__text">Looking for something different? Shop various shelving styles below.</p>
+          </div>
+          <div class="slider-nav">
+            <button type="button" class="slider-btn" data-slider="berCrossSlider" data-dir="-1" aria-label="Previous">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M6.5 1.5 3 5l3.5 3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="button" class="slider-btn" data-slider="berCrossSlider" data-dir="1" aria-label="Next">
+              <svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         </div>
-        <ul class="ref-grid">
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad Säckingen, Germany</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-moonhub.jpg" alt="Shelving system Addison, Display table Addison — Moonhub, Zurich, Switzerland" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison, Display table Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Zurich, Switzerland</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-thread-seed.jpg" alt="Thread + Seed concept store, La Jolla, US" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Wall rail system Ontario/Glasgow</p>
-          <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
-        </li>
-        <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
-        </li>
+        <ul class="mini-grid ber-grid sys-slider" id="berCrossSlider">
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving system Ceres - Fashion - Style 1, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260weissmitAcc_HalifaxEichenatur.jpg?v=1679479372" alt="Shelving system Ceres - Fashion - Style 1, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 1, white</h3>
+              <p class="product__price">from $723.00</p>
+                            <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260_mitAcc_Halifax.jpg?v=1670489628" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle1H260weissmitAcc_HalifaxEichenatur.jpg?v=1679479372" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Concept Store - Style 1">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonConceptStoreStyle1H260mitAcc.jpg?v=1670917281" alt="Shelving System Addison - Concept Store - Style 1" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Concept Store - Style 1</h3>
+              <p class="product__price">from $1,669.00</p>
+                            <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 2, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle2Halifaxnatur_mitAcc.jpg?v=1676898740" alt="Shelving System Cetus - Classic - Style 2, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Cetus - Classic - Style 2, black</h3>
+              <p class="product__price">from $1,706.00</p>
+                            <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelf-cetus-white-style-2.jpg?v=1721725229" alt="White" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle2Halifaxnatur_mitAcc.jpg?v=1676898740" alt="Black" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Ceres - Homeware - Style 3, white">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/SHBE6C_1.jpg?v=1678369186" alt="Shelving System Ceres - Homeware - Style 3, white" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Homeware - Style 3, white</h3>
+              <p class="product__price">from $1,746.00</p>
+                            <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/CeresHomeDekorStyle3mitAcc.jpg?v=1671110126" alt="Black steel" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/products/SHBE6C_1.jpg?v=1678369186" alt="White steel" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Addison - Fashion - Style 3">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle3H260_mitAcc_Halifax1JPG.jpg?v=1670408538" alt="Shelving System Addison - Fashion - Style 3" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 3</h3>
+              <p class="product__price">from $1,394.00</p>
+                            <ul class="product__swatches" aria-label="Available finishes">
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-nature.png?v=1668498758" alt="Oak Halifax Nature" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-halifax-tobacco.png?v=1717010048" alt="Oak Halifax Tobacco" width="22" height="22" loading="lazy"></li>
+                <li><img src="https://www.mandai-design.com/cdn/shop/files/oak-hamilton-nature.png?v=1668498915" alt="Oak Hamilton Nature" width="22" height="22" loading="lazy"></li>
+              </ul>
+            </a>
+          </li>
         </ul>
       </div>
     </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Shelving system Bergen - modular retail shelving</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Hook in, adjust, extend</h3>
-            <p>Shelves and fittings hook in without tools and adjust in 5 cm steps - Bergen adapts to every season.</p>
-          </div>
-          <div>
-            <h3>Zone your sales floor</h3>
-            <p>Wall units plus free-standing elements divide your store into clear, shoppable areas.</p>
-          </div>
-          <div>
-            <h3>Finishes for every concept</h3>
-            <p>Black or white steel and a range of wood finishes - samples are free.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
     <section class="sector-cta" aria-labelledby="cta-heading">
@@ -629,14 +777,16 @@
       </div>
     </section>
 
+
+
   <!-- ══════════ فوتر ══════════ -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -658,10 +808,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -685,7 +835,7 @@
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -703,12 +853,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -728,7 +878,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -737,5 +887,21 @@
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
   <script src="../assets/js/main.js" defer></script>
+
+  <script>
+    /* اسلایدرهای صفحه — اسکرول نرم به اندازهٔ یک کارت */
+    (function () {
+      var GAP = 16;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var card = slider.querySelector('li');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * Number(btn.getAttribute('data-dir') || 1), behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brooklyn shelving system - Industrial style for retail | Mandai Design</title>
+  <title>Retail shelving system Brooklyn - Industrial look &amp; feel | Mandai Design</title>
   <meta name="description" content="The Brooklyn shelving system: a strong steel frame with wooden shelves for an industrial retail look. Made in Germany. Order online now.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -36,65 +36,73 @@
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../images/systems/brooklyn.jpg" as="image">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* هیرو: تصویر دسکتاپ پهن؛ در موبایل تصویر مربع جایگزین می‌شود (مثل مرجع) */
+    .sys-hero__link { display: block; height: 100%; }
+    .brk-hero-mobile { display: none; }
+    @media (max-width: 767px) {
+      .sys-hero__link .sys-hero__img:not(.brk-hero-mobile) { display: none; }
+      .brk-hero-mobile { display: block; }
+      .sys-hero { height: auto; }
+      .sys-hero .brk-hero-mobile { position: static; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    }
+  </style>
+  <style>
+    /* ── ویجت مقایسهٔ قبل/بعد (همانند image-compare سایت مرجع) ── */
+    .brk-compare { margin-top: 40px; }
+    .brk-compare__stage {
+      position: relative; max-width: 720px; margin-inline: auto;
+      aspect-ratio: 1 / 1; overflow: hidden; background: #e9e7e3;
+      touch-action: pan-y; user-select: none; -webkit-user-select: none;
+    }
+    .brk-compare__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .brk-compare__after { z-index: 0; }
+    .brk-compare__before { position: absolute; inset: 0; z-index: 1; clip-path: inset(0 calc(100% - var(--p, 50%)) 0 0); }
+    .brk-compare__label {
+      position: absolute; z-index: 3; color: #fff; pointer-events: none;
+      font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+    .brk-compare__label--glass { top: 16px; left: 16px; }
+    .brk-compare__label--wood  { bottom: 16px; right: 16px; }
+    .brk-compare__divider { position: absolute; top: 0; bottom: 0; left: var(--p, 50%); width: 2px; z-index: 4; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.12); transform: translateX(-1px); }
+    .brk-compare__handle {
+      position: absolute; top: 50%; left: var(--p, 50%); z-index: 5;
+      width: 46px; height: 46px; transform: translate(-50%, -50%);
+      display: flex; align-items: center; justify-content: center;
+      border: none; border-radius: 50%; cursor: ew-resize;
+      background: #fff; color: #111; box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    }
+    .brk-compare__handle svg { width: 20px; height: 20px; }
+    .brk-compare__range { position: absolute; inset: 0; z-index: 6; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+    .brk-compare__range:focus-visible ~ .brk-compare__handle { outline: 2px solid #111; outline-offset: 3px; }
+  </style>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebPage",
-      "name": "Brooklyn shelving and shelving system",
-      "url": "https://www.example.com/systems/brooklyn.html",
-      "description": "The Brooklyn shelving system: a strong steel frame with wooden shelves for an industrial retail look. Made in Germany. Order online now.",
+      "@type": "WebSite",
+      "name": "Mandai Design",
+      "url": "https://www.example.com/",
       "inLanguage": "en",
-      "isPartOf": {
-        "@id": "https://www.example.com/#website"
-      },
+      "publisher": { "@type": "Organization", "name": "Mandai Design" }
+    },
+    {
+      "@type": "WebPage",
+      "name": "Shelving System Brooklyn",
+      "url": "https://www.example.com/systems/brooklyn.html",
+      "description": "Retail shelving system Brooklyn in industrial design: robust wall uprights, glass or wooden shelves, modular components. Made in Germany.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://www.example.com/#website" },
       "primaryImageOfPage": "https://www.example.com/images/systems/brooklyn.jpg"
     },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.example.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Shelving Systems",
-          "item": "https://www.example.com/#bestsellers"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Brooklyn",
-          "item": "https://www.example.com/systems/brooklyn.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "url": "https://www.example.com/systems/brooklyn.html",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible."
-          }
-        }
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.example.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Shelving Systems", "item": "https://www.example.com/#bestsellers" },
+        { "@type": "ListItem", "position": 3, "name": "Brooklyn", "item": "https://www.example.com/systems/brooklyn.html" }
       ]
     }
   ]
@@ -119,8 +127,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -130,15 +138,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
-            <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/faq.html" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -156,8 +164,9 @@
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                                                                                                                                                                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fashion.html">Fashion</a></li>
                 <li><a href="../sectors/menswear.html">Menswear</a></li>
                 <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
@@ -165,9 +174,25 @@
                 <li><a href="../sectors/shoes.html">Shoes</a></li>
                 <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
                 <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
                 <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- Bakery → bakery.html (ساخته شد؛ قبلاً موقتاً Fine Foods بود) -->
+                <li><a href="../sectors/bakery.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
                 <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -175,8 +200,9 @@
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
                 <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
                 <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
@@ -184,8 +210,17 @@
                 <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
                 <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
                 <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
                 <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -193,17 +228,26 @@
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="addison.html">Addison</a></li>
-                <li><a href="ceres.html">Ceres</a></li>
-                <li><a href="cetus.html">Cetus</a></li>
-                <li><a href="brooklyn.html" aria-current="page">Brooklyn</a></li>
-                <li><a href="slimline.html">Slimline</a></li>
-                <li><a href="ontario.html">Ontario</a></li>
-                <li><a href="bergen.html">Bergen</a></li>
-                <li><a href="customize.html">Customize your shelf</a></li>
-              </ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../systems/addison.html">Addison</a></li>
+                <li><a href="../systems/ceres.html">Ceres</a></li>
+                <li><a href="../systems/cetus.html">Cetus</a></li>
+                <li><a href="../systems/brooklyn.html" aria-current="page">Brooklyn</a></li>
+                <li><a href="../systems/slimline.html">Slimline</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/bergen.html">Bergen</a></li>
+                <li><a href="../systems/customize.html">Customize your shelf</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -211,22 +255,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-                <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-                <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                                    <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -269,6 +325,11 @@
               <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
               <li><a href="../sectors/cosmetics.html">Cosmetics, Beauty &amp; Spa</a></li>
               <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/bakery.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
               <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
@@ -282,6 +343,7 @@
               <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
               <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
               <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
               <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
@@ -301,28 +363,28 @@
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="../sectors/fashion.html">Fashion Stores</a></li>
-              <li><a href="../sectors/fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="../sectors/homeware.html">Homeware Stores</a></li>
-              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
-              <li><a href="../sectors/cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
-          <li><a href="../index.html#faq">FAQ</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
+          <li><a href="../pages/faq.html">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -345,254 +407,298 @@
     </div>
   </header>
 
-  <main id="main-content">
+    <main id="main-content">
 
-    <!-- ══════════ هیرو — تصویر تمام‌عرض بدون تیتر (مثل سایت اصلی) ══════════
-         ✏️ ویرایش: تصویر images/brooklyn.jpg -->
+    <!-- ══════════ هیرو — image-hero مثل مرجع:
+         تصویر پهن (دسکتاپ) + تصویر مربع (موبایل)؛ کل تصویر به محصول Style 4 لینک است (image-hero__image-link)
+         ✏️ ویرایش: لینک هیرو در مرجع به صفحهٔ محصول است؛ در سایت خودتان می‌توانید مقصد را تغییر دهید. -->
     <section class="sys-hero" aria-label="Brooklyn shelving and shelving system">
-      <img src="../images/systems/brooklyn.jpg" alt="Brooklyn shelving system with steel frame and wooden shelves" class="sys-hero__img" width="1800" height="1800" loading="eager">
+      <a href="https://www.mandai-design.com/products/shelving-system-brooklyn-style-4-glass" class="sys-hero__link" aria-label="Shelving System Brooklyn Style 4" title="Shelving System Brooklyn Style 4">
+        <img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelving-retailshelf-shelf-industrialshelf-shopfitting-mandaidesign.jpg?v=1669897373&width=1800" alt="Brooklyn shelving system with wooden shelves in an industrial style shop" class="sys-hero__img" width="1800" height="1058" loading="eager">
+        <img src="https://www.mandai-design.com/cdn/shop/files/retailshelf-shelf-shopfitting-mandaidesign-brooklyn_1963149b-064d-463e-873e-730430a2314d.jpg?v=1668699529&width=1200" alt="Brooklyn shelving system with wooden shelves in an industrial style shop" class="sys-hero__img brk-hero-mobile" width="1200" height="1200" loading="eager">
+      </a>
     </section>
 
-    <!-- ══════════ معرفی + ویژگی‌ها ══════════ -->
+
+    <!-- ══════════ معرفی — در مرجع H1 مخفی است و فقط دو پاراگراف دیده می‌شود ══════════
+         ✏️ ویرایش: متن زیر عین متن توضیحات کالکشن لایو است (شامل همان «to for» سایت اصلی). -->
     <section class="sys-intro" aria-labelledby="sys-intro-heading">
       <div class="container">
-        <h1 id="sys-intro-heading" class="sys-intro__title">Brooklyn shelving and shelving system</h1>
-        <p class="sys-intro__lead">Character. Steel. Wood. The Brooklyn shelving system brings a strong, industrial character to your sales floor: a sturdy steel frame combined with wooden shelves creates a striking look with high recognition value.</p>
-        <ul class="feat-grid">
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-modular.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Modular system</h3>
-            <p class="feat-card__text">Shelves and fittings hook in without tools and adjust in 5 cm steps.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-assembly.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Strong by design</h3>
-            <p class="feat-card__text">Perfect for the stable presentation of heavier products.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-support.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Complete the look</h3>
-            <p class="feat-card__text">Matching tables and pedestals turn units into room concepts.</p>
-          </li>
-          <li class="feat-card">
-            <div class="feat-card__icon"><img src="../images/benefit-germany.png" alt="" loading="lazy"></div>
-            <h3 class="feat-card__title">Made in Germany</h3>
-            <p class="feat-card__text">Black steel and a range of wood finishes from our own factory.</p>
-          </li>
-        </ul>
+        <h1 id="sys-intro-heading" class="sr-only">Shelving System Brooklyn</h1>
+        <p class="sys-intro__lead">The Brooklyn shopfitting system exudes industrial charm that captivates both up close and from afar. Its unique design delivers a bold and striking presence in any retail setting, showcasing prominent bolts and robust metal wall uprights in typical industrial style. Like all our shelving, Brooklyn is designed to for hassle-free assembly and maximum modularity.</p>
+        <p class="sys-intro__lead">The display options are endless with the included shelves and bars and can be further personalised by adding hanging arms and pins.</p>
       </div>
     </section>
 
-
-
-    <section class="sector-alt" aria-labelledby="sector-0-heading">
+    <!-- ══════════ گرید ۸ محصول (عین ترتیب لایو) ══════════ -->
+    <section class="sector-alt" aria-labelledby="brk-products">
       <div class="container">
-        <div class="sector-alt__row">
-
-          <div class="sector-alt__media"><img src="../images/sectors/homeware.jpg" alt="Brooklyn shelving displaying homeware" width="1024" height="1024" loading="lazy"></div>
-          <div class="sector-alt__copy">
-            <h3 class="sector-alt__title">Homeware shops</h3>
-            <p class="sector-alt__text">Steel and wood in balance: Brooklyn stages heavier homeware ranges safely and with character.</p>
-            <a href="../sectors/homeware.html" class="btn btn--outline btn--sm">Discover Homeware shops solutions</a>
-          </div>
-        </div>
         <div class="sector-alt__grid-head">
-          <h3 class="sr-only" id="sector-0-heading">Products for Homeware shops</h3>
+          <h3 class="sr-only" id="brk-products">Brooklyn shelving products</h3>
         </div>
         <ul class="mini-grid">
           <li>
-            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 1">
-              <div class="product__media"><img src="../images/products/brooklyn-style1.jpg" alt="Shelving System Brooklyn - Style 1" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Brooklyn - Style 1</h3>
-              <p class="product__price">from &euro;1,998.00</p>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 1 with wooden shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shelf-shopfitting-b1w-mandaidesign.jpg?v=1694330607" alt="Shelving System Brooklyn - Style 1 with wooden shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 1 with wooden shelves</h3>
+              <p class="product__price">from &euro;692.00</p>
             </a>
           </li>
           <li>
-            <a href="../index.html#contact" class="product" aria-label="Brooklyn display table">
-              <div class="product__media"><img src="../images/cat-display-tables.jpg" alt="Brooklyn display table" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Brooklyn display table</h3>
-              <p class="product__price">from &euro;712.00</p>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 1 with glass shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shelf-shopfitting-b1g-mandaidesign_381f7c9e-588f-44fc-adef-28dd1c3fa9c8.jpg?v=1694431040" alt="Shelving System Brooklyn - Style 1 with glass shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 1 with glass shelves</h3>
+              <p class="product__price">from &euro;738.00</p>
             </a>
           </li>
           <li>
-            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 2">
-              <div class="product__media"><img src="../images/cat-shelving-systems.jpg" alt="Shelving System Brooklyn - Style 2" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Brooklyn - Style 2</h3>
-              <p class="product__price">from &euro;2,341.00</p>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 2 with wooden shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/industrial-style-retailshelf-brooklyn-shopfitting-2-wood-2_8f68062a-27e1-41df-8461-6249c680ab72.jpg?v=1694437498" alt="Shelving System Brooklyn - Style 2 with wooden shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 2 with wooden shelves</h3>
+              <p class="product__price">from &euro;1,119.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 2 with glass shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/industrial-style-retailshelf-brooklyn-shopfitting-2-glass-2.jpg?v=1694331037" alt="Shelving System Brooklyn - Style 2 with glass shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 2 with glass shelves</h3>
+              <p class="product__price">from &euro;1,203.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 3 with wooden shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-wood-mandaidesign.jpg?v=1694438915" alt="Shelving System Brooklyn - Style 3 with wooden shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 3 with wooden shelves</h3>
+              <p class="product__price">from &euro;1,653.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 3 with glass shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-glass-mandaidesign.jpg?v=1694331166" alt="Shelving System Brooklyn - Style 3 with glass shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 3 with glass shelves</h3>
+              <p class="product__price">from &euro;1,794.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 4 with wooden shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-4-wood-mandaidesign.jpg?v=1694439838" alt="Shelving System Brooklyn - Style 4 with wooden shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 4 with wooden shelves</h3>
+              <p class="product__price">from &euro;1,781.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Style 4 with glass shelves">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-4-glass-mandaidesign.jpg?v=1694331366" alt="Shelving System Brooklyn - Style 4 with glass shelves" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Brooklyn - Style 4 with glass shelves</h3>
+              <p class="product__price">from &euro;1,988.00</p>
             </a>
           </li>
         </ul>
       </div>
     </section>
-    <section class="sector-alt" aria-labelledby="sector-1-heading">
+
+    <!-- ══════════ بلوک «Watch below …» (در مرجع پیش از سکشن تصویر+متن است؛ متن بدون تصویر) ══════════
+         ✏️ ویرایش: در مرجع این ناحیه ویدیوی مونتاژ دارد؛ در نسخهٔ استاتیک فقط عنوان آن بازتاب شده است. -->
+    <section class="sector-alt" aria-labelledby="brk-watch">
+      <div class="container">
+        <div class="sector-alt__copy" style="max-width:880px;margin-inline:auto;text-align:center">
+          <h2 class="sector-alt__title" id="brk-watch">Watch below how to assemble and style the shelving system Brooklyn in a few simple steps!</h2>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════ «Brooklyn shopfitting system - bring in industrial style …»
+         مانند مرجع: image-with-text، تصویر سمت راست (مربع) + تیتر و متن سمت چپ ══════════ -->
+    <section class="sector-alt" aria-labelledby="brk-copy-1">
       <div class="container">
         <div class="sector-alt__row sector-alt__row--flip">
-
+          <div class="sector-alt__media"><img src="https://www.mandai-design.com/cdn/shop/files/retailshelf-shelf-shopfitting-mandaidesign-brooklyn-3.jpg?v=1668699368" alt="Brooklyn shopfitting system in an industrial style retail space" width="1080" height="1080" style="aspect-ratio:1/1" loading="lazy"></div>
           <div class="sector-alt__copy">
-            <h3 class="sector-alt__title">Fashion & concept stores</h3>
-            <p class="sector-alt__text">An industrial frame with warm wood: Brooklyn gives fashion and concept stores a distinctive identity.</p>
-            <a href="../sectors/concept-stores.html" class="btn btn--outline btn--sm">Discover Fashion & concept stores solutions</a>
-          </div>
-          <div class="sector-alt__media"><img src="../images/sectors/concept-stores.jpg" alt="Brooklyn shelving in a concept store" width="1024" height="1024" loading="lazy"></div>
-        </div>
-        <div class="sector-alt__grid-head">
-          <h3 class="sr-only" id="sector-1-heading">Products for Fashion & concept stores</h3>
-        </div>
-        <ul class="mini-grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Shelving System Brooklyn - Concept - Style 1">
-              <div class="product__media"><img src="../images/products/brooklyn-style1.jpg" alt="Shelving System Brooklyn - Concept - Style 1" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Shelving System Brooklyn - Concept - Style 1</h3>
-              <p class="product__price">from &euro;2,110.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Brooklyn clothing rack">
-              <div class="product__media"><img src="../images/cat-racks.jpg" alt="Brooklyn clothing rack" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Brooklyn clothing rack</h3>
-              <p class="product__price">from &euro;446.00</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ سفارشی‌سازی ══════════ -->
-    <section class="custom-sec" aria-labelledby="custom-heading">
-      <div class="container">
-        <div class="custom-sec__head">
-          <h2 id="custom-heading" class="h-serif-lg">Create your own customized shelving</h2>
-          <p>Combine wall units, tables and racks from the Brooklyn range into your own room concept - everything hooks in without tools. Free material samples help you compare wood finishes and find the right combination.</p>
-          <p></p>
-        </div>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Brooklyn - Individual configuration 1">
-              <div class="product__media"><img src="../images/products/brooklyn-style1.jpg" alt="Brooklyn - Individual configuration 1" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Brooklyn - Individual configuration 1</h3>
-              <p class="product__price">from &euro;1,998.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Brooklyn display table, W 120">
-              <div class="product__media"><img src="../images/cat-display-tables.jpg" alt="Brooklyn display table, W 120" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Brooklyn display table, W 120</h3>
-              <p class="product__price">from &euro;712.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Brooklyn - Individual configuration 2">
-              <div class="product__media"><img src="../images/cat-racks.jpg" alt="Brooklyn - Individual configuration 2" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Brooklyn - Individual configuration 2</h3>
-              <p class="product__price">from &euro;1,560.00</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#contact" class="product" aria-label="Brooklyn display pedestal">
-              <div class="product__media"><img src="../images/cat-pedestals.jpg" alt="Brooklyn display pedestal" width="900" height="900" loading="lazy"></div>
-              <h3 class="product__name">Brooklyn display pedestal</h3>
-              <p class="product__price">from &euro;256.00</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ══════════ سوالات متداول (وسط‌چین مثل سایت اصلی) ══════════
-         ✏️ ویرایش: همین سوال‌ها در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq faq--centered" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Commonly asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
+            <h2 class="sector-alt__title" id="brk-copy-1">Brooklyn shopfitting system - bring in industrial style into your retail space</h2>
+            <p class="sector-alt__text">Set cool accents in your shop and give it the flair of the good old days of a factory. Individual shop counters and matching display tables become brilliant eye-catchers. Equipped with the Brooklyn shopfitting system with glass- or wooden shelves, your shop or showroom is sure to make a lasting impression.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="references" aria-labelledby="refs-heading">
+
+    <!-- ══════════ «Client store highlight» — Gray Clothier (۵ تصویر، ترتیب دقیق لایو) ══════════ -->
+    <section class="references" aria-labelledby="brk-client">
       <div class="container">
-        <p class="eyebrow">CUSTOMER PICTURES</p>
         <div class="references__head">
           <div class="references__head-text">
-            <h2 id="refs-heading" class="h-serif-lg">See this shelving system in real stores</h2>
-            <p class="references__desc">A selection of our customers&rsquo; stores equipped with our systems. More on our <a href="../index.html#references" class="text-link">references page</a>.</p>
+            <h2 id="brk-client" class="h-serif-lg">Client store highlight</h2>
+            <p class="references__desc">Have a look into our Brooklyn shelving system in the menswear store <a href="https://www.instagram.com/grayclothier/" target="_blank" rel="noopener noreferrer" class="text-link">Gray Clothier</a>.</p>
           </div>
         </div>
         <ul class="ref-grid">
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-mari-exclusive.jpg" alt="Shelving system Addison — Mari Exclusive, Bad Säckingen, Germany" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/ma.ri_exklusivemode/" target="_blank" rel="noopener noreferrer" class="text-link">Mari Exclusive</a>, Bad Säckingen, Germany</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/gray-clothier-retail-store-menswear_2.jpg?v=1744832695" alt="Shelving system Brooklyn in the menswear store Gray Clothier" width="768" height="1024" loading="lazy"></div>
         </li>
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-moonhub.jpg" alt="Shelving system Addison, Display table Addison — Moonhub, Zurich, Switzerland" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Addison, Display table Addison</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/moonhub.ch/" target="_blank" rel="noopener noreferrer" class="text-link">Moonhub</a>, Zurich, Switzerland</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/gray-clothier-retail-store-menswear_5.jpg?v=1744832695" alt="Shelving system Brooklyn in the menswear store Gray Clothier" width="768" height="1024" loading="lazy"></div>
         </li>
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-thread-seed.jpg" alt="Thread + Seed concept store, La Jolla, US" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Wall rail system Ontario/Glasgow</p>
-          <p class="ref-card__store"><a href="https://threadandseed.com/" target="_blank" rel="noopener noreferrer" class="text-link">Thread + Seed</a>, La Jolla, US</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/gray-clothier-retail-store-menswear_4.jpg?v=1744832695" alt="Shelving system Brooklyn in the menswear store Gray Clothier" width="768" height="1024" loading="lazy"></div>
         </li>
         <li class="ref-card">
-          <div class="ref-card__media"><img src="../images/ref-la-bottega.jpg" alt="Shelving system Ceres — La Bottega, Hasselt, Belgium" width="768" height="1024" loading="lazy"></div>
-          <p class="ref-card__system">Shelving system Ceres</p>
-          <p class="ref-card__store"><a href="https://www.instagram.com/labottegahasselt/" target="_blank" rel="noopener noreferrer" class="text-link">La Bottega</a>, Hasselt, Belgium</p>
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/gray-clothier-retail-store-menswear_1.jpg?v=1744832694" alt="Shelving system Brooklyn in the menswear store Gray Clothier" width="768" height="1024" loading="lazy"></div>
+        </li>
+        <li class="ref-card">
+          <div class="ref-card__media"><img src="https://www.mandai-design.com/cdn/shop/files/gray-clothier-retail-store-menswear_3.jpg?v=1744832694" alt="Shelving system Brooklyn in the menswear store Gray Clothier" width="768" height="1024" loading="lazy"></div>
         </li>
         </ul>
       </div>
     </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
+    <!-- ══════════ «Brooklyn shelving system - uncompromising …» (تصویر + متن) ══════════ -->
+    <section class="sector-alt" aria-labelledby="brk-copy-2">
       <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Shelving system Brooklyn - industrial retail shelving</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Steel and wood in balance</h3>
-            <p>A sturdy steel frame and warm wooden shelves give Brooklyn its striking industrial character.</p>
-          </div>
-          <div>
-            <h3>Made for heavier products</h3>
-            <p>Load-bearing capacity meets a clean silhouette - Brooklyn presents heavy merchandise safely and stylishly.</p>
-          </div>
-          <div>
-            <h3>Complete the look</h3>
-            <p>Display tables, racks and pedestals from the same design language turn single units into room concepts.</p>
+        <div class="sector-alt__row">
+          <div class="sector-alt__media"><img src="https://www.mandai-design.com/cdn/shop/files/retailshelf-shelf-shopfitting-mandaidesign-brooklyn-2.jpg?v=1668699168" alt="Brooklyn shelving system - uncompromising functionality and style" width="1080" height="1080" style="aspect-ratio:1/1" loading="lazy"></div>
+          <div class="sector-alt__copy">
+            <h2 class="sector-alt__title" id="brk-copy-2">Brooklyn shelving system - uncompromising functionality and style</h2>
+            <p class="sector-alt__text">In terms of practicality, the horizontally adjustable wall system knows no compromises. All standard display fittings such as shelves, support bars and front arms make this shelving system an all-rounder for selling and presenting your products. With 625 mm / 24.6 inch and 1000 mm / 39.4 inch centre-to-centre dimensions, the Brooklyn wall system can be adapted to all individual room dimensions.</p>
+            <p class="sector-alt__text">Depending on the spatial conditions, the Brooklyn shopfitting system can be combined with concrete or darker wood. Unrendered wall surfaces or bricks effectively emphasise the industrial look.</p>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- ══════════ «Tailor it to your space» — مانند مرجع: مقایسهٔ تعاملی Glass (چپ) ↔ Wood (راست)
+         ✏️ ویرایش: در مرجع ویجت image-compare با کشیدن دسته کار می‌کند؛ نسخهٔ استاتیک با اسلایدر تعاملی پیاده شده است. -->
+    <section class="sector-alt" aria-labelledby="brk-tailor">
+      <div class="container">
+        <div class="sector-alt__copy" style="max-width:720px;margin:0 auto;text-align:center">
+          <h3 class="sector-alt__title" id="brk-tailor">Tailor it to your space</h3>
+          <p class="sector-alt__text">Choose from various finishes and configurations.</p>
+        </div>
+        <div class="brk-compare" data-brk-compare>
+          <div class="brk-compare__stage">
+            <img class="brk-compare__img brk-compare__img--after" src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-wood-mandaidesign_335fcd56-a844-4418-8f5b-9feb8960a5d1.jpg?v=1711528679" alt="Brooklyn shelving with wooden shelves" width="1080" height="1080" loading="lazy">
+            <div class="brk-compare__before">
+              <img class="brk-compare__img" src="https://www.mandai-design.com/cdn/shop/files/shelvingsystem-retailshelf-shopfitting-3-glass-mandaidesign_1bb20fe1-fb73-43ab-a9de-463bd15e3062.jpg?v=1711528652" alt="Brooklyn shelving with glass shelves" width="1080" height="1080" loading="lazy">
+              <span class="brk-compare__label brk-compare__label--glass">Glass</span>
+            </div>
+            <span class="brk-compare__label brk-compare__label--wood">Wood</span>
+            <div class="brk-compare__divider" aria-hidden="true"></div>
+            <button type="button" class="brk-compare__handle" tabindex="-1" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+            <input type="range" min="0" max="100" step="1" value="50" class="brk-compare__range" aria-label="Compare Glass and Wood finishes">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════════ «Design your Brooklyn shelf» — ۷ کامپوننت ══════════ -->
+    <section class="custom-sec" aria-labelledby="custom-heading">
+      <div class="container">
+        <div class="custom-sec__head">
+          <h2 id="custom-heading" class="h-serif-lg">Design your Brooklyn shelf</h2>
+          <p>Thanks to its modular design, the Brooklyn shelf allows you to customize it with components for a personalized setup.</p>
+          <p style="margin-top:16px"><a href="https://www.mandai-design.com/collections/build-your-brooklyn" target="_blank" rel="noopener noreferrer" class="text-link-strong">View all</a></p>
+          <!-- ✏️ ویرایش: «View all» در مرجع به کالکشن build-your-brooklyn لینک است؛ در سایت خودتان به صفحهٔ معادل تغییر دهید -->
+        </div>
+        <ul class="bestsellers__grid">
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Wall Upright for Shelving System Brooklyn, left">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelving-system-brooklyn-wall-upright-left.jpg?v=1721226028" alt="Wall Upright for Shelving System Brooklyn, left" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Wall Upright for Shelving System Brooklyn, left</h3>
+              <p class="product__price">&euro;240.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Wall Upright for Shelving System Brooklyn, middle">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelving-system-brooklyn-wall-upright-middle.jpg?v=1721226220" alt="Wall Upright for Shelving System Brooklyn, middle" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Wall Upright for Shelving System Brooklyn, middle</h3>
+              <p class="product__price">&euro;240.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Wall Upright for Shelving System Brooklyn, right">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelving-system-brooklyn-wall-upright-right.jpg?v=1721226250" alt="Wall Upright for Shelving System Brooklyn, right" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Wall Upright for Shelving System Brooklyn, right</h3>
+              <p class="product__price">&euro;240.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Connector for Shelving System Brooklyn">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/brooklyn-shelving-system-retail-connector_1.jpg?v=1721225912" alt="Connector for Shelving System Brooklyn" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Connector for Shelving System Brooklyn</h3>
+              <p class="product__price">from &euro;33.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelf Board - Wood Finish - Shelving System Brooklyn">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shelving-system-brooklyn-shelf-board-halifax-625.jpg?v=1720767556" alt="Shelf Board - Wood Finish - Shelving System Brooklyn" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelf Board - Wood Finish - Shelving System Brooklyn</h3>
+              <p class="product__price">from &euro;64.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Shelf Board - Glass - Shelving System Brooklyn">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/glass-shelf-brooklyn_1.jpg?v=1721226300" alt="Shelf Board - Glass - Shelving System Brooklyn" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelf Board - Glass - Shelving System Brooklyn</h3>
+              <p class="product__price">from &euro;83.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../index.html#contact" class="product" aria-label="Back Bar - Shelving System Brooklyn">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/back-bar-brooklyn-shelving-system_4.jpg?v=1721225815" alt="Back Bar - Shelving System Brooklyn" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Back Bar - Shelving System Brooklyn</h3>
+              <p class="product__price">from &euro;30.00</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════ «More shelving systems» — کراس‌سل مرجع ══════════ -->
+    <section class="sector-alt" aria-labelledby="brk-more">
+      <div class="container">
+        <div class="sector-alt__grid-head">
+          <h3 class="sector-alt__title" id="brk-more">More shelving systems</h3>
+          <p class="sector-alt__text">Looking for something different? See our various shelving system collections below.</p>
+        </div>
+        <ul class="mini-grid">
+          <li>
+            <a href="../systems/ceres.html" class="product" aria-label="Shelving system Ceres - Fashion - Style 3, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle3H260_mitAccHalifax.jpg?v=1670490073" alt="Shelving system Ceres - Fashion - Style 3, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving system Ceres - Fashion - Style 3, black</h3>
+              <p class="product__price">from &euro;1,208.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../systems/addison.html" class="product" aria-label="Shelving System Addison - Fashion - Style 3">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle3H260_mitAcc_Halifax1JPG.jpg?v=1670408538" alt="Shelving System Addison - Fashion - Style 3" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 3</h3>
+              <p class="product__price">from &euro;1,202.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../systems/ceres.html" class="product" aria-label="Shelving System Ceres - Fashion - Style 7, black">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CeresFashionStyle7H260_mitAccGlas.jpg?v=1670493793" alt="Shelving System Ceres - Fashion - Style 7, black" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Ceres - Fashion - Style 7, black</h3>
+              <p class="product__price">from &euro;1,834.00</p>
+            </a>
+          </li>
+          <li>
+            <a href="../systems/addison.html" class="product" aria-label="Shelving System Addison - Fashion - Style 4">
+              <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/AddisonStyle4H260_mitAcc_Halifax1.jpg?v=1670415529" alt="Shelving System Addison - Fashion - Style 4" width="900" height="900" loading="lazy"></div>
+              <h3 class="product__name">Shelving System Addison - Fashion - Style 4</h3>
+              <p class="product__price">from &euro;1,577.00</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
   </main>
 
-    <section class="sector-cta" aria-labelledby="cta-heading">
+<section class="sector-cta" aria-labelledby="cta-heading">
       <div class="container">
         <div class="sector-cta__inner">
           <h2 id="cta-heading" class="h-serif-xl">Get in touch</h2>
@@ -634,9 +740,9 @@
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -658,10 +764,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
-            <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
+            <li><a href="../pages/faq.html">FAQ</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -685,7 +791,7 @@
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -703,12 +809,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -728,7 +834,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -737,5 +843,16 @@
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
   <script src="../assets/js/main.js" defer></script>
+  <script>
+    (function () {
+      document.querySelectorAll('[data-brk-compare]').forEach(function (widget) {
+        var stage = widget.querySelector('.brk-compare__stage');
+        var range = widget.querySelector('input[type="range"]');
+        function paint() { stage.style.setProperty('--p', range.value + '%'); }
+        range.addEventListener('input', paint);
+        paint();
+      });
+    })();
+  </script>
 </body>
 </html>

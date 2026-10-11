@@ -1,10 +1,11 @@
 <!doctype html>
 <!--
   ============================================================
-  MANDAI DESIGN — صفحهٔ سکتور: Cosmetics, Beauty &amp; Spa
-  ------------------------------------------------------------
-  ▸ ساختار و استایل مثل index.html است (همان header/footer).
-  ▸ مسیرها یک پوشه بالاترند (../) چون این صفحه در sectors/ است.
+  MANDAI DESIGN — صفحهٔ کالکشن Concept Stores
+  (بازسازی موبه‌مو از mandai-design.com/collections/shopfittings-for-concept-stores — 2026-09)
+  هیرو → H1 + معرفی → بخش «Concept store shelving» (تصویر+متن) → bestsellers ۹ محصول
+  → Shop the Look (۵ محصول، شمارنده 1/5، نقاط تعاملی) → ۵ دسته‌بندی → گالری ۱۷ عکس مشتری
+  → CTA مشاوره → فرم تماس
   ▸ راهنمای کامل: README-FA.html
   ============================================================
 -->
@@ -12,58 +13,213 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ✏️ ویرایش: عنوان و توضیحات سئو -->
-  <title>Elegant retail fixtures for cosmetics &amp; salons | Mandai Design</title>
-  <meta name="description" content="Elegant retail fixtures for cosmetics, beauty &amp; spa: shelving with glass shelves, gondolas and pedestals. Made in Germany - order online now.">
+  <title>Elegant retail fixtures for cosmetics &amp; salons</title>
+  <meta name="description" content="A beautiful interior is crucial for beauty shops, cosmetics boutiques, beauty salons and spa areas. Mandai Design offers the right shop fittings from shelving to shop counters, reception desks and more.">
   <meta name="author" content="Mandai Design">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#ffffff">
-
   <!-- ✏️ ویرایش: دامنه خودتان را جایگزین example.com کنید -->
   <link rel="canonical" href="https://www.example.com/sectors/cosmetics.html">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:url" content="https://www.example.com/sectors/cosmetics.html">
   <meta property="og:site_name" content="Mandai Design">
-  <meta property="og:title" content="Elegant retail fixtures for cosmetics &amp; salons | Mandai Design">
-  <meta property="og:description" content="Elegant retail fixtures for cosmetics, beauty &amp; spa: shelving with glass shelves, gondolas and pedestals. Made in Germany - order online now.">
-  <meta property="og:image" content="https://www.example.com/images/sectors/cosmetics.jpg">
+  <meta property="og:title" content="Elegant retail fixtures for cosmetics & salons">
+  <meta property="og:description" content="A beautiful interior is crucial for beauty shops, cosmetics boutiques, beauty salons and spa areas. Mandai Design offers the right shop fittings from shelving to shop counters, reception desks and more.">
+  <meta property="og:image" content="https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&amp;width=1800">
   <meta property="og:image:width" content="1800">
-  <meta property="og:image:alt" content="Cosmetics store interior with elegant retail shelving">
-
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="Concept store shopfittings by Mandai Design">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Elegant retail fixtures for cosmetics &amp; salons | Mandai Design">
-  <meta name="twitter:description" content="Elegant retail fixtures for cosmetics, beauty &amp; spa: shelving with glass shelves, gondolas and pedestals. Made in Germany - order online now.">
-  <meta name="twitter:image" content="https://www.example.com/images/sectors/cosmetics.jpg">
-
+  <meta name="twitter:title" content="Elegant retail fixtures for cosmetics & salons">
+  <meta name="twitter:description" content="A beautiful interior is crucial for beauty shops, cosmetics boutiques, beauty salons and spa areas. Mandai Design offers the right shop fittings from shelving to shop counters, reception desks and more.">
+  <meta name="twitter:image" content="https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&amp;width=1800">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-
-  <!-- فونت‌ها و تصویر هیرو -->
   <link rel="preload" href="../fonts/playfair-display-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="../images/sectors/cosmetics.jpg" as="image">
-
+  
   <link rel="stylesheet" href="../assets/css/style.css">
-
-  <!-- ✏️ ویرایش: دیتای ساختاریافته این صفحه (Breadcrumb + FAQ) -->
-  <script type="application/ld+json">
+            <style>
+    /* ── Cosmetics Collection — کلون mandai-design.com/collections/shopfitting-for-cosmetics ── */
+    /* هیرو image-hero مرجع با کلاس image-hero--image-aspect-original = نسبت اصلی، بدون هیچ کراپی */
+    .mw-hero-desktop { display: block; width: 100%; height: auto; }
+    .mw-hero-mobile { display: none; }
+    @media (max-width: 719px) {
+      .mw-hero-desktop { display: none; }
+      .mw-hero-mobile { display: block; width: 100%; height: auto; background: #e9e7e3; }
+    }
+    .hw-intro { padding-top: 40px; }
+    .hw-intro h1 { font-family: var(--font-serif); font-weight: 400; font-size: 30px; line-height: 1.2; }
+    .hw-intro p { margin-top: 14px; max-width: 980px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); }
+    /* بخش هر سیستم: تصویر چپ + متن راست */
+    .hw-sec { padding-top: 84px; }
+    .hw-sec__row { display: grid; gap: 40px; align-items: center; }
+    .hw-sec__media img { display: block; width: 100%; height: auto; }
+    .hw-sec__txt h2 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(26px, 3vw, 40px); line-height: 1.2; }
+    .hw-sec__txt h3 { margin-top: 12px; font-family: var(--font-serif); font-weight: 400; font-size: 23px; line-height: 1.35; color: rgba(26, 26, 26, 0.9); }
+    .hw-sec__txt p { margin-top: 16px; font-size: 15px; line-height: 1.75; color: rgba(26, 26, 26, 0.85); }
+    .hw-sec__txt .btn { margin-top: 26px; text-transform: uppercase; letter-spacing: .14em; font-size: 12.5px; padding: 15px 32px; }
+    .hw-sec__viewall { display: inline-block; margin-top: 18px; font-size: 15px; color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; }
+    /* «View all…» مثل مرجع زیر عکس می‌آید */
+    .hw-sec__media .hw-sec__viewall { margin-top: 18px; }
+    @media (min-width: 1024px) { .hw-sec__row { grid-template-columns: 1.02fr 0.98fr; gap: 64px; } }
+    /* تب‌های رنگ/گروه (مثل مرجع: Homeware/Floral، in White/in Black) */
+    .fsh-tabbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 40px; }
+    .fsh-tabs { display: flex; gap: 26px; }
+    .fsh-tab {
+      background: none; border: 0; padding: 0 1px 7px; cursor: pointer;
+      font-family: var(--font-serif); font-weight: 400; font-size: 17px;
+      color: rgba(26, 26, 26, 0.55); border-bottom: 1.5px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .fsh-tab:hover { color: var(--foreground); }
+    .fsh-tab.is-active { color: var(--foreground); border-bottom-color: var(--foreground); }
+    .slider-btn--long { border: 0; border-radius: 0; width: auto; height: auto; background: none; padding: 6px; }
+    .slider-btn--long svg { width: 27px; height: 15px; }
+    /* اسلایدر محصولات هر سیستم */
+    .hw-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 18px 0 0; padding: 2px 2px 6px; scrollbar-width: none; }
+    .hw-track::-webkit-scrollbar { display: none; }
+    .hw-track > li { flex: 0 0 46%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .hw-track > li { flex-basis: 31%; } }
+    @media (min-width: 1024px) { .hw-track > li { flex-basis: 23%; } }
+    @media (min-width: 1280px) { .hw-track > li { flex-basis: 15.4%; } }
+    .product { display: block; color: inherit; text-decoration: none; position: relative; }
+    .product__media { display: block; aspect-ratio: 1 / 1; position: relative; overflow: hidden; background: #f4f3f1; }
+    .product__media img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .product__media .product__img--alt { position: absolute; inset: 0; opacity: 0; transition: opacity 0.25s ease; }
+    .product:hover .product__img--alt { opacity: 1; }
+    .product__name { margin-top: 12px; font-size: 13px; font-weight: 400; line-height: 1.4; }
+    .product__price { margin-top: 5px; font-size: 12.5px; color: rgba(26, 26, 26, 0.72); }
+    .product__options { margin-top: 3px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    /* Shop the look */
+    .hw-look { padding-top: 64px; }
+    .hw-look { padding-top: 56px; }
+    .hw-look h3 { font-family: var(--font-serif); font-weight: 400; font-size: 22px; }
+    .hw-look__row { display: grid; gap: 40px; align-items: center; margin-top: 22px; }
+    .hw-look__row img { display: block; width: 100%; height: auto; }
+    .hw-look__track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 0; padding: 2px 2px 6px; scrollbar-width: none; }
+    .hw-look__track::-webkit-scrollbar { display: none; }
+    .hw-look__track > li { flex: 0 0 100%; scroll-snap-align: start; }
+    .hw-look__count { margin-top: 8px; font-size: 11.5px; color: rgba(26, 26, 26, 0.55); }
+    .hw-look__arrows { display: flex; gap: 14px; margin-top: 12px; }
+    @media (min-width: 768px) {
+      .hw-look__row { display: flex !important; align-items: center; gap: 40px !important; }
+      .hw-look__row > div:first-child { flex: 1 1 auto !important; min-width: 0; }
+      .hw-look__row > div:last-child { flex: 0 0 340px !important; max-width: 340px; }
+    }
+    @media (min-width: 1200px) {
+      .hw-look__row { gap: 150px !important; }
+      .hw-look__row > div:last-child { flex: 0 0 360px !important; max-width: 360px; }
+    }
+    @media (min-width: 1024px) { .hw-look--flip .hw-look__row { grid-template-columns: 1fr 2.14fr; } }
+    .hw-look--flip .hw-look__media { order: 0; }
+    /* Shop-the-look: کارت حاشیه‌دار + فلش‌های کنار کارت + QUICK VIEW (مثل مرجع) */
+    .hw-look__cardwrap { display: flex; align-items: center; gap: 14px; margin-top: 22px; }
+    .hw-look__nav { border: 0; background: none; padding: 8px 2px; cursor: pointer; color: var(--foreground); flex: none; }
+    .hw-look__nav svg { width: 11px; height: 20px; display: block; }
+    .hw-look__cardwrap .hw-look__track { flex: 1; min-width: 0; }
+    .hw-look__cardwrap .hw-look__track > li { border: 1px solid var(--foreground); background: #fff; padding: 18px 16px 24px; text-align: center; }
+    .hw-look__cardwrap .product__name { margin-top: 16px; font-size: 14px; line-height: 1.5; text-align: center !important; }
+    .hw-look__cardwrap .product__price { margin-top: 8px; text-align: center !important; }
+    .hw-look__cardwrap .product { text-align: center; }
+    .hw-look__cardwrap .hw-quick { display: inline-block; }
+    .hw-quick { display: inline-block; margin-top: 14px; border: 1px solid var(--foreground); padding: 9px 16px; font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+    .hw-look__count { text-align: center; font-size: 12px; }
+    /* نقاط تعاملی (hotspot) روی عکس — مثل مرجع */
+    .hw-look__media { position: relative; }
+    .hw-dot { position: absolute; z-index: 2; width: 26px; height: 26px; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; background: rgba(26, 26, 26, 0.45); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3); cursor: pointer; padding: 0; transition: background 0.2s; }
+    .hw-dot:hover { background: rgba(26, 26, 26, 0.7); }
+    /* گالری مشتریان */
+    .hw-gallery { padding-top: 76px; }
+    .hw-gallery__lead { margin-top: 10px; font-size: 13px; line-height: 1.7; color: rgba(26, 26, 26, 0.75); }
+    .hw-gallery__lead a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .fref-track { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; margin: 24px 0 0; padding: 2px 2px 10px; scrollbar-width: none; }
+    .fref-track::-webkit-scrollbar { display: none; }
+    .fref-track > li { flex: 0 0 78%; scroll-snap-align: start; }
+    @media (min-width: 640px)  { .fref-track > li { flex-basis: 46%; } }
+    @media (min-width: 1024px) { .fref-track > li { flex-basis: 31.5%; } }
+    @media (min-width: 1280px) { .fref-track > li { flex-basis: 23.5%; } }
+    .fref-grid { position: relative; }
+    .fref-grid figure { margin: 0; }
+    .fref-grid img { width: 100%; height: auto; display: block; }
+    .hw-gallery .fref-track img { aspect-ratio: 4 / 5; object-fit: cover; }
+    .fref-grid figcaption { margin-top: 7px; font-size: 11.5px; line-height: 1.5; color: rgba(26, 26, 26, 0.6); }
+    .fref-grid figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .fref-grid .fsh-grid__btn { position: absolute; top: 30%; transform: translateY(-50%); z-index: 2; border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px; }
+    .fref-grid .fsh-grid__btn--prev { left: -14px; }
+    .fref-grid .fsh-grid__btn--next { right: -14px; }
+    .fref-grid .fsh-grid__btn svg { width: 27px; height: 15px; }
+    /* فرم */
+    .hw-contact { padding-top: 76px; }
+    /* متن SEO پایین */
+    .hw-seo { padding-top: 70px; }
+    .hw-seo h2 { font-family: var(--font-serif); font-weight: 400; font-size: 24px; text-align: center; }
+    .hw-seo__cols { margin-top: 30px; display: grid; gap: 32px; }
+    .hw-seo__cols h3 { font-family: var(--font-serif); font-weight: 400; font-size: 17px; }
+    .hw-seo__cols p { margin-top: 10px; font-size: 12.5px; line-height: 1.75; color: rgba(26, 26, 26, 0.8); }
+    .hw-seo__cols a { color: inherit; font-weight: 600; }
+    @media (min-width: 1024px) { .hw-seo__cols { grid-template-columns: repeat(3, 1fr); gap: 48px; } }
+    /* ── Concept Stores — بخش‌های اختصاصی ── */
+    .hw-look__cardwrap .product__media { aspect-ratio: 4 / 3 !important; }
+    .hw-look__cardwrap .product__media img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    .cs-sub { margin-top: 8px; font-size: 14px; line-height: 1.6; color: rgba(26, 26, 26, 0.75); }
+    .hw-look__sub { margin-top: 4px; font-size: 13px; color: rgba(26, 26, 26, 0.7); }
+    .cs-cats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; list-style: none; margin: 26px 0 0; padding: 0; }
+    .cs-cats a { display: block; color: inherit; text-decoration: none; }
+    .cs-cats img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+    .cs-cats span { display: block; margin-top: 10px; font-size: 13.5px; }
+    @media (min-width: 1024px) { .cs-cats { grid-template-columns: repeat(5, 1fr); gap: 20px; } }
+    .cs-help { padding-top: 84px; }
+    .cs-help__row { display: grid; gap: 32px; align-items: center; }
+    .cs-help__row img { display: block; width: 100%; height: auto; }
+    .cs-help__txt h3 { font-family: var(--font-serif); font-weight: 400; font-size: 23px; line-height: 1.3; }
+    .cs-help__txt p { margin-top: 12px; font-size: 15px; line-height: 1.7; color: rgba(26, 26, 26, 0.85); max-width: 46ch; }
+    .cs-help__txt .btn { margin-top: 18px; }
+    @media (min-width: 1024px) { .cs-help__row { grid-template-columns: 1fr 1fr; gap: 56px; } }
+    .hw-look__media img { aspect-ratio: 5 / 4; object-fit: cover; }
+    /* ── Shoes — SEO با Benefits ── */
+    .sh-seo h2 { text-align: left; font-size: clamp(26px, 3vw, 36px); }
+    .sh-seo__lead { margin-top: 16px; font-size: 13.5px; line-height: 1.85; color: rgba(26, 26, 26, 0.85); max-width: 96ch; }
+    .sh-seo ul { margin: 12px 0 6px; padding-left: 22px; font-size: 13px; line-height: 2; color: rgba(26, 26, 26, 0.85); list-style: disc; }
+    .kd-look .hw-look__media img { aspect-ratio: 16 / 9; object-fit: cover; }
+    .hw-look h3 { text-align: center; }
+    .product__badge { display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 9px; border: 1px solid rgba(26, 26, 26, 0.25); color: rgba(26, 26, 26, 0.75); }
+    .cm-seo p { margin-top: 12px; font-size: 13px; line-height: 1.85; color: rgba(26, 26, 26, 0.85); max-width: 100ch; }
+    /* ── Kids — گرید محصولات + ردیف‌های Other Fixtures ── */
+    .kid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 16px; margin-top: 30px; list-style: none; padding: 0; }
+    .kid-grid .product__name { font-size: 13px; text-align: center; }
+    .kid-grid .product__price, .kid-grid .product__options { text-align: center; }
+    @media (min-width: 1024px) { .kid-grid { grid-template-columns: repeat(4, 1fr); gap: 30px 20px; } }
+    .kf-row { padding-top: 88px; }
+    .kf-row .cs-help__txt h3 { font-size: clamp(28px, 3vw, 42px); line-height: 1.15; }
+    .kf-row .cs-help__txt p { max-width: none; }
+    .kf-row .cs-help__txt p.cm-rowsub { margin-top: 12px; font-family: var(--font-serif); font-size: clamp(20px, 1.8vw, 25px); line-height: 1.35; color: var(--foreground); }
+    .hw-look h3 { font-size: 30px; }
+    .hw-look__media img { aspect-ratio: 1 / 1; }
+    /* زیگزاگ STL مرجع: کارت‌ها چپ، تصویر بزرگ راست (اسکرین‌شات‌های ۱ و ۳) */
+    @media (min-width: 768px) {
+      .cm-flip .hw-look__media { order: 2; }
+      .cm-flip .hw-look__row > div:last-child { order: 1; }
+    }
+    @media (min-width: 1024px) {
+      .kf-row .cs-help__row { gap: 80px; }
+      .kf-row.kf-img-left .cs-help__row { grid-template-columns: 1.35fr 1fr; }
+      .kf-row.kf-img-right .cs-help__row { grid-template-columns: 1fr 1.35fr; }
+    }
+  </style>
+            <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "WebPage",
-      "name": "Retail fixtures for cosmetics and salons",
+      "name": "Elegant retail fixtures for cosmetics & salons",
       "url": "https://www.example.com/sectors/cosmetics.html",
-      "description": "Elegant retail fixtures for cosmetics, beauty & spa: shelving with glass shelves, gondolas and pedestals. Made in Germany - order online now.",
+      "description": "A beautiful interior is crucial for beauty shops, cosmetics boutiques, beauty salons and spa areas. Mandai Design offers the right shop fittings from shelving to shop counters, reception desks and more.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://www.example.com/#website"
       },
-      "primaryImageOfPage": "https://www.example.com/images/sectors/cosmetics.jpg"
+      "primaryImageOfPage": "https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775"
     },
     {
       "@type": "BreadcrumbList",
@@ -78,36 +234,13 @@
           "@type": "ListItem",
           "position": 2,
           "name": "Retail Sectors",
-          "item": "https://www.example.com/#sectors"
+          "item": "https://www.example.com/index.html#sectors"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Cosmetics, Beauty & Spa",
-          "item": "https://www.example.com/sectors/cosmetics.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "url": "https://www.example.com/sectors/cosmetics.html",
-      "inLanguage": "en",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Which countries do you deliver to?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our “Payment and Shipping” page."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I order products in different colors, dimensions, or finishes?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request."
-          }
+          "name": "Homeware & Decorations",
+          "item": "https://www.example.com/sectors/homeware.html"
         }
       ]
     }
@@ -133,8 +266,8 @@
   </div>
   <script type="application/json" data-topbar-data>
     [
-      { "text": "Order Free Samples", "href": "../index.html#help" },
-      { "text": "Call us for a free consultation: +49 (0)34341 4070950", "href": "tel:+49343414070950" }
+      { "text": "Order Free Samples", "href": "../pages/samples.html" },
+      { "text": "Call us for a free consultation: +49 (0) 6341 94209 20", "href": "tel:+4963419420920" }
     ]
   </script>
 
@@ -144,15 +277,15 @@
       <div class="container site-header__utility-inner">
         <nav aria-label="Utility navigation">
           <ul class="utility-nav">
-            <li><a href="../index.html#experience" class="link-underline">About Us</a></li>
-            <li><a href="../index.html#help" class="link-underline">Sample Service</a></li>
-            <li><a href="../index.html#help" class="link-underline">Design Support</a></li>
+            <li><a href="../pages/about-us.html" class="link-underline">About Us</a></li>
+            <li><a href="../pages/samples.html" class="link-underline">Sample Service</a></li>
+            <li><a href="../pages/design-support.html" class="link-underline">Design Support</a></li>
             <li><a href="../index.html#faq" class="link-underline">FAQ</a></li>
           </ul>
         </nav>
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
       </div>
@@ -166,22 +299,39 @@
       <nav aria-label="Main navigation" class="site-header__nav">
         <ul class="nav">
           <li class="nav__item">
-            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="../index.html#sectors" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Retail Sectors
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="fashion.html">Fashion</a></li>
-                <li><a href="menswear.html">Menswear</a></li>
-                <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="shoes.html">Shoes</a></li>
-                <li><a href="kids-stores.html">Kids Stores</a></li>
-                <li><a href="cosmetics.html" aria-current="page">Cosmetics, Beauty &amp; Spa</a></li>
-                <li><a href="fine-foods.html">Fine Foods</a></li>
-                <li><a href="pet-stores.html">Pet Stores</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists nav__mega-lists--two">
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fashion.html">Fashion</a></li>
+                <li><a href="../sectors/menswear.html">Menswear</a></li>
+                <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+                <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+                <li><a href="../sectors/shoes.html">Shoes</a></li>
+                <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+                <li><a href="../sectors/cosmetics.html" aria-current="page">Cosmetics, Beauty &amp; Spa</a></li>
+                </ul>
+                <ul class="nav__mega-col">
+                <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+                <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+                <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+                <!-- Bakery → bakery.html (ساخته شد؛ قبلاً موقتاً Fine Foods بود) -->
+                <li><a href="../sectors/bakery.html">Bakery</a></li>
+                <!-- ✏️ صفحهٔ سکتور Bridal Fashion هنوز ساخته نشده؛ موقتاً Fashion -->
+                <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+                <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#sectors" aria-label="Shop by retail sector"
+                 style="--pw: 425px; --ph: 280px; --ov: 0.31; background-image: url('https://www.mandai-design.com/cdn/shop/files/shelvingsystem-shelf-retailshelf-mandaidesign-addison-finefoods-2.jpg?v=1666878366&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by retail sector</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -189,8 +339,9 @@
               Store Fixtures
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
                 <li><a href="../fixtures/gondola-shelving.html">Gondola Shelving</a></li>
                 <li><a href="../fixtures/racks-and-rails.html">Racks and Rails</a></li>
@@ -198,17 +349,27 @@
                 <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
                 <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
                 <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+                <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
                 <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#categories" aria-label="Shop by category"
+                 style="--pw: 330px; --ph: 265px; background-image: url('https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by category</span>
+                  <span class="nav__mega-media__btn">DISCOVER NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#bestsellers" class="nav__link" aria-haspopup="true" aria-expanded="false">
+            <a href="#main-content" class="nav__link" aria-haspopup="true" aria-expanded="false">
               Shelving Systems
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
                 <li><a href="../systems/addison.html">Addison</a></li>
                 <li><a href="../systems/ceres.html">Ceres</a></li>
                 <li><a href="../systems/cetus.html">Cetus</a></li>
@@ -217,7 +378,15 @@
                 <li><a href="../systems/ontario.html">Ontario</a></li>
                 <li><a href="../systems/bergen.html">Bergen</a></li>
                 <li><a href="../systems/customize.html">Customize your shelf</a></li>
-              </ul>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#bestsellers" aria-label="Shop by shelving system"
+                 style="--pw: 410px; --ph: 270px; --ov: 0.36; background-image: url('https://www.mandai-design.com/cdn/shop/files/kids-store-retail-fixtures-display-mandai-design.jpg?v=1714031007&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">Shop by shelving system</span>
+                  <span class="nav__mega-media__btn">SHOP NOW</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
@@ -225,22 +394,34 @@
               References
               <svg class="icon-14 nav__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
             </a>
-            <div class="nav__dropdown">
-              <ul>
-                <li><a href="fashion.html">Fashion Stores</a></li>
-                <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-                <li><a href="homeware.html">Homeware Stores</a></li>
-                <li><a href="concept-stores.html">Concept Stores</a></li>
-                <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
-                <li><a href="../index.html#references">VIEW ALL</a></li>
-              </ul>
+                        <div class="nav__dropdown nav__dropdown--mega">
+              <div class="nav__mega-lists">
+                <ul class="nav__mega-col">
+                <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+                <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+                <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li>
+                <li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li>
+                <li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li>
+                <li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
+                </ul>
+              </div>
+              <a class="nav__mega-media" href="../index.html#references" aria-label="View client photos"
+                 style="--pw: 330px; --ph: 265px; --ov: 0.48; background-image: url('https://www.mandai-design.com/cdn/shop/files/beauty-salon-reception-desk-front-desk_409795df-5683-472c-a101-918d19c20a84.jpg?v=1786607806&width=1200')">
+                <span class="nav__mega-media__inner">
+                  <span class="nav__mega-media__title">View client photos</span>
+                  <span class="nav__mega-media__btn">VIEW ALL</span>
+                </span>
+              </a>
             </div>
           </li>
           <li class="nav__item">
-            <a href="../index.html#experience" class="nav__link">Our Process</a>
+            <a href="../pages/our-process.html" class="nav__link">Our Process</a>
           </li>
           <li class="nav__item">
-            <a href="../index.html#contact" class="nav__link">Contact Us</a>
+            <a href="../pages/contact.html" class="nav__link">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -273,17 +454,22 @@
       <nav aria-label="Mobile navigation" class="mobile-menu__body">
         <ul>
           <li class="mobile-menu__item">
-            <a href="#main-content">Retail Sectors</a>
+            <a href="../index.html#sectors">Retail Sectors</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion</a></li>
-              <li><a href="menswear.html">Menswear</a></li>
-              <li><a href="homeware.html">Homeware &amp; Decorations</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="shoes.html">Shoes</a></li>
-              <li><a href="kids-stores.html">Kids Stores</a></li>
-              <li><a href="cosmetics.html" aria-current="page">Cosmetics, Beauty &amp; Spa</a></li>
-              <li><a href="fine-foods.html">Fine Foods</a></li>
-              <li><a href="pet-stores.html">Pet Stores</a></li>
+              <li><a href="../sectors/fashion.html">Fashion</a></li>
+              <li><a href="../sectors/menswear.html">Menswear</a></li>
+              <li><a href="../sectors/homeware.html">Homeware &amp; Decorations</a></li>
+              <li><a href="../sectors/concept-stores.html">Concept Stores</a></li>
+              <li><a href="../sectors/shoes.html">Shoes</a></li>
+              <li><a href="../sectors/kids-stores.html">Kids Stores</a></li>
+              <li><a href="../sectors/cosmetics.html" aria-current="page">Cosmetics, Beauty &amp; Spa</a></li>
+              <li><a href="../sectors/fine-foods.html">Fine Foods</a></li>
+              <!-- ✏️ ۴ سکتور مطابق منوی مرجع؛ مقاصد موقت (صفحات مستقل ساخته نشده‌اند) -->
+              <li><a href="../sectors/athleisure.html">Athleisure</a></li>
+              <li><a href="../sectors/yoga.html">Yoga Studios</a></li>
+              <li><a href="../sectors/bakery.html">Bakery</a></li>
+              <li><a href="../sectors/fashion.html">Bridal Fashion</a></li>
+              <li><a href="../sectors/pet-stores.html">Pet Stores</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
@@ -296,18 +482,19 @@
               <li><a href="../fixtures/reception-desks.html">Reception Desks</a></li>
               <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
               <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
+              <li><a href="../fixtures/display-fittings.html">Display Fittings</a></li>
               <li><a href="../fixtures/quick-delivery.html">Quick Delivery</a></li>
             </ul>
           </li>
           <li class="mobile-menu__item">
-            <a href="../index.html#bestsellers">Shelving Systems</a>
+            <a href="#main-content">Shelving Systems</a>
             <ul class="mobile-menu__sub">
               <li><a href="../systems/addison.html">Addison</a></li>
               <li><a href="../systems/ceres.html">Ceres</a></li>
               <li><a href="../systems/cetus.html">Cetus</a></li>
               <li><a href="../systems/brooklyn.html">Brooklyn</a></li>
               <li><a href="../systems/slimline.html">Slimline</a></li>
-              <li><a href="../systems/ontario.html">Ontario</a></li>
+                <li><a href="../systems/ontario.html">Ontario</a></li>
               <li><a href="../systems/bergen.html">Bergen</a></li>
               <li><a href="../systems/customize.html">Customize your shelf</a></li>
             </ul>
@@ -315,28 +502,28 @@
           <li class="mobile-menu__item">
             <a href="../index.html#references">References</a>
             <ul class="mobile-menu__sub">
-              <li><a href="fashion.html">Fashion Stores</a></li>
-              <li><a href="fine-foods.html">Fine Foods &amp; Farm Shops</a></li>
-              <li><a href="homeware.html">Homeware Stores</a></li>
-              <li><a href="concept-stores.html">Concept Stores</a></li>
-              <li><a href="cosmetics.html">Cosmetics &amp; Wellness</a></li>
-              <li><a href="../index.html#references">VIEW ALL</a></li>
+              <li><a href="../pages/our-shopfittings-in-fashion-stores.html">Fashion Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-food-stores.html">Fine Foods &amp; Farm Shops</a></li>
+              <li><a href="../pages/our-shopfittings-in-homeware-stores.html">Homeware Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-concept-stores.html">Concept Stores</a></li>
+              <li><a href="../pages/our-shopfittings-in-cosmetics-stores.html">Cosmetics &amp; Wellness</a></li>
+              <li><a href="../pages/our-shopfittings-in-menswear-stores.html">Menswear</a></li><li><a href="../pages/our-shopfittings-in-kids-stores.html">Kids Stores</a></li><li><a href="../pages/our-shopfittings-in-bridal-salons.html">Bridal Salons</a></li><li><a href="../pages/client-stores-pharmacy.html">Pharmacies</a></li>
             </ul>
           </li>
-          <li class="mobile-menu__item"><a href="../index.html#experience">Our Process</a></li>
-          <li class="mobile-menu__item"><a href="../index.html#contact">Contact Us</a></li>
+          <li class="mobile-menu__item"><a href="../pages/our-process.html">Our Process</a></li>
+          <li class="mobile-menu__item"><a href="../pages/contact.html">Contact Us</a></li>
         </ul>
 
         <ul class="mobile-menu__utility">
-          <li><a href="../index.html#experience">About Us</a></li>
-          <li><a href="../index.html#help">Sample Service</a></li>
-          <li><a href="../index.html#help">Design Support</a></li>
+          <li><a href="../pages/about-us.html">About Us</a></li>
+          <li><a href="../pages/samples.html">Sample Service</a></li>
+          <li><a href="../pages/design-support.html">Design Support</a></li>
           <li><a href="../index.html#faq">FAQ</a></li>
         </ul>
 
         <div class="mobile-menu__contact">
-          <p>Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
-          <a href="tel:+49343414070950">+49 (0)34341 40 70 950</a>
+          <p>Mo-Fr 8:30 AM to 5:00 PM</p>
+          <a href="tel:+4963419420920">+49 (0) 6341 94209 20</a>
         </div>
       </nav>
     </div>
@@ -358,219 +545,592 @@
       </div>
     </div>
   </header>
+<main id="main-content">
 
-  <main id="main-content">
+  <!-- ── هیرو ── -->
+  <div class="mw-hero">
+    <!-- مطابق DOM مرجع (image-hero، aspect-original، بدون کراپ): دسکتاپ = salon-shelving 1920×1080 (عرض srcset مرجع تا 1800)، موبایل = cetus مربعی 1080×1080 (تا 1000)؛ سوئیچ در 719px مثل تم -->
+    <img class="mw-hero-desktop" src="https://www.mandai-design.com/cdn/shop/files/salon-shelving-cetus-cosmetics-mandai-design-NEW_13a00b98-4651-4be3-845e-d3d11a027ade.jpg?v=1740058111&amp;width=1800" alt="salon-shelving-cetus-cosmetics-mandai-design-NEW_13a00b98-4651-4be3-845e-d3d11a027ade" width="1920" height="1080" loading="lazy" fetchpriority="high">
+    <img class="mw-hero-mobile" src="https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-NEW_49461bf1-b51d-4810-a13b-64091de5a976.jpg?v=1740058775&amp;width=1000" alt="cetus-cosmetics-salons_5_-NEW_" width="1080" height="1080" loading="lazy" fetchpriority="high">
+  </div>
 
-    <!-- ══════════ بردکرامب ══════════ -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="container">
-        <ol class="breadcrumb__list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../index.html#sectors">Retail Sectors</a></li>
-          <li><span aria-current="page">Cosmetics, Beauty &amp; Spa</span></li>
-        </ol>
+  <!-- ── H1 + معرفی ── -->
+  <section class="hw-intro">
+    <div class="container">
+      <!-- ✏️ H1 طبق اسکرین‌شات مرجع (استخراج متنی DOM عنوان دیگری نشان می‌داد) -->
+  <h1>Cetus Shelving System</h1>
+      <p>A beautiful interior is crucial for beauty shops, cosmetics boutiques, beauty salons and spa areas. Mandai Design offers the right shop fittings from shelving to shop counters, reception desks and more.</p>
+      <p>Choose from the following shelves or <a href="../pages/contact.html" class="text-link-strong">contact us</a> if you&rsquo;d like a different size, configuration or color.</p>
+    </div>
+  </section>
+
+  <!-- ── گرید ۲۴ محصول ── -->
+  <section class="hw-sec" aria-label="Cosmetics fixtures">
+    <div class="container">
+      <ul class="kid-grid">
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 1, black">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle1Halifaxnatur_mitAcc.jpg?v=1676898286&amp;width=900" alt="Shelving System Cetus - Classic - Style 1, black" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle1Halifaxnatur.jpg?v=1676898304&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 1, black</h3>
+        <p class="product__price">from $1,091.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 1, white">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle1_weiss_H260_HalifaxNatur_mitAcc.jpg?v=1695972422&amp;width=900" alt="Shelving System Cetus - Classic - Style 1, white" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle1_weiss_H260_HalifaxNatur.jpg?v=1695972422&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 1, white</h3>
+        <p class="product__price">from $1,091.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 2, black">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle2Halifaxnatur_mitAcc.jpg?v=1676898740&amp;width=900" alt="Shelving System Cetus - Classic - Style 2, black" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle2Halifaxnatur.jpg?v=1676898740&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 2, black</h3>
+        <p class="product__price">from $1,655.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 2, white">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelf-cetus-white-style-2.jpg?v=1721725229&amp;width=900" alt="Shelving System Cetus - Classic - Style 2, white" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle2_weiss_H260_Halifaxnature.jpg?v=1721725237&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 2, white</h3>
+        <p class="product__price">from $1,655.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 4, white">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle4_weiss_H260_HalifaxmitAcc.jpg?v=1695983978&amp;width=900" alt="Shelving System Cetus - Classic - Style 4, white" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/pharmacy-shelving-apothecary-shelving-retail-shelving-white-mandaidesign-4_16cb9920-b8b8-4dc6-ba9a-0363cc9458aa.jpg?v=1739788309&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 4, white</h3>
+        <p class="product__price">from $2,713.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 4, black">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle4Halifaxnatur_mitAcc.jpg?v=1676967455&amp;width=900" alt="Shelving System Cetus - Classic - Style 4, black" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle4Halifaxnatur.jpg?v=1676967455&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 4, black</h3>
+        <p class="product__price">from $2,713.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 3, white">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelf-cetus-white-style-3-white.jpg?v=1721725278&amp;width=900" alt="Shelving System Cetus - Classic - Style 3, white" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/CetusStyle3_weiss_H260_Halifax.jpg?v=1721725283&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 3, white</h3>
+        <p class="product__price">from $4,190.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Cetus - Classic - Style 3, black">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle3Halifaxnatur_mitAcc_c150ca9e-c803-47ea-b1bf-aa8edd162e0d.jpg?v=1676965992&amp;width=900" alt="Shelving System Cetus - Classic - Style 3, black" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/products/CetusStyle3Halifaxnatur_a281d900-4ba2-4a73-bbe6-d8107b817a0c.jpg?v=1676965992&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Cetus - Classic - Style 3, black</h3>
+        <p class="product__price">from $4,190.00</p>
+        <p class="product__options">2 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Cosmetics - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_01.1_H2600_B242_mit_Accessoires.jpg?v=1709894924&amp;width=900" alt="Shelving System Slimline - Cosmetics - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design_2_494c9cc7-40ac-4c58-9f7d-e33b9c9cc321.jpg?v=1739788496&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Slimline - Cosmetics - Style 1</h3>
+        <p class="product__price">from $3,116.00</p>
+        <p class="product__badge">Quick delivery</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Slimline, W 122">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_00.2_H2600_B122_mit_Accessoires.jpg?v=1709893892&amp;width=900" alt="Shelving System Slimline, W 122" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_00.2_H2600_B122.jpg?v=1709893892&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Slimline, W 122</h3>
+        <p class="product__price">from $1,582.00</p>
+        <p class="product__badge">Quick delivery</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shelving System Slimline, W 62">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_00.1_H2600_B62_mit_Accessoires.jpg?v=1709893806&amp;width=900" alt="Shelving System Slimline, W 62" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design_4_1290f13e-ca51-444c-9966-686b7d81afb0.jpg?v=1739788520&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shelving System Slimline, W 62</h3>
+        <p class="product__price">from $1,415.00</p>
+        <p class="product__badge">Quick delivery</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Salon Shelving System Cetus - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01.1_Cetus_Cosmetic_Style_01_Marble_Acc_abf74fb7-5ab0-4d49-b69e-b5e9f0e9d0c0.jpg?v=1734097112&amp;width=900" alt="Salon Shelving System Cetus - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/01.1_Cetus_Cosmetic_Style_01_Marble_Acc_Room-edited.jpg?v=1739541598&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Salon Shelving System Cetus - Style 1</h3>
+        <p class="product__price">from $1,502.00</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Salon Shelving System Cetus - Style 2">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/02.1_Cetus_Cosmetic_Style_02_Marble_Acc_2d4bbcdd-73bb-4f0e-8325-181f6868e04e.jpg?v=1734096499&amp;width=900" alt="Salon Shelving System Cetus - Style 2" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/02.1_Cetus_Cosmetic_Style_02_Marble_Acc_Room-edited.jpg?v=1739541586&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Salon Shelving System Cetus - Style 2</h3>
+        <p class="product__price">from $2,716.00</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Salon Shelving System Cetus - Style 3">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/03.1_Cetus_Cosmetic_Style_03_Marble_Acc_22196632-cce1-47a9-aaab-a6eec2523fe5.jpg?v=1734096302&amp;width=900" alt="Salon Shelving System Cetus - Style 3" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/03.1_Cetus_Cosmetic_Style_03_Marble_Acc_Room-edited.jpg?v=1739541573&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Salon Shelving System Cetus - Style 3</h3>
+        <p class="product__price">from $2,590.00</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Salon Shelving System Cetus - Style 4">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/04.1_Cetus_Cosmetic_Style_04_Marble_Acc_436a5b2e-e6fb-4f62-8796-fdf15a0f04d8.jpg?v=1734095997&amp;width=900" alt="Salon Shelving System Cetus - Style 4" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/04.1_Cetus_Cosmetic_Style_04_Marble_Acc_Room-edited.jpg?v=1739541552&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Salon Shelving System Cetus - Style 4</h3>
+        <p class="product__price">from $4,108.00</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Shop Counter Coco, Oval, decor of choice">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-coco-retail_7.jpg?v=1758105411&amp;width=900" alt="Shop Counter Coco, Oval, decor of choice" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/coco-retail-counter-salon_2.jpg?v=1758105411&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Shop Counter Coco, Oval, decor of choice</h3>
+        <p class="product__price">$4,458.00</p>
+        <p class="product__badge">More Colours</p>
+        <p class="product__options">4 decors</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in marble look">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cubes-cubetable-displaytable-marble-mandaidesign-6.jpg?v=1698240288&amp;width=900" alt="Cube Table Toro, in marble look" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/cube-toro-marble-website.jpg?v=1739540429&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Toro, in marble look</h3>
+        <p class="product__price">from $141.00</p>
+        <p class="product__options">4 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in white">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white-1.jpg?v=1693464401&amp;width=900" alt="Cube Table Toro, in white" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white.jpg?v=1739540526&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Toro, in white</h3>
+        <p class="product__price">from $141.00</p>
+        <p class="product__options">4 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in wood decor Oak">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-oak-1.jpg?v=1693465168&amp;width=900" alt="Cube Table Toro, in wood decor Oak" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/athleisure-store-retail-design-shelving-gym-design-flagship-store_10_c273d3ae-6b80-4604-a1ef-5ff4258b3ea2.jpg?v=1742301852&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Toro, in wood decor Oak</h3>
+        <p class="product__price">from $141.00</p>
+        <p class="product__options">4 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Toro, in anthracite">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-anthracite-1.jpg?v=1693464948&amp;width=900" alt="Cube Table Toro, in anthracite" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/toro-cubes-website-anth_4.jpg?v=1739540542&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Toro, in anthracite</h3>
+        <p class="product__price">from $141.00</p>
+        <p class="product__options">4 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Logan, in white">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-raised-edges-mandai-design-white-1.jpg?v=1693468004&amp;width=900" alt="Cube Table Logan, in white" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white-4_f3c91f26-0fb6-4fb5-8d71-30fe83e9c145.jpg?v=1739777541&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Logan, in white</h3>
+        <p class="product__price">from $175.00</p>
+        <p class="product__options">3 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Logan, in wood decor Oak">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-raised-edges-mandai-design-oak-1_096edf67-2507-4864-999d-6804b756251c.jpg?v=1693467844&amp;width=900" alt="Cube Table Logan, in wood decor Oak" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/logan-display-podest-wood_3.jpg?v=1739540447&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Logan, in wood decor Oak</h3>
+        <p class="product__price">from $175.00</p>
+        <p class="product__options">3 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Cube Table Logan, in anthracite">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-raised-edges-mandai-design-anthracite-1.jpg?v=1694074953&amp;width=900" alt="Cube Table Logan, in anthracite" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-cube-logan-website-2.jpg?v=1739540497&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Cube Table Logan, in anthracite</h3>
+        <p class="product__price">from $175.00</p>
+        <p class="product__options">3 options</p>
+        </a></li>
+        <li><a href="../index.html#contact" class="product" aria-label="Gondola Shelving Lugano - Cosmetics - Style 1">
+        <!-- ✏️ لینک محصول → صفحهٔ اصلی (جایگزین صفحهٔ محصول) -->
+        <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Cosmetics_Style01_Mandai_Design.jpg?v=1780905032&amp;width=900" alt="Gondola Shelving Lugano - Cosmetics - Style 1" width="900" height="900" loading="lazy">
+          <img src="https://www.mandai-design.com/cdn/shop/files/Lugano_gondola_shelving_Cosmetics_Style01_Mandai_Design_Shop1.jpg?v=1780905050&amp;width=900" alt="" class="product__img--alt" width="900" height="900" loading="lazy" aria-hidden="true"></div>
+        <h3 class="product__name">Gondola Shelving Lugano - Cosmetics - Style 1</h3>
+        <p class="product__price">$653.00</p>
+        <p class="product__options">2 steel colors</p>
+        </a></li>
+      </ul>
+      <p class="cs-sub" style="margin-top:26px;text-align:center">You&rsquo;re viewing 1-24 of 26 products</p>
+      <p style="text-align:right;margin-top:10px"><a href="../fixtures/retail-shelving.html" class="cs-sub" style="font-size:13.5px"><!-- ✏️ لینک All Products → قفسه‌ها -->All Products</a></p>
+    </div>
+  </section>
+
+  <!-- ── Shelving system Cetus ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="cm-cetus">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_5_-_NEW.jpg?v=1740058013&amp;width=1200" alt="cetus-cosmetics-salons_5_-_NEW" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="cm-cetus">Shelving system Cetus</h3>
+        <p class="cm-rowsub">Created to maximize your floor space</p>
+        <p>Our retail display shelving system Cetus is tailored for showcasing cosmetics and salon items like supplements, vitamins, and beauty products. At 36,5cm / 14.37&quot; deep, it maximizes product visibility in compact spaces, perfect for cosmetics stores, salons, and pharmacies.</p>
+        <a href="../systems/cetus.html" class="btn btn--outline">Find out more about Cetus</a>
       </div>
-    </nav>
+    </div>
+  </section>
 
-    <!-- ══════════ هیروی صفحه ══════════
-         ✏️ ویرایش: تصویر (images/sectors/cosmetics.jpg) و تیتر H1 -->
-    <section class="page-hero">
-      <img src="../images/sectors/cosmetics.jpg" alt="Cosmetics store interior with elegant retail shelving" class="page-hero__img" width="1800" height="1200" loading="eager">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <div class="container">
-          <h1 class="page-hero__title">Retail fixtures for cosmetics and salons</h1>
+  <!-- ── Explore this setup: Cetus (STL 1/2) — کارت‌ها چپ، تصویر راست + تیتر بالای کارت‌ها، مطابق اسکرین‌شات مرجع ── -->
+  <section class="hw-sec" aria-label="Explore this setup: Cetus">
+    <div class="container">
+      <div class="hw-look cm-flip">
+        <div class="hw-look__row">
+          <div class="hw-look__media"><img src="https://www.mandai-design.com/cdn/shop/files/cetus-cosmetics-salons_6_-_NEW.jpg?v=1740058041&amp;width=1400" alt="cetus-cosmetics-salons_6_-_NEW" loading="lazy">
+            <!-- نقاط تعاملی — بازسازی‌شده از هندسه اسکرین‌شات رفرنس کاربر (باکس ~1.14:1 در 1499px): Salon S1 13.5/7.8 · Coco 46.6/64.4 (تأیید کاربر) · Salon S1 17.2/36.8 (17.2/13.7 + 176px طبق دستور دقیق کاربر؛ تصویر بزرگ 762px مربع) -->
+            <button type="button" class="hw-dot" data-slider="cmC" data-index="0" style="left:17.2%;top:36.8%" aria-label="Salon Shelving System Cetus - Style 1"></button>
+            <button type="button" class="hw-dot" data-slider="cmC" data-index="1" style="left:46.6%;top:64.4%" aria-label="Shop Counter Coco, Oval, decor of choice"></button>
+          </div>
+          <div>
+            <h3>Explore this setup: Cetus</h3>
+            <div class="hw-look__cardwrap">
+            <button type="button" class="slider-btn hw-look__nav" data-slider="cmC" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <ul class="hw-look__track" id="cmC">
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Salon Shelving System Cetus - Style 1">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/01.1_Cetus_Cosmetic_Style_01_Marble_Acc_abf74fb7-5ab0-4d49-b69e-b5e9f0e9d0c0.jpg?v=1734097112&amp;width=900" alt="Salon Shelving System Cetus - Style 1" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Salon Shelving System Cetus - Style 1</h4>
+                <p class="product__price">from $1,502.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shop Counter Coco, Oval, decor of choice">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/shop-counter-coco-retail_7.jpg?v=1758105411&amp;width=900" alt="Shop Counter Coco, Oval, decor of choice" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shop Counter Coco, Oval, decor of choice</h4>
+                <p class="product__price">$4,458.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+            </ul>
+                        <button type="button" class="slider-btn hw-look__nav" data-slider="cmC" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <p class="hw-look__count" id="cnt-cmC">1 / 2</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ معرفی ══════════ -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <div class="container intro__inner">
-        <p class="eyebrow">RETAIL SECTORS</p>
-        <h2 id="intro-heading" class="intro__heading" style="margin-top:10px">Created to maximize your floor space</h2>
-        <div class="intro__text">
-          <p>An ideal way to display cosmetics is with open shelving systems featuring glass shelves - they create an open, airy atmosphere that lets your products shine. Our retail display shelving system Cetus is tailored to the needs of cosmetics retail.</p>
+  <!-- ── Shelving system Slimline ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="cm-slim">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/shopfitting-retail-shelf-retail-shelving-retail-display-fixtures-3.jpg?v=1692897017&amp;width=1200" alt="shopfitting-retail-shelf-retail-shelving-retail-display-fixtures" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="cm-slim">Shelving system Slimline</h3>
+        <p class="cm-rowsub">The right display shelf for wellness products</p>
+        <p>An ideal way to display cosmetics is with the right shelving. Open shelving systemswith glass shelves create an open, airy atmosphere. Depending on the type of cosmetics, wooden shelves might be a good choice to display organic, natural products. Our Slimline shelving system is very flexible, can be set up in different ways and can easily be adapted.</p>
+        <a href="../systems/slimline.html" class="btn btn--outline">Find out more about Slimline</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Shop the Look: Slimline (STL 1/3) ── -->
+  <section class="hw-sec" aria-label="Shop the Look: Slimline">
+    <div class="container">
+      <div class="hw-look cm-flip">
+        <div class="hw-look__row">
+          <div class="hw-look__media"><img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design_4.jpg?v=1689859356&amp;width=1400" alt="retail-shelving-shelf-shopfitting-mandai-design" loading="lazy">
+            <!-- نقاط تعاملی — اندازه‌گیری‌شده از اسکرین‌شات مرجع (فوریه ۲۰۲۶) -->
+            <button type="button" class="hw-dot" data-slider="cmS" data-index="0" style="left:34.9%;top:34.8%" aria-label="Shelving System Slimline - Cosmetics - Style 1"></button>
+            <button type="button" class="hw-dot" data-slider="cmS" data-index="1" style="left:26.1%;top:68.9%" aria-label="Shop Counter Matera, white and wood"></button>
+            <button type="button" class="hw-dot" data-slider="cmS" data-index="2" style="left:84.7%;top:31.9%" aria-label="Shelving System Slimline, W 62"></button>
+          </div>
+          <div>
+            <h3>Shop the Look: Slimline</h3>
+            <div class="hw-look__cardwrap">
+            <button type="button" class="slider-btn hw-look__nav" data-slider="cmS" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <ul class="hw-look__track" id="cmS">
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline - Cosmetics - Style 1">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_01.1_H2600_B242_mit_Accessoires.jpg?v=1709894924&amp;width=900" alt="Shelving System Slimline - Cosmetics - Style 1" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shelving System Slimline - Cosmetics - Style 1</h4>
+                <p class="product__price">from $3,116.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shop Counter Matera, white and wood">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/matera-white-wood-checkout-desk_2.jpg?v=1758091667&amp;width=900" alt="Shop Counter Matera, white and wood" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shop Counter Matera, white and wood</h4>
+                <p class="product__price">$2,021.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+              <li>
+                <a href="../index.html#contact" class="product" aria-label="Shelving System Slimline, W 62">
+                <div class="product__media"><img src="https://www.mandai-design.com/cdn/shop/files/Slimline_Style_00.1_H2600_B62_mit_Accessoires.jpg?v=1709893806&amp;width=900" alt="Shelving System Slimline, W 62" width="900" height="900" loading="lazy"></div>
+                <h4 class="product__name">Shelving System Slimline, W 62</h4>
+                <p class="product__price">from $1,415.00</p>
+                <span class="hw-quick">Quick View</span>
+                </a>
+              </li>
+            </ul>
+                        <button type="button" class="slider-btn hw-look__nav" data-slider="cmS" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <p class="hw-look__count" id="cnt-cmS">1 / 3</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ تجهیزات پیشنهادی ══════════
-         ✏️ ویرایش: هر <li> یک محصول — مثل بخش Bestsellers در index.html -->
-    <section class="bestsellers" aria-labelledby="fixtures-heading" style="background:var(--bg-grey)">
-      <div class="container">
-        <h2 id="fixtures-heading" class="h-serif-lg">Our fixtures for cosmetics stores</h2>
-        <ul class="bestsellers__grid">
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Cetus">
-              <div class="product__media">
-                <img src="../images/cat-shelving-systems.jpg" alt="Shelving System Cetus with glass shelves" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving System Cetus</h3>
-              <p class="product__variants">With glass shelves</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#bestsellers" class="product" aria-label="Shelving System Ceres">
-              <div class="product__media">
-                <img src="../images/product-ceres-style4.jpg" alt="Shelving System Ceres - Style 4, black" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Shelving System Ceres</h3>
-              <p class="product__price">from &euro;2,109.00</p>
-              <p class="product__variants">2 options</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Gondola Shelving Lugano">
-              <div class="product__media">
-                <img src="../images/cat-gondola.jpg" alt="Lugano gondola shelving for cosmetics displays" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Gondola Shelving Lugano</h3>
-              <p class="product__variants">Height-adjustable</p>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html#categories" class="product" aria-label="Display Pedestals">
-              <div class="product__media">
-                <img src="../images/cat-pedestals.jpg" alt="Display pedestals for spa and cosmetics studio" width="1024" height="1024" loading="lazy">
-              </div>
-              <h3 class="product__name">Display Pedestals</h3>
-              <p class="product__variants">For spas &amp; studios</p>
-            </a>
-          </li>
+  <!-- ── Gondola Shelving ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="cm-gon">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/gondola-shelving-gondola-retail-shelving-retail-gondola.jpg?v=1780588264&amp;width=1200" alt="gondola-shelving-gondola-retail-shelving-retail-gondola" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="cm-gon">Gondola Shelving</h3>
+        <p>The freestanding Lugano gondola shelving is designed to create attractive cosmetic displays throughout the sales floor. Its open design keeps products visible and easily accessible from multiple sides, supporting an engaging shopping experience. Height-adjustable shelf boards provide the flexibility to accommodate different product sizes and changing assortments, making Lugano a versatile merchandising solution for beauty and cosmetics retail.</p>
+        <a href="../fixtures/gondola-shelving.html" class="btn btn--outline">DISCOVER gondola shelving units</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Display Pedestals ── -->
+  <section class="cs-help kf-row kf-img-right" aria-labelledby="cm-ped">
+    <div class="container cs-help__row">
+      <div class="cs-help__txt">
+        <h3 id="cm-ped">Display Pedestals</h3>
+        <p>Our display pedestals are a perfect addition to any spa or cosmetics studio. Combine different sizes and finishes to create interesting product displays.</p>
+        <a href="../fixtures/display-pedestals.html" class="btn btn--outline">DISCOVER PEDESTALS</a>
+      </div>
+      <img src="https://www.mandai-design.com/cdn/shop/files/cube-table-display-table-mandai-design-white-4_62524f70-042e-4aed-928c-8ac74b3508db.jpg?v=1716982076&amp;width=1200" alt="Display pedestals" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ── Reception Desks ── -->
+  <section class="cs-help kf-row kf-img-left" aria-labelledby="cm-rec">
+    <div class="container cs-help__row">
+      <img src="https://www.mandai-design.com/cdn/shop/files/retail-fixtures-cosmetics-spa-salon.jpg?v=1786617160&amp;width=1200" alt="retail-fixtures-cosmetics-spa-salon" loading="lazy">
+      <div class="cs-help__txt">
+        <h3 id="cm-rec">Reception Desks</h3>
+        <p>In a beauty salon, the first personal interaction with a client often takes place at the reception desk. Whether you run a beauty salon, spa, or beauty lounge, the desk brings appointment management, client consultations, and product sales together in one central location while supporting your brand identity.</p>
+        <a href="../fixtures/reception-desks.html" class="btn btn--outline">DISCOVER reception desks</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── گالری مشتریان ── -->
+  <section class="hw-gallery" aria-labelledby="cm-gallery">
+    <div class="container">
+      <h2 id="cm-gallery" class="h-serif-xl">Our store fixtures in clients&rsquo; stores and studios</h2>
+      <p class="hw-gallery__lead">Get inspired from viewing our client stores selling cosmetics and beauty products. Explore more on our <a href="../index.html#references">reference site</a>.</p>
+      <div class="fref-grid">
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--prev" data-slider="cmG" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M25 7H1M6.5 1.5 1 7l5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="slider-btn fsh-grid__btn fsh-grid__btn--next" data-slider="cmG" data-dir="1" aria-label="Next"><svg viewBox="0 0 26 14" fill="none" aria-hidden="true"><path d="M1 7h24M19.5 1.5 25 7l-5.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <ul class="fref-track" id="cmG">
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Stillroom_Cetus_Mandai-Design_Ben-Horder_11.jpg?v=1785482546&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus - Stillroom Apothecaries, UK<br>Photo: <a href="https://www.instagram.com/ben_horder/" title="Ben Horder">Ben Horder</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/retail-shelving-shelf-shopfitting-mandai-design_6_49d4c01f-b215-4eb5-83fc-a3ea070c6a1e.jpg?v=1708327353&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Slimline - <a href="https://www.instagram.com/luenebeauty/" title="L&uuml;ne Beauty">L&uuml;ne Beauty</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/weiden-apotheke-mandai-design-etail-shelf.jpg?v=1708327302&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Addison - <a href="https://www.instagram.com/weiden.apotheke/" title="Weiden Apotheke">Weiden Apotheke</a>, Austria</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-susanne-gollmer_3.jpg?v=1733482535&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Slimline - <a href="https://www.instagram.com/susannegollmer/" title="Susanne Gollmer Cosmetics">Susanne Gollmer Cosmetics</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/shopcounter-varios_ba20f013-c0b2-4d7e-bfa4-c8640636b2a9.jpg?v=1786607947&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Reception Desk Varios - <a href="https://www.instagram.com/kiyomiskin/" title="Kiyomi Skin">Kiyomi Skin</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/mooonhub-mandai-design-ladeneinrichtung-retail-design_5.jpg?v=1732089912&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Addison - <a href="https://www.instagram.com/moonhub.ch/" title="Moonhub">Moonhub</a>, Switzerland<br>Photo: <a href="https://www.instagram.com/dangmayer/" title="Dang Mayer">Dang Mayer</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/st_gallus_apotheke.jpg?v=1733905907&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus - <a href="https://www.apotheke-stgallus.de/" title="St Gallus Pharmacy">St Gallus Pharmacy</a>, Germany<br>Design: <a href="https://design-13.de/" title="Carola Semmler, Design 13">Carola Semmler, Design 13</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-aromapflege-mandai-design-1.jpg?v=1718350596&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Addison - <a href="https://www.instagram.com/aromapflege/" title="Aromapflege">Aromapflege</a>, Austria</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Lovecareskin-website-2.jpg?v=1731569083&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus - <a href="https://lovecareskin.de/" title="Love Care Skin">Love Care Skin</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/mooonhub-mandai-design-ladeneinrichtung-retail-design_7.jpg?v=1732089912&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Addison - <a href="https://www.instagram.com/moonhub.ch/" title="Moonhub">Moonhub</a>, Switzerland<br>Photo: <a href="https://www.instagram.com/dangmayer/" title="Dang Mayer">Dang Mayer</a></figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/Lovecareskin-website-2.jpg?v=1731569083&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus - <a href="https://lovecareskin.de/" title="Love Care Skin">Love Care Skin</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/store-fixtures-cosmetics-retail-fixtures-mandai-design.jpg?v=1708959915&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Ceres - <a href="https://www.instagram.com/frida.bochum/" title="Frida Concept Store">Frida Concept Store</a>, Germany</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/hair-beauty-kosmetik-aveda-mandai-design-top_3a9f349c-2555-4762-96d0-e3d656a949f4.jpg?v=1708327413&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Cetus - <a href="https://www.instagram.com/matild_solis/" title="Hair Beauty Aveda">Hair Beauty Aveda</a>, Switzerland</figcaption>
+            </figure></li>
+            <li><figure>
+            <img src="https://www.mandai-design.com/cdn/shop/files/cosmetics-shelving-susanne-gollmer_1.jpg?v=1733482535&amp;width=900" alt="Cosmetics store by Mandai Design" loading="lazy">
+            <figcaption>Shelving system Slimline - <a href="https://www.instagram.com/susannegollmer/" title="Susanne Gollmer Cosmetics">Susanne Gollmer Cosmetics</a>, Germany</figcaption>
+            </figure></li>
         </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ══════════ متن راهنمای سکتور ══════════ -->
-    <section class="sector-text" aria-labelledby="guide-heading">
-      <div class="container">
-        <div class="sector-text__inner">
-          <h2 id="guide-heading" class="h-serif-md">Wellness, beauty and spa - presented elegantly</h2>
-          <p>The freestanding Lugano gondola shelving is designed to create attractive cosmetic displays throughout the sales floor. Its open design keeps products visible and easily accessible from multiple sides, supporting an engaging shopping experience.</p>
-          <p>Our display pedestals are a perfect addition to any spa or cosmetics studio. Combine different sizes and finishes to create interesting product displays.</p>
+  <section id="contact" class="hw-contact" aria-labelledby="contact-heading">
+    <div class="contact__head">
+      <h2 id="contact-heading" class="h-serif-xl">Get in touch</h2>
+      <p>Do you have questions about our products or need professional advice? We&rsquo;d love to hear from you.</p>
+    </div>
+
+    <div class="contact__status" role="status" data-contact-status hidden></div>
+
+    <form class="contact__form" data-contact-form novalidate>
+      <div class="contact__row">
+        <div>
+          <label class="sr-only" for="cf-name">Name (required)</label>
+          <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Name *" class="field">
+        </div>
+        <div>
+          <label class="sr-only" for="cf-email">Email (required)</label>
+          <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="Email *" class="field">
         </div>
       </div>
-    </section>
 
-
-
-    <section class="reviews" aria-labelledby="reviews-heading" data-reviews>
-      <div class="container">
-        <h2 id="reviews-heading" class="reviews__heading">Customer Reviews</h2>
-        <div class="reviews__slider">
-          <button type="button" class="reviews__arrow reviews__arrow--prev" data-carousel-prev aria-label="Previous review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8 2 12l4 4"/><path d="M2 12h20"/></svg>
-          </button>
-          <button type="button" class="reviews__arrow reviews__arrow--next" data-carousel-next aria-label="Next review">
-            <svg class="reviews__arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 8 4 4-4 4"/><path d="M2 12h20"/></svg>
-          </button>
-
-          <ul class="carousel reviews__carousel" data-carousel style="--slide-gap:24px">
-            <li class="review-slide" style="--basis:100%">
-              <div class="review-slide__grid">
-                <div class="review-slide__media">
-                  <img src="../images/review-orelia.jpg" alt="Jewellery store interior with wooden display shelving" width="1024" height="1024" loading="lazy">
-                </div>
-                <blockquote class="review-slide__quote">
-                  <div class="review-slide__stars" aria-label="Rated 5 out of 5 stars">
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    <svg viewBox="0 0 24 24" fill="currentColor" stroke-width="0" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                  </div>
-                  <p class="review-slide__text">&ldquo;I am so pleased I found Mandai, their shelving is exactly what I was looking for. Adjustable, premium looking and at a reasonable cost. The customer communication has been great too.&rdquo;</p>
-                  <footer class="review-slide__author">&ndash; Collette Flood, Orelia Jewellery, UK</footer>
-                </blockquote>
-              </div>
-            </li>
-          </ul>
-
-          <div class="reviews__dots" data-reviews-dots></div>
-        </div>
+      <div>
+        <label class="sr-only" for="cf-phone">Phone</label>
+        <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone" class="field">
       </div>
-    </section>
 
-    <!-- ══════════ سوالات متداول ══════════
-         ✏️ ویرایش: این دو سوال در JSON-LD بالای فایل هم هستند. -->
-    <section class="faq" aria-labelledby="faq-heading">
-      <div class="container">
-        <div class="faq__inner">
-          <h2 id="faq-heading" class="faq__heading">Frequently asked questions</h2>
-          <div class="faq__list">
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-0" id="faq-button-0">
-                  <span>Which countries do you deliver to?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-0" role="region" aria-labelledby="faq-button-0" hidden>
-                <p>We deliver to the US, Canada, the UK, most European countries, as well as many other destinations worldwide. For certain regions, we prepare individual quotes in order to calculate shipping costs as accurately as possible. Shipping costs are based on the net order value, weight, and type of packaging. A detailed overview can be found on our &ldquo;Payment and Shipping&rdquo; page.</p>
-              </div>
-            </div>
-            <div class="faq__item">
-              <h3 class="faq__q">
-                <button type="button" class="faq__button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-button-1">
-                  <span>Can I order products in different colors, dimensions, or finishes?</span>
-                  <svg class="faq__plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                </button>
-              </h3>
-              <div class="faq__panel" id="faq-panel-1" role="region" aria-labelledby="faq-button-1" hidden>
-                <p>Yes, in addition to our standard options, we offer custom sizes, alternative depths, as well as a range of different finishes and colors upon request.</p>
-              </div>
-            </div>
-          </div>
-          <div class="faq__more">
-            <p>Couldn&rsquo;t find your question?</p>
-            <a href="../index.html#faq" class="btn btn--outline btn--sm">See all FAQs</a>
-          </div>
-        </div>
+      <div>
+        <label class="sr-only" for="cf-message">Message (required)</label>
+        <textarea id="cf-message" name="message" required rows="5" placeholder="Message *" class="field field--textarea"></textarea>
       </div>
-    </section>
 
-    <!-- ══════════ CTA ══════════ -->
-    <section class="sector-cta" aria-labelledby="cta-heading">
-      <div class="container">
-        <div class="sector-cta__inner">
-          <h2 id="cta-heading" class="h-serif-xl">Planning a cosmetics studio or salon?</h2>
-          <p class="sector-cta__text">Our team of interior designers plans your space with our products - free of charge, using your floor plan and measurements.</p>
-          <a href="../index.html#contact" class="btn btn--dark">Start your project</a>
-        </div>
+      <div>
+        <label class="sr-only" for="cf-source">How did you hear about us?</label>
+        <select id="cf-source" name="source" class="field field--select">
+          <option value="" disabled selected hidden>How did you hear about us?</option>
+          <option value="Google">Google</option>
+          <option value="Other search engine">Other search engine</option>
+          <option value="Pinterest">Pinterest</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Facebook">Facebook</option>
+          <option value="Referral">Referral</option>
+          <option value="AI platform (e.g. ChatGPT, Perplexity)">AI platform (e.g. ChatGPT, Perplexity)</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
-    </section>
 
-    <!-- ══════════ متن سئو ══════════ -->
-    <section class="seo-text" aria-labelledby="seo-heading">
-      <div class="container">
-        <h2 id="seo-heading" class="seo-text__heading">Elegant retail fixtures for cosmetics, beauty and spa</h2>
-        <div class="seo-text__grid">
-          <div>
-            <h3>Glass shelves, airy atmosphere</h3>
-            <p>Open shelving systems with glass shelves create an open, airy atmosphere. Depending on the type of cosmetics, wooden shelves may be mixed in for warmth.</p>
-          </div>
-          <div>
-            <h3>Maximize your floor space</h3>
-            <p>Shelving system Cetus is tailored to cosmetics retail and makes the most of your sales floor - with height-adjustable shelves for products of every size.</p>
-          </div>
-          <div>
-            <h3>Displays for treatments and retail</h3>
-            <p>Pedestals in different sizes and finishes present skincare and perfumes - in the studio and in the retail area alike.</p>
-          </div>
-        </div>
+      <!-- ✏️ reCAPTCHA — جای‌نگهدار بصری (غیرفعال) -->
+      <div class="ct-captcha" aria-hidden="true">
+        <span class="ct-captcha__box"></span>
+        <span class="ct-captcha__label">I&rsquo;m not a robot</span>
+        <span class="ct-captcha__brand">
+          <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><path fill="#1c3aa9" d="M16 4a12 12 0 0 1 10.9 7H16z"/><path fill="#4285f4" d="M28 16a12 12 0 0 1-7 10.9V16z"/><path fill="#ababab" d="M16 28A12 12 0 0 1 5.1 21H16z"/><path fill="#c9c9c9" d="M4 16a12 12 0 0 1 7-10.9V16z"/></svg>
+          reCAPTCHA
+          <small>Privacy - Terms</small>
+        </span>
       </div>
-    </section>
-  </main>
 
-  <!-- ══════════ فوتر ══════════ -->
+      <!-- Honeypot ضد اسپم (ربات‌ها این فیلد را پر می‌کنند) -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp-field">
+
+      <div class="contact__submit">
+        <button type="submit" class="btn btn--dark btn--loading" data-contact-submit>
+          <span class="btn__spinner" aria-hidden="true"></span>
+          <span class="btn__label">Submit</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ── متن SEO (مثل مرجع) ── -->
+  <!-- ── SEO: Shoe Store Displays ── -->
+  <section class="hw-seo sh-seo" aria-labelledby="sh-seo">
+    <div class="container">
+      <h2 id="sh-seo">Shoe Store Displays with Style and Quality by Mandai Design</h2>
+      <p class="sh-seo__lead">A cohesive design concept is essential for your <strong>shoe store&rsquo;s success</strong>. Furniture from Mandai Design allows you to create a retail environment that puts your footwear in the spotlight, supporting strong sales. At the same time, the elegant design and clean, timeless lines convey professionalism, inviting customers to browse, linger, and shop.</p>
+      <p class="sh-seo__lead"><strong>Your Benefits at a Glance</strong></p>
+      <ul>
+        <li>Modular system with freely combinable shelves and furniture</li>
+        <li>High-quality materials built for durability and long-term use</li>
+        <li>Timeless design that blends seamlessly into your store concept</li>
+        <li>Custom-made solutions available upon request</li>
+        <li>Adjustable shelves and open elements for flexible shoe display racks for retail store environments</li>
+        <li>Precision manufacturing in our own facility in Germany</li>
+        <li>Personalized consultation and free sample service to support your decision</li>
+        <li>Quick and easy self-assembly with minimal effort</li>
+      </ul>
+      <p class="sh-seo__lead">Choose Mandai Design fixtures for <strong>premium, flexible, and durable solutions</strong> that highlight your products and elevate the shopping experience in your shoe store. Get in touch today and order your custom shoe store displays!</p>
+    </div>
+  </section>
+  <script>
+    /* اسلایدرها + تب‌های Homeware/Floral و White/Black */
+    (function () {
+      var GAP = 18;
+      document.querySelectorAll('.slider-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var slider = document.getElementById(btn.getAttribute('data-slider'));
+          if (!slider) return;
+          var dir = Number(btn.getAttribute('data-dir') || 1);
+          if (slider.classList.contains('hw-look__track')) {
+            var items = slider.querySelectorAll('li');
+            var cur = Math.round(slider.scrollLeft / Math.max(1, slider.clientWidth));
+            var nxt = Math.max(0, Math.min(cur + dir, items.length - 1));
+            items[nxt].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            var cnt = document.getElementById('cnt-' + slider.id);
+            if (cnt) cnt.textContent = (nxt + 1) + ' / ' + items.length;
+            return;
+          }
+          var card = slider.querySelector('li:not([hidden])');
+          var step = card ? card.getBoundingClientRect().width + GAP : 320;
+          slider.scrollBy({ left: step * dir, behavior: 'smooth' });
+        });
+      });
+      document.querySelectorAll('.fsh-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var track = document.getElementById(tab.getAttribute('data-track'));
+          if (!track) return;
+          var val = tab.getAttribute('data-val');
+          tab.parentElement.querySelectorAll('.fsh-tab').forEach(function (t) { t.classList.toggle('is-active', t === tab); });
+          track.querySelectorAll('li[data-group]').forEach(function (li) {
+            li.hidden = li.getAttribute('data-group') !== val;
+          });
+          track.scrollLeft = 0;
+        });
+      });
+      document.querySelectorAll('.hw-dot').forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var slider = document.getElementById(dot.getAttribute('data-slider'));
+          if (!slider) return;
+          var items = slider.querySelectorAll('li');
+          if (!items.length) return;
+          var i = Math.min(Number(dot.getAttribute('data-index') || 0), items.length - 1);
+          items[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+          var cnt = document.getElementById('cnt-' + slider.id);
+          if (cnt) cnt.textContent = (i + 1) + ' / ' + items.length;
+        });
+      });
+    })();
+  </script>
+</main>
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div class="site-footer__top">
         <div class="site-footer__contact">
-          <p class="site-footer__question">Do you have any questions about our products or require support?</p>
-          <a href="tel:+49343414070950" class="site-footer__phone">+49 (0)34341 40 70 950</a>
-          <p class="site-footer__hours">Mon&ndash;Fri, 3:30 AM to 5:00 PM</p>
+          <p class="site-footer__question">Do you have any questions about our products or require expert advice?</p>
+          <a href="tel:+4963419420920" class="site-footer__phone">+49 (0) 6341 94209 20</a>
+          <p class="site-footer__hours">Mo-Fr 8:30 AM to 5:00 PM</p>
           <ul class="site-footer__socials" aria-label="Social media">
             <li><a href="#" aria-label="Facebook" class="social-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -592,10 +1152,10 @@
 
         <nav aria-label="Footer column 1" class="site-footer__col">
           <ul>
-            <li><a href="../index.html#contact">Contact Us</a></li>
+            <li><a href="../pages/contact.html">Contact Us</a></li>
             <li><a href="../index.html#faq">FAQ</a></li>
-            <li><a href="../index.html#help">Design Service</a></li>
-            <li><a href="../index.html#help">Sample Service</a></li>
+            <li><a href="../pages/design-support.html">Design Service</a></li>
+            <li><a href="../pages/samples.html">Sample Service</a></li>
             <li><a href="../index.html#help">Assembly Instructions</a></li>
             <li><a href="../index.html#categories">Wardrobe Systems</a></li>
           </ul>
@@ -612,14 +1172,14 @@
         <nav aria-label="Footer column 3" class="site-footer__col">
           <ul>
             <li><a href="../fixtures/retail-shelving.html">Retail Shelving</a></li>
-            <li><a href="../index.html#categories">Clothing Racks</a></li>
+            <li><a href="../fixtures/racks-and-rails.html">Clothing Racks</a></li>
             <li><a href="../fixtures/display-tables.html">Display Tables</a></li>
             <li><a href="../fixtures/shop-counters.html">Shop Counters</a></li>
             <li><a href="../fixtures/display-pedestals.html">Display Pedestals</a></li>
           </ul>
         </nav>
 
-        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../index.html#contact" class="text-link-strong">contact us</a>.</p>
+        <p class="site-footer__note">Mandai Design is aimed exclusively at businesses. All prices plus VAT and shipping costs. If you would like to purchase our products privately, <a href="../pages/contact.html" class="text-link-strong">contact us</a>.</p>
       </div>
 
       <div class="newsletter">
@@ -637,12 +1197,12 @@
       </div>
 
       <div class="site-footer__bottom">
-        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: Germany (EUR €)">
-          <img src="../images/flag-de.png" alt="" width="18" height="12" class="country-btn__flag">
-          <span>Germany (EUR €)</span>
+        <button type="button" class="country-btn" data-demo="Country selector" aria-label="Country: United States (USD $)">
+          <img src="../images/flag-us.png" alt="" width="18" height="12" class="country-btn__flag">
+          <span>United States (USD $)</span>
           <svg class="icon-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
-        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice.</p>
+        <p class="site-footer__copyright">Copyright © <span data-year>2026</span>, Mandai Design. All rights reserved. See our terms of use and privacy notice. Powered by Shopify.</p>
         <ul class="site-footer__payments" aria-label="Accepted payment methods">
           <li>Amex</li>
           <li>Apple Pay</li>
@@ -662,7 +1222,7 @@
         <ul>
           <li><a href="../index.html#categories">Store fixtures &amp; shopfittings</a></li>
           <li><a href="../index.html#bestsellers">Retail shelving systems</a></li>
-          <li><a href="../index.html#faq">Frequently asked questions</a></li>
+          <li><a href="../pages/faq.html">Frequently asked questions</a></li>
         </ul>
       </nav>
     </div>
@@ -670,6 +1230,16 @@
 
   <div class="toast-container" data-toasts aria-live="polite"></div>
 
-  <script src="../assets/js/main.js" defer></script>
+      <script src="../assets/js/main.js" defer></script>
 </body>
 </html>
+  <!-- ── SEO ── -->
+  <section class="hw-seo cm-seo" aria-labelledby="cm-seo-h">
+    <div class="container">
+      <h2 id="cm-seo-h" style="text-align:left">Open shelving for cosmetics, pharmacies, cosmetics stores</h2>
+      <!-- ✏️ متن SEO: از کلون قدیمی همین صفحهٔ مرجع (سرتیتری طبق اسکرین‌شات) -->
+      <p>Open shelving systems with glass shelves create an open, airy atmosphere. Depending on the type of cosmetics, wooden shelves may be mixed in for warmth.</p>
+      <p>Shelving system Cetus is tailored to cosmetics retail and makes the most of your sales floor - with height-adjustable shelves for products of every size.</p>
+      <p>Pedestals in different sizes and finishes present skincare and perfumes - in the studio and in the retail area alike.</p>
+    </div>
+  </section>
