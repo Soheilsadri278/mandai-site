@@ -1530,8 +1530,12 @@ section[id] { scroll-margin-top: 88px; }
     @media (min-width: 1280px) { .fref-track > li { flex-basis: 23.5%; } }
     .fref-grid { position: relative; }
     .fref-grid figure { margin: 0; }
-    .fref-grid img { width: 100%; height: auto; display: block; }
-    .hw-gallery .fref-track img { aspect-ratio: 4 / 5; object-fit: cover; }
+    /* Only customer-gallery photos use the portrait crop; the Ceres cards share this slider wrapper. */
+    .fref-grid figure > img { width: 100%; height: auto; display: block; }
+    .hw-gallery .fref-track figure > img { aspect-ratio: 4 / 5; object-fit: cover; }
+    /* Show the complete Ceres product (including its hover image) inside the existing square card. */
+    .br-slider .product__media img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; object-position: center; }
+    .br-slider .product:hover .product__media img { transform: none; }
     .fref-grid figcaption { margin-top: 7px; font-size: 11.5px; line-height: 1.5; color: rgba(26, 26, 26, 0.6); }
     .fref-grid figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
     .fref-grid .fsh-grid__btn { position: absolute; top: 30%; transform: translateY(-50%); z-index: 2; border: 0; border-radius: 0; background: none; width: auto; height: auto; padding: 6px; }
