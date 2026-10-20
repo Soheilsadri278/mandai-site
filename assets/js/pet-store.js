@@ -61,6 +61,93 @@
     });
   }
 
+  /* Shop-the-look hotspots and four-product carousel. */
+  (function () {
+    var section = $(".pet-look");
+    if (!section) return;
+
+    var products = [
+      {
+        name: "Shelving System Addison – Pet Store – Style 3",
+        price: "from $2,361.00",
+        href: "https://www.mandai-design.com/products/pet-store-shelving-addison-style3",
+        image: "https://www.mandai-design.com/cdn/shop/files/pet-store-shelving-addison-style-3_4.jpg?v=1723630458&width=700",
+        fallback: "../images/systems/variants/addison-style3.jpg",
+        alt: "Shelving System Addison – Pet Store – Style 3"
+      },
+      {
+        name: "Shelving System Addison – Pet Store – Style 4",
+        price: "from $2,676.00",
+        href: "https://www.mandai-design.com/products/pet-store-shelving-addison-style4",
+        image: "https://www.mandai-design.com/cdn/shop/files/pet-store-shelving-addison-style-4_4.jpg?v=1723635628&width=700",
+        fallback: "../images/systems/variants/addison-style4.jpg",
+        alt: "Shelving System Addison – Pet Store – Style 4"
+      },
+      {
+        name: "Display Table Fargo, black with wood",
+        price: "from $440.00",
+        href: "https://www.mandai-design.com/products/display-table-fargo",
+        image: "https://www.mandai-design.com/cdn/shop/files/display-table-fargo-cubes-retail-display_3.jpg?v=1744875242&width=700",
+        fallback: "../images/product-como.jpg",
+        alt: "Display Table Fargo in black steel and wood"
+      },
+      {
+        name: "Shelving System Addison – Pet Store – Style 2",
+        price: "from $1,777.00",
+        href: "https://www.mandai-design.com/products/pet-store-shelving-addison-style2",
+        image: "https://www.mandai-design.com/cdn/shop/files/pet-store-shelving-addison-style-2_4.jpg?v=1723629810&width=700",
+        fallback: "../images/systems/variants/addison-style2.jpg",
+        alt: "Shelving System Addison – Pet Store – Style 2"
+      }
+    ];
+
+    var image = $("[data-look-image]", section);
+    var imageLink = $("[data-look-image-link]", section);
+    var name = $("[data-look-name]", section);
+    var price = $("[data-look-price]", section);
+    var count = $("[data-look-counter]", section);
+    var quickView = $(".pet-look-card__quick", section);
+    var hotspots = $$ ("[data-look-hotspot]", section);
+    var previous = $ ("[data-look-prev]", section);
+    var next = $ ("[data-look-next]", section);
+    if (!image || !imageLink || !name || !price || !count) return;
+
+    var current = 0;
+    function showProduct(index) {
+      current = (index + products.length) % products.length;
+      var product = products[current];
+
+      if (image.getAttribute("src") !== product.image) {
+        delete image.dataset.fallbackUsed;
+        image.dataset.localFallback = product.fallback;
+        image.src = product.image;
+      }
+      image.alt = product.alt;
+      imageLink.href = product.href;
+      name.textContent = product.name;
+      price.textContent = product.price;
+      count.textContent = (current + 1) + " / " + products.length;
+      if (quickView) {
+        quickView.dataset.name = product.name;
+        quickView.dataset.price = product.price;
+        quickView.dataset.image = product.image;
+        quickView.dataset.href = product.href;
+      }
+      hotspots.forEach(function (hotspot) {
+        hotspot.setAttribute("aria-pressed", String(Number(hotspot.dataset.lookIndex) === current));
+      });
+    }
+
+    hotspots.forEach(function (hotspot) {
+      hotspot.addEventListener("click", function () {
+        showProduct(Number(hotspot.dataset.lookIndex));
+      });
+    });
+    if (previous) previous.addEventListener("click", function () { showProduct(current - 1); });
+    if (next) next.addEventListener("click", function () { showProduct(current + 1); });
+    showProduct(0);
+  })();
+
   /* Product Quick View dialog. */
   var quickViewButtons = $$ ("[data-quick-view]");
   if (quickViewButtons.length) {
@@ -77,13 +164,14 @@
     quickViewButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         var card = button.closest(".pet-product");
-        var image = card && $(".pet-product__image--primary", card);
-        var link = card && $(".pet-product__title", card);
-        quickImage.src = image ? image.currentSrc || image.src : "";
+        var lookCard = button.closest(".pet-look-card");
+        var image = card ? $(".pet-product__image--primary", card) : (lookCard ? $("img", lookCard) : null);
+        var link = card ? $(".pet-product__title", card) : (lookCard ? $("[data-look-image-link]", lookCard) : null);
+        quickImage.src = image ? (image.currentSrc || image.src) : (button.dataset.image || "");
         quickImage.alt = image ? image.alt : "Pet store shelving";
         quickTitle.textContent = button.dataset.name || "Shelving System Addison";
         quickPrice.textContent = button.dataset.price || "";
-        quickLink.href = link ? link.href : "#";
+        quickLink.href = button.dataset.href || (link ? link.href : "#");
         if (typeof dialog.showModal === "function") dialog.showModal();
         else dialog.setAttribute("open", "");
       });
