@@ -11,6 +11,114 @@
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
 
+  /* ════════════════════════════════════════════════════════
+     Motion system: editorial reveals, staggered cards, progress
+     Content stays visible if motion is reduced or JS is unavailable.
+     ════════════════════════════════════════════════════════ */
+  (function () {
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    /* Thin reading-progress accent; transform-only updates avoid layout work. */
+    if (document.body && !$(".scroll-progress")) {
+      var progress = document.createElement("div");
+      progress.className = "scroll-progress";
+      progress.setAttribute("aria-hidden", "true");
+      progress.style.transformOrigin = getComputedStyle(document.documentElement).direction === "rtl" ? "right center" : "left center";
+      document.body.appendChild(progress);
+      var progressTicking = false;
+      function updateProgress() {
+        var total = document.documentElement.scrollHeight - window.innerHeight;
+        var ratio = total > 0 ? Math.max(0, Math.min(1, window.scrollY / total)) : 0;
+        progress.style.transform = "scaleX(" + ratio + ")";
+        progressTicking = false;
+      }
+      function requestProgressUpdate() {
+        if (progressTicking) return;
+        progressTicking = true;
+        window.requestAnimationFrame(updateProgress);
+      }
+      window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+      window.addEventListener("resize", requestProgressUpdate, { passive: true });
+      window.addEventListener("load", requestProgressUpdate, { once: true });
+      updateProgress();
+    }
+
+    if (!("IntersectionObserver" in window)) return;
+
+    var targets = [];
+    function addReveal(el, variant) {
+      if (!el || el.classList.contains("motion-reveal") || el.closest(".motion-reveal")) return false;
+      el.classList.add("motion-reveal");
+      if (variant) el.classList.add(variant);
+      targets.push(el);
+      return true;
+    }
+
+    var revealSelectors = [
+      ".intro__inner", ".carousel-section__head", ".experience__media", ".experience__copy",
+      ".references__head", ".benefits__heading", ".modular .container", ".video-banner__title",
+      ".bestsellers .container > h2", ".help__heading", ".reviews__heading", ".reviews__slider",
+      ".faq__heading", ".contact__head", ".sector-alt__title", ".sector-alt__media", ".sector-alt__copy",
+      ".sys-intro__title", ".sys-intro__text", ".sector-cta .container", ".custom-sec .container",
+      ".steps-sec > .container", ".seo-text__heading", ".ab-hero h1", ".ab-exp > *",
+      ".ct-top h1", ".op-top h1", ".sp-intro h1", ".ds-intro h1", ".hw-intro h1",
+      ".sp-select h2", ".ds-how h2", ".ab-team h2", ".contact__form", ".faq__list > .faq__item",
+      ".pet-intro", ".pet-feature__media", ".pet-feature__copy", ".pet-video__frame", ".pet-video__copy",
+      ".pet-section-head", ".pet-look__image", ".pet-planning__image", ".pet-planning__copy",
+      ".site-footer__top > *", ".site-footer__col", ".site-footer__bottom > *",
+      ".site-footer__payments > li", ".site-footer__socials > *", ".site-footer .newsletter__form"
+    ];
+    revealSelectors.forEach(function (selector) {
+      $$(selector).forEach(function (el) { addReveal(el); });
+    });
+
+    /* Reusable grids and horizontal rails reveal in a restrained stagger. */
+    var staggerGroups = [
+      ".carousel[data-carousel]", ".benefits__grid", ".bestsellers__grid", ".help__grid",
+      ".feat-grid", ".mini-grid", ".steps-grid", ".sp-how__grid", ".sp-grid",
+      ".ct-cards", ".ab-team__grid", ".fref-grid", ".fsh-grid-wrap", ".pet-product-grid",
+      ".pet-related__grid", ".pet-gallery__track", ".faq__list"
+    ];
+    staggerGroups.forEach(function (selector) {
+      $$(selector).forEach(function (group) {
+        Array.prototype.forEach.call(group.children, function (item, index) {
+          addReveal(item);
+          if (item.classList.contains("motion-reveal")) {
+            item.style.setProperty("--motion-delay", Math.min(index * 78, 390) + "ms");
+          }
+        });
+      });
+    });
+
+    /* Catch-all for content blocks in bespoke page layouts, so no section
+       is left static just because it uses a page-specific class name. */
+    var contentSelector = "main h1, main h2, main h3, main h4, main p, main figure, main article, main blockquote, main li, main form, main button, main img, main .btn, main table, main details, main summary";
+    var contentNodes = $$(contentSelector);
+    var parentCounts = new WeakMap();
+    contentNodes.forEach(function (el) {
+      if (el.closest(".hero, .sys-hero")) return;
+      if (addReveal(el)) {
+        var parent = el.parentElement;
+        var order = parentCounts.get(parent) || 0;
+        el.style.setProperty("--motion-delay", Math.min(order * 46, 230) + "ms");
+        parentCounts.set(parent, order + 1);
+      }
+    });
+
+    if (!targets.length) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -34px 0px" });
+
+    targets.forEach(function (el) { observer.observe(el); });
+    document.documentElement.classList.add("motion-ready");
+  })();
+
   /* ── Toast (اعلان موقت) ────────────────────────────────── */
   var toastContainer = $("[data-toasts]");
   function showToast(title, desc, isError) {
@@ -95,6 +203,18 @@
   (function () {
     var items = $$(".nav__item");
     var isTouch = window.matchMedia("(hover: none)").matches;
+
+    /* Submenu links enter in a left-to-right cascade on every open. */
+    items.forEach(function (item) {
+      var dropdown = $(".nav__dropdown", item);
+      if (!dropdown) return;
+      var links = $$("li > a", dropdown);
+      links.forEach(function (subLink, index) {
+        subLink.style.setProperty("--nav-stagger-delay", Math.min(index * 32, 320) + "ms");
+      });
+      var feature = $(".nav__mega-media", dropdown);
+      if (feature) feature.style.setProperty("--nav-stagger-delay", Math.min(links.length * 32, 320) + "ms");
+    });
 
     function closeAll(except) {
       items.forEach(function (item) {
@@ -305,22 +425,56 @@
      ════════════════════════════════════════════════════════ */
   (function () {
     var buttons = $$(".faq__button");
+    if (!buttons.length) return;
+
+    function setPanelState(panel, open) {
+      if (!panel) return;
+      if (panel._faqCloseTimer) {
+        window.clearTimeout(panel._faqCloseTimer);
+        panel._faqCloseTimer = null;
+      }
+      if (open) {
+        panel.hidden = false;
+        panel.setAttribute("aria-hidden", "false");
+        panel.style.setProperty("--faq-height", panel.scrollHeight + "px");
+        panel.classList.remove("is-open");
+        void panel.offsetHeight;
+        panel.classList.add("is-open");
+      } else if (!panel.hidden) {
+        panel.setAttribute("aria-hidden", "true");
+        panel.style.setProperty("--faq-height", panel.scrollHeight + "px");
+        panel.classList.remove("is-open");
+        panel._faqCloseTimer = window.setTimeout(function () {
+          if (!panel.classList.contains("is-open")) panel.hidden = true;
+          panel._faqCloseTimer = null;
+        }, window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 390);
+      }
+    }
+
     buttons.forEach(function (btn) {
+      var initialPanel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (initialPanel && initialPanel.hidden) initialPanel.setAttribute("aria-hidden", "true");
       btn.addEventListener("click", function () {
         var expanded = btn.getAttribute("aria-expanded") === "true";
-        /* بستن بقیه */
         buttons.forEach(function (other) {
           if (other !== btn) {
             other.setAttribute("aria-expanded", "false");
-            var panel = document.getElementById(other.getAttribute("aria-controls"));
-            if (panel) panel.hidden = true;
+            setPanelState(document.getElementById(other.getAttribute("aria-controls")), false);
           }
         });
         btn.setAttribute("aria-expanded", expanded ? "false" : "true");
-        var panel = document.getElementById(btn.getAttribute("aria-controls"));
-        if (panel) panel.hidden = expanded;
+        setPanelState(document.getElementById(btn.getAttribute("aria-controls")), !expanded);
       });
     });
+
+    window.addEventListener("resize", function () {
+      buttons.forEach(function (btn) {
+        var panel = document.getElementById(btn.getAttribute("aria-controls"));
+        if (panel && !panel.hidden && panel.classList.contains("is-open")) {
+          panel.style.setProperty("--faq-height", panel.scrollHeight + "px");
+        }
+      });
+    }, { passive: true });
   })();
 
   /* ════════════════════════════════════════════════════════

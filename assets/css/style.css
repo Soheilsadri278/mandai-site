@@ -1789,3 +1789,245 @@ section[id] { scroll-margin-top: 88px; }
   .pet-quick-dialog__body img { max-height: 240px; }
   .pet-quick-dialog__body h2 { font-size: 19px; }
 }
+
+/* ============================================================
+   MOTION SYSTEM — subtle editorial reveals + tactile product UI
+   Progressive enhancement: content stays visible until JS is ready.
+   ============================================================ */
+:root {
+  --motion-ease: cubic-bezier(.16, 1, .3, 1);
+  --motion-duration: 780ms;
+}
+
+/* The video already carries the hero; animate only its copy. */
+.hero__content {
+  animation: hero-copy-in 900ms var(--motion-ease) both;
+}
+.hero__title {
+  animation: hero-title-in 1s var(--motion-ease) 100ms both;
+  text-wrap: balance;
+}
+@keyframes hero-copy-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hero-title-in {
+  from { opacity: 0; transform: translate3d(0, 22px, 0); filter: blur(5px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+/* Scroll reveals are enabled only after the observer is ready. */
+html.motion-ready .motion-reveal {
+  transition:
+    opacity var(--motion-duration) var(--motion-ease) var(--motion-delay, 0ms),
+    transform var(--motion-duration) var(--motion-ease) var(--motion-delay, 0ms);
+  will-change: opacity, transform;
+}
+html.motion-ready .motion-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translate3d(var(--motion-x, -28px), var(--motion-y, 0px), 0);
+}
+html.motion-ready .motion-reveal.is-visible { opacity: 1; }
+
+/* Gentle stagger on product and image cards; no movement while idle. */
+.card__link,
+.product,
+.help-card,
+.feat-card,
+.step-card,
+.ref-card,
+.pet-product,
+.pet-related-card {
+  transition: transform 420ms var(--motion-ease), box-shadow 420ms var(--motion-ease);
+}
+.card__link:hover,
+.card__link:focus-visible,
+.product:hover,
+.product:focus-within,
+.help-card:hover,
+.help-card:focus-within,
+.pet-product:hover,
+.pet-product:focus-within,
+.pet-related-card:hover,
+.pet-related-card:focus-within {
+  transform: translate3d(0, -4px, 0);
+}
+.feat-card:hover,
+.step-card:hover,
+.ref-card:hover { transform: translate3d(0, -2px, 0); }
+
+/* A soft light sweep brings product imagery to life on pointer devices. */
+.card__media,
+.product__media,
+.help-card__media,
+.ref-card__media,
+.sector-alt__media,
+.pet-feature__media {
+  position: relative;
+  isolation: isolate;
+}
+.card__media::after,
+.product__media::after,
+.help-card__media::after,
+.ref-card__media::after,
+.sector-alt__media::after,
+.pet-feature__media::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: -20% auto -20% -70%;
+  width: 42%;
+  pointer-events: none;
+  opacity: 0;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+}
+.card__link:hover .card__media::after,
+.card__link:focus-visible .card__media::after,
+.product:hover .product__media::after,
+.product:focus-within .product__media::after,
+.help-card:hover .help-card__media::after,
+.help-card:focus-within .help-card__media::after,
+.ref-card:hover .ref-card__media::after,
+.sector-alt__media:hover::after,
+.pet-feature__media:hover::after {
+  opacity: 1;
+  transform: translateX(360%) skewX(-18deg);
+  transition: transform 850ms var(--motion-ease), opacity 120ms ease;
+}
+
+/* Tactile controls and clear focus/pressed feedback. */
+.btn,
+.arrow-btn,
+.reviews__arrow,
+.pet-look__hotspot,
+.site-header__action,
+.site-header__menu-toggle {
+  transition: transform 220ms var(--motion-ease), background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+.btn:hover,
+.btn:focus-visible { transform: translateY(-2px); }
+.btn:active,
+.arrow-btn:active,
+.reviews__arrow:active { transform: scale(.97); }
+.benefits__icon img,
+.feat-card__icon img { transition: transform 500ms var(--motion-ease); }
+.benefits__grid li:hover .benefits__icon img,
+.feat-card:hover .feat-card__icon img { transform: translateY(-5px) scale(1.04); }
+
+/* FAQ uses a measured height so open/close motion remains content-safe. */
+.faq__panel {
+  overflow: hidden;
+  max-height: 0;
+  padding-block-end: 0;
+  opacity: 0;
+  transition: max-height 360ms var(--motion-ease), opacity 240ms ease, padding 360ms var(--motion-ease);
+}
+.faq__panel.is-open {
+  max-height: var(--faq-height, 0px);
+  padding-block-end: 24px;
+  opacity: 1;
+}
+
+/* Reading progress: a tiny premium accent, not a blocking overlay. */
+.scroll-progress {
+  position: fixed;
+  z-index: 120;
+  inset: 0 0 auto;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, #9a938a 0%, #1a1a1a 70%, #c5b9a7 100%);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+@media (hover: none) {
+  .card__link:hover,
+  .product:hover,
+  .help-card:hover,
+  .pet-product:hover,
+  .pet-related-card:hover { transform: none; }
+  .card__media::after,
+  .product__media::after,
+  .help-card__media::after,
+  .ref-card__media::after,
+  .sector-alt__media::after,
+  .pet-feature__media::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  html.motion-ready .motion-reveal:not(.is-visible) {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+  .scroll-progress { display: none; }
+}
+
+@keyframes system-hero-settle {
+  from { opacity: .82; transform: scale(1.045); }
+  to { opacity: 1; transform: scale(1); }
+}
+.sys-hero__img { animation: system-hero-settle 1.25s var(--motion-ease) both; }
+
+/* Navigation and quick-view panels join the same gentle motion language. */
+.site-header__actions > *,
+.site-header__logo-img { transition: transform 320ms var(--motion-ease); }
+.site-header__actions > *:hover { transform: translateY(-2px); }
+.site-header__logo:hover .site-header__logo-img { transform: scale(1.025); }
+.mobile-menu.is-open .mobile-menu__item > a { animation: mobile-link-in 420ms var(--motion-ease) both; }
+.mobile-menu.is-open .mobile-menu__item:nth-child(2) > a { animation-delay: 35ms; }
+.mobile-menu.is-open .mobile-menu__item:nth-child(3) > a { animation-delay: 70ms; }
+.mobile-menu.is-open .mobile-menu__item:nth-child(4) > a { animation-delay: 105ms; }
+.mobile-menu.is-open .mobile-menu__item:nth-child(5) > a { animation-delay: 140ms; }
+.mobile-menu.is-open .mobile-menu__item:nth-child(6) > a { animation-delay: 175ms; }
+@keyframes mobile-link-in {
+  from { opacity: .35; transform: translate3d(0, 8px, 0); }
+  to { opacity: 1; transform: none; }
+}
+.pet-quick-dialog[open] { animation: quick-view-in 300ms var(--motion-ease) both; }
+.pet-quick-dialog[open]::backdrop { animation: quick-view-backdrop-in 260ms ease both; }
+@keyframes quick-view-in {
+  from { opacity: 0; transform: translateY(12px) scale(.985); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes quick-view-backdrop-in {
+  from { background: rgba(26,26,26,0); }
+  to { background: rgba(26,26,26,.38); }
+}
+
+/* Header dropdowns: repeat the same soft left-to-right reveal on every open. */
+.nav__dropdown { --nav-enter-x: -14px; }
+[dir="rtl"] .nav__dropdown { --nav-enter-x: 14px; }
+.nav__dropdown li > a {
+  font-weight: 400;
+  transition: background-color 160ms ease, color 160ms ease, font-weight 160ms ease;
+}
+.nav__item:hover .nav__dropdown li > a,
+.nav__item:focus-within .nav__dropdown li > a,
+.nav__item.is-open .nav__dropdown li > a {
+  animation: nav-submenu-enter 440ms var(--motion-ease) var(--nav-stagger-delay, 0ms) both;
+}
+.nav__item:hover .nav__dropdown .nav__mega-media,
+.nav__item:focus-within .nav__dropdown .nav__mega-media,
+.nav__item.is-open .nav__dropdown .nav__mega-media {
+  animation: nav-submenu-enter 520ms var(--motion-ease) var(--nav-stagger-delay, 0ms) both;
+}
+.nav__dropdown li > a:hover,
+.nav__dropdown li > a:focus-visible {
+  color: var(--foreground);
+  font-weight: 600;
+}
+@keyframes nav-submenu-enter {
+  from { opacity: 0; transform: translate3d(var(--nav-enter-x, -14px), 0, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
