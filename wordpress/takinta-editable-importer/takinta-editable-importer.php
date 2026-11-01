@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Takinta Editable Site & Accounts
- * Description: Imports editable Takinta pages, adds secure WordPress accounts, and preserves existing .html routes.
- * Version: 1.1.0
+ * Plugin Name: Takinta Editable Site, Accounts & Inquiry Cart
+ * Description: Imports editable pages, adds WordPress accounts and a product inquiry cart, and preserves existing routes.
+ * Version: 1.2.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -135,6 +135,8 @@ function takinta_account_route_from_request() {
         'register' => array('fa' => false, 'page' => 'register'),
         'fa/account' => array('fa' => true, 'page' => 'account'),
         'fa/register' => array('fa' => true, 'page' => 'register'),
+        'cart' => array('fa' => false, 'page' => 'cart'),
+        'fa/cart' => array('fa' => true, 'page' => 'cart'),
     );
     return isset($routes[$route]) ? $routes[$route] : false;
 }
@@ -365,10 +367,209 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
     echo '<p class="ta-note">' . esc_html($text['account_note']) . '</p><footer class="ta-footer">© ' . esc_html((string) gmdate('Y')) . ' Takinta</footer></div></main></body></html>';
 }
 
+function takinta_cart_url($is_fa) {
+    return home_url($is_fa ? '/fa/cart/' : '/cart/');
+}
+
+function takinta_cart_product_document($route) {
+    $route = ltrim(str_replace('\\', '/', (string) $route), '/');
+    if (!preg_match('#^(?:fa/)?products/[a-z0-9][a-z0-9-]*\.html$#i', $route)) { return ''; }
+    $post_id = takinta_editable_find_post_by_route($route);
+    if ($post_id) {
+        $stored = get_post_meta($post_id, TAKINTA_EDITABLE_HTML_META, true);
+        if (is_string($stored) && $stored !== '') { return $stored; }
+    }
+    $root = realpath(takinta_editable_static_root());
+    $file = $root ? realpath($root . DIRECTORY_SEPARATOR . $route) : false;
+    if (!$root || !$file || strpos($file, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($file)) { return ''; }
+    $document = file_get_contents($file);
+    return is_string($document) ? $document : '';
+}
+
+function takinta_cart_product_title($document, $route) {
+    if (preg_match('~<h1\b[^>]*\bid="product-title"[^>]*>(.*?)</h1>~is', $document, $matches)) {
+        $title = html_entity_decode(trim(wp_strip_all_tags($matches[1])), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        if ($title !== '') { return sanitize_text_field($title); }
+    }
+    return sanitize_text_field(basename($route, '.html'));
+}
+
+function takinta_cart_process_submission($is_fa) {
+    if (strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST' || takinta_account_post_value('takinta_cart_action') !== 'submit_quote') { return ''; }
+    $nonce = sanitize_text_field(takinta_account_post_value('_takinta_cart_nonce'));
+    if (!$nonce || !wp_verify_nonce($nonce, 'takinta_cart_submit')) {
+        return $is_fa ? 'درخواست معتبر نیست. صفحه را تازه‌سازی و دوباره تلاش کن.' : 'This request could not be verified. Refresh the page and try again.';
+    }
+    if (takinta_account_post_value('website') !== '') {
+        wp_safe_redirect(add_query_arg('cart_status', 'sent', takinta_cart_url($is_fa)));
+        exit;
+    }
+    if (takinta_account_attempt_limited('cart_quote', 4, HOUR_IN_SECONDS)) {
+        return $is_fa ? 'درخواست‌های زیادی ارسال شده است. کمی بعد دوباره تلاش کن.' : 'Too many requests. Please try again later.';
+    }
+
+    $payload = takinta_account_post_value('cart_payload');
+    if ($payload === '' || strlen($payload) > 30000) {
+        return $is_fa ? 'سبد خالی است یا اطلاعات آن معتبر نیست.' : 'The cart is empty or invalid.';
+    }
+    $items = json_decode($payload, true);
+    if (!is_array($items) || !$items || count($items) > 30) {
+        return $is_fa ? 'سبد خالی است یا تعداد کالاها بیش از حد مجاز است.' : 'The cart is empty or contains too many items.';
+    }
+
+    $lines = array();
+    foreach ($items as $item) {
+        if (!is_array($item) || !isset($item['route'], $item['id'])) { continue; }
+        if (!is_string($item['route']) || !is_string($item['id'])) { continue; }
+        $route = ltrim(str_replace('\\', '/', sanitize_text_field($item['route'])), '/');
+        if (!preg_match('#^(?:fa/)?products/[a-z0-9][a-z0-9-]*\.html$#i', $route)) { continue; }
+        $canonical_id = strpos($route, 'fa/') === 0 ? substr($route, 3) : $route;
+        if (!hash_equals($canonical_id, sanitize_text_field($item['id']))) { continue; }
+        $raw_quantity = $item['quantity'] ?? null;
+        if (!is_int($raw_quantity) && !(is_string($raw_quantity) && ctype_digit($raw_quantity))) { continue; }
+        $quantity = (int) $raw_quantity;
+        if ($quantity < 1 || $quantity > 999) { continue; }
+        $document = takinta_cart_product_document($route);
+        if ($document === '') { continue; }
+        $title = takinta_cart_product_title($document, $route);
+        $lines[] = array('title' => $title, 'quantity' => $quantity, 'url' => takinta_editable_public_url($route));
+    }
+    if (!$lines) {
+        return $is_fa ? 'کالای معتبر برای استعلام در سبد پیدا نشد.' : 'No valid products were found in the cart.';
+    }
+
+    $name = sanitize_text_field(takinta_account_post_value('name'));
+    $email = sanitize_email(takinta_account_post_value('email'));
+    $phone = sanitize_text_field(takinta_account_post_value('phone'));
+    $note = sanitize_textarea_field(takinta_account_post_value('message'));
+    if ($name === '' || !is_email($email)) {
+        return $is_fa ? 'نام و ایمیل معتبر را وارد کن.' : 'Enter your name and a valid email address.';
+    }
+    if (takinta_account_post_value('privacy_consent') !== '1') {
+        return $is_fa ? 'برای ارسال درخواست، تأیید آگاهی از سیاست حریم خصوصی لازم است.' : 'Please acknowledge the privacy notice before sending the request.';
+    }
+    if (strlen($note) > 4000) {
+        return $is_fa ? 'یادداشت بیش از حد طولانی است.' : 'The note is too long.';
+    }
+    $recipient = apply_filters('takinta_static_contact_recipient', get_option('admin_email'));
+    if (!is_email($recipient)) {
+        return $is_fa ? 'ایمیل مدیر سایت در تنظیمات وردپرس معتبر نیست.' : 'Set a valid WordPress administration email before sending enquiries.';
+    }
+
+    $subject = $is_fa ? 'درخواست استعلام محصولات تکینتا' : 'Takinta product quotation request';
+    $body = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\n\nRequested products (no prices or order have been submitted):\n";
+    foreach ($lines as $line) {
+        $body .= sprintf("- %s | Quantity: %d\n  %s\n", $line['title'], $line['quantity'], $line['url']);
+    }
+    if ($note !== '') { $body .= "\nCustomer note:\n{$note}\n"; }
+    $headers = array('Reply-To: ' . $name . ' <' . $email . '>');
+    if (!wp_mail($recipient, $subject, $body, $headers)) {
+        return $is_fa ? 'ارسال ایمیل انجام نشد. تنظیمات SMTP را بررسی و دوباره تلاش کن.' : 'The request could not be emailed. Check site email/SMTP and try again.';
+    }
+    wp_safe_redirect(add_query_arg('cart_status', 'sent', takinta_cart_url($is_fa)));
+    exit;
+}
+
+function takinta_cart_render_page($is_fa, $error = '') {
+    $lang = $is_fa ? 'fa' : 'en';
+    $rtl = $is_fa ? ' dir="rtl"' : ' dir="ltr"';
+    $cart_url = takinta_cart_url($is_fa);
+    $home_url = home_url($is_fa ? '/fa/' : '/');
+    $theme_uri = untrailingslashit(get_template_directory_uri());
+    $logo = $theme_uri . '/static-site/images/logo.png';
+    $privacy_url = function_exists('get_privacy_policy_url') ? get_privacy_policy_url() : '';
+    $nonce = wp_nonce_field('takinta_cart_submit', '_takinta_cart_nonce', true, false);
+    $sent = isset($_GET['cart_status']) && is_string($_GET['cart_status']) && sanitize_key(wp_unslash($_GET['cart_status'])) === 'sent';
+    $t = $is_fa ? array(
+        'title' => 'سبد استعلام', 'intro' => 'محصولات موردنظرت را جمع کن و برای دریافت قیمت و جزئیات به‌روز درخواست بفرست.',
+        'home' => 'بازگشت به سایت', 'empty' => 'سبد استعلامت هنوز خالی است.', 'browse' => 'مشاهدهٔ محصولات',
+        'quantity' => 'تعداد', 'remove' => 'حذف', 'total' => 'تعداد کل', 'name' => 'نام', 'email' => 'ایمیل',
+        'phone' => 'تلفن (اختیاری)', 'note' => 'یادداشت یا گزینه‌های مدنظر (اختیاری)', 'submit' => 'ارسال درخواست استعلام',
+        'privacy' => 'با ارسال این فرم فقط درخواست استعلام می‌فرستی؛ سفارش یا پرداختی انجام نمی‌شود.',
+        'consent' => 'می‌پذیرم اطلاعات تماس من برای پاسخ‌گویی به این درخواست استفاده شود.',
+        'sent' => 'درخواست استعلام ارسال شد. تیم ما برای پیگیری با تو تماس می‌گیرد.',
+        'account' => 'حساب کاربری', 'no_price' => 'قیمت، موجودی و زمان تحویل در این سبد محاسبه نمی‌شود و باید جداگانه تأیید شود.',
+    ) : array(
+        'title' => 'Product enquiry cart', 'intro' => 'Collect the products you are interested in and send a request for a current quote and details.',
+        'home' => 'Back to the site', 'empty' => 'Your enquiry cart is empty.', 'browse' => 'Browse products',
+        'quantity' => 'Quantity', 'remove' => 'Remove', 'total' => 'Total items', 'name' => 'Name', 'email' => 'Email',
+        'phone' => 'Phone (optional)', 'note' => 'Note or preferred options (optional)', 'submit' => 'Send quote request',
+        'privacy' => 'This form sends an enquiry only; it does not place an order or take payment.',
+        'consent' => 'I agree that my contact details may be used to respond to this enquiry.',
+        'sent' => 'Your enquiry has been sent. Our team will follow up with you.',
+        'account' => 'Account', 'no_price' => 'Prices, stock and delivery times are not calculated here and must be confirmed separately.',
+    );
+
+    status_header(200);
+    nocache_headers();
+    header('Content-Type: text/html; charset=UTF-8');
+    echo '<!doctype html><html lang="' . esc_attr($lang) . '"' . $rtl . '><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,follow"><title>' . esc_html($t['title']) . '</title><link rel="stylesheet" href="' . esc_url($theme_uri . '/static-site/assets/css/style.css') . '">';
+    if ($is_fa) { echo '<link rel="stylesheet" href="' . esc_url($theme_uri . '/static-site/assets/css/rtl.css') . '">'; }
+    echo '<style>[hidden]{display:none!important}body{margin:0;background:#f6f4f0;color:#202521}.ta-cart-page{min-height:100vh;padding:26px 16px 48px;font-family:var(--font-sans,Arial,sans-serif)}.ta-cart-wrap{width:min(100%,920px);margin:auto}.ta-cart-head{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:28px}.ta-cart-logo{width:160px;max-height:70px;object-fit:contain}.ta-cart-head a,.ta-cart-links a{color:#254a3a}.ta-cart-title{margin:0 0 8px;font-size:clamp(28px,4vw,42px)}.ta-cart-intro,.ta-cart-note{color:#66716a;line-height:1.7}.ta-cart-card{padding:clamp(18px,4vw,30px);background:white;border:1px solid #e4e5e0;border-radius:16px;box-shadow:0 10px 30px rgba(30,40,34,.06)}.ta-cart-items{display:grid;gap:12px;padding:0;margin:0 0 20px;list-style:none}.ta-cart-item{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid #e8e9e5}.ta-cart-item__name{font-weight:700;color:#24382e;text-decoration:none}.ta-cart-item__qty{display:flex;align-items:center;gap:7px}.ta-cart-item__qty input{width:76px;min-height:40px;padding:6px;border:1px solid #c9cec9;border-radius:7px;font:inherit}.ta-cart-remove{border:0;background:none;color:#9b3328;text-decoration:underline;cursor:pointer;font:inherit}.ta-cart-consent{display:flex;gap:9px;align-items:flex-start;line-height:1.6;margin:14px 0}.ta-cart-consent a{color:#254a3a}.ta-cart-form{margin-top:22px;padding-top:20px;border-top:1px solid #e8e9e5}.ta-cart-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0 16px}.ta-cart-field{display:block;margin:0 0 14px}.ta-cart-field span{display:block;margin-bottom:6px;font-weight:600}.ta-cart-field input,.ta-cart-field textarea{box-sizing:border-box;width:100%;min-height:44px;padding:10px 12px;border:1px solid #c9cec9;border-radius:8px;font:inherit}.ta-cart-field textarea{min-height:110px;resize:vertical}.ta-cart-submit{min-height:46px;padding:10px 18px;border:0;border-radius:8px;background:#254a3a;color:#fff;font:inherit;font-weight:700;cursor:pointer}.ta-cart-success{padding:13px 15px;border-radius:8px;background:#e8f3eb;color:#1f5936}.ta-cart-error{padding:13px 15px;border-radius:8px;background:#fff0ee;color:#9d3025}.ta-cart-hp{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}.ta-cart-links{display:flex;gap:18px;margin-top:18px;flex-wrap:wrap}@media(max-width:600px){.ta-cart-item{grid-template-columns:1fr auto;gap:8px}.ta-cart-item__name{grid-column:1/-1}.ta-cart-page{padding:18px 12px 36px}.ta-cart-logo{width:130px}}</style></head><body><main class="ta-cart-page"><div class="ta-cart-wrap"><header class="ta-cart-head"><a href="' . esc_url($home_url) . '"><img class="ta-cart-logo" src="' . esc_url($logo) . '" alt="Takinta"></a><div><a href="' . esc_url(takinta_account_url($is_fa)) . '">' . esc_html($t['account']) . '</a> &nbsp; <a href="' . esc_url($home_url) . '">' . esc_html($t['home']) . '</a></div></header><h1 class="ta-cart-title">' . esc_html($t['title']) . '</h1><p class="ta-cart-intro">' . esc_html($t['intro']) . '</p>';
+    if ($sent) { echo '<p class="ta-cart-success" role="status">' . esc_html($t['sent']) . '</p>'; }
+    if ($error !== '') { echo '<p class="ta-cart-error" role="alert">' . esc_html($error) . '</p>'; }
+    echo '<section class="ta-cart-card" data-takinta-cart-root data-locale="' . esc_attr($lang) . '"><p data-cart-empty hidden>' . esc_html($t['empty']) . ' <a href="' . esc_url($home_url) . '">' . esc_html($t['browse']) . '</a></p><ul class="ta-cart-items" data-cart-items></ul><p data-cart-summary hidden><strong>' . esc_html($t['total']) . ': <span data-cart-total>0</span></strong></p><form class="ta-cart-form" data-cart-form method="post" action="' . esc_url($cart_url) . '" hidden>' . $nonce . '<input type="hidden" name="takinta_cart_action" value="submit_quote"><input type="hidden" name="cart_payload" data-cart-payload value=""><div class="ta-cart-hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div><div class="ta-cart-fields"><label class="ta-cart-field"><span>' . esc_html($t['name']) . '</span><input name="name" autocomplete="name" required></label><label class="ta-cart-field"><span>' . esc_html($t['email']) . '</span><input type="email" name="email" autocomplete="email" required></label><label class="ta-cart-field"><span>' . esc_html($t['phone']) . '</span><input name="phone" autocomplete="tel"></label></div><label class="ta-cart-field"><span>' . esc_html($t['note']) . '</span><textarea name="message" maxlength="4000"></textarea></label><label class="ta-cart-consent"><input type="checkbox" name="privacy_consent" value="1" required><span>' . esc_html($t['consent']) . ($privacy_url ? ' <a href="' . esc_url($privacy_url) . '" target="_blank" rel="noopener">' . esc_html($is_fa ? 'سیاست حریم خصوصی' : 'Privacy policy') . '</a>' : '') . '</span></label><p class="ta-cart-note">' . esc_html($t['privacy']) . '</p><button class="ta-cart-submit" type="submit">' . esc_html($t['submit']) . '</button></form></section><p class="ta-cart-note">' . esc_html($t['no_price']) . '</p><nav class="ta-cart-links"><a href="' . esc_url($home_url) . '">' . esc_html($t['browse']) . '</a></nav></div></main>' . takinta_cart_runtime_assets($is_fa) . '</body></html>';
+}
+
+function takinta_cart_runtime_assets($is_fa) {
+    $labels = wp_json_encode(array(
+        'added' => $is_fa ? 'به سبد استعلام اضافه شد.' : 'Added to your enquiry cart.',
+        'remove' => $is_fa ? 'حذف' : 'Remove',
+        'quantity' => $is_fa ? 'تعداد' : 'Quantity',
+        'empty' => $is_fa ? 'سبد استعلامت هنوز خالی است.' : 'Your enquiry cart is empty.',
+        'cart' => $is_fa ? 'سبد استعلام' : 'Enquiry cart',
+        'storageError' => $is_fa ? 'مرورگر اجازهٔ ذخیرهٔ سبد را نمی‌دهد.' : 'Your browser could not save the cart.',
+        'maxItems' => $is_fa ? 'سبد حداکثر ۳۰ کالای متفاوت دارد.' : 'The cart can contain up to 30 different products.',
+    ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    $script = '<script>(function(){"use strict";var KEY="takintaInquiryCartV1",L=' . $labels . ';function read(){try{var v=JSON.parse(localStorage.getItem(KEY)||"[]");if(!Array.isArray(v))return[];return v.map(function(x){if(!x||typeof x.id!=="string"||typeof x.route!=="string"||typeof x.url!=="string")return null;var u=new URL(x.url,location.href);if(u.origin!==location.origin)return null;var q=Math.max(1,Math.min(999,parseInt(x.quantity,10)||1));return{id:x.id,route:x.route,title:String(x.title||x.id).slice(0,240),url:u.href,quantity:q};}).filter(Boolean).slice(0,30);}catch(e){return[];}}function total(c){return c.reduce(function(n,x){return n+x.quantity;},0);}function paintBadges(c){var n=total(c);document.querySelectorAll("[data-takinta-cart-count]").forEach(function(x){x.textContent=n.toLocaleString(document.documentElement.lang==="fa"?"fa-IR":"en-US");});document.querySelectorAll("[data-takinta-cart-link]").forEach(function(x){x.setAttribute("aria-label",L.cart+", "+n);});}function save(c){try{localStorage.setItem(KEY,JSON.stringify(c));paintBadges(c);render();return true;}catch(e){return false;}}function render(){var root=document.querySelector("[data-takinta-cart-root]");if(!root)return;var c=read(),list=root.querySelector("[data-cart-items]"),empty=root.querySelector("[data-cart-empty]"),form=root.querySelector("[data-cart-form]"),summary=root.querySelector("[data-cart-summary]"),count=root.querySelector("[data-cart-total]");if(!list)return;list.replaceChildren();if(empty)empty.hidden=c.length>0;if(form)form.hidden=c.length===0;if(summary)summary.hidden=c.length===0;if(count)count.textContent=total(c).toLocaleString(document.documentElement.lang==="fa"?"fa-IR":"en-US");c.forEach(function(item){var li=document.createElement("li");li.className="ta-cart-item";var a=document.createElement("a");a.className="ta-cart-item__name";a.href=item.url;a.textContent=item.title;var qty=document.createElement("label");qty.className="ta-cart-item__qty";var text=document.createElement("span");text.textContent=L.quantity;var input=document.createElement("input");input.type="number";input.min="1";input.max="999";input.value=String(item.quantity);input.setAttribute("data-cart-quantity",item.id);input.setAttribute("aria-label",L.quantity+": "+item.title);qty.append(text,input);var remove=document.createElement("button");remove.type="button";remove.className="ta-cart-remove";remove.setAttribute("data-cart-remove",item.id);remove.textContent=L.remove;li.append(a,qty,remove);list.appendChild(li);});paintBadges(c);}document.querySelectorAll("[data-takinta-add-to-cart]").forEach(function(button){button.addEventListener("click",function(){var id=button.getAttribute("data-takinta-product-id"),route=button.getAttribute("data-takinta-product-route"),title=button.getAttribute("data-takinta-product-title"),url=button.getAttribute("data-takinta-product-url"),wrap=button.closest("[data-takinta-cart-controls]"),input=wrap&&wrap.querySelector("[data-takinta-cart-quantity]"),qty=Math.max(1,Math.min(999,parseInt(input&&input.value,10)||1));if(!id||!route||!title||!url)return;var c=read(),found=c.find(function(x){return x.id===id;});if(found)found.quantity=Math.min(999,found.quantity+qty);else if(c.length<30)c.push({id:id,route:route,title:title,url:url,quantity:qty});else{var status=wrap.querySelector("[data-takinta-cart-status]");if(status)status.textContent=L.maxItems;return;}if(!save(c)){var status2=wrap.querySelector("[data-takinta-cart-status]");if(status2)status2.textContent=L.storageError;return;}var status=wrap.querySelector("[data-takinta-cart-status]");if(status)status.textContent=L.added;});});var root=document.querySelector("[data-takinta-cart-root]");if(root){if(new URLSearchParams(location.search).get("cart_status")==="sent"){try{localStorage.removeItem(KEY);}catch(e){}}root.addEventListener("click",function(e){var b=e.target.closest("[data-cart-remove]");if(!b)return;save(read().filter(function(x){return x.id!==b.getAttribute("data-cart-remove");}));});root.addEventListener("change",function(e){var input=e.target.closest("[data-cart-quantity]");if(!input)return;var id=input.getAttribute("data-cart-quantity"),q=Math.max(1,Math.min(999,parseInt(input.value,10)||1));save(read().map(function(x){if(x.id===id)x.quantity=q;return x;}));});var form=root.querySelector("[data-cart-form]");if(form)form.addEventListener("submit",function(e){var c=read();if(!c.length){e.preventDefault();return;}form.querySelector("[data-cart-payload]").value=JSON.stringify(c.map(function(x){return{id:x.id,route:x.route,quantity:x.quantity};}));});}paintBadges(read());render();})();</script>';
+    return '<style>.takinta-cart-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}.takinta-cart-qty{display:inline-flex;align-items:center;gap:7px;font-size:14px}.takinta-cart-qty input{width:76px;min-height:42px;padding:7px;border:1px solid #c8cdc8;border-radius:7px;font:inherit}.takinta-cart-controls .pp-button{cursor:pointer}.takinta-cart-status{flex-basis:100%;min-height:1.4em;font-size:14px;color:#265b3d}.cart-badge[data-takinta-cart-count]{min-width:1.2em;text-align:center}</style>' . $script;
+}
+
+function takinta_cart_transform_static_document($document, $route) {
+    $is_fa = strpos($route, 'fa/') === 0;
+    $cart_url = takinta_cart_url($is_fa);
+    if (preg_match('#^(?:fa/)?products/[a-z0-9][a-z0-9-]*\.html$#i', $route) && strpos($document, 'data-product-quote') !== false) {
+        $title = basename($route, '.html');
+        if (preg_match('~<h1\b[^>]*\bid="product-title"[^>]*>(.*?)</h1>~is', $document, $title_match)) {
+            $decoded = html_entity_decode(trim(wp_strip_all_tags($title_match[1])), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            if ($decoded !== '') { $title = $decoded; }
+        }
+        $canonical_route = strpos($route, 'fa/') === 0 ? substr($route, 3) : $route;
+        $button_label = $is_fa ? 'افزودن به سبد استعلام' : 'Add to enquiry cart';
+        $quantity_label = $is_fa ? 'تعداد' : 'Qty';
+        $controls = '<div class="takinta-cart-controls" data-takinta-cart-controls><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" data-takinta-cart-quantity min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><button type="button" class="pp-button pp-button--dark" data-takinta-add-to-cart data-takinta-product-id="' . esc_attr($canonical_route) . '" data-takinta-product-route="' . esc_attr($route) . '" data-takinta-product-title="' . esc_attr($title) . '" data-takinta-product-url="' . esc_url(takinta_editable_public_url($route)) . '">' . esc_html($button_label) . '</button><span class="takinta-cart-status" data-takinta-cart-status aria-live="polite"></span></div>';
+        $document = preg_replace_callback('~<div\b(?=[^>]*\bclass="[^"]*\bpp-actions\b[^"]*")[^>]*>~i', function($match) use ($controls) { return $match[0] . $controls; }, $document, 1);
+    }
+
+    $document = preg_replace_callback('~(<button\b(?=[^>]*\bdata-demo="Cart")[^>]*>)(.*?)</button\s*>~is', function($matches) use ($cart_url, $is_fa) {
+        $class = 'icon-btn';
+        if (preg_match('~\bclass="([^"]*)"~i', $matches[1], $class_match)) { $class = $class_match[1]; }
+        $inner = preg_replace_callback('~<span\b(?=[^>]*\bclass="[^"]*\bcart-badge\b[^"]*")[^>]*>.*?</span>~is', function($badge) {
+            $opening = strstr($badge[0], '>', true);
+            if ($opening === false) { return '<span class="cart-badge" data-takinta-cart-count>0</span>'; }
+            if (strpos($opening, 'data-takinta-cart-count') === false) { $opening .= ' data-takinta-cart-count="1"'; }
+            return $opening . '>0</span>';
+        }, $matches[2], 1);
+        if (strpos($inner, 'data-takinta-cart-count') === false) { $inner .= '<span class="cart-badge" data-takinta-cart-count>0</span>'; }
+        $label = $is_fa ? 'سبد استعلام' : 'Enquiry cart';
+        return '<a class="' . esc_attr($class) . '" href="' . esc_url($cart_url) . '" aria-label="' . esc_attr($label) . '" data-takinta-cart-link>' . $inner . '</a>';
+    }, $document);
+
+    $mobile_label = $is_fa ? 'سبد استعلام' : 'Enquiry cart';
+    return preg_replace_callback('~(<ul\b(?=[^>]*\bclass="[^"]*\bmobile-menu__utility\b[^"]*")[^>]*>.*?)(</ul>)~is', function($matches) use ($cart_url, $mobile_label) {
+        return $matches[1] . '<li><a href="' . esc_url($cart_url) . '" data-takinta-cart-link>' . esc_html($mobile_label) . '</a></li>' . $matches[2];
+    }, $document, 1);
+}
+
 function takinta_account_handle_route() {
     if (is_admin() || (defined('REST_REQUEST') && REST_REQUEST)) { return; }
     $route = takinta_account_route_from_request();
     if (!$route) { return; }
+    if ($route['page'] === 'cart') {
+        $error = takinta_cart_process_submission($route['fa']);
+        takinta_cart_render_page($route['fa'], $error);
+        exit;
+    }
     $error = takinta_account_process_submission($route['fa'], $route['page']);
     takinta_account_render_page($route['fa'], $route['page'], $error);
     exit;
@@ -446,6 +647,8 @@ function takinta_editable_render_imported_route() {
     $document = str_replace(array('https://www.example.com', 'http://www.example.com'), $home_url, $document);
     $document = str_replace($home_url . '/images/', $theme_uri . '/static-site/images/', $document);
     $document = takinta_account_link_in_static_document($document, $route);
+    $document = takinta_cart_transform_static_document($document, $route);
+    $document = preg_replace('~</body>~i', takinta_cart_runtime_assets(strpos($route, 'fa/') === 0) . '</body>', $document, 1);
 
     status_header(200);
     nocache_headers();
