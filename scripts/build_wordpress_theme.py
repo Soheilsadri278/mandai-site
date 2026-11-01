@@ -248,6 +248,7 @@ STYLE_RE = re.compile(r'(?P<prefix>\bstyle\s*=\s*)(?P<q>["\'])(?P<value>.*?)(?P=
 STYLE_BLOCK_RE = re.compile(r'(<style\b[^>]*>)(.*?)(</style\s*>)', re.I | re.S)
 CSS_URL_RE = re.compile(r'''url\(\s*(?P<q>["']?)(?P<url>[^)"']+)(?P=q)\s*\)''', re.I)
 FORM_RE = re.compile(r'<form\b(?P<attrs>[^>]*)>', re.I | re.S)
+LOGO_IMG_RE = re.compile(r'<img\b(?=[^>]*\bsrc\s*=\s*[\"\'][^\"\']*images/logo\.png(?:\?[^\"\']*)?[\"\'])[^>]*>', re.I | re.S)
 
 
 def normalize_local_path(page_path: str, value_path: str) -> str:
@@ -330,6 +331,21 @@ def rewrite_css_urls(source: str, page_path: str) -> str:
 
 
 def transform_html(source: str, page_path: str) -> str:
+    # Apply the supplied Takinta wordmark and make its alternative text match the brand.
+    source = source.replace('Mandai Design — Home of Shopfitting', 'Takinta Design logo')
+    source = source.replace('Mandai Design؛ دنیای تجهیزات فروشگاهی', 'لوگوی تکینتا دیزاین')
+    source = source.replace('Mandai Design — home', 'Takinta Design — home')
+    source = source.replace('صفحهٔ اصلی ماندای دیزاین', 'صفحهٔ اصلی تکینتا دیزاین')
+
+    def logo_tag(match: re.Match) -> str:
+        tag = match.group(0)
+        for attr, value in (('width', '992'), ('height', '234')):
+            pattern = re.compile(r'(\b' + attr + r'\s*=\s*)(["\'])(.*?)\2', re.I | re.S)
+            if pattern.search(tag):
+                tag = pattern.sub(lambda m: m.group(1) + m.group(2) + value + m.group(2), tag, count=1)
+        return tag
+    source = LOGO_IMG_RE.sub(logo_tag, source)
+
     def attr_replace(match: re.Match) -> str:
         name = match.group('prefix').split('=')[0].strip().lower()
         value = match.group('value')
