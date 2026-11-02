@@ -10,6 +10,20 @@
   /* ── ابزارهای کوچک ─────────────────────────────────────── */
   var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
   var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+  var searchIndexUrl = (function () {
+    var script = document.currentScript;
+    if (!script) {
+      var scripts = document.getElementsByTagName("script");
+      for (var i = scripts.length - 1; i >= 0; i--) {
+        if (/\bmain\.js(?:[?#]|$)/i.test(scripts[i].src || "")) { script = scripts[i]; break; }
+      }
+    }
+    try {
+      return script && script.src ? new URL("search-index.json?v=20261102-search", script.src).href : new URL("assets/js/search-index.json?v=20261102-search", document.baseURI).href;
+    } catch (e) {
+      return "assets/js/search-index.json";
+    }
+  })();
 
   /* ════════════════════════════════════════════════════════
      Motion system: editorial reveals, staggered cards, progress
@@ -125,11 +139,9 @@
     if (!toastContainer) return;
     if (document.documentElement.dir === "rtl") {
       var titleTranslations = {
-        "Search is a placeholder": "جست‌وجو هنوز راه‌اندازی نشده است",
         "Error": "خطا", "Message sent": "پیام ارسال شد", "Subscribed": "عضویت انجام شد"
       };
       var descriptionTranslations = {
-        "Connect it to your future product catalog (WordPress search or WooCommerce).": "برای فعال‌شدن جست‌وجو باید آن را به کاتالوگ محصولات فروشگاه متصل کرد.",
         "Thank you for your message! We will get back to you shortly.": "از پیام شما سپاسگزاریم. به‌زودی با شما تماس می‌گیریم.",
         "Something went wrong. Please try again or call us directly.": "مشکلی پیش آمد. دوباره تلاش کنید یا مستقیماً با ما تماس بگیرید.",
         "Thanks for subscribing! Please check your inbox.": "از عضویت شما سپاسگزاریم. لطفاً صندوق ورودی ایمیلتان را بررسی کنید.",
@@ -323,19 +335,138 @@
   })();
 
   /* ════════════════════════════════════════════════════════
-     ۵) دیالوگ جستجو
+     ۵) دیالوگ جستجوی واقعی در فهرست دوزبانهٔ سایت
      ════════════════════════════════════════════════════════ */
   (function () {
     var dialog = $("[data-search-dialog]");
     var openBtn = $("[data-search-open]");
     var closeBtn = $("[data-search-close]");
     var form = $("[data-search-form]");
-    if (!dialog || !openBtn) return;
+    if (!dialog || !openBtn || !form) return;
 
+    var input = $("input[type=search]", form);
+    if (!input) return;
+    var isFa = /^fa(?:-|$)/i.test(document.documentElement.lang || "") || document.documentElement.dir === "rtl";
+    var text = isFa ? {
+      loading: "در حال جست‌وجو…",
+      empty: "برای جست‌وجو، نام محصول یا عبارت موردنظر را وارد کنید.",
+      noResults: "نتیجه‌ای پیدا نشد. عبارت دیگری را امتحان کنید.",
+      failed: "بارگذاری جست‌وجو انجام نشد. اتصال اینترنت را بررسی و دوباره تلاش کنید.",
+      count: function (shown, total) { return shown.toLocaleString("fa-IR") + " نتیجه از " + total.toLocaleString("fa-IR"); }
+    } : {
+      loading: "Searching…",
+      empty: "Enter a product name or keyword to search.",
+      noResults: "No results found. Try another search term.",
+      failed: "Search could not load. Check your connection and try again.",
+      count: function (shown, total) { return "Showing " + shown.toLocaleString("en-US") + " of " + total.toLocaleString("en-US") + " results"; }
+    };
+    var results = $("[data-search-results]", dialog);
+    if (!results) {
+      results = document.createElement("div");
+      results.className = "search-dialog__results";
+      results.setAttribute("data-search-results", "");
+      results.setAttribute("role", "region");
+      results.setAttribute("aria-live", "polite");
+      form.insertAdjacentElement("afterend", results);
+    }
+    var indexPromise = null;
+
+    function normalize(value) {
+      return String(value || "").normalize("NFKD").toLocaleLowerCase()
+        .replace(/[\u064B-\u065F\u0670]/g, "")
+        .replace(/[يى]/g, "ی").replace(/ك/g, "ک")
+        .replace(/[أإآ]/g, "ا").replace(/ة/g, "ه")
+        .replace(/[\u200B-\u200F\uFEFF]/g, " ")
+        .replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+    }
+    function loadIndex() {
+      if (!indexPromise) {
+        indexPromise = fetch(searchIndexUrl, { credentials: "same-origin", cache: "force-cache" })
+          .then(function (response) {
+            if (!response.ok) throw new Error("Search index returned " + response.status);
+            return response.json();
+          })
+          .then(function (data) {
+            if (!Array.isArray(data)) throw new Error("Invalid search index");
+            return data;
+          })
+          .catch(function (error) { indexPromise = null; throw error; });
+      }
+      return indexPromise;
+    }
+    function showMessage(message) {
+      results.replaceChildren();
+      var status = document.createElement("p");
+      status.className = "search-dialog__status";
+      status.textContent = message;
+      results.appendChild(status);
+    }
+    function getSiteBase() {
+      var logo = $(".site-header__logo[href]");
+      var home;
+      try { home = new URL(logo ? logo.getAttribute("href") : "/", location.href); }
+      catch (e) { home = new URL("/", location.href); }
+      home.search = "";
+      home.hash = "";
+      home.pathname = home.pathname.replace(/(?:fa\/)?index\.html$/i, "");
+      if (!home.pathname.endsWith("/")) home.pathname += "/";
+      return home;
+    }
+    function renderMatches(items, query) {
+      var tokens = normalize(query).split(/\s+/).filter(Boolean);
+      if (!tokens.length) { showMessage(text.empty); return; }
+      var phrase = normalize(query);
+      var base = getSiteBase();
+      var ranked = [];
+      items.forEach(function (item) {
+        var title = normalize(item.title);
+        var body = normalize((item.text || "") + " " + (item.description || ""));
+        var haystack = title + " " + body + " " + normalize(item.url);
+        var matched = tokens.every(function (token) { return haystack.indexOf(token) !== -1; });
+        if (!matched) return;
+        var titleHits = tokens.filter(function (token) { return title.indexOf(token) !== -1; }).length;
+        var score = tokens.length * 2 + titleHits * 5;
+        if (phrase && title.indexOf(phrase) !== -1) score += 8;
+        if ((item.lang === "fa") === isFa) score += 2;
+        ranked.push({ item: item, score: score });
+      });
+      ranked.sort(function (a, b) { return b.score - a.score || a.item.title.localeCompare(b.item.title); });
+      if (!ranked.length) { showMessage(text.noResults); return; }
+
+      results.replaceChildren();
+      var status = document.createElement("p");
+      status.className = "search-dialog__status";
+      status.textContent = text.count(Math.min(ranked.length, 10), ranked.length);
+      results.appendChild(status);
+      var list = document.createElement("ul");
+      list.className = "search-dialog__list";
+      list.setAttribute("role", "list");
+      ranked.slice(0, 10).forEach(function (match) {
+        var item = match.item;
+        var row = document.createElement("li");
+        row.className = "search-dialog__item";
+        var link = document.createElement("a");
+        link.className = "search-dialog__result";
+        link.href = new URL(item.url || "", base).href;
+        var title = document.createElement("span");
+        title.className = "search-dialog__result-title";
+        title.textContent = item.title;
+        link.appendChild(title);
+        var description = item.description || item.text || "";
+        if (description) {
+          var snippet = document.createElement("span");
+          snippet.className = "search-dialog__result-description";
+          snippet.textContent = description.length > 190 ? description.slice(0, 187).trim() + "…" : description;
+          link.appendChild(snippet);
+        }
+        row.appendChild(link);
+        list.appendChild(row);
+      });
+      results.appendChild(list);
+    }
     function open() {
       dialog.hidden = false;
-      var input = $("input[type=search]", dialog);
-      if (input) setTimeout(function () { input.focus(); }, 50);
+      setTimeout(function () { input.focus(); }, 50);
       document.body.style.overflow = "hidden";
     }
     function close() {
@@ -347,17 +478,19 @@
     if (closeBtn) closeBtn.addEventListener("click", close);
     dialog.addEventListener("click", function (e) {
       if (e.target === dialog) close();
+      if (e.target.closest && e.target.closest(".search-dialog__result")) close();
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && !dialog.hidden) close();
     });
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        close();
-        showToast("Search is a placeholder", "Connect it to your future product catalog (WordPress search or WooCommerce).");
-      });
-    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var query = input.value.trim();
+      if (!query) { showMessage(text.empty); input.focus(); return; }
+      showMessage(text.loading);
+      loadIndex().then(function (items) { renderMatches(items, query); })
+        .catch(function () { showMessage(text.failed); });
+    });
   })();
 
   /* ════════════════════════════════════════════════════════

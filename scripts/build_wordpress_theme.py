@@ -13,6 +13,8 @@ import zipfile
 from pathlib import Path
 from urllib.parse import quote, urlsplit, urlunsplit
 
+from build_search_index import build_search_index
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "wordpress"
 ZIP_PATH = OUT_DIR / "takinta-static-theme.zip"
@@ -26,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.1
+Version: 1.0.2
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -238,7 +240,7 @@ THEME_README = '''TAKINTA STATIC SITE THEME
 Install this ZIP from WordPress Admin > Appearance > Themes > Add New > Upload Theme.
 After activation, open Settings > Permalinks, choose Post name, and save once.
 
-This theme serves the bundled static HTML pages and assets. Content is not editable as WordPress posts/pages. Cart, account, search, and payment are not connected to WooCommerce.
+This theme serves the bundled static HTML pages and assets. Content is not editable as WordPress posts/pages. Search uses the bundled bilingual page index. Cart and account features are independent of WooCommerce; no checkout or payment is enabled.
 
 A Persian installation guide (INSTALL-FA.md) is distributed next to this ZIP.
 '''
@@ -277,7 +279,12 @@ def rewrite_asset_url(value: str, page_path: str) -> str:
     if resolved in ('.', ''):
         return value
     public_path = TOKEN_THEME + '/static-site/' + quote(resolved, safe='/-._~:@!$&\'()*+,;=%')
-    return urlunsplit(('', '', public_path, parts.query, parts.fragment))
+    query = parts.query
+    if resolved.endswith('/assets/js/main.js') or resolved == 'assets/js/main.js':
+        query_parts = [part for part in query.split('&') if part and not part.startswith('v=')]
+        query_parts.append('v=20261102-search')
+        query = '&'.join(query_parts)
+    return urlunsplit(('', '', public_path, query, parts.fragment))
 
 
 def rewrite_site_link(value: str, page_path: str) -> str:
@@ -423,6 +430,7 @@ def main() -> int:
         print('Missing required site files:', *missing, sep='\n', file=sys.stderr)
         return 2
 
+    build_search_index(ROOT)
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='takinta-wp-') as temp:
         theme = Path(temp) / THEME_SLUG

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & Shopping Cart
  * Description: Imports editable pages, adds WordPress accounts and a shopping cart with a purchase-request form, and preserves existing routes.
- * Version: 1.2.3
+ * Version: 1.2.4
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -673,6 +673,10 @@ function takinta_editable_render_imported_route() {
     $document = str_replace($home_url . '/images/', $theme_uri . '/static-site/images/', $document);
     $document = takinta_account_link_in_static_document($document, $route);
     $document = takinta_cart_transform_static_document($document, $route);
+    // Bust stale browser/CDN copies of the old placeholder search handler on imported pages.
+    $document = preg_replace_callback("~(<script\\b[^>]*\\bsrc\\s*=\\s*)([\"'])([^\"']*assets/js/main\\.js)(?:\\?[^\"']*)?([\"'])~i", function($matches) {
+        return $matches[1] . $matches[2] . $matches[3] . '?v=20261102-search' . $matches[4];
+    }, $document);
     $document = preg_replace('~</body>~i', takinta_cart_runtime_assets(strpos($route, 'fa/') === 0) . '</body>', $document, 1);
 
     status_header(200);
