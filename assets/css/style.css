@@ -227,7 +227,7 @@ section[id] { scroll-margin-top: 88px; }
   gap: 24px;
 }
 .site-header__logo { display: flex; flex-shrink: 0; align-items: center; }
-.site-header__logo-img { height: 34px; width: auto; }
+.site-header__logo-img { height: 34px; width: auto; mix-blend-mode: multiply; background: transparent; }
 
 /* منوی دسکتاپ */
 .site-header__nav { display: none; flex: 1; align-items: center; }

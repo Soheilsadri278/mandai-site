@@ -26,7 +26,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.0
+Version: 1.0.1
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
