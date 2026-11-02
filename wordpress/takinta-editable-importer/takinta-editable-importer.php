@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Takinta Editable Site, Accounts & Inquiry Cart
- * Description: Imports editable pages, adds WordPress accounts and a product inquiry cart, and preserves existing routes.
- * Version: 1.2.1
+ * Plugin Name: Takinta Editable Site, Accounts & Shopping Cart
+ * Description: Imports editable pages, adds WordPress accounts and a shopping cart with a purchase-request form, and preserves existing routes.
+ * Version: 1.2.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -453,11 +453,11 @@ function takinta_cart_process_submission($is_fa) {
     }
     $recipient = apply_filters('takinta_static_contact_recipient', get_option('admin_email'));
     if (!is_email($recipient)) {
-        return $is_fa ? 'ایمیل مدیر سایت در تنظیمات وردپرس معتبر نیست.' : 'Set a valid WordPress administration email before sending enquiries.';
+        return $is_fa ? 'ایمیل مدیر سایت در تنظیمات وردپرس معتبر نیست.' : 'Set a valid WordPress administration email before sending purchase requests.';
     }
 
-    $subject = $is_fa ? 'درخواست استعلام محصولات تکینتا' : 'Takinta product quotation request';
-    $body = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\n\nRequested products (no prices or order have been submitted):\n";
+    $subject = $is_fa ? 'درخواست خرید محصولات تکینتا' : 'Takinta product purchase request';
+    $body = "Name: {$name}\nEmail: {$email}\nPhone: {$phone}\n\nPurchase request (not a confirmed order; no prices have been submitted):\n";
     foreach ($lines as $line) {
         $body .= sprintf("- %s | Quantity: %d\n  %s\n", $line['title'], $line['quantity'], $line['url']);
     }
@@ -482,26 +482,26 @@ function takinta_cart_render_page($is_fa, $error = '') {
     $nonce = wp_nonce_field('takinta_cart_submit', '_takinta_cart_nonce', true, false);
     $sent = isset($_GET['cart_status']) && is_string($_GET['cart_status']) && sanitize_key(wp_unslash($_GET['cart_status'])) === 'sent';
     $t = $is_fa ? array(
-        'title' => 'سبد استعلام', 'eyebrow' => 'انتخاب‌های شما', 'intro' => 'محصولات موردنظرتان را یک‌جا جمع کنید و برای دریافت قیمت و جزئیات روز درخواست بفرستید.',
-        'home' => 'بازگشت به سایت', 'empty' => 'سبد استعلام شما هنوز خالی است', 'empty_copy' => 'از میان محصولات، موارد موردنظرتان را اضافه کنید؛ می‌توانید تعداد را هم تغییر دهید.',
+        'title' => 'سبد خرید', 'eyebrow' => 'انتخاب‌های شما', 'intro' => 'محصولات موردنظرتان را یک‌جا جمع کنید و درخواست خریدتان را برای پیگیری بفرستید.',
+        'home' => 'بازگشت به سایت', 'empty' => 'سبد خرید شما هنوز خالی است', 'empty_copy' => 'از میان محصولات، موارد موردنظرتان را اضافه کنید؛ می‌توانید تعداد را هم تغییر دهید.',
         'browse' => 'مشاهدهٔ محصولات', 'selected' => 'محصولات انتخاب‌شده', 'quantity' => 'تعداد', 'remove' => 'حذف', 'total' => 'کالا',
-        'request_title' => 'درخواست استعلام', 'request_copy' => 'اطلاعات تماس را بگذارید تا برای بررسی محصولات و ارائهٔ قیمت روز با شما تماس بگیریم.',
-        'summary_empty' => 'پس از افزودن محصول، فرم درخواست اینجا نمایش داده می‌شود.', 'name' => 'نام', 'email' => 'ایمیل',
-        'phone' => 'تلفن (اختیاری)', 'note' => 'یادداشت یا گزینه‌های مدنظر (اختیاری)', 'submit' => 'ارسال درخواست استعلام',
-        'privacy' => 'این فرم فقط درخواست استعلام می‌فرستد؛ سفارش یا پرداختی انجام نمی‌شود.',
-        'consent' => 'می‌پذیرم اطلاعات تماس من برای پاسخ‌گویی به این درخواست استفاده شود.',
-        'sent' => 'درخواست شما ارسال شد. تیم ما برای پیگیری با شما تماس می‌گیرد.',
+        'request_title' => 'تکمیل درخواست خرید', 'request_copy' => 'اطلاعات تماس را وارد کنید تا برای هماهنگی خرید محصولات انتخابی با شما تماس بگیریم.',
+        'summary_empty' => 'پس از افزودن محصول، فرم درخواست خرید اینجا نمایش داده می‌شود.', 'name' => 'نام', 'email' => 'ایمیل',
+        'phone' => 'تلفن (اختیاری)', 'note' => 'یادداشت یا گزینه‌های مدنظر (اختیاری)', 'submit' => 'ارسال درخواست خرید',
+        'privacy' => 'این فرم درخواست خرید شما را برای پیگیری می‌فرستد؛ ثبت نهایی سفارش و پرداخت پس از هماهنگی انجام می‌شود.',
+        'consent' => 'می‌پذیرم اطلاعات تماس من برای پیگیری درخواست خریدم استفاده شود.',
+        'sent' => 'درخواست خرید شما ارسال شد. تیم ما برای پیگیری با شما تماس می‌گیرد.',
         'account' => 'حساب کاربری', 'no_price' => 'قیمت، موجودی و زمان ارسال پس از بررسی جداگانه تأیید می‌شوند.',
     ) : array(
-        'title' => 'Product enquiry cart', 'eyebrow' => 'YOUR SELECTION', 'intro' => 'Collect the products you are interested in and request current pricing and details from our team.',
-        'home' => 'Back to the site', 'empty' => 'Your enquiry cart is empty', 'empty_copy' => 'Browse the collection and add the products you would like us to quote. You can adjust quantities at any time.',
+        'title' => 'Shopping Cart', 'eyebrow' => 'YOUR SELECTION', 'intro' => 'Collect the products you would like to purchase and send a purchase request to our team.',
+        'home' => 'Back to the site', 'empty' => 'Your shopping cart is empty', 'empty_copy' => 'Browse the collection and add the products you would like to purchase. You can adjust quantities at any time.',
         'browse' => 'Browse products', 'selected' => 'Selected products', 'quantity' => 'Quantity', 'remove' => 'Remove', 'total' => 'items',
-        'request_title' => 'Request a quote', 'request_copy' => 'Leave your contact details and our team will follow up about the selected products.',
-        'summary_empty' => 'Add a product to unlock the enquiry form.', 'name' => 'Name', 'email' => 'Email',
-        'phone' => 'Phone (optional)', 'note' => 'Note or preferred options (optional)', 'submit' => 'Send quote request',
-        'privacy' => 'Enquiry only — no order is placed and no payment is taken.',
-        'consent' => 'I agree that my contact details may be used to respond to this enquiry.',
-        'sent' => 'Your request has been sent. Our team will follow up with you.',
+        'request_title' => 'Purchase request', 'request_copy' => 'Leave your contact details so our team can follow up about purchasing the selected products.',
+        'summary_empty' => 'Add a product to unlock the purchase-request form.', 'name' => 'Name', 'email' => 'Email',
+        'phone' => 'Phone (optional)', 'note' => 'Note or preferred options (optional)', 'submit' => 'Send purchase request',
+        'privacy' => 'This sends a purchase request only; it is not a confirmed order and no payment is taken.',
+        'consent' => 'I agree that my contact details may be used to follow up on this purchase request.',
+        'sent' => 'Your purchase request has been sent. Our team will follow up with you.',
         'account' => 'Account', 'no_price' => 'Prices, availability and delivery timing are confirmed separately by our team.',
     );
 
@@ -533,16 +533,16 @@ CSS;
     echo '<body><main class="ta-cart-page"><div class="ta-cart-wrap" data-takinta-cart-root data-locale="' . esc_attr($lang) . '"><header class="ta-cart-head"><a href="' . esc_url($home_url) . '" aria-label="Takinta"><img class="ta-cart-logo" src="' . esc_url($logo) . '" alt="Takinta"></a><nav class="ta-cart-nav"><a href="' . esc_url(takinta_account_url($is_fa)) . '">' . esc_html($t['account']) . '</a><a href="' . esc_url($home_url) . '">' . esc_html($t['home']) . '</a></nav></header><section class="ta-cart-hero"><div><p class="ta-cart-eyebrow">' . esc_html($t['eyebrow']) . '</p><h1 class="ta-cart-title">' . esc_html($t['title']) . '</h1><p class="ta-cart-intro">' . esc_html($t['intro']) . '</p></div><div class="ta-cart-count" data-cart-summary hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span data-cart-total>0</span> ' . esc_html($t['total']) . '</div></section>';
     if ($sent) { echo '<p class="ta-cart-success" role="status">' . esc_html($t['sent']) . '</p>'; }
     if ($error !== '') { echo '<p class="ta-cart-error" role="alert">' . esc_html($error) . '</p>'; }
-    echo '<div class="ta-cart-layout"><section class="ta-cart-panel"><header class="ta-cart-panel-head"><h2>' . esc_html($t['selected']) . '</h2><span>' . esc_html($is_fa ? 'قیمت پس از استعلام' : 'Quote on request') . '</span></header><div class="ta-cart-empty" data-cart-empty hidden><div class="ta-cart-empty__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16l-1.5 12h-13L4 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/><path d="M9.5 13h5"/></svg></div><h3>' . esc_html($t['empty']) . '</h3><p>' . esc_html($t['empty_copy']) . '</p><a class="ta-cart-button" href="' . esc_url($browse_url) . '">' . esc_html($t['browse']) . '</a></div><ul class="ta-cart-items" data-cart-items></ul></section><aside class="ta-cart-aside"><div class="ta-cart-aside__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg></div><h2>' . esc_html($t['request_title']) . '</h2><p class="ta-cart-aside__copy">' . esc_html($t['request_copy']) . '</p><p class="ta-cart-summary-empty" data-cart-summary-empty>' . esc_html($t['summary_empty']) . '</p><form class="ta-cart-form" data-cart-form method="post" action="' . esc_url($cart_url) . '" hidden>' . $nonce . '<input type="hidden" name="takinta_cart_action" value="submit_quote"><input type="hidden" name="cart_payload" data-cart-payload value=""><div class="ta-cart-hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div><div class="ta-cart-fields"><label class="ta-cart-field"><span>' . esc_html($t['name']) . '</span><input name="name" autocomplete="name" required></label><label class="ta-cart-field"><span>' . esc_html($t['email']) . '</span><input type="email" name="email" autocomplete="email" required></label><label class="ta-cart-field"><span>' . esc_html($t['phone']) . '</span><input name="phone" autocomplete="tel"></label></div><label class="ta-cart-field"><span>' . esc_html($t['note']) . '</span><textarea name="message" maxlength="4000"></textarea></label><label class="ta-cart-consent"><input type="checkbox" name="privacy_consent" value="1" required><span>' . esc_html($t['consent']) . ($privacy_url ? ' <a href="' . esc_url($privacy_url) . '" target="_blank" rel="noopener">' . esc_html($is_fa ? 'سیاست حریم خصوصی' : 'Privacy policy') . '</a>' : '') . '</span></label><button class="ta-cart-submit" type="submit">' . esc_html($t['submit']) . '</button></form><p class="ta-cart-legal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>' . esc_html($t['privacy']) . '</span></p></aside></div><p class="ta-cart-footer">' . esc_html($t['no_price']) . '</p></div></main>' . takinta_cart_runtime_assets($is_fa) . '</body></html>';
+    echo '<div class="ta-cart-layout"><section class="ta-cart-panel"><header class="ta-cart-panel-head"><h2>' . esc_html($t['selected']) . '</h2><span>' . esc_html($is_fa ? 'قیمت پس از هماهنگی' : 'Price confirmed after request') . '</span></header><div class="ta-cart-empty" data-cart-empty hidden><div class="ta-cart-empty__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h16l-1.5 12h-13L4 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/><path d="M9.5 13h5"/></svg></div><h3>' . esc_html($t['empty']) . '</h3><p>' . esc_html($t['empty_copy']) . '</p><a class="ta-cart-button" href="' . esc_url($browse_url) . '">' . esc_html($t['browse']) . '</a></div><ul class="ta-cart-items" data-cart-items></ul></section><aside class="ta-cart-aside"><div class="ta-cart-aside__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg></div><h2>' . esc_html($t['request_title']) . '</h2><p class="ta-cart-aside__copy">' . esc_html($t['request_copy']) . '</p><p class="ta-cart-summary-empty" data-cart-summary-empty>' . esc_html($t['summary_empty']) . '</p><form class="ta-cart-form" data-cart-form method="post" action="' . esc_url($cart_url) . '" hidden>' . $nonce . '<input type="hidden" name="takinta_cart_action" value="submit_quote"><input type="hidden" name="cart_payload" data-cart-payload value=""><div class="ta-cart-hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div><div class="ta-cart-fields"><label class="ta-cart-field"><span>' . esc_html($t['name']) . '</span><input name="name" autocomplete="name" required></label><label class="ta-cart-field"><span>' . esc_html($t['email']) . '</span><input type="email" name="email" autocomplete="email" required></label><label class="ta-cart-field"><span>' . esc_html($t['phone']) . '</span><input name="phone" autocomplete="tel"></label></div><label class="ta-cart-field"><span>' . esc_html($t['note']) . '</span><textarea name="message" maxlength="4000"></textarea></label><label class="ta-cart-consent"><input type="checkbox" name="privacy_consent" value="1" required><span>' . esc_html($t['consent']) . ($privacy_url ? ' <a href="' . esc_url($privacy_url) . '" target="_blank" rel="noopener">' . esc_html($is_fa ? 'سیاست حریم خصوصی' : 'Privacy policy') . '</a>' : '') . '</span></label><button class="ta-cart-submit" type="submit">' . esc_html($t['submit']) . '</button></form><p class="ta-cart-legal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><span>' . esc_html($t['privacy']) . '</span></p></aside></div><p class="ta-cart-footer">' . esc_html($t['no_price']) . '</p></div></main>' . takinta_cart_runtime_assets($is_fa) . '</body></html>';
 }
 
 function takinta_cart_runtime_assets($is_fa) {
     $labels = wp_json_encode(array(
-        'added' => $is_fa ? 'به سبد استعلام اضافه شد.' : 'Added to your enquiry cart.',
+        'added' => $is_fa ? 'به سبد خرید اضافه شد.' : 'Added to your shopping cart.',
         'remove' => $is_fa ? 'حذف' : 'Remove',
         'quantity' => $is_fa ? 'تعداد' : 'Quantity',
-        'empty' => $is_fa ? 'سبد استعلامت هنوز خالی است.' : 'Your enquiry cart is empty.',
-        'cart' => $is_fa ? 'سبد استعلام' : 'Enquiry cart',
+        'empty' => $is_fa ? 'سبد خریدت هنوز خالی است.' : 'Your shopping cart is empty.',
+        'cart' => $is_fa ? 'سبد خرید' : 'Shopping cart',
         'storageError' => $is_fa ? 'مرورگر اجازهٔ ذخیرهٔ سبد را نمی‌دهد.' : 'Your browser could not save the cart.',
         'maxItems' => $is_fa ? 'سبد حداکثر ۳۰ کالای متفاوت دارد.' : 'The cart can contain up to 30 different products.',
     ), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
@@ -560,7 +560,7 @@ function takinta_cart_transform_static_document($document, $route) {
             if ($decoded !== '') { $title = $decoded; }
         }
         $canonical_route = strpos($route, 'fa/') === 0 ? substr($route, 3) : $route;
-        $button_label = $is_fa ? 'افزودن به سبد استعلام' : 'Add to enquiry cart';
+        $button_label = $is_fa ? 'افزودن به سبد خرید' : 'Add to shopping cart';
         $quantity_label = $is_fa ? 'تعداد' : 'Qty';
         $controls = '<div class="takinta-cart-controls" data-takinta-cart-controls><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" data-takinta-cart-quantity min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><button type="button" class="pp-button pp-button--dark" data-takinta-add-to-cart data-takinta-product-id="' . esc_attr($canonical_route) . '" data-takinta-product-route="' . esc_attr($route) . '" data-takinta-product-title="' . esc_attr($title) . '" data-takinta-product-url="' . esc_url(takinta_editable_public_url($route)) . '">' . esc_html($button_label) . '</button><span class="takinta-cart-status" data-takinta-cart-status aria-live="polite"></span></div>';
         $document = preg_replace_callback('~<div\b(?=[^>]*\bclass="[^"]*\bpp-actions\b[^"]*")[^>]*>~i', function($match) use ($controls) { return $match[0] . $controls; }, $document, 1);
@@ -576,11 +576,11 @@ function takinta_cart_transform_static_document($document, $route) {
             return $opening . '>0</span>';
         }, $matches[2], 1);
         if (strpos($inner, 'data-takinta-cart-count') === false) { $inner .= '<span class="cart-badge" data-takinta-cart-count>0</span>'; }
-        $label = $is_fa ? 'سبد استعلام' : 'Enquiry cart';
+        $label = $is_fa ? 'سبد خرید' : 'Shopping cart';
         return '<a class="' . esc_attr($class) . '" href="' . esc_url($cart_url) . '" aria-label="' . esc_attr($label) . '" data-takinta-cart-link>' . $inner . '</a>';
     }, $document);
 
-    $mobile_label = $is_fa ? 'سبد استعلام' : 'Enquiry cart';
+    $mobile_label = $is_fa ? 'سبد خرید' : 'Shopping cart';
     return preg_replace_callback('~(<ul\b(?=[^>]*\bclass="[^"]*\bmobile-menu__utility\b[^"]*")[^>]*>.*?)(</ul>)~is', function($matches) use ($cart_url, $mobile_label) {
         return $matches[1] . '<li><a href="' . esc_url($cart_url) . '" data-takinta-cart-link>' . esc_html($mobile_label) . '</a></li>' . $matches[2];
     }, $document, 1);
