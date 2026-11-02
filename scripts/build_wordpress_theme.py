@@ -21,14 +21,14 @@ ZIP_PATH = OUT_DIR / "takinta-static-theme.zip"
 THEME_SLUG = "takinta-static"
 TOKEN_THEME = "__TAKINTA_THEME_URI__"
 TOKEN_HOME = "__TAKINTA_HOME_URL__"
-COPY_DIRS = ["assets", "images", "fonts", "fa", "pages", "fixtures", "sectors", "systems", "products"]
+COPY_DIRS = ["assets", "images", "fonts", "data", "fa", "pages", "fixtures", "sectors", "systems", "products"]
 COPY_ROOT_FILES = ["index.html", "favicon.svg"]
 
 THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.2
+Version: 1.0.3
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -240,7 +240,7 @@ THEME_README = '''TAKINTA STATIC SITE THEME
 Install this ZIP from WordPress Admin > Appearance > Themes > Add New > Upload Theme.
 After activation, open Settings > Permalinks, choose Post name, and save once.
 
-This theme serves the bundled static HTML pages and assets. Content is not editable as WordPress posts/pages. Search uses the bundled bilingual page index. Cart and account features are independent of WooCommerce; no checkout or payment is enabled.
+This theme serves the bundled static HTML pages, assets, and product catalog. Content is not editable as WordPress posts/pages. Search uses the bundled bilingual page index. The companion plugin can import catalog entries as WooCommerce drafts; products are not published and no checkout or payment is enabled.
 
 A Persian installation guide (INSTALL-FA.md) is distributed next to this ZIP.
 '''

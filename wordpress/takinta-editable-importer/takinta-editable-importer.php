@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Takinta Editable Site, Accounts & Shopping Cart
- * Description: Imports editable pages, adds WordPress accounts and a shopping cart with a purchase-request form, and preserves existing routes.
- * Version: 1.2.4
+ * Description: Imports editable pages, adds accounts and a shopping cart, and can import catalog items as WooCommerce drafts.
+ * Version: 1.3.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -19,6 +19,10 @@ const TAKINTA_EDITABLE_FORCE_OPTION = 'takinta_editable_import_force';
 const TAKINTA_EDITABLE_IMPORTED_COUNT_OPTION = 'takinta_editable_imported_count';
 const TAKINTA_EDITABLE_SKIPPED_COUNT_OPTION = 'takinta_editable_skipped_count';
 const TAKINTA_EDITABLE_BATCH_SIZE = 20;
+const TAKINTA_WC_DRAFT_IMPORT_OFFSET_OPTION = 'takinta_wc_draft_import_offset';
+const TAKINTA_WC_DRAFT_IMPORT_CREATED_OPTION = 'takinta_wc_draft_import_created';
+const TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION = 'takinta_wc_draft_import_skipped';
+const TAKINTA_WC_DRAFT_IMPORT_BATCH_SIZE = 20;
 
 function takinta_editable_register_post_type() {
     $labels = array(
@@ -824,6 +828,250 @@ function takinta_editable_import_batch() {
     exit;
 }
 add_action('admin_post_takinta_editable_import_batch', 'takinta_editable_import_batch');
+
+function takinta_wc_draft_user_can_manage() {
+    return current_user_can('manage_options') || current_user_can('manage_woocommerce');
+}
+
+function takinta_wc_draft_import_admin_url($args = array()) {
+    $url = admin_url('admin.php?page=takinta-wc-draft-import');
+    return $args ? add_query_arg($args, $url) : $url;
+}
+
+function takinta_wc_draft_import_admin_menu() {
+    if (class_exists('WooCommerce')) {
+        add_submenu_page('woocommerce', 'ورود محصولات تکینتا به‌صورت پیش‌نویس', 'محصولات پیش‌نویس تکینتا', 'manage_woocommerce', 'takinta-wc-draft-import', 'takinta_wc_draft_import_render_page');
+    } else {
+        add_management_page('ورود محصولات تکینتا به WooCommerce', 'محصولات پیش‌نویس تکینتا', 'manage_options', 'takinta-wc-draft-import', 'takinta_wc_draft_import_render_page');
+    }
+}
+add_action('admin_menu', 'takinta_wc_draft_import_admin_menu');
+
+function takinta_wc_draft_import_catalog() {
+    $root = realpath(takinta_editable_static_root());
+    $path = $root ? realpath($root . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'products.json') : false;
+    if (!$root || !$path || strpos($path, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($path) || !is_readable($path)) {
+        return new WP_Error('takinta_catalog_missing', 'فایل کاتالوگ پیدا نشد؛ قالب Takinta Static Site نسخهٔ جدید را نصب یا به‌روزرسانی کن.');
+    }
+    $raw = file_get_contents($path);
+    $decoded = is_string($raw) ? json_decode($raw, true) : null;
+    if (!is_array($decoded) || empty($decoded['products']) || !is_array($decoded['products'])) {
+        return new WP_Error('takinta_catalog_invalid', 'ساختار فایل کاتالوگ معتبر نیست.');
+    }
+    return array_values($decoded['products']);
+}
+
+function takinta_wc_draft_source_excerpt($route) {
+    $root = realpath(takinta_editable_static_root());
+    $path = $root ? realpath($root . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $route)) : false;
+    if (!$root || !$path || strpos($path, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($path) || !is_readable($path)) { return ''; }
+    $html = file_get_contents($path);
+    if (!is_string($html) || $html === '' || !preg_match_all('~<meta\b[^>]*>~i', $html, $tags)) { return ''; }
+    foreach ($tags[0] as $tag) {
+        if (!preg_match("~\\bname\\s*=\\s*([\"'])(.*?)\\1~i", $tag, $name) || strtolower($name[2]) !== 'description') { continue; }
+        if (!preg_match("~\\bcontent\\s*=\\s*([\"'])(.*?)\\1~is", $tag, $content)) { continue; }
+        $text = html_entity_decode(wp_strip_all_tags($content[2]), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        return wp_trim_words(sanitize_textarea_field($text), 45, '…');
+    }
+    return '';
+}
+
+function takinta_wc_draft_source_image_url($src, $route) {
+    $src = trim((string) $src);
+    if ($src === '') { return ''; }
+    if (preg_match('~^https?://~i', $src)) { return esc_url_raw($src); }
+    if (strpos($src, '//') === 0) { return esc_url_raw((is_ssl() ? 'https:' : 'http:') . $src); }
+
+    $root = realpath(takinta_editable_static_root());
+    if (!$root) { return esc_url_raw($src); }
+    $src_path = wp_parse_url($src, PHP_URL_PATH);
+    if (!is_string($src_path) || $src_path === '') { return ''; }
+    $candidates = array(dirname($route) . '/' . $src_path, $src_path);
+    foreach ($candidates as $candidate) {
+        $candidate = str_replace('/', DIRECTORY_SEPARATOR, ltrim($candidate, '/'));
+        $resolved = realpath($root . DIRECTORY_SEPARATOR . $candidate);
+        if (!$resolved || strpos($resolved, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($resolved)) { continue; }
+        $relative = substr($resolved, strlen($root) + 1);
+        $theme_uri = untrailingslashit(get_template_directory_uri());
+        return esc_url_raw($theme_uri . '/static-site/' . str_replace(DIRECTORY_SEPARATOR, '/', $relative));
+    }
+    return esc_url_raw($src);
+}
+
+function takinta_wc_draft_existing_product($slug) {
+    $args = array(
+        'post_type' => 'product',
+        'post_status' => array('publish', 'draft', 'pending', 'private', 'future', 'trash'),
+        'numberposts' => 1,
+        'fields' => 'ids',
+        'no_found_rows' => true,
+    );
+    $by_source = get_posts(array_merge($args, array('meta_key' => '_takinta_catalog_slug', 'meta_value' => $slug)));
+    if (!empty($by_source)) { return (int) $by_source[0]; }
+    $by_slug = get_posts(array_merge($args, array('name' => $slug)));
+    return !empty($by_slug) ? (int) $by_slug[0] : 0;
+}
+
+function takinta_wc_draft_import_batch() {
+    if (!takinta_wc_draft_user_can_manage()) { wp_die('Unauthorized', '', array('response' => 403)); }
+    check_admin_referer('takinta_wc_draft_import_batch');
+    if (!class_exists('WooCommerce') || !post_type_exists('product')) {
+        wp_safe_redirect(takinta_wc_draft_import_admin_url(array('error' => 'woocommerce')));
+        exit;
+    }
+    $catalog = takinta_wc_draft_import_catalog();
+    if (is_wp_error($catalog)) {
+        wp_safe_redirect(takinta_wc_draft_import_admin_url(array('error' => 'catalog')));
+        exit;
+    }
+    $total = count($catalog);
+    $offset = isset($_POST['offset']) ? absint($_POST['offset']) : (int) get_option(TAKINTA_WC_DRAFT_IMPORT_OFFSET_OPTION, 0);
+    $offset = min($total, max(0, $offset));
+    $batch = array_slice($catalog, $offset, TAKINTA_WC_DRAFT_IMPORT_BATCH_SIZE);
+    $created = (int) get_option(TAKINTA_WC_DRAFT_IMPORT_CREATED_OPTION, 0);
+    $skipped = (int) get_option(TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION, 0);
+    $root = realpath(takinta_editable_static_root());
+    $locale = (string) get_option('WPLANG');
+    if ($locale === '') { $locale = get_locale(); }
+    $prefer_fa = strpos(strtolower($locale), 'fa') === 0;
+
+    foreach ($batch as $item) {
+        if (!is_array($item)) { $skipped++; continue; }
+        $slug = isset($item['slug']) ? sanitize_title($item['slug']) : '';
+        $title_en = isset($item['titleEn']) ? sanitize_text_field($item['titleEn']) : '';
+        $title_fa = isset($item['titleFa']) ? sanitize_text_field($item['titleFa']) : '';
+        if ($slug === '' || ($title_en === '' && $title_fa === '') || !preg_match('/^[a-z0-9-]+$/', $slug)) { $skipped++; continue; }
+        if (takinta_wc_draft_existing_product($slug)) { $skipped++; continue; }
+
+        $route = 'products/' . $slug . '.html';
+        $fa_route = 'fa/products/' . $slug . '.html';
+        $source_route = $prefer_fa ? $fa_route : $route;
+        $source_path = $root ? realpath($root . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $source_route)) : false;
+        if (!$source_path || strpos($source_path, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($source_path)) {
+            $source_route = $route;
+            $source_path = $root ? realpath($root . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $source_route)) : false;
+        }
+        if (!$source_path || strpos($source_path, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($source_path)) { $skipped++; continue; }
+
+        $title = $prefer_fa ? ($title_fa ?: $title_en) : ($title_en ?: $title_fa);
+        $post_id = wp_insert_post(array(
+            'post_type' => 'product',
+            'post_status' => 'draft',
+            'post_title' => $title,
+            'post_name' => $slug,
+            'post_content' => '',
+            'post_excerpt' => takinta_wc_draft_source_excerpt($source_route),
+            'post_author' => get_current_user_id(),
+            'comment_status' => 'closed',
+            'ping_status' => 'closed',
+        ), true);
+        if (is_wp_error($post_id) || !$post_id) { $skipped++; continue; }
+
+        if (taxonomy_exists('product_type')) { wp_set_object_terms($post_id, 'simple', 'product_type', false); }
+        update_post_meta($post_id, '_takinta_catalog_slug', $slug);
+        update_post_meta($post_id, '_takinta_title_en', $title_en);
+        update_post_meta($post_id, '_takinta_title_fa', $title_fa);
+        update_post_meta($post_id, '_takinta_source_route', $route);
+        update_post_meta($post_id, '_takinta_source_route_fa', $fa_route);
+        update_post_meta($post_id, '_takinta_source_category', isset($item['category']) ? sanitize_key($item['category']) : '');
+        $image_url = '';
+        if (!empty($item['images'][0]['src']) && is_string($item['images'][0]['src'])) {
+            $image_url = takinta_wc_draft_source_image_url($item['images'][0]['src'], $route);
+        }
+        update_post_meta($post_id, '_takinta_source_image_url', $image_url);
+        $created++;
+    }
+
+    $next = min($total, $offset + count($batch));
+    update_option(TAKINTA_WC_DRAFT_IMPORT_OFFSET_OPTION, $next, false);
+    update_option(TAKINTA_WC_DRAFT_IMPORT_CREATED_OPTION, $created, false);
+    update_option(TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION, $skipped, false);
+    $args = $next < $total ? array('continue' => '1') : array('complete' => '1');
+    wp_safe_redirect(takinta_wc_draft_import_admin_url($args));
+    exit;
+}
+add_action('admin_post_takinta_wc_draft_import_batch', 'takinta_wc_draft_import_batch');
+
+function takinta_wc_draft_import_reset() {
+    if (!takinta_wc_draft_user_can_manage()) { wp_die('Unauthorized', '', array('response' => 403)); }
+    check_admin_referer('takinta_wc_draft_import_reset');
+    update_option(TAKINTA_WC_DRAFT_IMPORT_OFFSET_OPTION, 0, false);
+    update_option(TAKINTA_WC_DRAFT_IMPORT_CREATED_OPTION, 0, false);
+    update_option(TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION, 0, false);
+    wp_safe_redirect(takinta_wc_draft_import_admin_url(array('reset' => '1')));
+    exit;
+}
+add_action('admin_post_takinta_wc_draft_import_reset', 'takinta_wc_draft_import_reset');
+
+function takinta_wc_draft_import_render_page() {
+    if (!takinta_wc_draft_user_can_manage()) { return; }
+    echo '<div class="wrap"><h1>انتقال کاتالوگ تکینتا به پیش‌نویس‌های WooCommerce</h1>';
+    if (!class_exists('WooCommerce') || !post_type_exists('product')) {
+        echo '<div class="notice notice-error"><p>WooCommerce فعال نیست. ابتدا آن را در افزونه‌ها فعال کن.</p></div></div>';
+        return;
+    }
+    $catalog = takinta_wc_draft_import_catalog();
+    if (is_wp_error($catalog)) {
+        echo '<div class="notice notice-error"><p>' . esc_html($catalog->get_error_message()) . '</p></div></div>';
+        return;
+    }
+    $total = count($catalog);
+    $offset = min($total, max(0, (int) get_option(TAKINTA_WC_DRAFT_IMPORT_OFFSET_OPTION, 0)));
+    $created = (int) get_option(TAKINTA_WC_DRAFT_IMPORT_CREATED_OPTION, 0);
+    $skipped = (int) get_option(TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION, 0);
+    $done = $offset >= $total;
+    $continue = isset($_GET['continue']) && sanitize_text_field(wp_unslash($_GET['continue'])) === '1' && !$done;
+
+    echo '<p>این ابزار ' . esc_html((string) $total) . ' محصول را در بسته‌های ۲۰تایی به‌صورت <strong>پیش‌نویس</strong> می‌سازد؛ صفحهٔ عمومی یا خرید فعالی ایجاد نمی‌شود.</p>';
+    echo '<ul><li>عنوان از زبان پیش‌فرض WordPress انتخاب می‌شود و هر دو عنوان فارسی/انگلیسی برای بازبینی ذخیره می‌شوند.</li><li>توضیح کوتاه موجود در صفحهٔ منبع کپی می‌شود؛ نشانی تصویر و مسیر صفحه فقط به‌عنوان مرجع ذخیره می‌شوند و تصویر دانلود نمی‌شود.</li><li><strong>قیمت، SKU و موجودی وارد نمی‌شوند</strong> و هیچ محصولی منتشر یا قابل خرید نمی‌شود.</li><li>محصول‌های موجود یا دارای همان slug بازنویسی نمی‌شوند.</li></ul>';
+    echo '<p><strong>پیشرفت:</strong> ' . esc_html((string) $offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>ساخته‌شده:</strong> ' . esc_html((string) $created) . ' &nbsp; <strong>ردشده/ازقبل‌موجود:</strong> ' . esc_html((string) $skipped) . '</p>';
+    echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $offset) . '" style="width:min(100%,640px);height:20px"></progress>';
+    if ($done) {
+        echo '<div class="notice notice-success"><p>بررسی کاتالوگ تمام شد. پیش‌نویس‌ها را از مسیر WooCommerce ← محصولات باز کن؛ این ابزار هیچ محصولی را حذف یا منتشر نمی‌کند.</p></div>';
+    } elseif ($continue) {
+        echo '<p>در حال واردکردن بستهٔ بعدی؛ صفحه تا چند لحظهٔ دیگر ادامه می‌دهد.</p>';
+    }
+    if (!$done) {
+        echo '<form id="takinta-wc-draft-import-form" method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:14px">';
+        echo '<input type="hidden" name="action" value="takinta_wc_draft_import_batch"><input type="hidden" name="offset" value="' . esc_attr((string) $offset) . '">';
+        wp_nonce_field('takinta_wc_draft_import_batch');
+        submit_button($offset > 0 ? 'ادامهٔ انتقال محصولات' : 'ساخت پیش‌نویس محصولات', 'primary', 'submit', false);
+        echo '</form>';
+    }
+    if ($done || $offset > 0) {
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline-block;margin-top:10px">';
+        echo '<input type="hidden" name="action" value="takinta_wc_draft_import_reset">';
+        wp_nonce_field('takinta_wc_draft_import_reset');
+        submit_button('شروع دوبارهٔ بررسی (بدون حذف محصول‌ها)', 'secondary', 'submit', false);
+        echo '</form>';
+    }
+    if ($continue) {
+        echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-import-form");if(f)f.submit();},500);</script>';
+    }
+    echo '<p class="description">برای تکمیل واقعی محصول‌ها، بعداً قیمت تأییدشده، تصاویر، دسته‌بندی، روش ارسال و درگاه پرداخت را جداگانه بررسی کن.</p></div>';
+}
+
+function takinta_wc_draft_add_source_meta_box() {
+    add_meta_box('takinta-wc-draft-source', 'منبع کاتالوگ تکینتا', 'takinta_wc_draft_render_source_meta_box', 'product', 'side', 'default');
+}
+add_action('add_meta_boxes_product', 'takinta_wc_draft_add_source_meta_box');
+
+function takinta_wc_draft_render_source_meta_box($post) {
+    $slug = get_post_meta($post->ID, '_takinta_catalog_slug', true);
+    if (!$slug) { echo '<p>این محصول از ابزار انتقال کاتالوگ تکینتا ساخته نشده است.</p>'; return; }
+    $title_en = get_post_meta($post->ID, '_takinta_title_en', true);
+    $title_fa = get_post_meta($post->ID, '_takinta_title_fa', true);
+    $route = get_post_meta($post->ID, '_takinta_source_route', true);
+    $fa_route = get_post_meta($post->ID, '_takinta_source_route_fa', true);
+    $category = get_post_meta($post->ID, '_takinta_source_category', true);
+    $image_url = get_post_meta($post->ID, '_takinta_source_image_url', true);
+    if ($title_en) { echo '<p><strong>English title:</strong><br>' . esc_html($title_en) . '</p>'; }
+    if ($title_fa) { echo '<p><strong>عنوان فارسی:</strong><br>' . esc_html($title_fa) . '</p>'; }
+    if ($category) { echo '<p><strong>دستهٔ منبع:</strong> ' . esc_html($category) . '</p>'; }
+    if ($route) { echo '<p><a href="' . esc_url(home_url('/' . ltrim($route, '/'))) . '" target="_blank" rel="noopener">صفحهٔ انگلیسی</a></p>'; }
+    if ($fa_route) { echo '<p><a href="' . esc_url(home_url('/' . ltrim($fa_route, '/'))) . '" target="_blank" rel="noopener">صفحهٔ فارسی</a></p>'; }
+    if ($image_url) { echo '<p><a href="' . esc_url($image_url) . '" target="_blank" rel="noopener">تصویر منبع (هنوز دانلود نشده)</a></p>'; }
+}
 
 function takinta_editable_reset_import() {
     if (!current_user_can('manage_options')) { wp_die('Unauthorized', '', array('response' => 403)); }
