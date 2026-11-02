@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 38" role="img" aria-label="Iran flag">
+  <rect width="60" height="38" fill="#fff"/>
+  <path fill="#239f40" d="M0 0h60v12.67H0z"/>
+  <path fill="#da0000" d="M0 25.33h60V38H0z"/>
+  <path fill="#da0000" d="M30 13.1c-1.6 0-2.7 1.2-2.7 2.9v.3c-1.3-1-2.8-.8-3.8.1 2 .1 2.8 1.3 3.3 2.4-.9.3-1.7.9-2.1 1.9 1.3-.8 2.7-.7 3.8 0 .6.4 1 1.1 1.2 2.1h.6c.2-1 .6-1.7 1.2-2.1 1.1-.7 2.5-.8 3.8 0-.4-1-1.2-1.6-2.1-1.9.5-1.1 1.3-2.3 3.3-2.4-1-.9-2.5-1.1-3.8-.1V16c0-1.7-1.1-2.9-2.7-2.9z"/>
+  <path fill="#fff" d="M0 12.4h2v.35H0zm4 0h2v.35H4zm4 0h2v.35H8zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zM0 25.25h2v.35H0zm4 0h2v.35H4zm4 0h2v.35H8zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2zm4 0h2v.35h-2z"/>
+</svg>

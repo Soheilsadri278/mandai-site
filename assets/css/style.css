@@ -1,5 +1,5 @@
 /* ============================================================
-   MANDAI DESIGN — استایل اصلی سایت
+   TAKINTA DESIGN — استایل اصلی سایت
    ------------------------------------------------------------
    ▸ پالت رنگ و فونت‌ها در «:root» — برای تغییر ظاهر کلی،
      فقط همین متغیرها را عوض کنید.
@@ -46,9 +46,11 @@
 *, *::before, *::after { box-sizing: border-box; border: 0 solid var(--border); margin: 0; padding: 0; }
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
   -webkit-text-size-adjust: 100%;
 }
 body {
+  overflow-x: clip;
   background: var(--white);
   color: var(--foreground);
   font-family: var(--font-sans);
@@ -465,6 +467,7 @@ section[id] { scroll-margin-top: 88px; }
   display: flex;
   gap: var(--slide-gap, 12px);
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;

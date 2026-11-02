@@ -1,5 +1,5 @@
 /* ============================================================
-   MANDAI DESIGN — جاوااسکریپت اصلی (بدون وابستگی خارجی)
+   TAKINTA DESIGN — جاوااسکریپت اصلی (بدون وابستگی خارجی)
    ------------------------------------------------------------
    شامل: نوار اعلان چرخشی، هدر چسبان، زیرمنوها، منوی موبایل،
    جستجو، اسلایدرها، آکاردئون سوالات، فرم تماس و خبرنامه، Toast
@@ -16,7 +16,7 @@
      Content stays visible if motion is reduced or JS is unavailable.
      ════════════════════════════════════════════════════════ */
   (function () {
-    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var reduceMotion = typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
 
     /* Thin reading-progress accent; transform-only updates avoid layout work. */
@@ -123,6 +123,27 @@
   var toastContainer = $("[data-toasts]");
   function showToast(title, desc, isError) {
     if (!toastContainer) return;
+    if (document.documentElement.dir === "rtl") {
+      var titleTranslations = {
+        "Search is a placeholder": "جست‌وجو هنوز راه‌اندازی نشده است",
+        "Error": "خطا", "Message sent": "پیام ارسال شد", "Subscribed": "عضویت انجام شد"
+      };
+      var descriptionTranslations = {
+        "Connect it to your future product catalog (WordPress search or WooCommerce).": "برای فعال‌شدن جست‌وجو باید آن را به کاتالوگ محصولات فروشگاه متصل کرد.",
+        "Thank you for your message! We will get back to you shortly.": "از پیام شما سپاسگزاریم. به‌زودی با شما تماس می‌گیریم.",
+        "Something went wrong. Please try again or call us directly.": "مشکلی پیش آمد. دوباره تلاش کنید یا مستقیماً با ما تماس بگیرید.",
+        "Thanks for subscribing! Please check your inbox.": "از عضویت شما سپاسگزاریم. لطفاً صندوق ورودی ایمیلتان را بررسی کنید.",
+        "Subscription failed. Please try again.": "عضویت انجام نشد. لطفاً دوباره تلاش کنید.",
+        "In the WordPress version this connects to WooCommerce / the real store logic.": "در نسخهٔ نهایی، این بخش به فروشگاه واقعی متصل خواهد شد."
+      };
+      title = titleTranslations[title] || title;
+      desc = descriptionTranslations[desc] || desc;
+      if (title && title.endsWith(" — demo placeholder")) {
+        var feature = title.slice(0, -" — demo placeholder".length);
+        var features = { "Country selector": "انتخاب کشور و ارز", "Account": "حساب کاربری", "Cart": "سبد خرید", "This feature": "این قابلیت" };
+        title = (features[feature] || feature) + " — نسخهٔ نمایشی";
+      }
+    }
     var el = document.createElement("div");
     el.className = "toast" + (isError ? " toast--error" : "");
     var t = document.createElement("div");
@@ -162,9 +183,17 @@
     var index = 0;
     function render() {
       var item = items[index];
+      var linkText = item.text;
+      if (/^tel:/i.test(item.href || "")) {
+        var phone = item.href.slice(4);
+        var phoneAt = linkText.lastIndexOf(phone);
+        if (phoneAt >= 0 && /^[+\d().\s-]+$/.test(phone)) {
+          linkText = linkText.slice(0, phoneAt) + '<bdi dir="ltr">' + phone + '</bdi>' + linkText.slice(phoneAt + phone.length);
+        }
+      }
       var html = item.href
-        ? '<a href="' + item.href + '">' + item.text + "</a>"
-        : item.text;
+        ? '<a href="' + item.href + '">' + linkText + "</a>"
+        : linkText;
       textEl.innerHTML = html;
       /* ریست انیمیشن */
       textEl.style.animation = "none";
@@ -202,7 +231,7 @@
      ════════════════════════════════════════════════════════ */
   (function () {
     var items = $$(".nav__item");
-    var isTouch = window.matchMedia("(hover: none)").matches;
+    var isTouch = typeof window.matchMedia === "function" && window.matchMedia("(hover: none)").matches;
 
     /* Submenu links enter in a left-to-right cascade on every open. */
     items.forEach(function (item) {
@@ -333,35 +362,97 @@
 
   /* ════════════════════════════════════════════════════════
      ۶) اسلایدرها (اسکرول + دکمه‌های قبلی/بعدی)
-        کارکرد: هر [data-carousel] با فلش‌های [data-carousel-prev/next]
-        لمس و سوایپ به‌صورت بومی با اسکرول افقی کار می‌کند.
+        ناوبری با scrollBy روی خود track و لبهٔ منطقی شروع/پایان انجام می‌شود؛
+        بنابراین جهت RTL به scrollLeft وابسته نیست.
      ════════════════════════════════════════════════════════ */
   (function () {
-    var carousels = $$("[data-carousel]");
+    var carousels = $("[data-carousel]") ? $$("[data-carousel]") : [];
     if (!carousels.length) return;
 
     carousels.forEach(function (track) {
       var section = track.closest("section") || document;
       var prevBtn = $("[data-carousel-prev]", section);
       var nextBtn = $("[data-carousel-next]", section);
+      var rtl = getComputedStyle(track).direction === "rtl";
 
-      function step() {
-        var slide = track.firstElementChild;
-        if (!slide) return 200;
-        var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 12;
-        return slide.getBoundingClientRect().width + gap;
+      function slides() {
+        return Array.prototype.filter.call(track.children, function (item) {
+          return !item.hidden && item.getClientRects().length > 0;
+        });
+      }
+      function rectState(items) {
+        var trackRect = track.getBoundingClientRect();
+        if (!items.length) return { atStart: true, atEnd: true, index: 0 };
+        if (track.scrollWidth <= track.clientWidth + 4) {
+          return { atStart: true, atEnd: true, index: 0 };
+        }
+
+        var firstRect = items[0].getBoundingClientRect();
+        var lastRect = items[items.length - 1].getBoundingClientRect();
+        var startOffset = rtl
+          ? Math.abs(firstRect.right - trackRect.right)
+          : Math.abs(firstRect.left - trackRect.left);
+        var endOffset = rtl
+          ? Math.abs(lastRect.left - trackRect.left)
+          : Math.abs(lastRect.right - trackRect.right);
+        var startEdge = rtl ? trackRect.right : trackRect.left;
+        var bestIndex = 0;
+        var bestDistance = Infinity;
+
+        items.forEach(function (item, index) {
+          var rect = item.getBoundingClientRect();
+          if (rect.right <= trackRect.left + 1 || rect.left >= trackRect.right - 1) return;
+          var edge = rtl ? rect.right : rect.left;
+          var distance = Math.abs(edge - startEdge);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+
+        return {
+          atStart: startOffset <= 4,
+          atEnd: endOffset <= 4,
+          index: bestIndex
+        };
       }
       function update() {
-        var max = track.scrollWidth - track.clientWidth;
-        if (prevBtn) prevBtn.disabled = track.scrollLeft <= 4;
-        if (nextBtn) nextBtn.disabled = track.scrollLeft >= max - 4;
+        var items = slides();
+        var state = rectState(items);
+        if (prevBtn) prevBtn.disabled = state.atStart;
+        if (nextBtn) nextBtn.disabled = state.atEnd;
       }
       function go(dir) {
-        track.scrollBy({ left: dir * step(), behavior: "smooth" });
+        var items = slides();
+        if (!items.length) return;
+        var state = rectState(items);
+        var index = Math.max(0, Math.min(items.length - 1, state.index + dir));
+        if (index === state.index) return;
+        var trackRect = track.getBoundingClientRect();
+        var itemRect = items[index].getBoundingClientRect();
+        var trackStart = rtl ? trackRect.right : trackRect.left;
+        var itemStart = rtl ? itemRect.right : itemRect.left;
+        track.scrollBy({ left: itemStart - trackStart, behavior: "smooth" });
       }
 
-      if (prevBtn) prevBtn.addEventListener("click", function () { go(-1); });
-      if (nextBtn) nextBtn.addEventListener("click", function () { go(1); });
+      [prevBtn, nextBtn].forEach(function (button) {
+        if (!button) return;
+        /* Pointer-focus can pan the document to an edge button on narrow viewports.
+           Keep focus for accessibility, but never let the browser scroll the page for it. */
+        button.addEventListener("mousedown", function (event) {
+          if (event.button !== 0) return;
+          event.preventDefault();
+          if (button.focus) button.focus({ preventScroll: true });
+        });
+      });
+      if (prevBtn) prevBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        go(-1);
+      });
+      if (nextBtn) nextBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        go(1);
+      });
 
       var ticking = false;
       track.addEventListener("scroll", function () {
@@ -370,8 +461,7 @@
         requestAnimationFrame(function () { update(); ticking = false; });
       }, { passive: true });
       window.addEventListener("resize", update);
-      update();
-      /* بعد از لود کامل فونت/تصاویر، وضعیت دکمه‌ها دوباره چک شود */
+      requestAnimationFrame(update);
       window.addEventListener("load", update);
     });
   })();
@@ -383,32 +473,47 @@
     var section = $("[data-reviews]");
     if (!section) return;
     var track = $("[data-carousel]", section);
-    var slides = track ? track.children.length : 0;
+    var slides = track ? Array.prototype.slice.call(track.children) : [];
+    var rtl = track && getComputedStyle(track).direction === "rtl";
 
-    if (slides > 1) {
+    if (slides.length > 1) {
       section.removeAttribute("data-single");
-      /* ساخت نقطه‌ها */
       var dotsWrap = $("[data-reviews-dots]", section);
       if (dotsWrap) {
-        for (var i = 0; i < slides; i++) {
-          (function (idx) {
-            var b = document.createElement("button");
-            b.type = "button";
-            b.setAttribute("aria-label", "Go to review " + (idx + 1));
-            b.addEventListener("click", function () {
-              var slide = track.children[idx];
-              if (slide) track.scrollTo({ left: slide.offsetLeft - track.offsetLeft, behavior: "smooth" });
-            });
-            dotsWrap.appendChild(b);
-          })(i);
-        }
-        /* هایلایت نقطه فعال */
+        slides.forEach(function (_, i) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.setAttribute("aria-label", "Go to review " + (i + 1));
+          b.addEventListener("click", function () {
+            var slide = slides[i];
+            if (slide) {
+              var trackRect = track.getBoundingClientRect();
+              var slideRect = slide.getBoundingClientRect();
+              var trackStart = rtl ? trackRect.right : trackRect.left;
+              var slideStart = rtl ? slideRect.right : slideRect.left;
+              track.scrollBy({ left: slideStart - trackStart, behavior: "smooth" });
+            }
+          });
+          dotsWrap.appendChild(b);
+        });
+
         var dots = $$("button", dotsWrap);
         function updateDots() {
-          var x = track.scrollLeft;
-          var w = track.clientWidth;
-          var active = Math.round(x / Math.max(w, 1));
-          dots.forEach(function (d, i) { d.classList.toggle("is-active", i === active); });
+          var trackRect = track.getBoundingClientRect();
+          var startEdge = rtl ? trackRect.right : trackRect.left;
+          var bestIndex = 0;
+          var bestDistance = Infinity;
+          slides.forEach(function (slide, index) {
+            var rect = slide.getBoundingClientRect();
+            if (rect.right <= trackRect.left + 1 || rect.left >= trackRect.right - 1) return;
+            var edge = rtl ? rect.right : rect.left;
+            var distance = Math.abs(edge - startEdge);
+            if (distance < bestDistance) {
+              bestDistance = distance;
+              bestIndex = index;
+            }
+          });
+          dots.forEach(function (dot, i) { dot.classList.toggle("is-active", i === bestIndex); });
         }
         track.addEventListener("scroll", function () {
           requestAnimationFrame(updateDots);
@@ -447,7 +552,7 @@
         panel._faqCloseTimer = window.setTimeout(function () {
           if (!panel.classList.contains("is-open")) panel.hidden = true;
           panel._faqCloseTimer = null;
-        }, window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 390);
+        }, typeof window.matchMedia === "function" && window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 390);
       }
     }
 
@@ -488,6 +593,13 @@
     var submitBtn = $("[data-contact-submit]");
 
     function showStatus(message, isError) {
+      if (document.documentElement.dir === "rtl") {
+        var messages = {
+          "Thank you for your message! We will get back to you shortly.": "از پیام شما سپاسگزاریم. به‌زودی با شما تماس می‌گیریم.",
+          "Something went wrong. Please try again or call us directly.": "مشکلی پیش آمد. دوباره تلاش کنید یا مستقیماً با ما تماس بگیرید."
+        };
+        message = messages[message] || message;
+      }
       if (!status) { showToast(isError ? "Error" : "Message sent", message, isError); return; }
       status.hidden = false;
       status.textContent = message;
@@ -573,6 +685,101 @@
         });
     });
   })();
+
+  /* Accessible before/after finish comparison used on the menswear page. */
+  $$("[data-finish-compare]").forEach(function (compare) {
+    var range = $("[data-finish-range]", compare);
+    if (!range) return;
+    var activePointerId = null;
+
+    function syncComparison() {
+      var value = Math.max(0, Math.min(100, Number(range.value) || 0));
+      compare.style.setProperty("--compare-position", value + "%");
+    }
+
+    function setFromPointer(event) {
+      var rect = compare.getBoundingClientRect();
+      if (!rect.width) return;
+      var value = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+      range.value = String(Math.round(value));
+      syncComparison();
+    }
+
+    range.addEventListener("input", syncComparison);
+    range.addEventListener("change", syncComparison);
+
+    /* Use the full comparison canvas as the drag target; keep the range input
+       in the tab order for keyboard and assistive-technology users. */
+    compare.addEventListener("pointerdown", function (event) {
+      if (event.isPrimary === false || (event.pointerType === "mouse" && event.button !== 0)) return;
+      activePointerId = event.pointerId;
+      if (compare.setPointerCapture) {
+        try { compare.setPointerCapture(event.pointerId); } catch (ignore) {}
+      }
+      if (range.focus) range.focus({ preventScroll: true });
+      setFromPointer(event);
+      if (event.cancelable) event.preventDefault();
+    });
+    compare.addEventListener("pointermove", function (event) {
+      if (activePointerId === event.pointerId) setFromPointer(event);
+    });
+    function stopPointer(event) {
+      if (activePointerId !== event.pointerId) return;
+      activePointerId = null;
+      if (compare.releasePointerCapture && compare.hasPointerCapture && compare.hasPointerCapture(event.pointerId)) {
+        try { compare.releasePointerCapture(event.pointerId); } catch (ignore) {}
+      }
+    }
+    compare.addEventListener("pointerup", stopPointer);
+    compare.addEventListener("pointercancel", stopPointer);
+    compare.addEventListener("lostpointercapture", function () { activePointerId = null; });
+
+    syncComparison();
+  });
+
+  /* Sortable product grids used on fixture collection pages. */
+  $$('[data-product-sort]').forEach(function (control) {
+    var grid = $(control.getAttribute('data-sort-target'));
+    if (!grid) return;
+    var originalProducts = Array.prototype.filter.call(grid.children, function (item) {
+      return item.matches && item.matches('.product');
+    });
+    var locale = (document.documentElement.lang || 'en').toLowerCase();
+
+    function productName(product) {
+      var name = $('.product__name', product);
+      return (name ? name.textContent : product.getAttribute('aria-label') || '').trim();
+    }
+
+    function productPrice(product) {
+      var price = $('.product__price', product);
+      if (!price) return Number.POSITIVE_INFINITY;
+      var normalized = price.textContent
+        .replace(/[۰-۹]/g, function (digit) { return String('۰۱۲۳۴۵۶۷۸۹'.indexOf(digit)); })
+        .replace(/[٠-٩]/g, function (digit) { return String('٠١٢٣٤٥٦٧٨٩'.indexOf(digit)); })
+        .replace(/[٬,]/g, '')
+        .replace(/٫/g, '.');
+      var match = normalized.match(/\d+(?:\.\d+)?/);
+      return match ? Number(match[0]) : Number.POSITIVE_INFINITY;
+    }
+
+    control.addEventListener('change', function () {
+      var mode = control.value;
+      var products = originalProducts.slice();
+      if (mode === 'price-asc') {
+        products.sort(function (a, b) { return productPrice(a) - productPrice(b); });
+      } else if (mode === 'price-desc') {
+        products.sort(function (a, b) { return productPrice(b) - productPrice(a); });
+      } else if (mode === 'name-asc') {
+        products.sort(function (a, b) { return productName(a).localeCompare(productName(b), locale, { sensitivity: 'base' }); });
+      } else if (mode === 'name-desc') {
+        products.sort(function (a, b) { return productName(b).localeCompare(productName(a), locale, { sensitivity: 'base' }); });
+      }
+      var fragment = document.createDocumentFragment();
+      products.forEach(function (product) { fragment.appendChild(product); });
+      grid.appendChild(fragment);
+    });
+  });
 
   /* ════════════════════════════════════════════════════════
      ۱۱) دکمه‌های نمایشی (حساب / سبد خرید / انتخاب کشور)

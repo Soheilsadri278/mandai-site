@@ -1,0 +1,155 @@
+/* Persian RTL layer. Load after style.css on fa pages. */
+@font-face {
+  font-family: "Vazirmatn";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../../fonts/vazirmatn-arabic-400.woff2") format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../../fonts/vazirmatn-arabic-600.woff2") format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../../fonts/vazirmatn-arabic-700.woff2") format("woff2");
+  unicode-range: U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0897-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC,U+102E0-102FB,U+10E60-10E7E,U+10EC2-10EC4,U+10EFC-10EFF,U+1EE00-1EE03,U+1EE05-1EE1F,U+1EE21-1EE22,U+1EE24,U+1EE27,U+1EE29-1EE32,U+1EE34-1EE37,U+1EE39,U+1EE3B,U+1EE42,U+1EE47,U+1EE49,U+1EE4B,U+1EE4D-1EE4F,U+1EE51-1EE52,U+1EE54,U+1EE57,U+1EE59,U+1EE5B,U+1EE5D,U+1EE5F,U+1EE61-1EE62,U+1EE64,U+1EE67-1EE6A,U+1EE6C-1EE72,U+1EE74-1EE77,U+1EE79-1EE7C,U+1EE7E,U+1EE80-1EE89,U+1EE8B-1EE9B,U+1EEA1-1EEA3,U+1EEA5-1EEA9,U+1EEAB-1EEBB,U+1EEF0-1EEF1;
+}
+
+html[lang="fa"],
+html[lang^="fa-"] {
+  --font-sans: "Vazirmatn", "Inter", Tahoma, Arial, sans-serif;
+  --font-serif: "Vazirmatn", "Inter", Tahoma, sans-serif;
+  --nav-enter-x: 14px;
+  direction: rtl;
+  text-align: start;
+  scroll-behavior: smooth;
+  font-synthesis: none;
+}
+html[lang="fa"] body,
+html[lang^="fa-"] body {
+  font-family: var(--font-sans);
+  line-height: 1.85;
+}
+html[lang="fa"] :is(p, li, label, input, textarea, select, button),
+html[lang^="fa-"] :is(p, li, label, input, textarea, select, button) {
+  letter-spacing: 0;
+}
+html[lang="fa"] .btn--outline,
+html[lang^="fa-"] .btn--outline {
+  letter-spacing: 0;
+  text-transform: none;
+}
+html[lang="fa"] .nav__dropdown,
+html[lang^="fa-"] .nav__dropdown { --nav-enter-x: 14px; }
+html[lang="fa"].motion-ready .motion-reveal:not(.is-visible),
+html[lang^="fa-"].motion-ready .motion-reveal:not(.is-visible) {
+  --motion-x: 28px;
+  --motion-y: 0px;
+}
+html[lang="fa"] .scroll-progress,
+html[lang^="fa-"] .scroll-progress { transform-origin: right center; }
+
+/* Mirror directional navigation controls, but keep logos and media controls unchanged. */
+html[lang="fa"] .arrow-btn__icon,
+html[lang="fa"] .reviews__arrow-icon,
+html[lang="fa"] .topbar__arrow svg,
+html[lang="fa"] .pet-look__arrow svg,
+html[lang^="fa-"] .arrow-btn__icon,
+html[lang^="fa-"] .reviews__arrow-icon,
+html[lang^="fa-"] .topbar__arrow svg,
+html[lang^="fa-"] .pet-look__arrow svg { transform: scaleX(-1); }
+html[lang="fa"] .nav__mega-media__inner,
+html[lang^="fa-"] .nav__mega-media__inner { text-align: start; }
+html[lang="fa"] .product__badge,
+html[lang^="fa-"] .product__badge { left: auto; right: 12px; }
+html[lang="fa"] .pet-look__hotspot,
+html[lang^="fa-"] .pet-look__hotspot { left: auto; right: var(--hotspot-x); }
+html[lang="fa"] .pet-look__arrow--prev,
+html[lang^="fa-"] .pet-look__arrow--prev { left: auto; right: -34px; }
+html[lang="fa"] .pet-look__arrow--next,
+html[lang^="fa-"] .pet-look__arrow--next { right: auto; left: -34px; }
+html[lang="fa"] .skip-link:focus,
+html[lang^="fa-"] .skip-link:focus { left: auto; inset-inline-start: 16px; }
+
+/* Keep embedded names, prices, phone numbers, email and web addresses LTR. */
+html[lang="fa"] bdi,
+html[lang^="fa-"] bdi,
+html[lang="fa"] [dir="ltr"],
+html[lang^="fa-"] [dir="ltr"] { unicode-bidi: isolate; }
+html[lang="fa"] input[type="email"],
+html[lang="fa"] input[type="tel"],
+html[lang^="fa-"] input[type="email"],
+html[lang^="fa-"] input[type="tel"] { direction: ltr; text-align: right; }
+
+@media (max-width: 520px) {
+  html[lang="fa"] .pet-look__arrow--prev,
+  html[lang^="fa-"] .pet-look__arrow--prev { right: 2px; }
+  html[lang="fa"] .pet-look__arrow--next,
+  html[lang^="fa-"] .pet-look__arrow--next { left: 2px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html[lang="fa"] { scroll-behavior: auto; }
+}
+
+/* Directional controls and motion follow the reading direction without mirroring imagery or branding. */
+html[dir="rtl"] .language-switch { white-space: nowrap; }
+html[dir="rtl"] .icon--arrow,
+html[dir="rtl"] [data-directional-icon="forward"] { transform: scaleX(-1); }
+html[dir="rtl"] .arrow-btn:hover:not(:disabled) { transform: translateX(-2px); }
+html[dir="rtl"] .arrow-btn[aria-label*="previous"]:hover:not(:disabled) { transform: translateX(2px); }
+html[dir="rtl"] .carousel__track,
+html[dir="rtl"] [data-carousel] { scroll-behavior: smooth; }
+html[dir="rtl"] :is(.sys-intro__title, .sys-intro__lead, .seo-text__heading, .ct-cards) { text-align: start; }
+html[dir="rtl"] .fsh-grid__btn--prev { left: auto; right: -14px; }
+html[dir="rtl"] .fsh-grid__btn--next { right: auto; left: -14px; }
+html[dir="rtl"] .fsh-grid__btn svg { transform: scaleX(-1); }
+html[dir="rtl"] .fsh-slider-head { flex-direction: row-reverse; }
+html[dir="rtl"] :is(.fsh-slider, .fsh-slider-row) { flex-direction: row-reverse; }
+html[dir="rtl"] .ct-captcha__brand { margin-left: 0; margin-right: auto; }
+html[dir="rtl"] .op-play svg { margin-left: 0; margin-right: 2px; }
+
+/* Keep the Persian desktop header from overflowing at the narrow-desktop breakpoint. */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  html[dir="rtl"] .site-header__utility { display: none; }
+  html[dir="rtl"] .site-header__nav { display: none; }
+  html[dir="rtl"] .site-header__menu-toggle { display: inline-flex; }
+  html[dir="rtl"] .site-header__main { gap: 16px; }
+}
+@media (min-width: 1280px) {
+  html[dir="rtl"] .site-header__utility { display: block; }
+  html[dir="rtl"] .site-header__nav { display: flex; min-width: 0; }
+  html[dir="rtl"] .site-header__menu-toggle { display: none; }
+}
+
+/* Keep carousel arrows inside their RTL viewport; the old negative left/right offsets
+   could enlarge the document's scroll width on Persian pages. */
+html[dir="rtl"] .fsh-grid__btn--prev,
+html[dir="rtl"] .fref-grid .fsh-grid__btn--prev { left: auto; right: 4px; }
+html[dir="rtl"] .fsh-grid__btn--next,
+html[dir="rtl"] .fref-grid .fsh-grid__btn--next { right: auto; left: 4px; }
+
+/* Give inline Persian CTA copy breathing room beside its button (and wrap cleanly on narrow screens). */
+html[dir="rtl"] :is(.fsh-sys__cta, .rcpt-cta, .ont-cross__action) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 14px;
+  row-gap: 8px;
+}
+
+/* Preserve LTR number order and pin the phone to the right edge of the RTL footer column. */
+html[dir="rtl"] .site-footer__contact > .site-footer__phone {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  text-align: right;
+}
