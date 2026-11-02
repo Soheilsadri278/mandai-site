@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.3
+Version: 1.0.4
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -206,20 +206,54 @@ function takinta_static_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('html5', array('search-form', 'comment-form', 'gallery', 'caption', 'style', 'script'));
+    add_theme_support('woocommerce');
 }
 add_action('after_setup_theme', 'takinta_static_theme_setup');
+
+function takinta_static_enqueue_commerce_assets() {
+    $commerce_page = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
+    if (!$commerce_page) { return; }
+    $base = untrailingslashit(get_template_directory_uri()) . '/static-site/assets/css/';
+    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.4');
+    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.4');
+    if (is_rtl()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.4'); }
+}
+add_action('wp_enqueue_scripts', 'takinta_static_enqueue_commerce_assets');
 '''
 
 INDEX_PHP = '''<?php
 if (!defined('ABSPATH')) { exit; }
 get_header();
+$is_commerce = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
+if ($is_commerce) {
+    $home = home_url('/');
+    $logo = get_template_directory_uri() . '/static-site/images/logo.png';
+    $is_fa = is_rtl();
+    ?>
+    <header class="site-header"><div class="container site-header__main">
+      <a href="<?php echo esc_url($home); ?>" class="site-header__logo" aria-label="Takinta home"><img src="<?php echo esc_url($logo); ?>" alt="Takinta" class="site-header__logo-img"></a>
+      <nav class="takinta-commerce-nav" aria-label="Store navigation">
+        <a href="<?php echo esc_url($home); ?>"><?php echo esc_html($is_fa ? 'صفحهٔ اصلی' : 'Home'); ?></a>
+        <?php if (function_exists('wc_get_cart_url')) : ?><a href="<?php echo esc_url(wc_get_cart_url()); ?>"><?php echo esc_html($is_fa ? 'سبد خرید' : 'Shopping cart'); ?></a><?php endif; ?>
+      </nav>
+    </div></header>
+    <style>.takinta-commerce-nav{display:flex;gap:20px;margin-inline-start:auto}.takinta-commerce-nav a{color:inherit;text-decoration:none;font-weight:600}.takinta-commerce-content{max-width:1200px;margin:38px auto 64px;padding-inline:20px}.takinta-commerce-content>h1{margin:0 0 24px;font-size:clamp(28px,4vw,40px)}.takinta-commerce-footer{padding:28px 20px;text-align:center;background:#f4f3f1;color:#59665c}</style>
+    <main class="woocommerce takinta-commerce-content" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
+      <?php while (have_posts()) : the_post(); ?><h1><?php the_title(); ?></h1><?php the_content(); ?><?php endwhile; ?>
+    </main>
+    <footer class="takinta-commerce-footer">© <?php echo esc_html((string) gmdate('Y')); ?> Takinta</footer>
+    <?php
+} else {
+    ?>
+    <main class="takinta-wp-fallback">
+      <h1><?php esc_html_e('Page not found', 'takinta-static'); ?></h1>
+      <p><?php esc_html_e('Check the address or return to the home page.', 'takinta-static'); ?></p>
+      <p><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'takinta-static'); ?></a></p>
+    </main>
+    <?php
+}
+get_footer();
 ?>
-<main class="takinta-wp-fallback">
-  <h1><?php esc_html_e('Page not found', 'takinta-static'); ?></h1>
-  <p><?php esc_html_e('Check the address or return to the home page.', 'takinta-static'); ?></p>
-  <p><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'takinta-static'); ?></a></p>
-</main>
-<?php get_footer(); ?>
 '''
 HEADER_PHP = '''<!doctype html>
 <html <?php language_attributes(); ?>>
@@ -240,7 +274,7 @@ THEME_README = '''TAKINTA STATIC SITE THEME
 Install this ZIP from WordPress Admin > Appearance > Themes > Add New > Upload Theme.
 After activation, open Settings > Permalinks, choose Post name, and save once.
 
-This theme serves the bundled static HTML pages, assets, and product catalog. Content is not editable as WordPress posts/pages. Search uses the bundled bilingual page index. The companion plugin can import catalog entries as WooCommerce drafts; products are not published and no checkout or payment is enabled.
+This theme serves the bundled static HTML pages, assets, and product catalog. Content is not editable as WordPress posts/pages. Search uses the bundled bilingual page index. The companion plugin can import catalog entries as WooCommerce drafts; manually add approved prices and publish products before ordering. It also provides a manual card-to-card gateway; recipient details and manual payment verification must be configured in WooCommerce. Checkout is available only after WooCommerce is configured.
 
 A Persian installation guide (INSTALL-FA.md) is distributed next to this ZIP.
 '''

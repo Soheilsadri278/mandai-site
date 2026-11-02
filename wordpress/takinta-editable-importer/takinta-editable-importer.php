@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Takinta Editable Site, Accounts & Shopping Cart
- * Description: Imports editable pages, adds accounts and a shopping cart, and can import catalog items as WooCommerce drafts.
- * Version: 1.3.0
+ * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
+ * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
+ * Version: 1.4.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -372,6 +372,7 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
 }
 
 function takinta_cart_url($is_fa) {
+    if (class_exists('WooCommerce') && function_exists('wc_get_cart_url')) { return wc_get_cart_url(); }
     return home_url($is_fa ? '/fa/cart/' : '/cart/');
 }
 
@@ -554,6 +555,42 @@ function takinta_cart_runtime_assets($is_fa) {
     return '<style>.takinta-cart-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}.takinta-cart-qty{display:inline-flex;align-items:center;gap:7px;font-size:14px}.takinta-cart-qty input{width:76px;min-height:42px;padding:7px;border:1px solid #c8cdc8;border-radius:7px;font:inherit}.takinta-cart-controls .pp-button{cursor:pointer}.takinta-cart-status{flex-basis:100%;min-height:1.4em;font-size:14px;color:#265b3d}.cart-badge[data-takinta-cart-count]{min-width:1.2em;text-align:center}</style>' . $script;
 }
 
+function takinta_wc_product_for_static_route($route) {
+    if (!class_exists('WooCommerce') || !function_exists('wc_get_product')) { return false; }
+    $slug = sanitize_title(basename((string) $route, '.html'));
+    if ($slug === '') { return false; }
+    $post = get_page_by_path($slug, OBJECT, 'product');
+    if (!$post || $post->post_status !== 'publish') { return false; }
+    $product = wc_get_product($post->ID);
+    if (!$product || !$product->is_purchasable() || !$product->is_in_stock()) { return false; }
+    return $product;
+}
+
+function takinta_wc_static_order_controls($product, $is_fa) {
+    $quantity_label = $is_fa ? 'تعداد' : 'Qty';
+    if ($product) {
+        $button_label = $is_fa ? 'افزودن به سبد خرید' : 'Add to shopping cart';
+        $price_html = wp_kses_post($product->get_price_html());
+        return '<div class="takinta-wc-order-controls"><div class="takinta-wc-product-price">' . $price_html . '</div><form class="takinta-cart-controls" method="get" action="' . esc_url(wc_get_cart_url()) . '"><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" name="quantity" min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><input type="hidden" name="add-to-cart" value="' . esc_attr((string) $product->get_id()) . '"><input type="hidden" name="takinta_wc_add_to_cart" value="1"><button type="submit" class="pp-button pp-button--dark">' . esc_html($button_label) . '</button></form></div>';
+    }
+    $message = $is_fa
+        ? 'برای فعال‌شدن سفارش، قیمت تأییدشده را در WooCommerce وارد و محصول را منتشر کنید.'
+        : 'To enable ordering, enter the approved price in WooCommerce and publish this product.';
+    return '<p class="takinta-wc-order-pending" role="status">' . esc_html($message) . '</p>';
+}
+
+function takinta_wc_static_order_styles() {
+    return '<style>.takinta-wc-order-controls{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 12px}.takinta-wc-product-price{font-size:20px;font-weight:700;color:var(--ta-ink,#26342c)}.takinta-wc-order-controls form{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0}.takinta-wc-order-controls .takinta-cart-qty{display:inline-flex;align-items:center;gap:7px;font-size:14px}.takinta-wc-order-controls .takinta-cart-qty input{width:76px;min-height:42px;padding:7px;border:1px solid #c8cdc8;border-radius:7px;font:inherit}.takinta-wc-order-controls .pp-button{cursor:pointer}.takinta-wc-order-pending{margin:0 0 12px;color:#59665c;font-size:14px;line-height:1.6}</style>';
+}
+
+function takinta_wc_static_add_to_cart_redirect($url, $product) {
+    if (isset($_REQUEST['takinta_wc_add_to_cart']) && function_exists('wc_get_cart_url')) {
+        return wc_get_cart_url();
+    }
+    return $url;
+}
+add_filter('woocommerce_add_to_cart_redirect', 'takinta_wc_static_add_to_cart_redirect', 10, 2);
+
 function takinta_cart_transform_static_document($document, $route) {
     $is_fa = strpos($route, 'fa/') === 0;
     $cart_url = takinta_cart_url($is_fa);
@@ -566,20 +603,39 @@ function takinta_cart_transform_static_document($document, $route) {
         $canonical_route = strpos($route, 'fa/') === 0 ? substr($route, 3) : $route;
         $button_label = $is_fa ? 'افزودن به سبد خرید' : 'Add to shopping cart';
         $quantity_label = $is_fa ? 'تعداد' : 'Qty';
-        $controls = '<div class="takinta-cart-controls" data-takinta-cart-controls><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" data-takinta-cart-quantity min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><button type="button" class="pp-button pp-button--dark" data-takinta-add-to-cart data-takinta-product-id="' . esc_attr($canonical_route) . '" data-takinta-product-route="' . esc_attr($route) . '" data-takinta-product-title="' . esc_attr($title) . '" data-takinta-product-url="' . esc_url(takinta_editable_public_url($route)) . '">' . esc_html($button_label) . '</button><span class="takinta-cart-status" data-takinta-cart-status aria-live="polite"></span></div>';
+        if (class_exists('WooCommerce')) {
+            $document = preg_replace('~<a\\b(?=[^>]*\\bdata-product-quote\\b)[^>]*>.*?</a\\s*>~is', '', $document, 1);
+            $orderable_product = takinta_wc_product_for_static_route($canonical_route);
+            $controls = takinta_wc_static_order_controls($orderable_product, $is_fa);
+            $pricing_note = $orderable_product
+                ? ($is_fa ? 'هزینهٔ ارسال و مالیات بر اساس تنظیمات checkout محاسبه می‌شوند.' : 'Shipping and taxes follow the store settings shown at checkout.')
+                : ($is_fa ? 'این کالا تا ثبت قیمت تأییدشده و انتشار در WooCommerce قابل سفارش نیست.' : 'This item cannot be ordered until an approved price is entered and it is published in WooCommerce.');
+            $note_written = false;
+            $document = preg_replace_callback('~<p\\b(?=[^>]*\\bclass="[^"]*\\b(?:pp-market-note|pp-tax-note)\\b[^"]*")[^>]*>.*?</p\\s*>~is', function($match) use ($pricing_note, &$note_written) {
+                if ($note_written) { return ''; }
+                $note_written = true;
+                return '<p class="pp-market-note">' . esc_html($pricing_note) . '</p>';
+            }, $document);
+        } else {
+            $controls = '<div class="takinta-cart-controls" data-takinta-cart-controls><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" data-takinta-cart-quantity min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><button type="button" class="pp-button pp-button--dark" data-takinta-add-to-cart data-takinta-product-id="' . esc_attr($canonical_route) . '" data-takinta-product-route="' . esc_attr($route) . '" data-takinta-product-title="' . esc_attr($title) . '" data-takinta-product-url="' . esc_url(takinta_editable_public_url($route)) . '">' . esc_html($button_label) . '</button><span class="takinta-cart-status" data-takinta-cart-status aria-live="polite"></span></div>';
+        }
         $document = preg_replace_callback('~<div\b(?=[^>]*\bclass="[^"]*\bpp-actions\b[^"]*")[^>]*>~i', function($match) use ($controls) { return $match[0] . $controls; }, $document, 1);
     }
 
-    $document = preg_replace_callback('~(<button\b(?=[^>]*\bdata-demo="Cart")[^>]*>)(.*?)</button\s*>~is', function($matches) use ($cart_url, $is_fa) {
+    $initial_cart_count = 0;
+    if (class_exists('WooCommerce') && function_exists('WC') && WC()->cart) {
+        $initial_cart_count = (int) WC()->cart->get_cart_contents_count();
+    }
+    $document = preg_replace_callback('~(<button\b(?=[^>]*\bdata-demo="Cart")[^>]*>)(.*?)</button\s*>~is', function($matches) use ($cart_url, $is_fa, $initial_cart_count) {
         $class = 'icon-btn';
         if (preg_match('~\bclass="([^"]*)"~i', $matches[1], $class_match)) { $class = $class_match[1]; }
-        $inner = preg_replace_callback('~<span\b(?=[^>]*\bclass="[^"]*\bcart-badge\b[^"]*")[^>]*>.*?</span>~is', function($badge) {
+        $inner = preg_replace_callback('~<span\b(?=[^>]*\bclass="[^"]*\bcart-badge\b[^"]*")[^>]*>.*?</span>~is', function($badge) use ($initial_cart_count) {
             $opening = strstr($badge[0], '>', true);
-            if ($opening === false) { return '<span class="cart-badge" data-takinta-cart-count>0</span>'; }
+            if ($opening === false) { return '<span class="cart-badge" data-takinta-cart-count>' . esc_html((string) $initial_cart_count) . '</span>'; }
             if (strpos($opening, 'data-takinta-cart-count') === false) { $opening .= ' data-takinta-cart-count="1"'; }
-            return $opening . '>0</span>';
+            return $opening . '>' . esc_html((string) $initial_cart_count) . '</span>';
         }, $matches[2], 1);
-        if (strpos($inner, 'data-takinta-cart-count') === false) { $inner .= '<span class="cart-badge" data-takinta-cart-count>0</span>'; }
+        if (strpos($inner, 'data-takinta-cart-count') === false) { $inner .= '<span class="cart-badge" data-takinta-cart-count>' . esc_html((string) $initial_cart_count) . '</span>'; }
         $label = $is_fa ? 'سبد خرید' : 'Shopping cart';
         return '<a class="' . esc_attr($class) . '" href="' . esc_url($cart_url) . '" aria-label="' . esc_attr($label) . '" data-takinta-cart-link>' . $inner . '</a>';
     }, $document);
@@ -590,11 +646,41 @@ function takinta_cart_transform_static_document($document, $route) {
     }, $document, 1);
 }
 
+function takinta_wc_render_cart_shortcode_fallback($is_fa) {
+    if (!class_exists('WooCommerce') || !function_exists('do_shortcode') || !function_exists('get_header') || !function_exists('get_footer')) { return false; }
+    $theme_uri = untrailingslashit(get_template_directory_uri());
+    if (function_exists('wp_enqueue_style')) {
+        wp_enqueue_style('woocommerce-general');
+        wp_enqueue_style('takinta-wc-cart-fallback', $theme_uri . '/static-site/assets/css/style.css', array(), '1.0.4');
+        if ($is_fa) { wp_enqueue_style('takinta-wc-cart-fallback-rtl', $theme_uri . '/static-site/assets/css/rtl.css', array('takinta-wc-cart-fallback'), '1.0.4'); }
+    }
+    get_header();
+    $direction = $is_fa ? 'rtl' : 'ltr';
+    $title = $is_fa ? 'سبد خرید' : 'Shopping cart';
+    $home = home_url($is_fa ? '/fa/' : '/');
+    $logo = $theme_uri . '/static-site/images/logo.png';
+    echo '<header class="site-header"><div class="container site-header__main"><a class="site-header__logo" href="' . esc_url($home) . '"><img class="site-header__logo-img" src="' . esc_url($logo) . '" alt="Takinta"></a></div></header>';
+    echo '<main class="woocommerce takinta-wc-cart-fallback" dir="' . esc_attr($direction) . '" style="max-width:1200px;margin:40px auto;padding:0 20px"><h1>' . esc_html($title) . '</h1>' . do_shortcode('[woocommerce_cart]') . '</main>';
+    get_footer();
+    exit;
+}
+
 function takinta_account_handle_route() {
     if (is_admin() || (defined('REST_REQUEST') && REST_REQUEST)) { return; }
     $route = takinta_account_route_from_request();
     if (!$route) { return; }
     if ($route['page'] === 'cart') {
+        if (class_exists('WooCommerce') && function_exists('wc_get_page_id') && function_exists('wc_get_cart_url')) {
+            $wc_cart_page_id = (int) wc_get_page_id('cart');
+            if ($wc_cart_page_id > 0) {
+                if ($route['fa'] || !is_page($wc_cart_page_id)) {
+                    wp_safe_redirect(wc_get_cart_url());
+                    exit;
+                }
+                return; // Let WooCommerce render its configured cart page.
+            }
+            takinta_wc_render_cart_shortcode_fallback($route['fa']);
+        }
         $error = takinta_cart_process_submission($route['fa']);
         takinta_cart_render_page($route['fa'], $error);
         exit;
@@ -681,7 +767,8 @@ function takinta_editable_render_imported_route() {
     $document = preg_replace_callback("~(<script\\b[^>]*\\bsrc\\s*=\\s*)([\"'])([^\"']*assets/js/main\\.js)(?:\\?[^\"']*)?([\"'])~i", function($matches) {
         return $matches[1] . $matches[2] . $matches[3] . '?v=20261102-search' . $matches[4];
     }, $document);
-    $document = preg_replace('~</body>~i', takinta_cart_runtime_assets(strpos($route, 'fa/') === 0) . '</body>', $document, 1);
+    $runtime_assets = class_exists('WooCommerce') ? takinta_wc_static_order_styles() : takinta_cart_runtime_assets(strpos($route, 'fa/') === 0);
+    $document = preg_replace('~</body>~i', $runtime_assets . '</body>', $document, 1);
 
     status_header(200);
     nocache_headers();
@@ -1048,7 +1135,7 @@ function takinta_wc_draft_import_render_page() {
     if ($continue) {
         echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-import-form");if(f)f.submit();},500);</script>';
     }
-    echo '<p class="description">برای تکمیل واقعی محصول‌ها، بعداً قیمت تأییدشده، تصاویر، دسته‌بندی، روش ارسال و درگاه پرداخت را جداگانه بررسی کن.</p></div>';
+    echo '<p class="description">برای فعال‌کردن سفارش، برای هر محصول قیمت تأییدشده را در ویرایش محصول وارد و آن را منتشر کن؛ سپس شماره کارت مقصد و راهنمای پرداخت را از WooCommerce ← پیکربندی ← پرداخت‌ها ← Takinta Card-to-card transfer تنظیم کن.</p></div>';
 }
 
 function takinta_wc_draft_add_source_meta_box() {
@@ -1072,6 +1159,141 @@ function takinta_wc_draft_render_source_meta_box($post) {
     if ($fa_route) { echo '<p><a href="' . esc_url(home_url('/' . ltrim($fa_route, '/'))) . '" target="_blank" rel="noopener">صفحهٔ فارسی</a></p>'; }
     if ($image_url) { echo '<p><a href="' . esc_url($image_url) . '" target="_blank" rel="noopener">تصویر منبع (هنوز دانلود نشده)</a></p>'; }
 }
+
+function takinta_wc_card_transfer_init_gateway() {
+    if (!class_exists('WC_Payment_Gateway') || class_exists('Takinta_WC_Card_Transfer_Gateway')) { return; }
+
+    class Takinta_WC_Card_Transfer_Gateway extends WC_Payment_Gateway {
+        public function __construct() {
+            $this->id = 'takinta_card_transfer';
+            $this->icon = '';
+            $this->has_fields = false;
+            $this->method_title = 'Takinta Card-to-card transfer';
+            $this->method_description = 'Manual card-to-card payment. Orders stay on hold until an administrator verifies the transfer.';
+            $this->supports = array('products');
+            $this->init_form_fields();
+            $this->init_settings();
+            $this->enabled = $this->get_option('enabled', 'yes');
+            $this->title = $this->get_option('title', 'کارت‌به‌کارت / Card-to-card transfer');
+            $this->description = $this->get_option('description', 'مبلغ سفارش را به کارت مقصد منتقل کنید؛ سفارش پس از بررسی دستی تأیید می‌شود. / Transfer the order total to the card below; payment is confirmed manually.');
+            $this->account_name = $this->get_option('account_name', '');
+            $this->card_number = $this->get_option('card_number', '');
+            $this->bank_name = $this->get_option('bank_name', '');
+            $this->instructions = $this->get_option('instructions', 'شماره سفارش را در توضیحات انتقال درج کنید. پس از بررسی و تأیید پرداخت، وضعیت سفارش به‌روزرسانی می‌شود. / Include the order number with your transfer. The order status is updated after manual verification.');
+
+            add_action('woocommerce_update_options_payment_gateways_' . $this->id, array($this, 'process_admin_options'));
+            add_action('woocommerce_thankyou_' . $this->id, array($this, 'thankyou_page'));
+            add_action('woocommerce_email_before_order_table', array($this, 'email_instructions'), 10, 3);
+        }
+
+        public function init_form_fields() {
+            $this->form_fields = array(
+                'enabled' => array(
+                    'title' => 'فعال‌سازی',
+                    'type' => 'checkbox',
+                    'label' => 'فعال‌کردن پرداخت کارت‌به‌کارت',
+                    'default' => 'yes',
+                ),
+                'title' => array(
+                    'title' => 'عنوان روش پرداخت',
+                    'type' => 'text',
+                    'default' => 'کارت‌به‌کارت / Card-to-card transfer',
+                    'desc_tip' => true,
+                    'description' => 'عنوانی که مشتری در صفحهٔ پرداخت می‌بیند.',
+                ),
+                'description' => array(
+                    'title' => 'توضیح در صفحهٔ پرداخت',
+                    'type' => 'textarea',
+                    'default' => 'مبلغ سفارش را به کارت مقصد منتقل کنید؛ سفارش پس از بررسی دستی تأیید می‌شود. / Transfer the order total to the card below; payment is confirmed manually.',
+                ),
+                'account_name' => array(
+                    'title' => 'نام صاحب کارت',
+                    'type' => 'text',
+                    'default' => '',
+                ),
+                'card_number' => array(
+                    'title' => 'شماره کارت مقصد',
+                    'type' => 'text',
+                    'default' => '',
+                    'description' => 'این شماره در صفحهٔ پرداخت و راهنمای سفارش به مشتری نمایش داده می‌شود. آن را فقط در پیشخوان امن WordPress وارد کنید، نه در کد یا مخزن GitHub.',
+                ),
+                'bank_name' => array(
+                    'title' => 'نام بانک (اختیاری)',
+                    'type' => 'text',
+                    'default' => '',
+                ),
+                'instructions' => array(
+                    'title' => 'راهنمای پرداخت پس از ثبت سفارش',
+                    'type' => 'textarea',
+                    'default' => 'شماره سفارش را در توضیحات انتقال درج کنید. پس از بررسی و تأیید پرداخت، وضعیت سفارش به‌روزرسانی می‌شود. / Include the order number with your transfer. The order status is updated after manual verification.',
+                    'description' => 'این راهنما در صفحهٔ تشکر و ایمیل سفارشِ در انتظار پرداخت نمایش داده می‌شود.',
+                ),
+            );
+        }
+
+        public function is_available() {
+            return parent::is_available() && trim((string) $this->card_number) !== '';
+        }
+
+        public function payment_fields() {
+            if ($this->description !== '') { echo wpautop(wp_kses_post($this->description)); }
+            echo '<div class="takinta-card-transfer-details">';
+            if (trim((string) $this->account_name) !== '') {
+                echo '<p><strong>به نام / Account holder:</strong> ' . esc_html($this->account_name) . '</p>';
+            }
+            if (trim((string) $this->card_number) !== '') {
+                echo '<p><strong>شماره کارت / Card number:</strong> <code dir="ltr">' . esc_html($this->card_number) . '</code></p>';
+            }
+            if (trim((string) $this->bank_name) !== '') {
+                echo '<p><strong>بانک / Bank:</strong> ' . esc_html($this->bank_name) . '</p>';
+            }
+            echo '<p>پرداخت به‌صورت دستی بررسی می‌شود و ثبت سفارش به معنی تأیید واریز نیست. / Payment is verified manually; placing an order does not confirm receipt.</p></div>';
+        }
+
+        private function render_order_instructions($order, $plain_text = false) {
+            if (!$order || $order->get_payment_method() !== $this->id) { return; }
+            $parts = array();
+            if (trim((string) $this->instructions) !== '') { $parts[] = trim(wp_strip_all_tags($this->instructions)); }
+            if (trim((string) $this->account_name) !== '') { $parts[] = 'به نام / Account holder: ' . trim((string) $this->account_name); }
+            if (trim((string) $this->card_number) !== '') { $parts[] = 'شماره کارت / Card number: ' . trim((string) $this->card_number); }
+            if (trim((string) $this->bank_name) !== '') { $parts[] = 'بانک / Bank: ' . trim((string) $this->bank_name); }
+            if (!$parts) { return; }
+            if ($plain_text) {
+                echo "\n" . implode("\n", $parts) . "\n";
+                return;
+            }
+            echo '<section class="takinta-card-transfer-instructions"><h2>راهنمای پرداخت کارت‌به‌کارت / Card-to-card payment instructions</h2><p>' . implode('</p><p>', array_map('esc_html', $parts)) . '</p></section>';
+        }
+
+        public function thankyou_page($order_id) {
+            $this->render_order_instructions(wc_get_order($order_id));
+        }
+
+        public function email_instructions($order, $sent_to_admin, $plain_text = false) {
+            if ($sent_to_admin || !$order || $order->get_status() !== 'on-hold') { return; }
+            $this->render_order_instructions($order, $plain_text);
+        }
+
+        public function process_payment($order_id) {
+            $order = wc_get_order($order_id);
+            if (!$order) { return array('result' => 'failure'); }
+            $order->update_status('on-hold', 'Awaiting manual card-to-card payment verification.');
+            if (function_exists('wc_reduce_stock_levels')) { wc_reduce_stock_levels($order_id); }
+            if (function_exists('WC') && WC()->cart) { WC()->cart->empty_cart(); }
+            return array('result' => 'success', 'redirect' => $this->get_return_url($order));
+        }
+    }
+}
+add_action('plugins_loaded', 'takinta_wc_card_transfer_init_gateway', 11);
+
+function takinta_wc_card_transfer_add_gateway($gateways) {
+    if (!class_exists('Takinta_WC_Card_Transfer_Gateway') && class_exists('WC_Payment_Gateway')) {
+        takinta_wc_card_transfer_init_gateway();
+    }
+    if (class_exists('Takinta_WC_Card_Transfer_Gateway')) { $gateways[] = 'Takinta_WC_Card_Transfer_Gateway'; }
+    return $gateways;
+}
+add_filter('woocommerce_payment_gateways', 'takinta_wc_card_transfer_add_gateway', 20);
 
 function takinta_editable_reset_import() {
     if (!current_user_can('manage_options')) { wp_die('Unauthorized', '', array('response' => 403)); }
