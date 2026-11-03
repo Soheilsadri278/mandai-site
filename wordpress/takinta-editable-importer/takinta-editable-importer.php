@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.1
+ * Version: 1.5.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -154,6 +154,12 @@ function takinta_account_route_from_request() {
 function takinta_account_url($is_fa, $register = false) {
     $path = ($is_fa ? '/fa/' : '/') . ($register ? 'register/' : 'account/');
     return home_url($path);
+}
+
+function takinta_account_home_url($is_fa, $fragment = '') {
+    $url = home_url($is_fa ? '/fa/' : '/index.html');
+    $fragment = sanitize_key((string) $fragment);
+    return $fragment !== '' ? $url . '#' . $fragment : $url;
 }
 
 function takinta_account_attempt_limited($bucket, $limit, $seconds) {
@@ -310,12 +316,228 @@ function takinta_account_status_message($is_fa) {
     return isset($messages[$status]) ? $messages[$status] : '';
 }
 
+function takinta_account_wc_endpoint_url($is_fa, $endpoint = '', $value = '') {
+    if (!class_exists('WooCommerce') || !function_exists('wc_get_page_permalink')) { return takinta_account_url($is_fa); }
+    $base = wc_get_page_permalink('myaccount');
+    if (!$base) { $base = home_url('/my-account/'); }
+    $url = ($endpoint !== '' && function_exists('wc_get_endpoint_url')) ? wc_get_endpoint_url($endpoint, $value, $base) : $base;
+    return add_query_arg('lang', $is_fa ? 'fa' : 'en', $url);
+}
+
+function takinta_account_dashboard_text($is_fa) {
+    return $is_fa ? array(
+        'overview' => 'نمای کلی', 'orders' => 'سفارش‌ها', 'addresses' => 'نشانی‌ها',
+        'profile' => 'اطلاعات حساب', 'downloads' => 'دانلودها', 'payment_methods' => 'روش‌های پرداخت',
+        'welcome_copy' => 'از این پنل می‌توانی سفارش‌ها، نشانی‌ها و اطلاعات حسابت را مدیریت کنی.',
+        'order_count' => 'تعداد سفارش‌ها', 'spent' => 'مجموع خرید', 'recent_orders' => 'سفارش‌های اخیر',
+        'all_orders' => 'مشاهدهٔ همهٔ سفارش‌ها', 'order_number' => 'شمارهٔ سفارش', 'date' => 'تاریخ',
+        'status' => 'وضعیت', 'total' => 'مبلغ', 'items' => 'کالا', 'view' => 'جزئیات',
+        'no_orders' => 'هنوز سفارشی برای این حساب ثبت نشده است.', 'billing_address' => 'نشانی صورتحساب',
+        'shipping_address' => 'نشانی ارسال', 'not_set' => 'هنوز ثبت نشده', 'edit_addresses' => 'مدیریت نشانی‌ها',
+        'order_details' => 'جزئیات سفارش', 'back_to_orders' => 'بازگشت به سفارش‌ها',
+        'order_not_found' => 'این سفارش پیدا نشد یا به این حساب تعلق ندارد.', 'products' => 'محصولات',
+        'quantity' => 'تعداد', 'payment_method' => 'روش پرداخت', 'shipping_method' => 'روش ارسال',
+        'subtotal' => 'جمع جزء', 'shipping' => 'هزینهٔ ارسال', 'discount' => 'تخفیف',
+        'tax' => 'مالیات', 'grand_total' => 'مجموع کل', 'manage_profile' => 'ویرایش اطلاعات حساب',
+        'no_woocommerce' => 'برای مشاهدهٔ سفارش‌ها، WooCommerce باید فعال باشد.',
+        'on-hold' => 'در انتظار بررسی پرداخت', 'pending' => 'در انتظار پرداخت',
+        'processing' => 'در حال پردازش', 'completed' => 'تکمیل‌شده', 'cancelled' => 'لغوشده',
+        'refunded' => 'بازپرداخت‌شده', 'failed' => 'ناموفق', 'checkout-draft' => 'پیش‌نویس',
+    ) : array(
+        'overview' => 'Overview', 'orders' => 'Orders', 'addresses' => 'Addresses',
+        'profile' => 'Account details', 'downloads' => 'Downloads', 'payment_methods' => 'Payment methods',
+        'welcome_copy' => 'Manage your orders, addresses, and account details from this dashboard.',
+        'order_count' => 'Orders placed', 'spent' => 'Total spent', 'recent_orders' => 'Recent orders',
+        'all_orders' => 'View all orders', 'order_number' => 'Order', 'date' => 'Date',
+        'status' => 'Status', 'total' => 'Total', 'items' => 'Items', 'view' => 'Details',
+        'no_orders' => 'No orders are linked to this account yet.', 'billing_address' => 'Billing address',
+        'shipping_address' => 'Shipping address', 'not_set' => 'Not set yet', 'edit_addresses' => 'Manage addresses',
+        'order_details' => 'Order details', 'back_to_orders' => 'Back to orders',
+        'order_not_found' => 'This order was not found or does not belong to this account.', 'products' => 'Products',
+        'quantity' => 'Quantity', 'payment_method' => 'Payment method', 'shipping_method' => 'Shipping method',
+        'subtotal' => 'Subtotal', 'shipping' => 'Shipping', 'discount' => 'Discount',
+        'tax' => 'Tax', 'grand_total' => 'Grand total', 'manage_profile' => 'Edit account details',
+        'no_woocommerce' => 'WooCommerce must be active to display orders.',
+        'on-hold' => 'On hold — awaiting payment review', 'pending' => 'Pending payment',
+        'processing' => 'Processing', 'completed' => 'Completed', 'cancelled' => 'Cancelled',
+        'refunded' => 'Refunded', 'failed' => 'Failed', 'checkout-draft' => 'Draft',
+    );
+}
+
+function takinta_account_order_status_label($order, $is_fa) {
+    $status = $order && method_exists($order, 'get_status') ? sanitize_key($order->get_status()) : '';
+    if ($is_fa) {
+        $labels = takinta_account_dashboard_text(true);
+        if (isset($labels[$status])) { return $labels[$status]; }
+    }
+    return function_exists('wc_get_order_status_name') ? wc_get_order_status_name($status) : ucfirst(str_replace('-', ' ', $status));
+}
+
+function takinta_account_order_item_name($item, $is_fa) {
+    $name = $item && method_exists($item, 'get_name') ? $item->get_name() : '';
+    if (!$is_fa || !$item || !method_exists($item, 'get_product')) { return $name; }
+    $product = $item->get_product();
+    if (!$product || !method_exists($product, 'get_id')) { return $name; }
+    $title = get_post_meta((int) $product->get_id(), '_takinta_title_fa', true);
+    if (!$title && method_exists($product, 'get_parent_id')) {
+        $parent_id = (int) $product->get_parent_id();
+        if ($parent_id) { $title = get_post_meta($parent_id, '_takinta_title_fa', true); }
+    }
+    return $title ? $title : $name;
+}
+
+function takinta_account_money($amount, $order) {
+    if (!function_exists('wc_price')) { return esc_html((string) $amount); }
+    return wp_kses_post(wc_price((float) $amount, array('currency' => $order->get_currency())));
+}
+
+function takinta_account_render_order_table($orders, $is_fa, $account_url, $text) {
+    if (empty($orders)) {
+        echo '<div class="ta-empty"><span class="ta-empty__icon" aria-hidden="true">↗</span><p>' . esc_html($text['no_orders']) . '</p><a class="ta-button" href="' . esc_url(takinta_account_home_url($is_fa)) . '">' . esc_html($is_fa ? 'مشاهدهٔ فروشگاه' : 'Continue shopping') . '</a></div>';
+        return;
+    }
+    echo '<div class="ta-table-wrap"><table class="ta-orders"><thead><tr><th>' . esc_html($text['order_number']) . '</th><th>' . esc_html($text['date']) . '</th><th>' . esc_html($text['status']) . '</th><th>' . esc_html($text['total']) . '</th><th></th></tr></thead><tbody>';
+    foreach ($orders as $order) {
+        if (!$order || !is_object($order)) { continue; }
+        $created = $order->get_date_created();
+        $date = $created && function_exists('wc_format_datetime') ? wc_format_datetime($created) : '—';
+        $status = takinta_account_order_status_label($order, $is_fa);
+        $view_url = add_query_arg(array('order_id' => (int) $order->get_id()), $account_url);
+        $items_count = (int) $order->get_item_count();
+        $item_word = $is_fa ? 'کالا' : 'items';
+        echo '<tr><td><strong>#' . esc_html($order->get_order_number()) . '</strong><small>' . esc_html($items_count . ' ' . $item_word) . '</small></td><td>' . esc_html($date) . '</td><td><span class="ta-status ta-status--' . esc_attr(sanitize_html_class($order->get_status())) . '">' . esc_html($status) . '</span></td><td>' . takinta_account_money($order->get_total(), $order) . '</td><td><a class="ta-mini-button" href="' . esc_url($view_url) . '">' . esc_html($text['view']) . '</a></td></tr>';
+    }
+    echo '</tbody></table></div>';
+}
+
+function takinta_account_render_order_detail($order, $is_fa, $account_url, $text) {
+    if (!$order || (int) $order->get_customer_id() !== get_current_user_id()) {
+        echo '<div class="ta-alert ta-alert--error" role="alert">' . esc_html($text['order_not_found']) . '</div><a class="ta-mini-button" href="' . esc_url(add_query_arg('section', 'orders', $account_url)) . '">' . esc_html($text['back_to_orders']) . '</a>';
+        return;
+    }
+    $created = $order->get_date_created();
+    $date = $created && function_exists('wc_format_datetime') ? wc_format_datetime($created) : '—';
+    echo '<section class="ta-card ta-order-detail"><div class="ta-order-detail__top"><div><p class="ta-eyebrow">' . esc_html($text['order_details']) . '</p><h2>#' . esc_html($order->get_order_number()) . '</h2><p>' . esc_html($date) . '</p></div><span class="ta-status ta-status--' . esc_attr(sanitize_html_class($order->get_status())) . '">' . esc_html(takinta_account_order_status_label($order, $is_fa)) . '</span></div>';
+    echo '<h3>' . esc_html($text['products']) . '</h3><div class="ta-table-wrap"><table class="ta-orders ta-order-lines"><thead><tr><th>' . esc_html($text['products']) . '</th><th>' . esc_html($text['quantity']) . '</th><th>' . esc_html($text['total']) . '</th></tr></thead><tbody>';
+    foreach ($order->get_items() as $item) {
+        echo '<tr><td>' . esc_html(takinta_account_order_item_name($item, $is_fa)) . '</td><td>' . esc_html((string) $item->get_quantity()) . '</td><td>' . takinta_account_money($item->get_total(), $order) . '</td></tr>';
+    }
+    echo '</tbody></table></div><dl class="ta-order-totals"><div><dt>' . esc_html($text['subtotal']) . '</dt><dd>' . takinta_account_money($order->get_subtotal(), $order) . '</dd></div>';
+    if ((float) $order->get_discount_total() > 0) { echo '<div><dt>' . esc_html($text['discount']) . '</dt><dd>−' . takinta_account_money($order->get_discount_total(), $order) . '</dd></div>'; }
+    if ((float) $order->get_shipping_total() > 0) { echo '<div><dt>' . esc_html($text['shipping']) . '</dt><dd>' . takinta_account_money($order->get_shipping_total(), $order) . '</dd></div>'; }
+    if ((float) $order->get_total_tax() > 0) { echo '<div><dt>' . esc_html($text['tax']) . '</dt><dd>' . takinta_account_money($order->get_total_tax(), $order) . '</dd></div>'; }
+    echo '<div class="ta-order-totals__grand"><dt>' . esc_html($text['grand_total']) . '</dt><dd>' . takinta_account_money($order->get_total(), $order) . '</dd></div></dl>';
+    if ($order->get_payment_method_title() !== '') { echo '<p class="ta-order-meta"><strong>' . esc_html($text['payment_method']) . ':</strong> ' . esc_html($order->get_payment_method_title()) . '</p>'; }
+    if ($order->get_shipping_method() !== '') { echo '<p class="ta-order-meta"><strong>' . esc_html($text['shipping_method']) . ':</strong> ' . esc_html($order->get_shipping_method()) . '</p>'; }
+    $shipping_address = $order->get_formatted_shipping_address();
+    if ($shipping_address) { echo '<div class="ta-order-address"><strong>' . esc_html($text['shipping_address']) . '</strong><div>' . wp_kses_post($shipping_address) . '</div></div>'; }
+    echo '<a class="ta-mini-button" href="' . esc_url(add_query_arg('section', 'orders', $account_url)) . '">' . esc_html($text['back_to_orders']) . '</a></section>';
+}
+
+function takinta_account_avatar_initial($name) {
+    $name = (string) $name;
+    return preg_match('/^./u', $name, $match) ? $match[0] : '?';
+}
+
+function takinta_account_render_profile_form($is_fa, $user, $text, $account_url, $profile_nonce, $lost_password, $logout_url) {
+    echo '<section class="ta-card"><div class="ta-card__head"><div><p class="ta-eyebrow">' . esc_html($text['profile']) . '</p><h2>' . esc_html($user->display_name) . '</h2></div><span class="ta-avatar" aria-hidden="true">' . esc_html(takinta_account_avatar_initial($user->display_name)) . '</span></div><div class="ta-details"><div><strong>' . esc_html($text['username']) . ':</strong> ' . esc_html($user->user_login) . '</div><div><strong>' . esc_html($text['email']) . ':</strong> ' . esc_html($user->user_email) . '</div></div><form method="post" action="' . esc_url($account_url) . '">' . $profile_nonce . '<input type="hidden" name="takinta_account_action" value="profile">';
+    echo '<label class="ta-field"><span>' . esc_html($text['first']) . '</span><input name="first_name" autocomplete="given-name" value="' . esc_attr($user->first_name) . '"></label><label class="ta-field"><span>' . esc_html($text['last']) . '</span><input name="last_name" autocomplete="family-name" value="' . esc_attr($user->last_name) . '"></label><label class="ta-field"><span>' . esc_html($is_fa ? 'نام نمایشی' : 'Display name') . '</span><input name="display_name" required value="' . esc_attr($user->display_name) . '"></label><button class="ta-button" type="submit">' . esc_html($text['save']) . '</button></form><div class="ta-actions"><a href="' . esc_url($lost_password) . '">' . esc_html($text['change_password']) . '</a><a href="' . esc_url($logout_url) . '">' . esc_html($text['logout']) . '</a></div></section>';
+}
+
+function takinta_account_render_customer_panel($is_fa, $user, $text, $account_url) {
+    $panel = takinta_account_dashboard_text($is_fa);
+    $section = isset($_GET['section']) && is_string($_GET['section']) ? sanitize_key(wp_unslash($_GET['section'])) : 'overview';
+    $allowed_sections = array('overview', 'orders', 'addresses', 'profile');
+    if (!in_array($section, $allowed_sections, true)) { $section = 'overview'; }
+    $order_id = isset($_GET['order_id']) ? absint($_GET['order_id']) : 0;
+    if ($order_id) { $section = 'orders'; }
+    $lost_password = wp_lostpassword_url($account_url);
+    $logout_url = wp_logout_url($account_url);
+    $profile_nonce = wp_nonce_field('takinta_account_profile', '_takinta_nonce', true, false);
+    $woocommerce_active = class_exists('WooCommerce') && function_exists('wc_get_orders');
+    $order_count = ($woocommerce_active && function_exists('wc_get_customer_order_count')) ? (int) wc_get_customer_order_count($user->ID) : 0;
+    $orders_url = add_query_arg('section', 'orders', $account_url);
+    $addresses_url = add_query_arg('section', 'addresses', $account_url);
+    $profile_url = add_query_arg('section', 'profile', $account_url);
+    $wc_orders_url = $woocommerce_active ? takinta_account_wc_endpoint_url($is_fa, 'orders') : $orders_url;
+    $wc_addresses_url = $woocommerce_active ? takinta_account_wc_endpoint_url($is_fa, 'edit-address') : $addresses_url;
+    $wc_details_url = $woocommerce_active ? takinta_account_wc_endpoint_url($is_fa, 'edit-account') : $profile_url;
+    $wc_downloads_url = $woocommerce_active ? takinta_account_wc_endpoint_url($is_fa, 'downloads') : $profile_url;
+    $wc_payments_url = $woocommerce_active ? takinta_account_wc_endpoint_url($is_fa, 'payment-methods') : $profile_url;
+    $nav = array(
+        array('overview', $panel['overview'], $account_url),
+        array('orders', $panel['orders'], $orders_url),
+        array('addresses', $panel['addresses'], $addresses_url),
+        array('profile', $panel['profile'], $profile_url),
+    );
+    if ($woocommerce_active) {
+        $nav[] = array('downloads', $panel['downloads'], $wc_downloads_url);
+        $nav[] = array('payment_methods', $panel['payment_methods'], $wc_payments_url);
+    }
+
+    echo '<div class="ta-dashboard"><aside class="ta-side"><div class="ta-side__user"><span class="ta-avatar" aria-hidden="true">' . esc_html(takinta_account_avatar_initial($user->display_name)) . '</span><div><strong>' . esc_html($user->display_name) . '</strong><small>' . esc_html($user->user_email) . '</small></div></div><nav aria-label="' . esc_attr($is_fa ? 'منوی پنل کاربری' : 'Account menu') . '">';
+    foreach ($nav as $item) {
+        $active = ($item[0] === $section && !($order_id && $item[0] === 'overview'));
+        echo '<a class="ta-side__link' . ($active ? ' is-active' : '') . '" href="' . esc_url($item[2]) . '"' . ($active ? ' aria-current="page"' : '') . '><span>' . esc_html($item[1]) . '</span><span aria-hidden="true">›</span></a>';
+    }
+    echo '<a class="ta-side__link ta-side__logout" href="' . esc_url($logout_url) . '"><span>' . esc_html($text['logout']) . '</span><span aria-hidden="true">↪</span></a></nav></aside><div class="ta-dashboard__main">';
+
+    if (!$woocommerce_active) {
+        echo '<div class="ta-alert" role="status">' . esc_html($panel['no_woocommerce']) . '</div>';
+    }
+
+    if ($order_id) {
+        $order = $woocommerce_active ? wc_get_order($order_id) : false;
+        takinta_account_render_order_detail($order, $is_fa, $account_url, $panel);
+    } elseif ($section === 'profile') {
+        takinta_account_render_profile_form($is_fa, $user, $text, $account_url, $profile_nonce, $lost_password, $logout_url);
+    } elseif ($section === 'addresses') {
+        $billing = $woocommerce_active && function_exists('wc_get_account_formatted_address') ? wc_get_account_formatted_address('billing', $user->ID) : '';
+        $shipping = $woocommerce_active && function_exists('wc_get_account_formatted_address') ? wc_get_account_formatted_address('shipping', $user->ID) : '';
+        echo '<div class="ta-address-grid"><section class="ta-card"><p class="ta-eyebrow">' . esc_html($panel['addresses']) . '</p><h2>' . esc_html($panel['billing_address']) . '</h2><div class="ta-address-copy">' . ($billing ? wp_kses_post($billing) : esc_html($panel['not_set'])) . '</div></section><section class="ta-card"><p class="ta-eyebrow">' . esc_html($panel['addresses']) . '</p><h2>' . esc_html($panel['shipping_address']) . '</h2><div class="ta-address-copy">' . ($shipping ? wp_kses_post($shipping) : esc_html($panel['not_set'])) . '</div></section></div>';
+        if ($woocommerce_active) { echo '<p><a class="ta-button" href="' . esc_url($wc_addresses_url) . '">' . esc_html($panel['edit_addresses']) . '</a></p>'; }
+    } elseif ($section === 'orders') {
+        echo '<section class="ta-card"><div class="ta-card__head"><div><p class="ta-eyebrow">' . esc_html($panel['orders']) . '</p><h2>' . esc_html($panel['all_orders']) . '</h2></div></div>';
+        if ($woocommerce_active) {
+            $paged = isset($_GET['paged']) ? max(1, absint($_GET['paged'])) : 1;
+            $limit = 10;
+            $orders = wc_get_orders(array('customer_id' => (int) $user->ID, 'limit' => $limit, 'offset' => ($paged - 1) * $limit, 'orderby' => 'date', 'order' => 'DESC'));
+            takinta_account_render_order_table($orders, $is_fa, $account_url, $panel);
+            $pages = (int) ceil($order_count / $limit);
+            if ($pages > 1) {
+                echo '<nav class="ta-pagination" aria-label="' . esc_attr($is_fa ? 'صفحه‌های سفارش‌ها' : 'Order pages') . '">';
+                for ($page_number = 1; $page_number <= $pages; $page_number++) {
+                    $page_url = add_query_arg(array('section' => 'orders', 'paged' => $page_number), $account_url);
+                    echo '<a' . ($page_number === $paged ? ' aria-current="page" class="is-active"' : '') . ' href="' . esc_url($page_url) . '">' . esc_html((string) $page_number) . '</a>';
+                }
+                echo '</nav>';
+            }
+        } else { echo '<p>' . esc_html($panel['no_woocommerce']) . '</p>'; }
+        echo '</section>';
+    } else {
+        $spent = ($woocommerce_active && function_exists('wc_get_customer_total_spent')) ? wc_get_customer_total_spent($user->ID) : 0;
+        $money = $woocommerce_active && function_exists('wc_price') ? wp_kses_post(wc_price((float) $spent)) : '—';
+        echo '<section class="ta-welcome"><p class="ta-eyebrow">' . esc_html($panel['overview']) . '</p><h2>' . esc_html($text['welcome']) . '، ' . esc_html($user->display_name) . '</h2><p>' . esc_html($panel['welcome_copy']) . '</p></section>';
+        echo '<div class="ta-stats"><article class="ta-stat"><span class="ta-stat__icon" aria-hidden="true">▤</span><div><strong>' . esc_html(number_format_i18n($order_count)) . '</strong><span>' . esc_html($panel['order_count']) . '</span></div></article><article class="ta-stat"><span class="ta-stat__icon" aria-hidden="true">◈</span><div><strong>' . $money . '</strong><span>' . esc_html($panel['spent']) . '</span></div></article></div>';
+        echo '<section class="ta-card"><div class="ta-card__head"><div><p class="ta-eyebrow">' . esc_html($panel['orders']) . '</p><h2>' . esc_html($panel['recent_orders']) . '</h2></div><a class="ta-text-link" href="' . esc_url($orders_url) . '">' . esc_html($panel['all_orders']) . '</a></div>';
+        if ($woocommerce_active) { $recent_orders = wc_get_orders(array('customer_id' => (int) $user->ID, 'limit' => 5, 'orderby' => 'date', 'order' => 'DESC')); takinta_account_render_order_table($recent_orders, $is_fa, $account_url, $panel); }
+        else { echo '<p>' . esc_html($panel['no_woocommerce']) . '</p>'; }
+        echo '</section>';
+        $billing = $woocommerce_active && function_exists('wc_get_account_formatted_address') ? wc_get_account_formatted_address('billing', $user->ID) : '';
+        $shipping = $woocommerce_active && function_exists('wc_get_account_formatted_address') ? wc_get_account_formatted_address('shipping', $user->ID) : '';
+        echo '<div class="ta-address-grid"><section class="ta-card"><div class="ta-card__head"><h2>' . esc_html($panel['billing_address']) . '</h2></div><div class="ta-address-copy">' . ($billing ? wp_kses_post($billing) : esc_html($panel['not_set'])) . '</div></section><section class="ta-card"><div class="ta-card__head"><h2>' . esc_html($panel['shipping_address']) . '</h2></div><div class="ta-address-copy">' . ($shipping ? wp_kses_post($shipping) : esc_html($panel['not_set'])) . '</div></section></div>';
+        if ($woocommerce_active) { echo '<a class="ta-text-link" href="' . esc_url($wc_addresses_url) . '">' . esc_html($panel['edit_addresses']) . '</a>'; }
+        echo '<section class="ta-card ta-profile-summary"><div class="ta-card__head"><div><p class="ta-eyebrow">' . esc_html($panel['profile']) . '</p><h2>' . esc_html($user->display_name) . '</h2></div><a class="ta-text-link" href="' . esc_url($profile_url) . '">' . esc_html($panel['manage_profile']) . '</a></div><p>' . esc_html($user->user_email) . '</p></section>';
+    }
+    echo '</div></div>';
+}
+
 function takinta_account_render_page($is_fa, $page, $error = '') {
     $rtl = $is_fa ? ' dir="rtl"' : ' dir="ltr"';
     $lang = $is_fa ? 'fa' : 'en';
     $account_url = takinta_account_url($is_fa);
     $register_url = takinta_account_url($is_fa, true);
-    $home_url = home_url($is_fa ? '/fa/' : '/');
+    $home_url = takinta_account_home_url($is_fa);
     $theme_uri = untrailingslashit(get_template_directory_uri());
     $logo = $theme_uri . '/static-site/images/logo.png';
     $user = wp_get_current_user();
@@ -330,7 +552,7 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
         'privacy' => 'با ساخت حساب، از ذخیرهٔ ایمیل و اطلاعات نام برای مدیریت حساب در این سایت آگاه هستم.',
         'privacy_link' => 'سیاست حریم خصوصی', 'dashboard' => 'پروفایل من', 'status_title' => 'وضعیت حساب', 'welcome' => 'خوش آمدی',
         'username' => 'نام کاربری', 'save' => 'ذخیرهٔ تغییرات', 'change_password' => 'تغییر یا بازیابی گذرواژه',
-        'logout' => 'خروج', 'account_note' => 'این حساب برای مدیریت اطلاعات پروفایل است و به سفارش یا پرداخت متصل نیست.',
+        'logout' => 'خروج', 'account_note' => 'از این پنل می‌توانی اطلاعات حساب، سفارش‌ها و نشانی‌هایت را مدیریت کنی.',
         'password_hint' => 'حداقل ۱۲ نویسه',
     ) : array(
         'title' => 'Takinta account', 'subtitle' => 'Sign in to manage your profile or create a new account.',
@@ -341,7 +563,7 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
         'privacy' => 'I understand that my email and name will be stored to manage this site account.',
         'privacy_link' => 'Privacy policy', 'dashboard' => 'My profile', 'status_title' => 'Account status', 'welcome' => 'Welcome',
         'username' => 'Username', 'save' => 'Save changes', 'change_password' => 'Change or reset password',
-        'logout' => 'Sign out', 'account_note' => 'This account manages profile details only; it is not connected to orders or payments.',
+        'logout' => 'Sign out', 'account_note' => 'Manage your profile, orders, and saved addresses from this account.',
         'password_hint' => 'At least 12 characters',
     );
 
@@ -352,16 +574,13 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
     if ($is_fa) { echo '<link rel="stylesheet" href="' . esc_url($theme_uri . '/static-site/assets/css/rtl.css') . '">'; }
     echo '<style>';
     echo 'body{margin:0;background:#f6f4f0;color:#202521;font-family:inherit}.ta-account{min-height:100vh;padding:28px 18px 48px}.ta-wrap{width:min(100%,980px);margin:auto}.ta-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:30px}.ta-logo{display:block;width:170px;max-height:72px;object-fit:contain;mix-blend-mode:multiply;background:transparent}.ta-back{color:#343d37;text-decoration:none;font-weight:600}.ta-heading{margin-bottom:24px}.ta-heading h1{margin:0 0 8px;font-size:clamp(28px,4vw,42px)}.ta-heading p{margin:0;color:#626b65}.ta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}.ta-card{background:#fff;border:1px solid #e6e4de;border-radius:16px;padding:clamp(20px,4vw,32px);box-shadow:0 10px 30px rgba(30,40,34,.06)}.ta-card h2{margin:0 0 20px;font-size:22px}.ta-field{display:block;margin:0 0 15px}.ta-field span{display:block;margin-bottom:6px;font-weight:600}.ta-field input{box-sizing:border-box;width:100%;min-height:46px;padding:10px 12px;border:1px solid #c9cec9;border-radius:8px;background:#fff;color:#202521;font:inherit}.ta-check{display:flex;align-items:flex-start;gap:9px;margin:12px 0 18px;line-height:1.6}.ta-check input{margin-top:5px}.ta-button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 18px;border:0;border-radius:8px;background:#254a3a;color:#fff;text-decoration:none;font:inherit;font-weight:700;cursor:pointer}.ta-button:hover{background:#183b2d;color:#fff}.ta-links{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}.ta-links a,.ta-card a{color:#254a3a}.ta-card a.ta-button{color:#fff}.ta-alert{margin:0 0 18px;padding:12px 15px;border-radius:8px;background:#e8f3eb;color:#1f5936}.ta-alert--error{background:#fff0ee;color:#9d3025}.ta-hp{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}.ta-details{margin:0 0 22px;padding:14px;background:#f7f8f6;border-radius:9px;line-height:1.8}.ta-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:18px}.ta-note{margin:22px 2px 0;color:#657069;font-size:14px;line-height:1.7}.ta-footer{margin-top:32px;color:#69726c;font-size:13px}@media(max-width:560px){.ta-account{padding:18px 12px 32px}.ta-logo{width:130px}.ta-top{margin-bottom:22px}}';
+    echo '.ta-dashboard{display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;align-items:start}.ta-side{position:sticky;top:20px;background:#fff;border:1px solid #e6e4de;border-radius:16px;padding:16px;box-shadow:0 8px 24px rgba(30,40,34,.05)}.ta-side__user{display:flex;align-items:center;gap:11px;padding:4px 4px 16px;border-bottom:1px solid #ecebe6;margin-bottom:10px;min-width:0}.ta-side__user div{min-width:0}.ta-side__user strong,.ta-side__user small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ta-side__user small{margin-top:4px;color:#717a73;font-size:12px}.ta-avatar{display:inline-flex;align-items:center;justify-content:center;flex:0 0 42px;width:42px;height:42px;border-radius:50%;background:#e7efe9;color:#254a3a;font-weight:800;font-size:18px}.ta-side nav{display:grid;gap:5px}.ta-side__link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 12px;border-radius:9px;color:#3b453e;text-decoration:none;font-weight:600}.ta-side__link:hover,.ta-side__link.is-active{background:#edf3ee;color:#1d563c}.ta-side__logout{margin-top:8px;border-top:1px solid #ecebe6;border-radius:0;padding-top:15px;color:#8c3b32}.ta-dashboard__main{display:grid;gap:18px;min-width:0}.ta-welcome{padding:24px 28px;border-radius:16px;background:linear-gradient(115deg,#214b3a,#3a6b51);color:#fff}.ta-welcome .ta-eyebrow{color:#d5e4d9}.ta-welcome h2{margin:0 0 8px;font-size:clamp(21px,3vw,30px)}.ta-welcome p:last-child{margin:0;color:#e6eee8;line-height:1.7}.ta-eyebrow{margin:0 0 7px;color:#78837a;font-size:12px;font-weight:700;letter-spacing:.04em}.ta-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.ta-stat{display:flex;align-items:center;gap:14px;min-width:0;padding:20px;background:#fff;border:1px solid #e6e4de;border-radius:14px}.ta-stat__icon{display:grid;place-items:center;flex:0 0 44px;height:44px;border-radius:12px;background:#edf3ee;color:#254a3a;font-size:24px}.ta-stat strong,.ta-stat span:not(.ta-stat__icon){display:block}.ta-stat strong{font-size:20px;overflow-wrap:anywhere}.ta-stat div>span{margin-top:4px;color:#727a74;font-size:13px}.ta-card__head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:16px}.ta-card__head h2,.ta-card__head>div h2{margin:0}.ta-card__head .ta-eyebrow{margin-bottom:4px}.ta-card__head>a{flex:0 0 auto}.ta-text-link{color:#24583f;font-weight:700;text-decoration:none}.ta-text-link:hover{text-decoration:underline}.ta-table-wrap{width:100%;overflow-x:auto}.ta-orders{width:100%;border-collapse:collapse;text-align:start;font-size:14px}.ta-orders th,.ta-orders td{padding:12px 10px;border-bottom:1px solid #eeede9;vertical-align:middle}.ta-orders th{color:#727a74;font-size:12px;font-weight:700;white-space:nowrap}.ta-orders td small{display:block;margin-top:4px;color:#7a827c;font-size:11px}.ta-orders td:nth-child(4){white-space:nowrap}.ta-mini-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 11px;border:1px solid #c9d6cc;border-radius:7px;color:#24583f;text-decoration:none;font-weight:700;white-space:nowrap}.ta-mini-button:hover{background:#edf3ee}.ta-status{display:inline-flex;padding:5px 9px;border-radius:999px;background:#f0f1ed;color:#576157;font-size:12px;font-weight:700;white-space:nowrap}.ta-status--processing{background:#eaf2ff;color:#345b93}.ta-status--completed{background:#e6f4e9;color:#22613a}.ta-status--on-hold,.ta-status--pending{background:#fff3da;color:#865d10}.ta-status--cancelled,.ta-status--failed{background:#fff0ee;color:#a03e32}.ta-address-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.ta-address-copy{min-height:54px;color:#5d675f;line-height:1.8}.ta-profile-summary>p{margin:0;color:#606a62}.ta-empty{padding:22px;text-align:center;color:#69736b}.ta-empty__icon{display:grid;place-items:center;margin:0 auto 10px;width:42px;height:42px;border-radius:50%;background:#edf3ee;color:#24583f;font-size:22px}.ta-empty p{margin:0 0 16px}.ta-order-detail__top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:22px}.ta-order-detail__top h2{margin:0 0 5px}.ta-order-detail__top p{margin:0;color:#717a73;font-size:13px}.ta-order-detail h3{margin:0 0 10px;font-size:17px}.ta-order-totals{max-width:420px;margin:18px 0 16px auto}.ta-order-totals>div{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-bottom:1px solid #efeee9}.ta-order-totals dt{color:#687169}.ta-order-totals dd{margin:0;font-weight:600;text-align:end}.ta-order-totals__grand{font-size:18px;font-weight:800}.ta-order-meta{margin:9px 0;color:#5c665f}.ta-order-address{margin:18px 0;padding:14px;background:#f7f8f6;border-radius:9px;line-height:1.8}.ta-order-address>div{margin-top:5px;color:#5c665f}.ta-pagination{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:18px}.ta-pagination a{display:grid;place-items:center;min-width:36px;height:36px;border:1px solid #d9ded9;border-radius:7px;color:#315540;text-decoration:none}.ta-pagination a.is-active{background:#254a3a;color:#fff;border-color:#254a3a}@media(max-width:760px){.ta-dashboard{grid-template-columns:1fr}.ta-side{position:static;padding:12px}.ta-side__user{padding-bottom:10px}.ta-side nav{display:flex;overflow-x:auto;gap:4px}.ta-side__link{flex:0 0 auto;padding:9px 11px;white-space:nowrap}.ta-side__logout{margin-top:0;border-top:0;padding-top:9px}.ta-address-grid{grid-template-columns:1fr}.ta-card__head{align-items:flex-start}.ta-orders th,.ta-orders td{padding:10px 7px;font-size:12px}.ta-welcome{padding:21px}.ta-order-totals{max-width:100%}}@media(max-width:460px){.ta-stats{grid-template-columns:1fr}.ta-orders th:nth-child(2),.ta-orders td:nth-child(2){display:none}.ta-side__user small{max-width:180px}.ta-order-detail__top{flex-direction:column}}';
     echo '</style></head><body><main class="ta-account"><div class="ta-wrap"><header class="ta-top"><a href="' . esc_url($home_url) . '" aria-label="Takinta"><img class="ta-logo" src="' . esc_url($logo) . '" alt="Takinta"></a><a class="ta-back" href="' . esc_url($home_url) . '">' . esc_html($text['back']) . '</a></header><div class="ta-heading"><h1>' . esc_html($text['title']) . '</h1><p>' . esc_html($text['subtitle']) . '</p></div>';
     if ($notice !== '') { echo '<div class="ta-alert" role="status">' . esc_html($notice) . '</div>'; }
     if ($error !== '') { echo '<div class="ta-alert ta-alert--error" role="alert">' . esc_html($error) . '</div>'; }
 
     if (is_user_logged_in()) {
-        $profile_nonce = wp_nonce_field('takinta_account_profile', '_takinta_nonce', true, false);
-        $lost_password = wp_lostpassword_url($account_url);
-        $logout_url = wp_logout_url($account_url);
-        echo '<div class="ta-grid"><section class="ta-card"><h2>' . esc_html($text['dashboard']) . '</h2><p>' . esc_html($text['welcome']) . '، <strong>' . esc_html($user->display_name) . '</strong></p><div class="ta-details"><div><strong>' . esc_html($text['username']) . ':</strong> ' . esc_html($user->user_login) . '</div><div><strong>' . esc_html($text['email']) . ':</strong> ' . esc_html($user->user_email) . '</div></div><form method="post" action="' . esc_url($account_url) . '">' . $profile_nonce . '<input type="hidden" name="takinta_account_action" value="profile">';
-        echo '<label class="ta-field"><span>' . esc_html($text['first']) . '</span><input name="first_name" autocomplete="given-name" value="' . esc_attr($user->first_name) . '"></label><label class="ta-field"><span>' . esc_html($text['last']) . '</span><input name="last_name" autocomplete="family-name" value="' . esc_attr($user->last_name) . '"></label><label class="ta-field"><span>' . esc_html($is_fa ? 'نام نمایشی' : 'Display name') . '</span><input name="display_name" required value="' . esc_attr($user->display_name) . '"></label><button class="ta-button" type="submit">' . esc_html($text['save']) . '</button></form><div class="ta-actions"><a href="' . esc_url($lost_password) . '">' . esc_html($text['change_password']) . '</a><a href="' . esc_url($logout_url) . '">' . esc_html($text['logout']) . '</a></div></section><section class="ta-card"><h2>' . esc_html($text['status_title']) . '</h2><p>' . esc_html($text['account_note']) . '</p><p>' . esc_html($user->user_email) . '</p></section></div>';
+        takinta_account_render_customer_panel($is_fa, $user, $text, $account_url);
     } else {
         $show_register = ($page === 'register');
         $login_nonce = wp_nonce_field('takinta_account_login', '_takinta_nonce', true, false);
@@ -488,8 +707,8 @@ function takinta_cart_render_page($is_fa, $error = '') {
     $lang = $is_fa ? 'fa' : 'en';
     $rtl = $is_fa ? ' dir="rtl"' : ' dir="ltr"';
     $cart_url = takinta_cart_url($is_fa);
-    $home_url = home_url($is_fa ? '/fa/' : '/');
-    $browse_url = home_url($is_fa ? '/fa/#categories' : '/#categories');
+    $home_url = takinta_account_home_url($is_fa);
+    $browse_url = takinta_account_home_url($is_fa, 'categories');
     $theme_uri = untrailingslashit(get_template_directory_uri());
     $logo = $theme_uri . '/static-site/images/logo.png';
     $privacy_url = function_exists('get_privacy_policy_url') ? get_privacy_policy_url() : '';
@@ -706,7 +925,7 @@ function takinta_wc_render_cart_shortcode_fallback($is_fa) {
     get_header();
     $direction = $is_fa ? 'rtl' : 'ltr';
     $title = $is_fa ? 'سبد خرید' : 'Shopping cart';
-    $home = home_url($is_fa ? '/fa/' : '/');
+    $home = takinta_account_home_url($is_fa);
     $logo = $theme_uri . '/static-site/images/logo.png';
     echo '<header class="site-header"><div class="container site-header__main"><a class="site-header__logo" href="' . esc_url($home) . '"><img class="site-header__logo-img" src="' . esc_url($logo) . '" alt="Takinta"></a></div></header>';
     echo '<main class="woocommerce takinta-wc-cart-fallback" dir="' . esc_attr($direction) . '" style="max-width:1200px;margin:40px auto;padding:0 20px"><h1>' . esc_html($title) . '</h1>' . do_shortcode('[woocommerce_cart]') . '</main>';

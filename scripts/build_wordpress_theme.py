@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.9
+Version: 1.1.0
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -385,9 +385,9 @@ function takinta_static_enqueue_commerce_assets() {
     $commerce_page = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
     if (!$commerce_page) { return; }
     $base = untrailingslashit(get_template_directory_uri()) . '/static-site/assets/css/';
-    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.9');
-    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.9');
-    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.9'); }
+    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.1.0');
+    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.1.0');
+    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.1.0'); }
 }
 add_action('wp_enqueue_scripts', 'takinta_static_enqueue_commerce_assets');
 '''
@@ -398,7 +398,7 @@ get_header();
 $is_commerce = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
 if ($is_commerce) {
     $is_fa = function_exists('takinta_static_is_persian_commerce_request') ? takinta_static_is_persian_commerce_request() : is_rtl();
-    $home = home_url($is_fa ? '/fa/' : '/');
+    $home = home_url($is_fa ? '/fa/' : '/index.html');
     $logo = get_template_directory_uri() . '/static-site/images/logo.png';
     $cart_url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : '';
     if ($cart_url) { $cart_url = add_query_arg('lang', $is_fa ? 'fa' : 'en', $cart_url); }
