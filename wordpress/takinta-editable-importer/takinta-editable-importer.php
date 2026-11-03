@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.2
+ * Version: 1.4.3
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -26,6 +26,7 @@ const TAKINTA_WC_DRAFT_IMPORT_BATCH_SIZE = 20;
 const TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION = 'takinta_wc_draft_image_offset';
 const TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION = 'takinta_wc_draft_image_imported';
 const TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION = 'takinta_wc_draft_image_skipped';
+const TAKINTA_WC_DRAFT_IMAGE_UNMATCHED_OPTION = 'takinta_wc_draft_image_unmatched';
 const TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION = 'takinta_wc_draft_image_failed';
 const TAKINTA_WC_DRAFT_IMAGE_BATCH_SIZE = 3;
 
@@ -1070,20 +1071,14 @@ function takinta_wc_draft_import_product_image($post_id, $item, $route) {
 
     $filename = sanitize_file_name(basename((string) wp_parse_url($src, PHP_URL_PATH)));
     if ($filename === '' || $filename === '.' || $filename === '/') { $filename = sanitize_title($item['slug'] ?? 'takinta-product') . '.jpg'; }
-    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-    $allowed_extensions = array('jpg', 'jpeg', 'png', 'webp', 'gif');
-    $mime_extensions = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/gif' => 'gif');
-    $tmp = wp_tempnam($filename);
-    if (!$tmp) { return new WP_Error('takinta_image_temp_failed', 'ساخت فایل موقت تصویر ناموفق بود.'); }
-
     $local_file = takinta_wc_draft_local_image_path($src, $route);
     if ($local_file) {
+        $tmp = wp_tempnam($filename);
+        if (!$tmp) { return new WP_Error('takinta_image_temp_failed', 'ساخت فایل موقت تصویر ناموفق بود.'); }
         if (!copy($local_file, $tmp)) {
             @unlink($tmp);
             return new WP_Error('takinta_image_copy_failed', 'کپی تصویر داخل قالب ناموفق بود.');
         }
-        $filetype = wp_check_filetype($filename);
-        $mime = isset($filetype['type']) ? strtolower((string) $filetype['type']) : '';
     } else {
         $url = $src;
         if (strpos($url, '//') === 0) { $url = (is_ssl() ? 'https:' : 'http:') . $url; }
@@ -1092,42 +1087,50 @@ function takinta_wc_draft_import_product_image($post_id, $item, $route) {
         $scheme = isset($parts['scheme']) ? strtolower((string) $parts['scheme']) : '';
         $allowed_hosts = array('www.mandai-design.com', 'cdn.shopify.com');
         if (!in_array($scheme, array('http', 'https'), true) || !in_array($host, $allowed_hosts, true) || !wp_http_validate_url($url)) {
-            @unlink($tmp);
             return new WP_Error('takinta_image_host_blocked', 'میزبان تصویر در فهرست مجاز نیست.');
         }
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        $tmp = wp_tempnam($filename);
+        if (!$tmp) { return new WP_Error('takinta_image_temp_failed', 'ساخت فایل موقت تصویر ناموفق بود.'); }
         $response = wp_safe_remote_get($url, array(
             'timeout' => 8,
             'redirection' => 3,
+            'stream' => true,
+            'filename' => $tmp,
             'limit_response_size' => 8388608,
-            'headers' => array('Accept' => 'image/avif,image/webp,image/png,image/jpeg,image/gif,*/*;q=0.5'),
+            'headers' => array(
+                'Accept' => 'image/avif,image/webp,image/png,image/jpeg,image/gif,*/*;q=0.5',
+                'User-Agent' => 'Takinta-WP-Catalog-Image-Importer/1.4.3',
+            ),
         ));
         if (is_wp_error($response)) {
             @unlink($tmp);
-            return new WP_Error('takinta_image_download_failed', $response->get_error_message());
+            return new WP_Error('takinta_image_download_failed', 'دریافت تصویر ناموفق بود: ' . $response->get_error_message());
         }
         $status_code = (int) wp_remote_retrieve_response_code($response);
-        $body = wp_remote_retrieve_body($response);
-        $content_length = (int) wp_remote_retrieve_header($response, 'content-length');
-        if ($status_code < 200 || $status_code >= 300 || !is_string($body) || $body === '' || strlen($body) > 8388608 || $content_length > 8388608) {
+        if ($status_code < 200 || $status_code >= 300) {
             @unlink($tmp);
-            return new WP_Error('takinta_image_http_invalid', 'دریافت تصویر از نشانی منبع ناموفق بود یا فایل بیش از حد بزرگ است.');
+            return new WP_Error('takinta_image_http_invalid', 'سرور منبع تصویر پاسخ HTTP ناموفق داد (' . $status_code . ').');
         }
-        if (file_put_contents($tmp, $body) === false) {
-            @unlink($tmp);
-            return new WP_Error('takinta_image_write_failed', 'ذخیرهٔ تصویر دریافتی ناموفق بود.');
-        }
-        $mime = strtolower(trim(explode(';', (string) wp_remote_retrieve_header($response, 'content-type'))[0]));
     }
 
-    if (!in_array($extension, $allowed_extensions, true)) {
-        $extension = isset($mime_extensions[$mime]) ? $mime_extensions[$mime] : '';
-        if ($extension !== '') { $filename = sanitize_file_name(pathinfo($filename, PATHINFO_FILENAME) . '.' . $extension); }
-    }
-    $allowed_mimes = array('image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/octet-stream', 'binary/octet-stream');
-    if (!in_array($extension, $allowed_extensions, true) || ($mime !== '' && !in_array($mime, $allowed_mimes, true))) {
+    if (!is_file($tmp) || !is_readable($tmp)) {
         @unlink($tmp);
-        return new WP_Error('takinta_image_type_invalid', 'قالب فایل تصویر پشتیبانی نمی‌شود.');
+        return new WP_Error('takinta_image_file_missing', 'فایل تصویر دریافت‌شده در سرور پیدا نشد یا قابل‌خواندن نیست.');
     }
+    $file_size = filesize($tmp);
+    if (!$file_size || $file_size >= 8388608) {
+        @unlink($tmp);
+        return new WP_Error('takinta_image_size_invalid', 'حجم تصویر صفر یا بیشتر از ۸ مگابایت است.');
+    }
+    $image_info = @getimagesize($tmp);
+    $mime = is_array($image_info) && !empty($image_info['mime']) ? strtolower((string) $image_info['mime']) : '';
+    $mime_extensions = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/gif' => 'gif');
+    if (!isset($mime_extensions[$mime])) {
+        @unlink($tmp);
+        return new WP_Error('takinta_image_type_invalid', 'محتوای دریافت‌شده تصویر معتبر JPG، PNG، WebP یا GIF نیست.');
+    }
+    $filename = sanitize_file_name(pathinfo($filename, PATHINFO_FILENAME) . '.' . $mime_extensions[$mime]);
 
     require_once ABSPATH . 'wp-admin/includes/file.php';
     require_once ABSPATH . 'wp-admin/includes/media.php';
@@ -1261,15 +1264,16 @@ function takinta_wc_draft_import_images_batch() {
     $batch = array_slice($catalog, $offset, TAKINTA_WC_DRAFT_IMAGE_BATCH_SIZE);
     $imported = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, 0);
     $skipped = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0);
+    $unmatched = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_UNMATCHED_OPTION, 0);
     $failed = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0);
 
     foreach ($batch as $item) {
         if (!is_array($item) || empty($item['slug'])) { $skipped++; continue; }
         $slug = sanitize_title($item['slug']);
         $post_id = takinta_wc_draft_existing_product($slug);
-        if (!$post_id) { $skipped++; continue; }
+        if (!$post_id) { $skipped++; $unmatched++; continue; }
         $product_post = get_post($post_id);
-        if (!$product_post || $product_post->post_status === 'trash') { $skipped++; continue; }
+        if (!$product_post || $product_post->post_status === 'trash') { $skipped++; $unmatched++; continue; }
         if (has_post_thumbnail($post_id)) {
             update_post_meta($post_id, '_takinta_source_image_import_status', 'already-set');
             $skipped++;
@@ -1291,6 +1295,7 @@ function takinta_wc_draft_import_images_batch() {
     update_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, $next, false);
     update_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, $imported, false);
     update_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, $skipped, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_UNMATCHED_OPTION, $unmatched, false);
     update_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, $failed, false);
     $args = $next < $total ? array('image_continue' => '1') : array('image_complete' => '1');
     wp_safe_redirect(takinta_wc_draft_import_admin_url($args));
@@ -1304,6 +1309,7 @@ function takinta_wc_draft_import_images_reset() {
     update_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, 0, false);
     update_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, 0, false);
     update_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_UNMATCHED_OPTION, 0, false);
     update_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0, false);
     wp_safe_redirect(takinta_wc_draft_import_admin_url(array('images_reset' => '1')));
     exit;
@@ -1342,6 +1348,7 @@ function takinta_wc_draft_import_render_page() {
     $image_offset = min($total, max(0, (int) get_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, 0)));
     $image_imported = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, 0);
     $image_skipped = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0);
+    $image_unmatched = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_UNMATCHED_OPTION, 0);
     $image_failed = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0);
     $images_done = $image_offset >= $total;
     $images_continue = isset($_GET['image_continue']) && sanitize_text_field(wp_unslash($_GET['image_continue'])) === '1' && !$images_done;
@@ -1377,8 +1384,30 @@ function takinta_wc_draft_import_render_page() {
     if (!$done) {
         echo '<div class="notice notice-warning inline"><p>تصویر محصولات موجود را می‌توانی همین حالا منتقل کنی؛ محصول‌هایی که هنوز ساخته نشده‌اند رد می‌شوند. پس از پایان ساخت پیش‌نویس‌ها، برای آن‌ها «اسکن دوبارهٔ تصویرهای جاافتاده» را اجرا کن.</p></div>';
     }
-    echo '<p><strong>پیشرفت تصاویر:</strong> ' . esc_html((string) $image_offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>منتقل/استفاده‌شده:</strong> ' . esc_html((string) $image_imported) . ' &nbsp; <strong>ردشده/ازقبل‌دارای‌تصویر:</strong> ' . esc_html((string) $image_skipped) . ' &nbsp; <strong>ناموفق:</strong> ' . esc_html((string) $image_failed) . '</p>';
+    echo '<p><strong>پیشرفت تصاویر:</strong> ' . esc_html((string) $image_offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>منتقل/استفاده‌شده:</strong> ' . esc_html((string) $image_imported) . ' &nbsp; <strong>ردشده/دارای تصویر قبلی:</strong> ' . esc_html((string) $image_skipped) . ' &nbsp; <strong>محصول پیدا نشد:</strong> ' . esc_html((string) $image_unmatched) . ' &nbsp; <strong>ناموفق:</strong> ' . esc_html((string) $image_failed) . '</p>';
     echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $image_offset) . '" style="width:min(100%,640px);height:20px"></progress>';
+    if ($image_failed > 0) {
+        $failed_products = get_posts(array(
+            'post_type' => 'product',
+            'post_status' => array('publish', 'draft', 'pending', 'private', 'future'),
+            'numberposts' => 5,
+            'fields' => 'ids',
+            'no_found_rows' => true,
+            'meta_key' => '_takinta_source_image_import_status',
+            'meta_value' => 'failed',
+        ));
+        if (!empty($failed_products)) {
+            echo '<details style="margin:10px 0"><summary>نمونهٔ دلیل خطا (حداکثر ۵ محصول)</summary><ul>';
+            foreach ($failed_products as $failed_id) {
+                $error = get_post_meta($failed_id, '_takinta_source_image_import_error', true);
+                $title = get_the_title($failed_id);
+                $edit_link = get_edit_post_link($failed_id);
+                $title_html = $edit_link ? '<a href="' . esc_url($edit_link) . '">' . esc_html($title) . '</a>' : esc_html($title);
+                echo '<li>' . $title_html . ': ' . esc_html($error ?: 'علت خطا ثبت نشده است.') . '</li>';
+            }
+            echo '</ul></details>';
+        }
+    }
     if ($images_done && $done) {
         echo '<div class="notice notice-success"><p>بررسی انتقال تصویرها تمام شد. محصول‌های ناموفق را باز کن تا دلیل در کادر منبع کاتالوگ دیده شود؛ سپس می‌توانی اسکن را دوباره اجرا کنی.</p></div>';
     } elseif ($images_done) {
