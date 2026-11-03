@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.4
+Version: 1.0.5
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -214,9 +214,9 @@ function takinta_static_enqueue_commerce_assets() {
     $commerce_page = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
     if (!$commerce_page) { return; }
     $base = untrailingslashit(get_template_directory_uri()) . '/static-site/assets/css/';
-    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.4');
-    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.4');
-    if (is_rtl()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.4'); }
+    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.5');
+    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.5');
+    if (is_rtl()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.5'); }
 }
 add_action('wp_enqueue_scripts', 'takinta_static_enqueue_commerce_assets');
 '''
@@ -230,14 +230,31 @@ if ($is_commerce) {
     $logo = get_template_directory_uri() . '/static-site/images/logo.png';
     $is_fa = is_rtl();
     ?>
-    <header class="site-header"><div class="container site-header__main">
+    <header class="site-header"><div class="container site-header__main" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
       <a href="<?php echo esc_url($home); ?>" class="site-header__logo" aria-label="Takinta home"><img src="<?php echo esc_url($logo); ?>" alt="Takinta" class="site-header__logo-img"></a>
       <nav class="takinta-commerce-nav" aria-label="Store navigation">
         <a href="<?php echo esc_url($home); ?>"><?php echo esc_html($is_fa ? 'صفحهٔ اصلی' : 'Home'); ?></a>
         <?php if (function_exists('wc_get_cart_url')) : ?><a href="<?php echo esc_url(wc_get_cart_url()); ?>"><?php echo esc_html($is_fa ? 'سبد خرید' : 'Shopping cart'); ?></a><?php endif; ?>
       </nav>
     </div></header>
-    <style>.takinta-commerce-nav{display:flex;gap:20px;margin-inline-start:auto}.takinta-commerce-nav a{color:inherit;text-decoration:none;font-weight:600}.takinta-commerce-content{max-width:1200px;margin:38px auto 64px;padding-inline:20px}.takinta-commerce-content>h1{margin:0 0 24px;font-size:clamp(28px,4vw,40px)}.takinta-commerce-footer{padding:28px 20px;text-align:center;background:#f4f3f1;color:#59665c}</style>
+    <style>
+      .takinta-commerce-nav{display:flex;flex:0 0 auto;align-items:center;gap:20px;margin-inline-start:auto;white-space:nowrap}
+      .takinta-commerce-nav a{color:inherit;text-decoration:none;font-weight:600}
+      .site-header{position:relative;width:100%;z-index:20}
+      .site-header .container.site-header__main{box-sizing:border-box;width:100%;max-width:1280px;min-height:88px;height:auto;margin:0 auto;padding:14px clamp(20px,4vw,48px);display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:space-between!important;gap:24px}
+      .site-header__logo{display:flex;flex:0 0 220px;width:220px;height:56px;align-items:center}
+      .site-header__logo-img{display:block!important;width:220px!important;max-width:220px!important;height:56px!important;max-height:56px!important;object-fit:contain;object-position:center left;background:transparent}
+      .takinta-commerce-content{display:block!important;box-sizing:border-box;width:100%!important;max-width:1200px!important;min-width:0;margin:38px auto 64px!important;padding:0 clamp(16px,3vw,32px)!important;text-align:start}
+      .takinta-commerce-content>h1{margin:0 0 24px;font-size:clamp(28px,4vw,40px)}
+      .takinta-commerce-content .wp-block-woocommerce-cart,.takinta-commerce-content .wc-block-cart{box-sizing:border-box;width:100%!important;max-width:none!important;margin-inline:0!important}
+      .takinta-commerce-content .wc-block-components-sidebar-layout{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(280px,360px)!important;align-items:start;gap:clamp(24px,4vw,48px);box-sizing:border-box;width:100%!important;max-width:none!important;margin:0}
+      .takinta-commerce-content .wc-block-components-main,.takinta-commerce-content .wc-block-cart__main{grid-column:1;box-sizing:border-box;min-width:0;width:auto;max-width:none}
+      .takinta-commerce-content .wc-block-components-sidebar,.takinta-commerce-content .wc-block-cart__sidebar{grid-column:2;box-sizing:border-box;min-width:0;width:auto;max-width:none}
+      .takinta-commerce-content .wc-block-cart-items{width:100%;table-layout:auto}
+      .takinta-commerce-footer{padding:28px 20px;text-align:center;background:#f4f3f1;color:#59665c}
+      @media(max-width:820px){.site-header .container.site-header__main{min-height:76px;padding:10px 20px;gap:14px}.site-header__logo{flex-basis:170px;width:170px;height:48px}.site-header__logo-img{width:170px!important;height:48px!important;max-width:170px!important;max-height:48px!important}.takinta-commerce-nav{gap:12px;font-size:14px}.takinta-commerce-content .wc-block-components-sidebar-layout{grid-template-columns:minmax(0,1fr)!important}.takinta-commerce-content .wc-block-components-main,.takinta-commerce-content .wc-block-cart__main,.takinta-commerce-content .wc-block-components-sidebar,.takinta-commerce-content .wc-block-cart__sidebar{grid-column:1}}
+      @media(max-width:520px){.site-header .container.site-header__main{padding-inline:16px}.site-header__logo{flex-basis:140px;width:140px}.site-header__logo-img{width:140px!important}.takinta-commerce-nav{gap:10px;font-size:13px}.takinta-commerce-content{padding-inline:16px!important}}
+    </style>
     <main class="woocommerce takinta-commerce-content" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
       <?php while (have_posts()) : the_post(); ?><h1><?php the_title(); ?></h1><?php the_content(); ?><?php endwhile; ?>
     </main>
