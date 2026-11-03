@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.6
+ * Version: 1.4.7
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -378,7 +378,10 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
 }
 
 function takinta_cart_url($is_fa) {
-    if (class_exists('WooCommerce') && function_exists('wc_get_cart_url')) { return wc_get_cart_url(); }
+    if (class_exists('WooCommerce') && function_exists('wc_get_cart_url')) {
+        $url = wc_get_cart_url();
+        return $is_fa ? add_query_arg('lang', 'fa', $url) : $url;
+    }
     return home_url($is_fa ? '/fa/cart/' : '/cart/');
 }
 
@@ -611,7 +614,7 @@ function takinta_wc_static_order_controls($product, $route, $is_fa) {
     if ($product) {
         $button_label = $is_fa ? 'افزودن به سبد خرید' : 'Add to shopping cart';
         $price_html = wp_kses_post($product->get_price_html());
-        return '<div class="takinta-wc-order-controls"><div class="takinta-wc-product-price">' . $price_html . '</div><form class="takinta-cart-controls" method="get" action="' . esc_url(wc_get_cart_url()) . '"><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" name="quantity" min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><input type="hidden" name="add-to-cart" value="' . esc_attr((string) $product->get_id()) . '"><input type="hidden" name="takinta_wc_add_to_cart" value="1"><button type="submit" class="pp-button pp-button--dark">' . esc_html($button_label) . '</button></form></div>';
+        return '<div class="takinta-wc-order-controls"><div class="takinta-wc-product-price">' . $price_html . '</div><form class="takinta-cart-controls" method="get" action="' . esc_url(takinta_cart_url($is_fa)) . '"><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" name="quantity" min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><input type="hidden" name="add-to-cart" value="' . esc_attr((string) $product->get_id()) . '"><input type="hidden" name="takinta_wc_add_to_cart" value="1"><button type="submit" class="pp-button pp-button--dark">' . esc_html($button_label) . '</button></form></div>';
     }
     $message = takinta_wc_static_order_status_message($route, $is_fa);
     return '<p class="takinta-wc-order-pending" role="status">' . esc_html($message) . '</p>';
@@ -623,7 +626,9 @@ function takinta_wc_static_order_styles() {
 
 function takinta_wc_static_add_to_cart_redirect($url, $product) {
     if (isset($_REQUEST['takinta_wc_add_to_cart']) && function_exists('wc_get_cart_url')) {
-        return wc_get_cart_url();
+        $cart_url = wc_get_cart_url();
+        if (isset($_REQUEST['lang']) && sanitize_key(wp_unslash($_REQUEST['lang'])) === 'fa') { $cart_url = add_query_arg('lang', 'fa', $cart_url); }
+        return $cart_url;
     }
     return $url;
 }
@@ -714,7 +719,7 @@ function takinta_account_handle_route() {
             $wc_cart_page_id = (int) wc_get_page_id('cart');
             if ($wc_cart_page_id > 0) {
                 if ($route['fa'] || !is_page($wc_cart_page_id)) {
-                    wp_safe_redirect(wc_get_cart_url());
+                    wp_safe_redirect($route['fa'] ? add_query_arg('lang', 'fa', wc_get_cart_url()) : wc_get_cart_url());
                     exit;
                 }
                 return; // Let WooCommerce render its configured cart page.

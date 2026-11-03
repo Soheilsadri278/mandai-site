@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.5
+Version: 1.0.6
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -210,13 +210,91 @@ function takinta_static_theme_setup() {
 }
 add_action('after_setup_theme', 'takinta_static_theme_setup');
 
+function takinta_static_requested_commerce_language() {
+    $language = isset($_GET['lang']) ? sanitize_key(wp_unslash($_GET['lang'])) : '';
+    return $language === 'fa' ? 'fa' : '';
+}
+
+function takinta_static_is_persian_commerce_request() {
+    return takinta_static_requested_commerce_language() === 'fa' || (function_exists('is_rtl') && is_rtl());
+}
+
+function takinta_static_switch_to_persian_commerce_locale() {
+    if (is_admin() || takinta_static_requested_commerce_language() !== 'fa') { return; }
+    if (function_exists('switch_to_locale')) { switch_to_locale('fa_IR'); }
+}
+add_action('wp', 'takinta_static_switch_to_persian_commerce_locale', 0);
+
+function takinta_static_persian_commerce_document_title($title) {
+    if (!is_admin() && takinta_static_requested_commerce_language() === 'fa' && function_exists('is_cart') && is_cart()) { return 'سبد خرید'; }
+    return $title;
+}
+add_filter('pre_get_document_title', 'takinta_static_persian_commerce_document_title');
+
+function takinta_static_persian_cart_translations() {
+    return array(
+        'Cart' => 'سبد خرید',
+        'Shopping cart' => 'سبد خرید',
+        'Cart totals' => 'جمع سبد خرید',
+        'Add coupons' => 'افزودن کد تخفیف',
+        'Add a coupon' => 'افزودن کد تخفیف',
+        'Add coupon' => 'افزودن کد تخفیف',
+        'Coupon code' => 'کد تخفیف',
+        'Apply' => 'اعمال',
+        'Free shipping' => 'ارسال رایگان',
+        'Estimated total' => 'مجموع تقریبی',
+        'Proceed to Checkout' => 'ادامه به پرداخت',
+        'Proceed to checkout' => 'ادامه به پرداخت',
+        'Subtotal' => 'جمع جزء',
+        'Total' => 'مجموع',
+        'Shipping' => 'هزینهٔ ارسال',
+        'Quantity' => 'تعداد',
+        'Product' => 'محصول',
+        'Price' => 'قیمت',
+        'Remove item' => 'حذف کالا',
+        'Update cart' => 'به‌روزرسانی سبد خرید',
+        'Continue shopping' => 'ادامهٔ خرید',
+        'Keep shopping' => 'ادامهٔ خرید',
+        'Browse store' => 'مشاهدهٔ فروشگاه',
+        'Browse our store' => 'مشاهدهٔ فروشگاه',
+        'Return to shop' => 'بازگشت به فروشگاه',
+        'Your cart is currently empty!' => 'سبد خرید شما خالی است.',
+        'Your cart is currently empty.' => 'سبد خرید شما خالی است.',
+        'Your cart is empty.' => 'سبد خرید شما خالی است.',
+        'There are no products in your cart.' => 'سبد خرید شما خالی است.',
+        'Shipping options will be updated during checkout.' => 'گزینه‌های ارسال هنگام تکمیل سفارش به‌روزرسانی می‌شوند.',
+    );
+}
+
+function takinta_static_translate_persian_cart_string($translation, $text) {
+    if (is_admin() || !takinta_static_is_persian_commerce_request()) { return $translation; }
+    $map = takinta_static_persian_cart_translations();
+    if (isset($map[$text])) { return $map[$text]; }
+    if (isset($map[$translation])) { return $map[$translation]; }
+    return $translation;
+}
+add_filter('gettext', function($translation, $text, $domain) {
+    return takinta_static_translate_persian_cart_string($translation, $text);
+}, 20, 3);
+add_filter('gettext_with_context', function($translation, $text, $context, $domain) {
+    return takinta_static_translate_persian_cart_string($translation, $text);
+}, 20, 4);
+
+function takinta_static_preserve_persian_commerce_language($url) {
+    if (takinta_static_requested_commerce_language() === 'fa') { return add_query_arg('lang', 'fa', $url); }
+    return $url;
+}
+add_filter('woocommerce_get_cart_url', 'takinta_static_preserve_persian_commerce_language', 20);
+add_filter('woocommerce_get_checkout_url', 'takinta_static_preserve_persian_commerce_language', 20);
+add_filter('woocommerce_return_to_shop_redirect', 'takinta_static_preserve_persian_commerce_language', 20);
+
 function takinta_static_enqueue_commerce_assets() {
     $commerce_page = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
     if (!$commerce_page) { return; }
     $base = untrailingslashit(get_template_directory_uri()) . '/static-site/assets/css/';
-    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.5');
-    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.5');
-    if (is_rtl()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.5'); }
+    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.6');
+    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.6');
+    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.6'); }
 }
 add_action('wp_enqueue_scripts', 'takinta_static_enqueue_commerce_assets');
 '''
@@ -226,15 +304,17 @@ if (!defined('ABSPATH')) { exit; }
 get_header();
 $is_commerce = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
 if ($is_commerce) {
-    $home = home_url('/');
+    $is_fa = function_exists('takinta_static_is_persian_commerce_request') ? takinta_static_is_persian_commerce_request() : is_rtl();
+    $home = home_url($is_fa ? '/fa/' : '/');
     $logo = get_template_directory_uri() . '/static-site/images/logo.png';
-    $is_fa = is_rtl();
+    $cart_url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : '';
+    if ($is_fa && $cart_url) { $cart_url = add_query_arg('lang', 'fa', $cart_url); }
     ?>
     <header class="site-header"><div class="container site-header__main" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
       <a href="<?php echo esc_url($home); ?>" class="site-header__logo" aria-label="Takinta home"><img src="<?php echo esc_url($logo); ?>" alt="Takinta" class="site-header__logo-img"></a>
       <nav class="takinta-commerce-nav" aria-label="Store navigation">
         <a href="<?php echo esc_url($home); ?>"><?php echo esc_html($is_fa ? 'صفحهٔ اصلی' : 'Home'); ?></a>
-        <?php if (function_exists('wc_get_cart_url')) : ?><a href="<?php echo esc_url(wc_get_cart_url()); ?>"><?php echo esc_html($is_fa ? 'سبد خرید' : 'Shopping cart'); ?></a><?php endif; ?>
+        <?php if (function_exists('wc_get_cart_url')) : ?><a href="<?php echo esc_url($cart_url); ?>"><?php echo esc_html($is_fa ? 'سبد خرید' : 'Shopping cart'); ?></a><?php endif; ?>
       </nav>
     </div></header>
     <style>
@@ -256,8 +336,38 @@ if ($is_commerce) {
       @media(max-width:520px){.site-header .container.site-header__main{padding-inline:16px}.site-header__logo{flex-basis:140px;width:140px}.site-header__logo-img{width:140px!important}.takinta-commerce-nav{gap:10px;font-size:13px}.takinta-commerce-content{padding-inline:16px!important}}
     </style>
     <main class="woocommerce takinta-commerce-content" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
-      <?php while (have_posts()) : the_post(); ?><h1><?php the_title(); ?></h1><?php the_content(); ?><?php endwhile; ?>
+      <?php while (have_posts()) : the_post(); ?><h1><?php echo esc_html($is_fa && is_cart() ? 'سبد خرید' : get_the_title()); ?></h1><?php the_content(); ?><?php endwhile; ?>
     </main>
+    <?php if ($is_fa && function_exists('is_cart') && is_cart()) : ?>
+    <script>
+    (function(){
+      var labels={
+        'Cart':'سبد خرید','Shopping cart':'سبد خرید','Cart totals':'جمع سبد خرید',
+        'Add coupons':'افزودن کد تخفیف','Add a coupon':'افزودن کد تخفیف','Add coupon':'افزودن کد تخفیف',
+        'Coupon code':'کد تخفیف','Apply':'اعمال','Free shipping':'ارسال رایگان',
+        'Estimated total':'مجموع تقریبی','Proceed to Checkout':'ادامه به پرداخت','Proceed to checkout':'ادامه به پرداخت',
+        'Subtotal':'جمع جزء','Total':'مجموع','Shipping':'هزینهٔ ارسال','Quantity':'تعداد',
+        'Product':'محصول','Price':'قیمت','Remove item':'حذف کالا','Update cart':'به‌روزرسانی سبد خرید',
+        'Continue shopping':'ادامهٔ خرید','Keep shopping':'ادامهٔ خرید','Browse store':'مشاهدهٔ فروشگاه','Browse our store':'مشاهدهٔ فروشگاه','Return to shop':'بازگشت به فروشگاه',
+        'Your cart is currently empty!':'سبد خرید شما خالی است.','Your cart is currently empty.':'سبد خرید شما خالی است.',
+        'Your cart is empty.':'سبد خرید شما خالی است.','There are no products in your cart.':'سبد خرید شما خالی است.',
+        'Shipping options will be updated during checkout.':'گزینه‌های ارسال هنگام تکمیل سفارش به‌روزرسانی می‌شوند.'
+      };
+      document.documentElement.lang='fa-IR';
+      document.documentElement.dir='rtl';
+      var root=document.querySelector('.takinta-commerce-content');
+      if(!root)return;
+      root.dir='rtl';
+      function translate(){
+        var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),node;
+        while((node=walker.nextNode())){var text=node.nodeValue,trimmed=text.trim();if(labels[trimmed])node.nodeValue=text.replace(trimmed,labels[trimmed]);}
+        root.querySelectorAll('[aria-label],[title],[placeholder]').forEach(function(el){['aria-label','title','placeholder'].forEach(function(attr){var val=el.getAttribute(attr);if(labels[val])el.setAttribute(attr,labels[val]);});});
+      }
+      translate();
+      if(window.MutationObserver){new MutationObserver(translate).observe(root,{childList:true,subtree:true,characterData:true});}
+    })();
+    </script>
+    <?php endif; ?>
     <footer class="takinta-commerce-footer">© <?php echo esc_html((string) gmdate('Y')); ?> Takinta</footer>
     <?php
 } else {
