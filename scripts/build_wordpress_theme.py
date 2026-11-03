@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.7
+Version: 1.0.8
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -62,6 +62,19 @@ function takinta_static_query_vars($vars) {
 }
 add_filter('query_vars', 'takinta_static_query_vars');
 add_action('after_switch_theme', 'flush_rewrite_rules');
+
+function takinta_static_redirect_default_home_to_persian() {
+    if (is_admin() || is_preview() || !is_front_page()) { return; }
+    if (isset($_GET['lang']) && sanitize_key(wp_unslash($_GET['lang'])) === 'en') { return; }
+    $request_path = isset($_SERVER['REQUEST_URI']) ? (string) wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $request_path = untrailingslashit((string) parse_url($request_path, PHP_URL_PATH));
+    $home_path = untrailingslashit((string) parse_url(home_url('/'), PHP_URL_PATH));
+    if ($request_path !== $home_path) { return; }
+    nocache_headers();
+    wp_safe_redirect(home_url('/fa/'), 302, 'Takinta Persian default language');
+    exit;
+}
+add_action('template_redirect', 'takinta_static_redirect_default_home_to_persian', -5);
 
 function takinta_static_json($ok, $message = '', $extra = array(), $status = 200) {
     wp_send_json(array_merge(array('ok' => (bool) $ok, 'error' => $ok ? '' : $message), $extra), $status);
@@ -128,7 +141,7 @@ function takinta_static_render_route() {
 
     $route = (string) get_query_var('takinta_static');
     if ($route === '' && is_front_page()) {
-        $route = 'index.html';
+        $route = isset($_GET['lang']) && sanitize_key(wp_unslash($_GET['lang'])) === 'en' ? 'index.html' : 'fa/index.html';
     }
     if ($route === '') { return; }
 
@@ -371,9 +384,9 @@ function takinta_static_enqueue_commerce_assets() {
     $commerce_page = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
     if (!$commerce_page) { return; }
     $base = untrailingslashit(get_template_directory_uri()) . '/static-site/assets/css/';
-    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.7');
-    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.7');
-    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.7'); }
+    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.8');
+    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.8');
+    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.8'); }
 }
 add_action('wp_enqueue_scripts', 'takinta_static_enqueue_commerce_assets');
 '''
