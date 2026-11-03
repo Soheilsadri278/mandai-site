@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.5
+ * Version: 1.4.6
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -980,7 +980,7 @@ function takinta_wc_draft_import_enqueue_admin_script($hook) {
         'takinta-wc-draft-import-admin',
         plugins_url('takinta-wc-draft-import-admin.js', __FILE__),
         array(),
-        '1.4.5',
+        '1.4.6',
         true
     );
 }
@@ -1098,15 +1098,19 @@ function takinta_wc_draft_import_product_image($post_id, $item, $route) {
         $host = isset($parts['host']) ? strtolower((string) $parts['host']) : '';
         $scheme = isset($parts['scheme']) ? strtolower((string) $parts['scheme']) : '';
         $allowed_hosts = array('www.mandai-design.com', 'cdn.shopify.com');
-        if (!in_array($scheme, array('http', 'https'), true) || !in_array($host, $allowed_hosts, true) || !wp_http_validate_url($url)) {
-            return new WP_Error('takinta_image_host_blocked', 'میزبان تصویر در فهرست مجاز نیست.');
+        if ($scheme !== 'https' || !in_array($host, $allowed_hosts, true)) {
+            return new WP_Error('takinta_image_host_blocked', 'نشانی تصویر مجاز نیست؛ فقط HTTPS از میزبان‌های فهرست‌شده پذیرفته می‌شود.');
+        }
+        if (!empty($parts['user']) || !empty($parts['pass']) || (isset($parts['port']) && (int) $parts['port'] !== 443)) {
+            return new WP_Error('takinta_image_url_invalid', 'نشانی تصویر شامل اطلاعات کاربری یا درگاه غیرمجاز است.');
         }
         require_once ABSPATH . 'wp-admin/includes/file.php';
         $tmp = wp_tempnam($filename);
         if (!$tmp) { return new WP_Error('takinta_image_temp_failed', 'ساخت فایل موقت تصویر ناموفق بود.'); }
-        $response = wp_safe_remote_get($url, array(
+        // Exact HTTPS host allowlist above is the SSRF boundary; do not follow redirects to unlisted hosts.
+        $response = wp_remote_get($url, array(
             'timeout' => 8,
-            'redirection' => 3,
+            'redirection' => 0,
             'stream' => true,
             'filename' => $tmp,
             'limit_response_size' => 8388608,
