@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.1
+ * Version: 1.4.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1344,10 +1344,10 @@ function takinta_wc_draft_import_render_page() {
     $image_skipped = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0);
     $image_failed = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0);
     $images_done = $image_offset >= $total;
-    $images_continue = isset($_GET['image_continue']) && sanitize_text_field(wp_unslash($_GET['image_continue'])) === '1' && !$images_done && $done;
+    $images_continue = isset($_GET['image_continue']) && sanitize_text_field(wp_unslash($_GET['image_continue'])) === '1' && !$images_done;
 
     echo '<p>این ابزار ' . esc_html((string) $total) . ' محصول را در بسته‌های ۲۰تایی به‌صورت <strong>پیش‌نویس</strong> می‌سازد؛ صفحهٔ عمومی یا خرید فعالی ایجاد نمی‌شود.</p>';
-    echo '<ul><li>عنوان از زبان پیش‌فرض WordPress انتخاب می‌شود و هر دو عنوان فارسی/انگلیسی برای بازبینی ذخیره می‌شوند.</li><li>در مرحلهٔ جداگانهٔ بعد از ساخت محصولات، تصویر منبع به کتابخانهٔ رسانه منتقل و تصویر شاخص محصول می‌شود.</li><li><strong>قیمت، SKU و موجودی وارد نمی‌شوند</strong> و محصول‌ها تا قیمت‌گذاری و انتشار دستی قابل سفارش نیستند.</li><li>محصول‌های موجود یا دارای همان slug بازنویسی نمی‌شوند؛ تصویر شاخصی که از قبل تنظیم شده هم جایگزین نخواهد شد.</li></ul>';
+    echo '<ul><li>عنوان از زبان پیش‌فرض WordPress انتخاب می‌شود و هر دو عنوان فارسی/انگلیسی برای بازبینی ذخیره می‌شوند.</li><li>در مرحله‌ای جداگانه، تصویر منبع به کتابخانهٔ رسانه منتقل و تصویر شاخص محصول می‌شود.</li><li><strong>قیمت، SKU و موجودی وارد نمی‌شوند</strong> و محصول‌ها تا قیمت‌گذاری و انتشار دستی قابل سفارش نیستند.</li><li>محصول‌های موجود یا دارای همان slug بازنویسی نمی‌شوند؛ تصویر شاخصی که از قبل تنظیم شده هم جایگزین نخواهد شد.</li></ul>';
     echo '<p><strong>پیشرفت:</strong> ' . esc_html((string) $offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>ساخته‌شده:</strong> ' . esc_html((string) $created) . ' &nbsp; <strong>ردشده/ازقبل‌موجود:</strong> ' . esc_html((string) $skipped) . '</p>';
     echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $offset) . '" style="width:min(100%,640px);height:20px"></progress>';
     if ($done) {
@@ -1373,32 +1373,35 @@ function takinta_wc_draft_import_render_page() {
         echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-import-form");if(f)f.submit();},500);</script>';
     }
 
-    if ($done) {
-        echo '<hr><h2>انتقال تصاویر محصولات</h2><p>این مرحله تصویرهای کاتالوگ را به کتابخانهٔ رسانه منتقل می‌کند و به‌عنوان تصویر شاخص محصول می‌گذارد. تصویر شاخصی که از قبل وجود دارد دست‌نخورده می‌ماند. برای دریافت تصویرهای آنلاین، هاست WordPress باید به نشانی منبع دسترسی داشته باشد.</p>';
-        echo '<p><strong>پیشرفت تصاویر:</strong> ' . esc_html((string) $image_offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>منتقل/استفاده‌شده:</strong> ' . esc_html((string) $image_imported) . ' &nbsp; <strong>ردشده/ازقبل‌دارای‌تصویر:</strong> ' . esc_html((string) $image_skipped) . ' &nbsp; <strong>ناموفق:</strong> ' . esc_html((string) $image_failed) . '</p>';
-        echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $image_offset) . '" style="width:min(100%,640px);height:20px"></progress>';
-        if ($images_done) {
-            echo '<div class="notice notice-success"><p>بررسی انتقال تصویرها تمام شد. محصول‌های ناموفق را باز کن تا دلیل در کادر منبع کاتالوگ دیده شود؛ سپس می‌توانی اسکن را دوباره اجرا کنی.</p></div>';
-        } elseif ($images_continue) {
-            echo '<p>در حال انتقال بستهٔ بعدی تصویرها؛ صفحه خودش ادامه می‌دهد.</p>';
-        }
-        if (!$images_done) {
-            echo '<form id="takinta-wc-draft-image-form" method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:14px">';
-            echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_batch"><input type="hidden" name="offset" value="' . esc_attr((string) $image_offset) . '">';
-            wp_nonce_field('takinta_wc_draft_import_images_batch');
-            submit_button($image_offset > 0 ? 'ادامهٔ انتقال تصاویر' : 'انتقال تصویرهای محصولات فعلی', 'primary', 'submit', false);
-            echo '</form>';
-        }
-        if ($images_done || $image_offset > 0) {
-            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline-block;margin-top:10px">';
-            echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_reset">';
-            wp_nonce_field('takinta_wc_draft_import_images_reset');
-            submit_button('اسکن دوبارهٔ تصویرهای جاافتاده (بدون حذف تصویرها)', 'secondary', 'submit', false);
-            echo '</form>';
-        }
-        if ($images_continue) {
-            echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-image-form");if(f)f.submit();},500);</script>';
-        }
+    echo '<hr><h2>انتقال تصاویر محصولات</h2><p>این مرحله تصویرهای کاتالوگ را به کتابخانهٔ رسانه منتقل می‌کند و به‌عنوان تصویر شاخص محصول می‌گذارد. تصویر شاخصی که از قبل وجود دارد دست‌نخورده می‌ماند. برای دریافت تصویرهای آنلاین، هاست WordPress باید به نشانی منبع دسترسی داشته باشد.</p>';
+    if (!$done) {
+        echo '<div class="notice notice-warning inline"><p>تصویر محصولات موجود را می‌توانی همین حالا منتقل کنی؛ محصول‌هایی که هنوز ساخته نشده‌اند رد می‌شوند. پس از پایان ساخت پیش‌نویس‌ها، برای آن‌ها «اسکن دوبارهٔ تصویرهای جاافتاده» را اجرا کن.</p></div>';
+    }
+    echo '<p><strong>پیشرفت تصاویر:</strong> ' . esc_html((string) $image_offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>منتقل/استفاده‌شده:</strong> ' . esc_html((string) $image_imported) . ' &nbsp; <strong>ردشده/ازقبل‌دارای‌تصویر:</strong> ' . esc_html((string) $image_skipped) . ' &nbsp; <strong>ناموفق:</strong> ' . esc_html((string) $image_failed) . '</p>';
+    echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $image_offset) . '" style="width:min(100%,640px);height:20px"></progress>';
+    if ($images_done && $done) {
+        echo '<div class="notice notice-success"><p>بررسی انتقال تصویرها تمام شد. محصول‌های ناموفق را باز کن تا دلیل در کادر منبع کاتالوگ دیده شود؛ سپس می‌توانی اسکن را دوباره اجرا کنی.</p></div>';
+    } elseif ($images_done) {
+        echo '<div class="notice notice-warning inline"><p>بررسی فعلی تمام شد، اما محصولاتِ هنوز ساخته‌نشده رد شده‌اند. پس از پایان ساخت پیش‌نویس‌ها، اسکن دوباره را اجرا کن.</p></div>';
+    } elseif ($images_continue) {
+        echo '<p>در حال انتقال بستهٔ بعدی تصویرها؛ صفحه خودش ادامه می‌دهد.</p>';
+    }
+    if (!$images_done) {
+        echo '<form id="takinta-wc-draft-image-form" method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:14px">';
+        echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_batch"><input type="hidden" name="offset" value="' . esc_attr((string) $image_offset) . '">';
+        wp_nonce_field('takinta_wc_draft_import_images_batch');
+        submit_button($image_offset > 0 ? 'ادامهٔ انتقال تصاویر' : 'انتقال تصویرهای محصولات فعلی', 'primary', 'submit', false);
+        echo '</form>';
+    }
+    if ($images_done || $image_offset > 0) {
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline-block;margin-top:10px">';
+        echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_reset">';
+        wp_nonce_field('takinta_wc_draft_import_images_reset');
+        submit_button('اسکن دوبارهٔ تصویرهای جاافتاده (بدون حذف تصویرها)', 'secondary', 'submit', false);
+        echo '</form>';
+    }
+    if ($images_continue) {
+        echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-image-form");if(f)f.submit();},500);</script>';
     }
     echo '<p class="description">برای سفارش‌پذیرشدن هر محصول، قیمت تأییدشده را دستی وارد و آن را منتشر کن؛ برای پرداخت هم شماره کارت مقصد را در WooCommerce ← پیکربندی ← پرداخت‌ها ← Takinta Card-to-card transfer تنظیم کن.</p></div>';
 }
