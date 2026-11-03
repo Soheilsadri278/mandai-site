@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.4
+ * Version: 1.4.5
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -980,7 +980,7 @@ function takinta_wc_draft_import_enqueue_admin_script($hook) {
         'takinta-wc-draft-import-admin',
         plugins_url('takinta-wc-draft-import-admin.js', __FILE__),
         array(),
-        '1.4.4',
+        '1.4.5',
         true
     );
 }
@@ -1363,7 +1363,7 @@ function takinta_wc_draft_import_render_page() {
     $image_unmatched = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_UNMATCHED_OPTION, 0);
     $image_failed = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0);
     $images_done = $image_offset >= $total;
-    $images_continue = isset($_GET['image_continue']) && sanitize_text_field(wp_unslash($_GET['image_continue'])) === '1' && !$images_done;
+    $images_continue = $image_offset > 0 && !$images_done;
 
     echo '<p>این ابزار ' . esc_html((string) $total) . ' محصول را در بسته‌های ۲۰تایی به‌صورت <strong>پیش‌نویس</strong> می‌سازد؛ صفحهٔ عمومی یا خرید فعالی ایجاد نمی‌شود.</p>';
     echo '<ul><li>عنوان از زبان پیش‌فرض WordPress انتخاب می‌شود و هر دو عنوان فارسی/انگلیسی برای بازبینی ذخیره می‌شوند.</li><li>در مرحله‌ای جداگانه، تصویر منبع به کتابخانهٔ رسانه منتقل و تصویر شاخص محصول می‌شود.</li><li><strong>قیمت، SKU و موجودی وارد نمی‌شوند</strong> و محصول‌ها تا قیمت‌گذاری و انتشار دستی قابل سفارش نیستند.</li><li>محصول‌های موجود یا دارای همان slug بازنویسی نمی‌شوند؛ تصویر شاخصی که از قبل تنظیم شده هم جایگزین نخواهد شد.</li></ul>';
