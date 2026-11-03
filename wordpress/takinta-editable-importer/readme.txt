@@ -4,7 +4,7 @@ Install this plugin ZIP from WordPress Admin > Plugins > Add New > Upload Plugin
 
 Open Tools > Takinta Content Import to import all bundled HTML pages. The plugin serves editable database copies on the existing .html routes, falling back to the theme's original static files until import is complete. Account links in the site header lead to the new account portal.
 
-Persian WooCommerce cart links retain the fa language parameter and render the cart interface in Persian when used with Takinta Static Site theme 1.0.6 or later.
+Persian WooCommerce cart and checkout links retain the selected language; with Takinta Static Site theme 1.0.7 or later, checkout labels and the order summary are translated and right-to-left on Persian routes.
 
 Account pages: /account/ and /register/; Persian: /fa/account/ and /fa/register/. Members can sign in, register as Subscriber, edit profile names, reset passwords, and sign out. With WooCommerce active, the site cart and checkout use WooCommerce; the legacy email purchase-request cart remains available only when WooCommerce is inactive.
 

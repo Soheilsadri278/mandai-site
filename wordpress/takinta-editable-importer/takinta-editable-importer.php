@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.7
+ * Version: 1.4.8
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -380,7 +380,7 @@ function takinta_account_render_page($is_fa, $page, $error = '') {
 function takinta_cart_url($is_fa) {
     if (class_exists('WooCommerce') && function_exists('wc_get_cart_url')) {
         $url = wc_get_cart_url();
-        return $is_fa ? add_query_arg('lang', 'fa', $url) : $url;
+        return add_query_arg('lang', $is_fa ? 'fa' : 'en', $url);
     }
     return home_url($is_fa ? '/fa/cart/' : '/cart/');
 }
@@ -627,7 +627,10 @@ function takinta_wc_static_order_styles() {
 function takinta_wc_static_add_to_cart_redirect($url, $product) {
     if (isset($_REQUEST['takinta_wc_add_to_cart']) && function_exists('wc_get_cart_url')) {
         $cart_url = wc_get_cart_url();
-        if (isset($_REQUEST['lang']) && sanitize_key(wp_unslash($_REQUEST['lang'])) === 'fa') { $cart_url = add_query_arg('lang', 'fa', $cart_url); }
+        if (isset($_REQUEST['lang'])) {
+            $language = sanitize_key(wp_unslash($_REQUEST['lang']));
+            if (in_array($language, array('fa', 'en'), true)) { $cart_url = add_query_arg('lang', $language, $cart_url); }
+        }
         return $cart_url;
     }
     return $url;
@@ -710,24 +713,44 @@ function takinta_wc_render_cart_shortcode_fallback($is_fa) {
     exit;
 }
 
+function takinta_wc_persian_checkout_route_redirect() {
+    if (is_admin() || (defined('REST_REQUEST') && REST_REQUEST) || !function_exists('wc_get_checkout_url')) { return; }
+    $request_path = isset($_SERVER['REQUEST_URI']) ? (string) wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $request_path = (string) parse_url($request_path, PHP_URL_PATH);
+    $home_path = (string) parse_url(home_url('/'), PHP_URL_PATH);
+    $home_path = trim($home_path, '/');
+    if ($home_path !== '' && strpos(trim($request_path, '/'), $home_path . '/') === 0) {
+        $request_path = trim(substr(trim($request_path, '/'), strlen($home_path) + 1), '/');
+    } else {
+        $request_path = trim($request_path, '/');
+    }
+    if ($request_path !== 'fa/checkout') { return; }
+    wp_safe_redirect(add_query_arg('lang', 'fa', wc_get_checkout_url()));
+    exit;
+}
+add_action('template_redirect', 'takinta_wc_persian_checkout_route_redirect', -3);
+
 function takinta_account_handle_route() {
     if (is_admin() || (defined('REST_REQUEST') && REST_REQUEST)) { return; }
     $route = takinta_account_route_from_request();
     if (!$route) { return; }
+    $is_fa = (bool) $route['fa'];
+    if (!$is_fa && isset($_GET['lang']) && sanitize_key(wp_unslash($_GET['lang'])) === 'fa') { $is_fa = true; }
+    if (!$is_fa && isset($_COOKIE['takinta_commerce_language']) && sanitize_key(wp_unslash($_COOKIE['takinta_commerce_language'])) === 'fa') { $is_fa = true; }
     if ($route['page'] === 'cart') {
         if (class_exists('WooCommerce') && function_exists('wc_get_page_id') && function_exists('wc_get_cart_url')) {
             $wc_cart_page_id = (int) wc_get_page_id('cart');
             if ($wc_cart_page_id > 0) {
-                if ($route['fa'] || !is_page($wc_cart_page_id)) {
-                    wp_safe_redirect($route['fa'] ? add_query_arg('lang', 'fa', wc_get_cart_url()) : wc_get_cart_url());
+                if ($is_fa || !is_page($wc_cart_page_id)) {
+                    wp_safe_redirect(takinta_cart_url($is_fa));
                     exit;
                 }
                 return; // Let WooCommerce render its configured cart page.
             }
-            takinta_wc_render_cart_shortcode_fallback($route['fa']);
+            takinta_wc_render_cart_shortcode_fallback($is_fa);
         }
-        $error = takinta_cart_process_submission($route['fa']);
-        takinta_cart_render_page($route['fa'], $error);
+        $error = takinta_cart_process_submission($is_fa);
+        takinta_cart_render_page($is_fa, $error);
         exit;
     }
     $error = takinta_account_process_submission($route['fa'], $route['page']);

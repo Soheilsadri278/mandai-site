@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.0.6
+Version: 1.0.7
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -211,22 +211,59 @@ function takinta_static_theme_setup() {
 add_action('after_setup_theme', 'takinta_static_theme_setup');
 
 function takinta_static_requested_commerce_language() {
-    $language = isset($_GET['lang']) ? sanitize_key(wp_unslash($_GET['lang'])) : '';
-    return $language === 'fa' ? 'fa' : '';
+    if (isset($_GET['lang'])) {
+        $language = sanitize_key(wp_unslash($_GET['lang']));
+        if (in_array($language, array('fa', 'en'), true)) { return $language; }
+    }
+    if (isset($_COOKIE['takinta_commerce_language'])) {
+        $language = sanitize_key(wp_unslash($_COOKIE['takinta_commerce_language']));
+        if (in_array($language, array('fa', 'en'), true)) { return $language; }
+    }
+    return '';
 }
 
+function takinta_static_remember_commerce_language() {
+    if (is_admin() || headers_sent()) { return; }
+    $language = '';
+    if (isset($_GET['lang'])) {
+        $candidate = sanitize_key(wp_unslash($_GET['lang']));
+        if (in_array($candidate, array('fa', 'en'), true)) { $language = $candidate; }
+    }
+    $request_path = isset($_SERVER['REQUEST_URI']) ? (string) wp_unslash($_SERVER['REQUEST_URI']) : '/';
+    $request_path = (string) parse_url($request_path, PHP_URL_PATH);
+    if ($language === '' && preg_match('#^/fa(?:/|$)#', $request_path)) { $language = 'fa'; }
+    if ($language === '') { return; }
+    if (isset($_COOKIE['takinta_commerce_language']) && $_COOKIE['takinta_commerce_language'] === $language) { return; }
+    $options = array(
+        'expires' => time() + (30 * DAY_IN_SECONDS),
+        'path' => defined('COOKIEPATH') && COOKIEPATH ? COOKIEPATH : '/',
+        'secure' => is_ssl(),
+        'httponly' => true,
+        'samesite' => 'Lax',
+    );
+    if (defined('COOKIE_DOMAIN') && COOKIE_DOMAIN !== '') { $options['domain'] = COOKIE_DOMAIN; }
+    setcookie('takinta_commerce_language', $language, $options);
+    $_COOKIE['takinta_commerce_language'] = $language;
+}
+add_action('init', 'takinta_static_remember_commerce_language', 1);
+
 function takinta_static_is_persian_commerce_request() {
-    return takinta_static_requested_commerce_language() === 'fa' || (function_exists('is_rtl') && is_rtl());
+    $language = takinta_static_requested_commerce_language();
+    if ($language === 'fa') { return true; }
+    if ($language === 'en') { return false; }
+    return function_exists('is_rtl') && is_rtl();
 }
 
 function takinta_static_switch_to_persian_commerce_locale() {
-    if (is_admin() || takinta_static_requested_commerce_language() !== 'fa') { return; }
+    if (is_admin() || !takinta_static_is_persian_commerce_request()) { return; }
     if (function_exists('switch_to_locale')) { switch_to_locale('fa_IR'); }
 }
 add_action('wp', 'takinta_static_switch_to_persian_commerce_locale', 0);
 
 function takinta_static_persian_commerce_document_title($title) {
-    if (!is_admin() && takinta_static_requested_commerce_language() === 'fa' && function_exists('is_cart') && is_cart()) { return 'سبد خرید'; }
+    if (is_admin() || !takinta_static_is_persian_commerce_request()) { return $title; }
+    if (function_exists('is_cart') && is_cart()) { return 'سبد خرید'; }
+    if (function_exists('is_checkout') && is_checkout()) { return 'تکمیل سفارش'; }
     return $title;
 }
 add_filter('pre_get_document_title', 'takinta_static_persian_commerce_document_title');
@@ -236,6 +273,46 @@ function takinta_static_persian_cart_translations() {
         'Cart' => 'سبد خرید',
         'Shopping cart' => 'سبد خرید',
         'Cart totals' => 'جمع سبد خرید',
+        'Checkout' => 'تکمیل سفارش',
+        'Contact information' => 'اطلاعات تماس',
+        'Email address' => 'نشانی ایمیل',
+        'Shipping address' => 'نشانی ارسال',
+        'Billing address' => 'نشانی صورتحساب',
+        'Country/Region' => 'کشور/منطقه',
+        'Iran' => 'ایران',
+        'First name' => 'نام',
+        'Last name' => 'نام خانوادگی',
+        'Company name' => 'نام شرکت',
+        'Company (optional)' => 'شرکت (اختیاری)',
+        'State/County' => 'استان',
+        'Alborz (البرز)' => 'البرز',
+        'City' => 'شهر',
+        'Address' => 'نشانی',
+        'Address line 2' => 'نشانی تکمیلی',
+        'Add apartment, suite, etc.' => 'افزودن واحد، سوئیت و غیره',
+        '+ Add apartment, suite, etc.' => 'افزودن واحد، سوئیت و غیره',
+        'Apartment, suite, etc.' => 'واحد، سوئیت و غیره',
+        'Postal code' => 'کد پستی',
+        'Phone (optional)' => 'تلفن (اختیاری)',
+        'Use same address for billing' => 'استفاده از همین نشانی برای صورتحساب',
+        'Shipping options' => 'روش‌های ارسال',
+        'Payment options' => 'روش‌های پرداخت',
+        'Order summary' => 'خلاصهٔ سفارش',
+        'Order notes' => 'یادداشت سفارش',
+        'Add a note to your order' => 'افزودن یادداشت به سفارش',
+        'Place Order' => 'ثبت سفارش',
+        'Place order' => 'ثبت سفارش',
+        'Terms and Conditions' => 'شرایط و ضوابط',
+        'Privacy Policy' => 'سیاست حفظ حریم خصوصی',
+        'and' => 'و',
+        'By proceeding with your purchase you agree to our' => 'با ادامهٔ خرید، موافقت می‌کنید با',
+        'There are no payment methods available. Please contact us for help placing your order.' => 'در حال حاضر روش پرداختی در دسترس نیست. برای ثبت سفارش با ما تماس بگیرید.',
+        'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.' => 'روش ارسالی در دسترس نیست. نشانی را بررسی کنید یا برای راهنمایی با ما تماس بگیرید.',
+        'Returning customer?' => 'قبلاً خرید کرده‌اید؟',
+        'Click here to login' => 'برای ورود اینجا کلیک کنید',
+        'Have a coupon?' => 'کد تخفیف دارید؟',
+        'Click here to enter your code' => 'برای واردکردن کد تخفیف اینجا کلیک کنید',
+        'Return to cart' => 'بازگشت به سبد خرید',
         'Add coupons' => 'افزودن کد تخفیف',
         'Add a coupon' => 'افزودن کد تخفیف',
         'Add coupon' => 'افزودن کد تخفیف',
@@ -281,7 +358,9 @@ add_filter('gettext_with_context', function($translation, $text, $context, $doma
 }, 20, 4);
 
 function takinta_static_preserve_persian_commerce_language($url) {
-    if (takinta_static_requested_commerce_language() === 'fa') { return add_query_arg('lang', 'fa', $url); }
+    $language = takinta_static_requested_commerce_language();
+    if ($language === '' && takinta_static_is_persian_commerce_request()) { $language = 'fa'; }
+    if (in_array($language, array('fa', 'en'), true)) { return add_query_arg('lang', $language, $url); }
     return $url;
 }
 add_filter('woocommerce_get_cart_url', 'takinta_static_preserve_persian_commerce_language', 20);
@@ -292,9 +371,9 @@ function takinta_static_enqueue_commerce_assets() {
     $commerce_page = function_exists('is_cart') && (is_cart() || is_checkout() || (function_exists('is_account_page') && is_account_page()) || (function_exists('is_woocommerce') && is_woocommerce()));
     if (!$commerce_page) { return; }
     $base = untrailingslashit(get_template_directory_uri()) . '/static-site/assets/css/';
-    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.6');
-    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.6');
-    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.6'); }
+    wp_enqueue_style('takinta-static-commerce', $base . 'style.css', array(), '1.0.7');
+    wp_enqueue_style('takinta-static-commerce-product', $base . 'product-page.css', array('takinta-static-commerce'), '1.0.7');
+    if (takinta_static_is_persian_commerce_request()) { wp_enqueue_style('takinta-static-commerce-rtl', $base . 'rtl.css', array('takinta-static-commerce'), '1.0.7'); }
 }
 add_action('wp_enqueue_scripts', 'takinta_static_enqueue_commerce_assets');
 '''
@@ -308,7 +387,7 @@ if ($is_commerce) {
     $home = home_url($is_fa ? '/fa/' : '/');
     $logo = get_template_directory_uri() . '/static-site/images/logo.png';
     $cart_url = function_exists('wc_get_cart_url') ? wc_get_cart_url() : '';
-    if ($is_fa && $cart_url) { $cart_url = add_query_arg('lang', 'fa', $cart_url); }
+    if ($cart_url) { $cart_url = add_query_arg('lang', $is_fa ? 'fa' : 'en', $cart_url); }
     ?>
     <header class="site-header"><div class="container site-header__main" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
       <a href="<?php echo esc_url($home); ?>" class="site-header__logo" aria-label="Takinta home"><img src="<?php echo esc_url($logo); ?>" alt="Takinta" class="site-header__logo-img"></a>
@@ -336,23 +415,58 @@ if ($is_commerce) {
       @media(max-width:520px){.site-header .container.site-header__main{padding-inline:16px}.site-header__logo{flex-basis:140px;width:140px}.site-header__logo-img{width:140px!important}.takinta-commerce-nav{gap:10px;font-size:13px}.takinta-commerce-content{padding-inline:16px!important}}
     </style>
     <main class="woocommerce takinta-commerce-content" dir="<?php echo esc_attr($is_fa ? 'rtl' : 'ltr'); ?>">
-      <?php while (have_posts()) : the_post(); ?><h1><?php echo esc_html($is_fa && is_cart() ? 'سبد خرید' : get_the_title()); ?></h1><?php the_content(); ?><?php endwhile; ?>
+      <?php while (have_posts()) : the_post(); ?><h1><?php echo esc_html($is_fa && is_cart() ? 'سبد خرید' : ($is_fa && is_checkout() ? 'تکمیل سفارش' : get_the_title())); ?></h1><?php the_content(); ?><?php endwhile; ?>
     </main>
-    <?php if ($is_fa && function_exists('is_cart') && is_cart()) : ?>
+    <?php if ($is_fa && ((function_exists('is_cart') && is_cart()) || (function_exists('is_checkout') && is_checkout()))) : ?>
+    <?php
+    $takinta_fa_product_names = array();
+    if (function_exists('WC') && WC()->cart) {
+        foreach (WC()->cart->get_cart() as $takinta_cart_item) {
+            $takinta_product = isset($takinta_cart_item['data']) ? $takinta_cart_item['data'] : null;
+            if (!$takinta_product || !is_object($takinta_product) || !method_exists($takinta_product, 'get_id')) { continue; }
+            $takinta_product_id = (int) $takinta_product->get_id();
+            $takinta_fa_title = get_post_meta($takinta_product_id, '_takinta_title_fa', true);
+            if (!$takinta_fa_title && method_exists($takinta_product, 'get_parent_id')) {
+                $takinta_parent_id = (int) $takinta_product->get_parent_id();
+                if ($takinta_parent_id) { $takinta_fa_title = get_post_meta($takinta_parent_id, '_takinta_title_fa', true); }
+            }
+            if ($takinta_fa_title && method_exists($takinta_product, 'get_name')) { $takinta_fa_product_names[$takinta_product->get_name()] = $takinta_fa_title; }
+        }
+    }
+    ?>
     <script>
     (function(){
       var labels={
         'Cart':'سبد خرید','Shopping cart':'سبد خرید','Cart totals':'جمع سبد خرید',
+        'Checkout':'تکمیل سفارش','Contact information':'اطلاعات تماس','Email address':'نشانی ایمیل',
+        'Shipping address':'نشانی ارسال','Billing address':'نشانی صورتحساب','Country/Region':'کشور/منطقه','Iran':'ایران',
+        'First name':'نام','Last name':'نام خانوادگی','Company name':'نام شرکت','Company (optional)':'شرکت (اختیاری)',
+        'State/County':'استان','Alborz (البرز)':'البرز','City':'شهر','Address':'نشانی','Address line 2':'نشانی تکمیلی',
+        'Add apartment, suite, etc.':'افزودن واحد، سوئیت و غیره','+ Add apartment, suite, etc.':'افزودن واحد، سوئیت و غیره',
+        'Apartment, suite, etc.':'واحد، سوئیت و غیره','Postal code':'کد پستی','Phone (optional)':'تلفن (اختیاری)',
+        'Use same address for billing':'استفاده از همین نشانی برای صورتحساب','Shipping options':'روش‌های ارسال',
+        'Payment options':'روش‌های پرداخت','Order summary':'خلاصهٔ سفارش','Order notes':'یادداشت سفارش',
+        'Add a note to your order':'افزودن یادداشت به سفارش','Place Order':'ثبت سفارش','Place order':'ثبت سفارش',
+        'Terms and Conditions':'شرایط و ضوابط','Privacy Policy':'سیاست حفظ حریم خصوصی','and':'و',
+        'By proceeding with your purchase you agree to our':'با ادامهٔ خرید، موافقت می‌کنید با',
+        'There are no payment methods available. Please contact us for help placing your order.':'در حال حاضر روش پرداختی در دسترس نیست. برای ثبت سفارش با ما تماس بگیرید.',
+        'There are no shipping options available. Please ensure that your address has been entered correctly, or contact us if you need any help.':'روش ارسالی در دسترس نیست. نشانی را بررسی کنید یا برای راهنمایی با ما تماس بگیرید.',
+        'Returning customer?':'قبلاً خرید کرده‌اید؟','Click here to login':'برای ورود اینجا کلیک کنید',
+        'Have a coupon?':'کد تخفیف دارید؟','Click here to enter your code':'برای واردکردن کد تخفیف اینجا کلیک کنید',
+        'Return to cart':'بازگشت به سبد خرید','Cart':'سبد خرید','Cart totals':'جمع سبد خرید',
         'Add coupons':'افزودن کد تخفیف','Add a coupon':'افزودن کد تخفیف','Add coupon':'افزودن کد تخفیف',
         'Coupon code':'کد تخفیف','Apply':'اعمال','Free shipping':'ارسال رایگان',
         'Estimated total':'مجموع تقریبی','Proceed to Checkout':'ادامه به پرداخت','Proceed to checkout':'ادامه به پرداخت',
         'Subtotal':'جمع جزء','Total':'مجموع','Shipping':'هزینهٔ ارسال','Quantity':'تعداد',
         'Product':'محصول','Price':'قیمت','Remove item':'حذف کالا','Update cart':'به‌روزرسانی سبد خرید',
-        'Continue shopping':'ادامهٔ خرید','Keep shopping':'ادامهٔ خرید','Browse store':'مشاهدهٔ فروشگاه','Browse our store':'مشاهدهٔ فروشگاه','Return to shop':'بازگشت به فروشگاه',
+        'Continue shopping':'ادامهٔ خرید','Keep shopping':'ادامهٔ خرید','Browse store':'مشاهدهٔ فروشگاه',
+        'Browse our store':'مشاهدهٔ فروشگاه','Return to shop':'بازگشت به فروشگاه',
         'Your cart is currently empty!':'سبد خرید شما خالی است.','Your cart is currently empty.':'سبد خرید شما خالی است.',
         'Your cart is empty.':'سبد خرید شما خالی است.','There are no products in your cart.':'سبد خرید شما خالی است.',
         'Shipping options will be updated during checkout.':'گزینه‌های ارسال هنگام تکمیل سفارش به‌روزرسانی می‌شوند.'
       };
+      var products=<?php echo wp_json_encode($takinta_fa_product_names, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT); ?>||{};
+      Object.keys(products).forEach(function(key){labels[key]=products[key];});
       document.documentElement.lang='fa-IR';
       document.documentElement.dir='rtl';
       var root=document.querySelector('.takinta-commerce-content');
