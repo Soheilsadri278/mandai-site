@@ -6,7 +6,7 @@ Open Tools > Takinta Content Import to import all bundled HTML pages. The plugin
 
 Account pages: /account/ and /register/; Persian: /fa/account/ and /fa/register/. Members can sign in, register as Subscriber, edit profile names, reset passwords, and sign out. With WooCommerce active, the site cart and checkout use WooCommerce; the legacy email purchase-request cart remains available only when WooCommerce is inactive.
 
-Use WooCommerce > Takinta Draft Products / محصولات پیش‌نویس تکینتا to import the catalog in batches. Products remain drafts, with no price, SKU, stock, or media imported. Enter each approved price manually and publish the product before it can be ordered. Existing products with matching slugs are skipped and never overwritten.
+Use WooCommerce > Takinta Draft Products / محصولات پیش‌نویس تکینتا to import the catalog in batches. Products remain drafts, with no price, SKU, or stock imported. After product creation, run the separate image-sync action to sideload source images into the Media Library and set them as featured images; existing featured images are not overwritten. Enter each approved price manually and publish the product before it can be ordered. Existing products with matching slugs are skipped during product creation; image sync only adds a featured image when one is missing.
 
 The plugin adds a manual card-to-card WooCommerce gateway. Configure the recipient card details under WooCommerce > Settings > Payments > Takinta Card-to-card transfer. Orders remain on hold until an administrator verifies the transfer; payment is not automatically confirmed. Store card details in WordPress settings, never in this plugin or GitHub.
 

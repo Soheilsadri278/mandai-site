@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.0
+ * Version: 1.4.1
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -23,6 +23,11 @@ const TAKINTA_WC_DRAFT_IMPORT_OFFSET_OPTION = 'takinta_wc_draft_import_offset';
 const TAKINTA_WC_DRAFT_IMPORT_CREATED_OPTION = 'takinta_wc_draft_import_created';
 const TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION = 'takinta_wc_draft_import_skipped';
 const TAKINTA_WC_DRAFT_IMPORT_BATCH_SIZE = 20;
+const TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION = 'takinta_wc_draft_image_offset';
+const TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION = 'takinta_wc_draft_image_imported';
+const TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION = 'takinta_wc_draft_image_skipped';
+const TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION = 'takinta_wc_draft_image_failed';
+const TAKINTA_WC_DRAFT_IMAGE_BATCH_SIZE = 3;
 
 function takinta_editable_register_post_type() {
     $labels = array(
@@ -555,27 +560,59 @@ function takinta_cart_runtime_assets($is_fa) {
     return '<style>.takinta-cart-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 12px}.takinta-cart-qty{display:inline-flex;align-items:center;gap:7px;font-size:14px}.takinta-cart-qty input{width:76px;min-height:42px;padding:7px;border:1px solid #c8cdc8;border-radius:7px;font:inherit}.takinta-cart-controls .pp-button{cursor:pointer}.takinta-cart-status{flex-basis:100%;min-height:1.4em;font-size:14px;color:#265b3d}.cart-badge[data-takinta-cart-count]{min-width:1.2em;text-align:center}</style>' . $script;
 }
 
-function takinta_wc_product_for_static_route($route) {
-    if (!class_exists('WooCommerce') || !function_exists('wc_get_product')) { return false; }
+function takinta_wc_product_post_for_static_route($route) {
     $slug = sanitize_title(basename((string) $route, '.html'));
     if ($slug === '') { return false; }
-    $post = get_page_by_path($slug, OBJECT, 'product');
+    $args = array(
+        'post_type' => 'product',
+        'post_status' => array('publish', 'draft', 'pending', 'private', 'future', 'trash'),
+        'numberposts' => 1,
+        'fields' => 'ids',
+        'no_found_rows' => true,
+        'meta_key' => '_takinta_catalog_slug',
+        'meta_value' => $slug,
+    );
+    $matches = get_posts($args);
+    if (!empty($matches)) { return get_post((int) $matches[0]); }
+    return get_page_by_path($slug, OBJECT, 'product');
+}
+
+function takinta_wc_product_for_static_route($route) {
+    if (!class_exists('WooCommerce') || !function_exists('wc_get_product')) { return false; }
+    $post = takinta_wc_product_post_for_static_route($route);
     if (!$post || $post->post_status !== 'publish') { return false; }
     $product = wc_get_product($post->ID);
-    if (!$product || !$product->is_purchasable() || !$product->is_in_stock()) { return false; }
+    if (!$product || $product->get_price() === '' || !$product->is_purchasable() || !$product->is_in_stock()) { return false; }
     return $product;
 }
 
-function takinta_wc_static_order_controls($product, $is_fa) {
+function takinta_wc_static_order_status_message($route, $is_fa) {
+    if (!class_exists('WooCommerce')) { return ''; }
+    $post = takinta_wc_product_post_for_static_route($route);
+    if (!$post) {
+        return $is_fa ? 'این محصول هنوز در WooCommerce وارد نشده است.' : 'This product has not been imported into WooCommerce yet.';
+    }
+    if ($post->post_status !== 'publish') {
+        return $is_fa ? 'این محصول هنوز پیش‌نویس است؛ قیمت تأییدشده را وارد و محصول را منتشر کنید.' : 'This product is still a draft. Enter its approved price and publish it.';
+    }
+    $product = function_exists('wc_get_product') ? wc_get_product($post->ID) : false;
+    if (!$product || $product->get_price() === '') {
+        return $is_fa ? 'برای سفارش، قیمت تأییدشده را در ویرایش محصول وارد کنید.' : 'Enter an approved price for this product to enable ordering.';
+    }
+    if (!$product->is_in_stock()) {
+        return $is_fa ? 'این محصول فعلاً ناموجود است؛ وضعیت موجودی را در WooCommerce بررسی کنید.' : 'This product is currently out of stock. Check its WooCommerce availability.';
+    }
+    return $is_fa ? 'وضعیت سفارش‌پذیری محصول را در WooCommerce بررسی کنید.' : 'Check this product’s WooCommerce purchase settings.';
+}
+
+function takinta_wc_static_order_controls($product, $route, $is_fa) {
     $quantity_label = $is_fa ? 'تعداد' : 'Qty';
     if ($product) {
         $button_label = $is_fa ? 'افزودن به سبد خرید' : 'Add to shopping cart';
         $price_html = wp_kses_post($product->get_price_html());
         return '<div class="takinta-wc-order-controls"><div class="takinta-wc-product-price">' . $price_html . '</div><form class="takinta-cart-controls" method="get" action="' . esc_url(wc_get_cart_url()) . '"><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" name="quantity" min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><input type="hidden" name="add-to-cart" value="' . esc_attr((string) $product->get_id()) . '"><input type="hidden" name="takinta_wc_add_to_cart" value="1"><button type="submit" class="pp-button pp-button--dark">' . esc_html($button_label) . '</button></form></div>';
     }
-    $message = $is_fa
-        ? 'برای فعال‌شدن سفارش، قیمت تأییدشده را در WooCommerce وارد و محصول را منتشر کنید.'
-        : 'To enable ordering, enter the approved price in WooCommerce and publish this product.';
+    $message = takinta_wc_static_order_status_message($route, $is_fa);
     return '<p class="takinta-wc-order-pending" role="status">' . esc_html($message) . '</p>';
 }
 
@@ -606,16 +643,18 @@ function takinta_cart_transform_static_document($document, $route) {
         if (class_exists('WooCommerce')) {
             $document = preg_replace('~<a\\b(?=[^>]*\\bdata-product-quote\\b)[^>]*>.*?</a\\s*>~is', '', $document, 1);
             $orderable_product = takinta_wc_product_for_static_route($canonical_route);
-            $controls = takinta_wc_static_order_controls($orderable_product, $is_fa);
-            $pricing_note = $orderable_product
-                ? ($is_fa ? 'هزینهٔ ارسال و مالیات بر اساس تنظیمات checkout محاسبه می‌شوند.' : 'Shipping and taxes follow the store settings shown at checkout.')
-                : ($is_fa ? 'این کالا تا ثبت قیمت تأییدشده و انتشار در WooCommerce قابل سفارش نیست.' : 'This item cannot be ordered until an approved price is entered and it is published in WooCommerce.');
-            $note_written = false;
-            $document = preg_replace_callback('~<p\\b(?=[^>]*\\bclass="[^"]*\\b(?:pp-market-note|pp-tax-note)\\b[^"]*")[^>]*>.*?</p\\s*>~is', function($match) use ($pricing_note, &$note_written) {
-                if ($note_written) { return ''; }
-                $note_written = true;
-                return '<p class="pp-market-note">' . esc_html($pricing_note) . '</p>';
-            }, $document);
+            $controls = takinta_wc_static_order_controls($orderable_product, $canonical_route, $is_fa);
+            if ($orderable_product) {
+                $pricing_note = $is_fa ? 'هزینهٔ ارسال و مالیات بر اساس تنظیمات checkout محاسبه می‌شوند.' : 'Shipping and taxes follow the store settings shown at checkout.';
+                $note_written = false;
+                $document = preg_replace_callback('~<p\\b(?=[^>]*\\bclass="[^"]*\\b(?:pp-market-note|pp-tax-note)\\b[^"]*")[^>]*>.*?</p\\s*>~is', function($match) use ($pricing_note, &$note_written) {
+                    if ($note_written) { return ''; }
+                    $note_written = true;
+                    return '<p class="pp-market-note">' . esc_html($pricing_note) . '</p>';
+                }, $document);
+            } else {
+                $document = preg_replace('~<p\\b(?=[^>]*\\bclass="[^"]*\\b(?:pp-market-note|pp-tax-note)\\b[^"]*")[^>]*>.*?</p\\s*>~is', '', $document);
+            }
         } else {
             $controls = '<div class="takinta-cart-controls" data-takinta-cart-controls><label class="takinta-cart-qty"><span>' . esc_html($quantity_label) . '</span><input type="number" data-takinta-cart-quantity min="1" max="999" value="1" inputmode="numeric" aria-label="' . esc_attr($quantity_label) . '"></label><button type="button" class="pp-button pp-button--dark" data-takinta-add-to-cart data-takinta-product-id="' . esc_attr($canonical_route) . '" data-takinta-product-route="' . esc_attr($route) . '" data-takinta-product-title="' . esc_attr($title) . '" data-takinta-product-url="' . esc_url(takinta_editable_public_url($route)) . '">' . esc_html($button_label) . '</button><span class="takinta-cart-status" data-takinta-cart-status aria-live="polite"></span></div>';
         }
@@ -985,6 +1024,131 @@ function takinta_wc_draft_source_image_url($src, $route) {
     return esc_url_raw($src);
 }
 
+function takinta_wc_draft_local_image_path($src, $route) {
+    if (preg_match('~^https?://~i', (string) $src) || strpos((string) $src, '//') === 0) { return false; }
+    $root = realpath(takinta_editable_static_root());
+    $src_path = wp_parse_url((string) $src, PHP_URL_PATH);
+    if (!$root || !is_string($src_path) || $src_path === '') { return false; }
+    $candidates = array(dirname($route) . '/' . $src_path, $src_path);
+    foreach ($candidates as $candidate) {
+        $candidate = str_replace('/', DIRECTORY_SEPARATOR, ltrim($candidate, '/'));
+        $resolved = realpath($root . DIRECTORY_SEPARATOR . $candidate);
+        if ($resolved && strpos($resolved, $root . DIRECTORY_SEPARATOR) === 0 && is_file($resolved) && is_readable($resolved)) { return $resolved; }
+    }
+    return false;
+}
+
+function takinta_wc_draft_find_source_attachment($source_url) {
+    $matches = get_posts(array(
+        'post_type' => 'attachment',
+        'post_status' => 'inherit',
+        'numberposts' => 1,
+        'fields' => 'ids',
+        'no_found_rows' => true,
+        'meta_key' => '_takinta_source_image_url',
+        'meta_value' => $source_url,
+    ));
+    return !empty($matches) ? (int) $matches[0] : 0;
+}
+
+function takinta_wc_draft_import_product_image($post_id, $item, $route) {
+    if (has_post_thumbnail($post_id)) { return array('status' => 'already-set', 'attachment_id' => get_post_thumbnail_id($post_id)); }
+    if (empty($item['images'][0]['src']) || !is_string($item['images'][0]['src'])) {
+        return new WP_Error('takinta_image_missing', 'برای این محصول نشانی تصویر منبع وجود ندارد.');
+    }
+    $src = trim($item['images'][0]['src']);
+    $source_url = takinta_wc_draft_source_image_url($src, $route);
+    if ($source_url === '') { return new WP_Error('takinta_image_url_invalid', 'نشانی تصویر معتبر نیست.'); }
+    $existing_attachment = takinta_wc_draft_find_source_attachment($source_url);
+    if ($existing_attachment && wp_attachment_is_image($existing_attachment)) {
+        if (!set_post_thumbnail($post_id, $existing_attachment)) {
+            return new WP_Error('takinta_image_thumbnail_failed', 'تصویر موجود پیدا شد اما تنظیم آن به‌عنوان تصویر شاخص ناموفق بود.');
+        }
+        update_post_meta($post_id, '_takinta_source_image_import_status', 'reused');
+        return array('status' => 'reused', 'attachment_id' => $existing_attachment);
+    }
+
+    $filename = sanitize_file_name(basename((string) wp_parse_url($src, PHP_URL_PATH)));
+    if ($filename === '' || $filename === '.' || $filename === '/') { $filename = sanitize_title($item['slug'] ?? 'takinta-product') . '.jpg'; }
+    $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+    $allowed_extensions = array('jpg', 'jpeg', 'png', 'webp', 'gif');
+    $mime_extensions = array('image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp', 'image/gif' => 'gif');
+    $tmp = wp_tempnam($filename);
+    if (!$tmp) { return new WP_Error('takinta_image_temp_failed', 'ساخت فایل موقت تصویر ناموفق بود.'); }
+
+    $local_file = takinta_wc_draft_local_image_path($src, $route);
+    if ($local_file) {
+        if (!copy($local_file, $tmp)) {
+            @unlink($tmp);
+            return new WP_Error('takinta_image_copy_failed', 'کپی تصویر داخل قالب ناموفق بود.');
+        }
+        $filetype = wp_check_filetype($filename);
+        $mime = isset($filetype['type']) ? strtolower((string) $filetype['type']) : '';
+    } else {
+        $url = $src;
+        if (strpos($url, '//') === 0) { $url = (is_ssl() ? 'https:' : 'http:') . $url; }
+        $parts = wp_parse_url($url);
+        $host = isset($parts['host']) ? strtolower((string) $parts['host']) : '';
+        $scheme = isset($parts['scheme']) ? strtolower((string) $parts['scheme']) : '';
+        $allowed_hosts = array('www.mandai-design.com', 'cdn.shopify.com');
+        if (!in_array($scheme, array('http', 'https'), true) || !in_array($host, $allowed_hosts, true) || !wp_http_validate_url($url)) {
+            @unlink($tmp);
+            return new WP_Error('takinta_image_host_blocked', 'میزبان تصویر در فهرست مجاز نیست.');
+        }
+        $response = wp_safe_remote_get($url, array(
+            'timeout' => 8,
+            'redirection' => 3,
+            'limit_response_size' => 8388608,
+            'headers' => array('Accept' => 'image/avif,image/webp,image/png,image/jpeg,image/gif,*/*;q=0.5'),
+        ));
+        if (is_wp_error($response)) {
+            @unlink($tmp);
+            return new WP_Error('takinta_image_download_failed', $response->get_error_message());
+        }
+        $status_code = (int) wp_remote_retrieve_response_code($response);
+        $body = wp_remote_retrieve_body($response);
+        $content_length = (int) wp_remote_retrieve_header($response, 'content-length');
+        if ($status_code < 200 || $status_code >= 300 || !is_string($body) || $body === '' || strlen($body) > 8388608 || $content_length > 8388608) {
+            @unlink($tmp);
+            return new WP_Error('takinta_image_http_invalid', 'دریافت تصویر از نشانی منبع ناموفق بود یا فایل بیش از حد بزرگ است.');
+        }
+        if (file_put_contents($tmp, $body) === false) {
+            @unlink($tmp);
+            return new WP_Error('takinta_image_write_failed', 'ذخیرهٔ تصویر دریافتی ناموفق بود.');
+        }
+        $mime = strtolower(trim(explode(';', (string) wp_remote_retrieve_header($response, 'content-type'))[0]));
+    }
+
+    if (!in_array($extension, $allowed_extensions, true)) {
+        $extension = isset($mime_extensions[$mime]) ? $mime_extensions[$mime] : '';
+        if ($extension !== '') { $filename = sanitize_file_name(pathinfo($filename, PATHINFO_FILENAME) . '.' . $extension); }
+    }
+    $allowed_mimes = array('image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/octet-stream', 'binary/octet-stream');
+    if (!in_array($extension, $allowed_extensions, true) || ($mime !== '' && !in_array($mime, $allowed_mimes, true))) {
+        @unlink($tmp);
+        return new WP_Error('takinta_image_type_invalid', 'قالب فایل تصویر پشتیبانی نمی‌شود.');
+    }
+
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    $file_array = array('name' => $filename, 'tmp_name' => $tmp, 'type' => $mime);
+    $attachment_id = media_handle_sideload($file_array, $post_id);
+    if (is_wp_error($attachment_id)) {
+        @unlink($tmp);
+        return $attachment_id;
+    }
+    update_post_meta($attachment_id, '_takinta_source_image_url', $source_url);
+    $alt = !empty($item['images'][0]['alt']) ? sanitize_text_field($item['images'][0]['alt']) : sanitize_text_field($item['titleEn'] ?? 'Takinta product');
+    update_post_meta($attachment_id, '_wp_attachment_image_alt', $alt);
+    if (!set_post_thumbnail($post_id, $attachment_id)) {
+        return new WP_Error('takinta_image_thumbnail_failed', 'تصویر به کتابخانه منتقل شد اما تنظیم آن به‌عنوان تصویر شاخص ناموفق بود.');
+    }
+    update_post_meta($post_id, '_takinta_source_image_import_status', 'imported');
+    delete_post_meta($post_id, '_takinta_source_image_import_error');
+    return array('status' => 'imported', 'attachment_id' => (int) $attachment_id);
+}
+
 function takinta_wc_draft_existing_product($slug) {
     $args = array(
         'post_type' => 'product',
@@ -1079,6 +1243,73 @@ function takinta_wc_draft_import_batch() {
 }
 add_action('admin_post_takinta_wc_draft_import_batch', 'takinta_wc_draft_import_batch');
 
+function takinta_wc_draft_import_images_batch() {
+    if (!takinta_wc_draft_user_can_manage()) { wp_die('Unauthorized', '', array('response' => 403)); }
+    check_admin_referer('takinta_wc_draft_import_images_batch');
+    if (!class_exists('WooCommerce') || !post_type_exists('product')) {
+        wp_safe_redirect(takinta_wc_draft_import_admin_url(array('error' => 'woocommerce')));
+        exit;
+    }
+    $catalog = takinta_wc_draft_import_catalog();
+    if (is_wp_error($catalog)) {
+        wp_safe_redirect(takinta_wc_draft_import_admin_url(array('error' => 'catalog')));
+        exit;
+    }
+    $total = count($catalog);
+    $offset = isset($_POST['offset']) ? absint($_POST['offset']) : (int) get_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, 0);
+    $offset = min($total, max(0, $offset));
+    $batch = array_slice($catalog, $offset, TAKINTA_WC_DRAFT_IMAGE_BATCH_SIZE);
+    $imported = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, 0);
+    $skipped = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0);
+    $failed = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0);
+
+    foreach ($batch as $item) {
+        if (!is_array($item) || empty($item['slug'])) { $skipped++; continue; }
+        $slug = sanitize_title($item['slug']);
+        $post_id = takinta_wc_draft_existing_product($slug);
+        if (!$post_id) { $skipped++; continue; }
+        $product_post = get_post($post_id);
+        if (!$product_post || $product_post->post_status === 'trash') { $skipped++; continue; }
+        if (has_post_thumbnail($post_id)) {
+            update_post_meta($post_id, '_takinta_source_image_import_status', 'already-set');
+            $skipped++;
+            continue;
+        }
+
+        $result = takinta_wc_draft_import_product_image($post_id, $item, 'products/' . $slug . '.html');
+        if (is_wp_error($result)) {
+            update_post_meta($post_id, '_takinta_source_image_import_status', 'failed');
+            update_post_meta($post_id, '_takinta_source_image_import_error', sanitize_text_field($result->get_error_message()));
+            $failed++;
+            continue;
+        }
+        delete_post_meta($post_id, '_takinta_source_image_import_error');
+        $imported++;
+    }
+
+    $next = min($total, $offset + count($batch));
+    update_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, $next, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, $imported, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, $skipped, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, $failed, false);
+    $args = $next < $total ? array('image_continue' => '1') : array('image_complete' => '1');
+    wp_safe_redirect(takinta_wc_draft_import_admin_url($args));
+    exit;
+}
+add_action('admin_post_takinta_wc_draft_import_images_batch', 'takinta_wc_draft_import_images_batch');
+
+function takinta_wc_draft_import_images_reset() {
+    if (!takinta_wc_draft_user_can_manage()) { wp_die('Unauthorized', '', array('response' => 403)); }
+    check_admin_referer('takinta_wc_draft_import_images_reset');
+    update_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, 0, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, 0, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0, false);
+    update_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0, false);
+    wp_safe_redirect(takinta_wc_draft_import_admin_url(array('images_reset' => '1')));
+    exit;
+}
+add_action('admin_post_takinta_wc_draft_import_images_reset', 'takinta_wc_draft_import_images_reset');
+
 function takinta_wc_draft_import_reset() {
     if (!takinta_wc_draft_user_can_manage()) { wp_die('Unauthorized', '', array('response' => 403)); }
     check_admin_referer('takinta_wc_draft_import_reset');
@@ -1108,9 +1339,15 @@ function takinta_wc_draft_import_render_page() {
     $skipped = (int) get_option(TAKINTA_WC_DRAFT_IMPORT_SKIPPED_OPTION, 0);
     $done = $offset >= $total;
     $continue = isset($_GET['continue']) && sanitize_text_field(wp_unslash($_GET['continue'])) === '1' && !$done;
+    $image_offset = min($total, max(0, (int) get_option(TAKINTA_WC_DRAFT_IMAGE_OFFSET_OPTION, 0)));
+    $image_imported = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_IMPORTED_OPTION, 0);
+    $image_skipped = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_SKIPPED_OPTION, 0);
+    $image_failed = (int) get_option(TAKINTA_WC_DRAFT_IMAGE_FAILED_OPTION, 0);
+    $images_done = $image_offset >= $total;
+    $images_continue = isset($_GET['image_continue']) && sanitize_text_field(wp_unslash($_GET['image_continue'])) === '1' && !$images_done && $done;
 
     echo '<p>این ابزار ' . esc_html((string) $total) . ' محصول را در بسته‌های ۲۰تایی به‌صورت <strong>پیش‌نویس</strong> می‌سازد؛ صفحهٔ عمومی یا خرید فعالی ایجاد نمی‌شود.</p>';
-    echo '<ul><li>عنوان از زبان پیش‌فرض WordPress انتخاب می‌شود و هر دو عنوان فارسی/انگلیسی برای بازبینی ذخیره می‌شوند.</li><li>توضیح کوتاه موجود در صفحهٔ منبع کپی می‌شود؛ نشانی تصویر و مسیر صفحه فقط به‌عنوان مرجع ذخیره می‌شوند و تصویر دانلود نمی‌شود.</li><li><strong>قیمت، SKU و موجودی وارد نمی‌شوند</strong> و هیچ محصولی منتشر یا قابل خرید نمی‌شود.</li><li>محصول‌های موجود یا دارای همان slug بازنویسی نمی‌شوند.</li></ul>';
+    echo '<ul><li>عنوان از زبان پیش‌فرض WordPress انتخاب می‌شود و هر دو عنوان فارسی/انگلیسی برای بازبینی ذخیره می‌شوند.</li><li>در مرحلهٔ جداگانهٔ بعد از ساخت محصولات، تصویر منبع به کتابخانهٔ رسانه منتقل و تصویر شاخص محصول می‌شود.</li><li><strong>قیمت، SKU و موجودی وارد نمی‌شوند</strong> و محصول‌ها تا قیمت‌گذاری و انتشار دستی قابل سفارش نیستند.</li><li>محصول‌های موجود یا دارای همان slug بازنویسی نمی‌شوند؛ تصویر شاخصی که از قبل تنظیم شده هم جایگزین نخواهد شد.</li></ul>';
     echo '<p><strong>پیشرفت:</strong> ' . esc_html((string) $offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>ساخته‌شده:</strong> ' . esc_html((string) $created) . ' &nbsp; <strong>ردشده/ازقبل‌موجود:</strong> ' . esc_html((string) $skipped) . '</p>';
     echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $offset) . '" style="width:min(100%,640px);height:20px"></progress>';
     if ($done) {
@@ -1135,7 +1372,35 @@ function takinta_wc_draft_import_render_page() {
     if ($continue) {
         echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-import-form");if(f)f.submit();},500);</script>';
     }
-    echo '<p class="description">برای فعال‌کردن سفارش، برای هر محصول قیمت تأییدشده را در ویرایش محصول وارد و آن را منتشر کن؛ سپس شماره کارت مقصد و راهنمای پرداخت را از WooCommerce ← پیکربندی ← پرداخت‌ها ← Takinta Card-to-card transfer تنظیم کن.</p></div>';
+
+    if ($done) {
+        echo '<hr><h2>انتقال تصاویر محصولات</h2><p>این مرحله تصویرهای کاتالوگ را به کتابخانهٔ رسانه منتقل می‌کند و به‌عنوان تصویر شاخص محصول می‌گذارد. تصویر شاخصی که از قبل وجود دارد دست‌نخورده می‌ماند. برای دریافت تصویرهای آنلاین، هاست WordPress باید به نشانی منبع دسترسی داشته باشد.</p>';
+        echo '<p><strong>پیشرفت تصاویر:</strong> ' . esc_html((string) $image_offset) . ' / ' . esc_html((string) $total) . ' &nbsp; <strong>منتقل/استفاده‌شده:</strong> ' . esc_html((string) $image_imported) . ' &nbsp; <strong>ردشده/ازقبل‌دارای‌تصویر:</strong> ' . esc_html((string) $image_skipped) . ' &nbsp; <strong>ناموفق:</strong> ' . esc_html((string) $image_failed) . '</p>';
+        echo '<progress max="' . esc_attr((string) max(1, $total)) . '" value="' . esc_attr((string) $image_offset) . '" style="width:min(100%,640px);height:20px"></progress>';
+        if ($images_done) {
+            echo '<div class="notice notice-success"><p>بررسی انتقال تصویرها تمام شد. محصول‌های ناموفق را باز کن تا دلیل در کادر منبع کاتالوگ دیده شود؛ سپس می‌توانی اسکن را دوباره اجرا کنی.</p></div>';
+        } elseif ($images_continue) {
+            echo '<p>در حال انتقال بستهٔ بعدی تصویرها؛ صفحه خودش ادامه می‌دهد.</p>';
+        }
+        if (!$images_done) {
+            echo '<form id="takinta-wc-draft-image-form" method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:14px">';
+            echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_batch"><input type="hidden" name="offset" value="' . esc_attr((string) $image_offset) . '">';
+            wp_nonce_field('takinta_wc_draft_import_images_batch');
+            submit_button($image_offset > 0 ? 'ادامهٔ انتقال تصاویر' : 'انتقال تصویرهای محصولات فعلی', 'primary', 'submit', false);
+            echo '</form>';
+        }
+        if ($images_done || $image_offset > 0) {
+            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline-block;margin-top:10px">';
+            echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_reset">';
+            wp_nonce_field('takinta_wc_draft_import_images_reset');
+            submit_button('اسکن دوبارهٔ تصویرهای جاافتاده (بدون حذف تصویرها)', 'secondary', 'submit', false);
+            echo '</form>';
+        }
+        if ($images_continue) {
+            echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-image-form");if(f)f.submit();},500);</script>';
+        }
+    }
+    echo '<p class="description">برای سفارش‌پذیرشدن هر محصول، قیمت تأییدشده را دستی وارد و آن را منتشر کن؛ برای پرداخت هم شماره کارت مقصد را در WooCommerce ← پیکربندی ← پرداخت‌ها ← Takinta Card-to-card transfer تنظیم کن.</p></div>';
 }
 
 function takinta_wc_draft_add_source_meta_box() {
@@ -1152,12 +1417,19 @@ function takinta_wc_draft_render_source_meta_box($post) {
     $fa_route = get_post_meta($post->ID, '_takinta_source_route_fa', true);
     $category = get_post_meta($post->ID, '_takinta_source_category', true);
     $image_url = get_post_meta($post->ID, '_takinta_source_image_url', true);
+    $image_status = get_post_meta($post->ID, '_takinta_source_image_import_status', true);
+    $image_error = get_post_meta($post->ID, '_takinta_source_image_import_error', true);
     if ($title_en) { echo '<p><strong>English title:</strong><br>' . esc_html($title_en) . '</p>'; }
     if ($title_fa) { echo '<p><strong>عنوان فارسی:</strong><br>' . esc_html($title_fa) . '</p>'; }
     if ($category) { echo '<p><strong>دستهٔ منبع:</strong> ' . esc_html($category) . '</p>'; }
     if ($route) { echo '<p><a href="' . esc_url(home_url('/' . ltrim($route, '/'))) . '" target="_blank" rel="noopener">صفحهٔ انگلیسی</a></p>'; }
     if ($fa_route) { echo '<p><a href="' . esc_url(home_url('/' . ltrim($fa_route, '/'))) . '" target="_blank" rel="noopener">صفحهٔ فارسی</a></p>'; }
-    if ($image_url) { echo '<p><a href="' . esc_url($image_url) . '" target="_blank" rel="noopener">تصویر منبع (هنوز دانلود نشده)</a></p>'; }
+    if ($image_url) { echo '<p><a href="' . esc_url($image_url) . '" target="_blank" rel="noopener">تصویر منبع</a></p>'; }
+    if ($image_status === 'imported') { echo '<p>تصویر از منبع به کتابخانهٔ رسانه منتقل شده است.</p>'; }
+    elseif ($image_status === 'reused') { echo '<p>تصویر منبع از قبل در کتابخانهٔ رسانه بود و استفاده شد.</p>'; }
+    elseif ($image_status === 'already-set') { echo '<p>تصویر شاخص قبلی حفظ شده است.</p>'; }
+    elseif ($image_status === 'failed') { echo '<p><strong>انتقال تصویر ناموفق:</strong> ' . esc_html($image_error) . '</p>'; }
+    elseif ($image_url) { echo '<p>برای انتقال، اسکن تصاویر را از ابزار «محصولات پیش‌نویس تکینتا» اجرا کن.</p>'; }
 }
 
 function takinta_wc_card_transfer_init_gateway() {
