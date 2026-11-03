@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.3
+ * Version: 1.4.4
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -974,6 +974,18 @@ function takinta_wc_draft_import_admin_menu() {
 }
 add_action('admin_menu', 'takinta_wc_draft_import_admin_menu');
 
+function takinta_wc_draft_import_enqueue_admin_script($hook) {
+    if (!isset($_GET['page']) || !is_string($_GET['page']) || sanitize_text_field(wp_unslash($_GET['page'])) !== 'takinta-wc-draft-import') { return; }
+    wp_enqueue_script(
+        'takinta-wc-draft-import-admin',
+        plugins_url('takinta-wc-draft-import-admin.js', __FILE__),
+        array(),
+        '1.4.4',
+        true
+    );
+}
+add_action('admin_enqueue_scripts', 'takinta_wc_draft_import_enqueue_admin_script');
+
 function takinta_wc_draft_import_catalog() {
     $root = realpath(takinta_editable_static_root());
     $path = $root ? realpath($root . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'products.json') : false;
@@ -1416,7 +1428,7 @@ function takinta_wc_draft_import_render_page() {
         echo '<p>در حال انتقال بستهٔ بعدی تصویرها؛ صفحه خودش ادامه می‌دهد.</p>';
     }
     if (!$images_done) {
-        echo '<form id="takinta-wc-draft-image-form" method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:14px">';
+        echo '<form id="takinta-wc-draft-image-form" data-auto-submit="' . esc_attr($images_continue ? '1' : '0') . '" method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="margin-top:14px">';
         echo '<input type="hidden" name="action" value="takinta_wc_draft_import_images_batch"><input type="hidden" name="offset" value="' . esc_attr((string) $image_offset) . '">';
         wp_nonce_field('takinta_wc_draft_import_images_batch');
         submit_button($image_offset > 0 ? 'ادامهٔ انتقال تصاویر' : 'انتقال تصویرهای محصولات فعلی', 'primary', 'submit', false);
@@ -1428,9 +1440,6 @@ function takinta_wc_draft_import_render_page() {
         wp_nonce_field('takinta_wc_draft_import_images_reset');
         submit_button('اسکن دوبارهٔ تصویرهای جاافتاده (بدون حذف تصویرها)', 'secondary', 'submit', false);
         echo '</form>';
-    }
-    if ($images_continue) {
-        echo '<script>window.setTimeout(function(){var f=document.getElementById("takinta-wc-draft-image-form");if(f)f.submit();},500);</script>';
     }
     echo '<p class="description">برای سفارش‌پذیرشدن هر محصول، قیمت تأییدشده را دستی وارد و آن را منتشر کن؛ برای پرداخت هم شماره کارت مقصد را در WooCommerce ← پیکربندی ← پرداخت‌ها ← Takinta Card-to-card transfer تنظیم کن.</p></div>';
 }
