@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.2
+ * Version: 1.5.3
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1075,6 +1075,68 @@ add_action('template_redirect', 'takinta_editable_render_imported_route', -1);
 function takinta_editable_static_root() {
     return trailingslashit(get_template_directory()) . 'static-site';
 }
+
+function takinta_wc_static_product_is_persian_request() {
+    if (function_exists('takinta_static_is_persian_commerce_request')) {
+        return (bool) takinta_static_is_persian_commerce_request();
+    }
+    if (isset($_GET['lang'])) {
+        return sanitize_key(wp_unslash($_GET['lang'])) === 'fa';
+    }
+    if (isset($_COOKIE['takinta_commerce_language'])) {
+        return sanitize_key(wp_unslash($_COOKIE['takinta_commerce_language'])) === 'fa';
+    }
+    $request_uri = isset($_SERVER['REQUEST_URI']) ? wp_unslash($_SERVER['REQUEST_URI']) : '';
+    $request_path = wp_parse_url($request_uri, PHP_URL_PATH);
+    if (is_string($request_path) && preg_match('~(?:^|/)fa(?:/|$)~', $request_path)) {
+        return true;
+    }
+    return function_exists('is_rtl') && is_rtl();
+}
+
+function takinta_wc_static_product_permalink($permalink, $product) {
+    if (!is_object($product) || !method_exists($product, 'get_id')) { return $permalink; }
+    $product_id = absint($product->get_id());
+    if (!$product_id || get_post_type($product_id) !== 'product') { return $permalink; }
+
+    $is_fa = takinta_wc_static_product_is_persian_request();
+    $routes = array(
+        $is_fa ? get_post_meta($product_id, '_takinta_source_route_fa', true) : get_post_meta($product_id, '_takinta_source_route', true),
+        $is_fa ? get_post_meta($product_id, '_takinta_source_route', true) : get_post_meta($product_id, '_takinta_source_route_fa', true),
+    );
+    $slug = sanitize_title((string) get_post_field('post_name', $product_id));
+    if ($slug !== '') {
+        $routes[] = ($is_fa ? 'fa/' : '') . 'products/' . $slug . '.html';
+    }
+
+    $root = realpath(takinta_editable_static_root());
+    if (!$root) { return $permalink; }
+    foreach (array_unique($routes) as $route) {
+        $route = ltrim((string) $route, '/');
+        if (!preg_match('~^(?:fa/)?products/[a-z0-9][a-z0-9-]*\.html$~i', $route)) { continue; }
+        $path = realpath($root . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $route));
+        if (!$path || strpos($path, $root . DIRECTORY_SEPARATOR) !== 0 || !is_file($path)) { continue; }
+        return takinta_editable_public_url($route);
+    }
+    return $permalink;
+}
+add_filter('woocommerce_product_get_permalink', 'takinta_wc_static_product_permalink', 20, 2);
+
+function takinta_wc_static_cart_item_permalink($permalink, $cart_item, $cart_item_key) {
+    if (isset($cart_item['data'])) {
+        return takinta_wc_static_product_permalink($permalink, $cart_item['data']);
+    }
+    return $permalink;
+}
+add_filter('woocommerce_cart_item_permalink', 'takinta_wc_static_cart_item_permalink', 20, 3);
+
+function takinta_wc_static_product_post_type_link($permalink, $post, $leavename, $sample) {
+    if (!is_object($post) || empty($post->ID) || $post->post_type !== 'product') { return $permalink; }
+    $product = function_exists('wc_get_product') ? wc_get_product($post->ID) : null;
+    if (!$product) { return $permalink; }
+    return takinta_wc_static_product_permalink($permalink, $product);
+}
+add_filter('post_type_link', 'takinta_wc_static_product_post_type_link', 20, 4);
 
 function takinta_editable_get_html_files() {
     $root = takinta_editable_static_root();
