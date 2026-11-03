@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.4.8
+ * Version: 1.4.9
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -741,11 +741,16 @@ function takinta_account_handle_route() {
         if (class_exists('WooCommerce') && function_exists('wc_get_page_id') && function_exists('wc_get_cart_url')) {
             $wc_cart_page_id = (int) wc_get_page_id('cart');
             if ($wc_cart_page_id > 0) {
-                if ($is_fa || !is_page($wc_cart_page_id)) {
-                    wp_safe_redirect(takinta_cart_url($is_fa));
+                if (is_page($wc_cart_page_id)) { return; } // The configured page must render even when lang=fa is present.
+                $cart_url = takinta_cart_url($is_fa);
+                $target_path = untrailingslashit((string) parse_url($cart_url, PHP_URL_PATH));
+                $request_path = untrailingslashit((string) parse_url(wp_unslash($_SERVER['REQUEST_URI'] ?? ''), PHP_URL_PATH));
+                if ($target_path !== $request_path) {
+                    wp_safe_redirect($cart_url);
                     exit;
                 }
-                return; // Let WooCommerce render its configured cart page.
+                // If the configured URL already matches this route but WordPress did not resolve its page, render a fallback instead of redirecting to itself.
+                takinta_wc_render_cart_shortcode_fallback($is_fa);
             }
             takinta_wc_render_cart_shortcode_fallback($is_fa);
         }
