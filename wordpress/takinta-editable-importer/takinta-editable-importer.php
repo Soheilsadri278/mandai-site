@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.4
+ * Version: 1.5.5
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -916,6 +916,18 @@ function takinta_cart_transform_static_document($document, $route) {
 
 function takinta_portfolio_images_only_transform($document) {
     if (!is_string($document) || $document === '') { return $document; }
+
+    // Remove the customer walkthrough intro blocks shown above the photo galleries.
+    // They refer to video content that is intentionally not part of the photo-only portfolio.
+    $walk_paragraph_pattern = <<<'TAKINTA_REGEX'
+~<p\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-walk\b[^"]*"|'[^']*\bfref-walk\b[^']*'))[^>]*>.*?</p\s*>~is
+TAKINTA_REGEX;
+    $walk_section_pattern = <<<'TAKINTA_REGEX'
+~<section\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-walkin\b[^"]*"|'[^']*\bfref-walkin\b[^']*'))[^>]*>.*?</section\s*>~is
+TAKINTA_REGEX;
+    $document = preg_replace(trim($walk_paragraph_pattern), '', $document);
+    $document = preg_replace(trim($walk_section_pattern), '', $document);
+    if (!is_string($document)) { return ''; }
 
     // Keep each portfolio card's image container only; remove client names, locations,
     // captions, and links without changing the image or its accessibility text.
