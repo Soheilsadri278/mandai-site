@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.8
+ * Version: 1.5.9
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1001,7 +1001,37 @@ TAKINTA_REGEX;
         }, $matches[2]);
         return $matches[1] . (is_string($items) ? $items : $matches[2]) . $matches[3];
     }, $document);
-    return is_string($updated) ? $updated : $document;
+    if (is_string($updated)) { $document = $updated; }
+
+    // Give the first and last carousel cards a safe gutter so edge photos are not
+    // clipped by the horizontal viewport or obscured by the arrow controls.
+    if (preg_match($track_pattern, $document) && strpos($document, 'id="takinta-portfolio-gallery-edge-fix"') === false) {
+        $edge_fix_css = <<<'TAKINTA_CSS'
+<style id="takinta-portfolio-gallery-edge-fix">
+.fref-track.fref-track {
+    box-sizing: border-box;
+    padding-inline: clamp(38px, 3.4vw, 48px);
+    scroll-padding-inline: clamp(38px, 3.4vw, 48px);
+}
+.fref-track.fref-track > li { flex: 0 0 100%; }
+@media (min-width: 640px) {
+    .fref-track.fref-track > li { flex-basis: calc((100% - 18px) / 2); }
+}
+@media (min-width: 1024px) {
+    .fref-track.fref-track > li { flex-basis: calc((100% - 36px) / 3); }
+}
+@media (min-width: 1280px) {
+    .fref-track.fref-track > li { flex-basis: calc((100% - 54px) / 4); }
+}
+.fref-grid .fsh-grid__btn--prev { left: 4px; }
+.fref-grid .fsh-grid__btn--next { right: 4px; }
+</style>
+TAKINTA_CSS;
+        $edge_fix_css = trim($edge_fix_css);
+        $styled_document = preg_replace('~</head\s*>~i', $edge_fix_css . '</head>', $document, 1);
+        if (is_string($styled_document)) { $document = $styled_document; }
+    }
+    return $document;
 }
 
 function takinta_wc_render_cart_shortcode_fallback($is_fa) {
