@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.12
+ * Version: 1.5.13
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -940,6 +940,7 @@ function takinta_persian_ui_text_transform($document) {
         'Skip to main content' => 'رفتن به محتوای اصلی',
         'Previous announcement' => 'اطلاعیهٔ قبلی',
         'Next announcement' => 'اطلاعیهٔ بعدی',
+        'Call us for a free consultation' => 'برای مشاورهٔ رایگان با ما تماس بگیرید',
         'Social media' => 'شبکه‌های اجتماعی',
         'Footer column 1' => 'پیوندهای پایانی، ستون ۱',
         'Footer column 2' => 'پیوندهای پایانی، ستون ۲',
