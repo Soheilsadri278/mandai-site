@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.7
+ * Version: 1.5.8
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -980,6 +980,13 @@ TAKINTA_REGEX;
             $photo_slide = preg_replace('~<figcaption\b[^>]*>.*?</figcaption\s*>~is', '', $photo_slide);
             $photo_slide = preg_replace('~</?a\b[^>]*>~is', '', $photo_slide);
             if (!is_string($photo_slide) || !preg_match('~<img\b~i', $photo_slide)) { return ''; }
+
+            // Repair the misspelled Peintner image filename present in both locale sources.
+            $photo_slide = str_replace(
+                'https://www.mandai-design.com/cdn/shop/files/peinter_tirol.jpg',
+                'https://www.mandai-design.com/cdn/shop/files/peintner-tirol.jpg',
+                $photo_slide
+            );
 
             // Gallery images remain visible even in full-page views and browsers that do
             // not advance native lazy loading through long, horizontally scrolling pages.
