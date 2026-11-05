@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.9
+ * Version: 1.5.10
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1030,6 +1030,106 @@ TAKINTA_CSS;
         $edge_fix_css = trim($edge_fix_css);
         $styled_document = preg_replace('~</head\s*>~i', $edge_fix_css . '</head>', $document, 1);
         if (is_string($styled_document)) { $document = $styled_document; }
+    }
+    return takinta_portfolio_recover_orphaned_slider_script($document);
+}
+
+function takinta_portfolio_recover_orphaned_slider_script($document) {
+    if (!is_string($document) || $document === '') { return $document; }
+
+    $slider_source_pattern = <<<'TAKINTA_REGEX'
+~\bvar\s+slider\s*=\s*document\.getElementById\s*\(\s*btn\.getAttribute\s*\(\s*(['"])data-slider\1~i
+TAKINTA_REGEX;
+    $slider_source_pattern = trim($slider_source_pattern);
+    if (!preg_match_all($slider_source_pattern, $document, $source_matches, PREG_OFFSET_CAPTURE)) { return $document; }
+
+    $script_ranges = array();
+    if (preg_match_all('~<script\b[^>]*>.*?</script\s*>~is', $document, $script_matches, PREG_OFFSET_CAPTURE)) {
+        foreach ($script_matches[0] as $script_match) {
+            $script_ranges[] = array($script_match[1], $script_match[1] + strlen($script_match[0]));
+        }
+    }
+
+    foreach ($source_matches[0] as $source_match) {
+        $marker_position = $source_match[1];
+        $inside_script = false;
+        $gap_start = 0;
+        $gap_end = strlen($document);
+        foreach ($script_ranges as $range) {
+            if ($marker_position >= $range[0] && $marker_position < $range[1]) { $inside_script = true; break; }
+            if ($range[1] <= $marker_position) { $gap_start = max($gap_start, $range[1]); }
+            if ($range[0] > $marker_position) { $gap_end = min($gap_end, $range[0]); }
+        }
+        if ($inside_script) { continue; }
+
+        $gap = substr($document, $gap_start, $gap_end - $gap_start);
+        if (strpos($gap, 'slider.scrollBy') === false || strpos($gap, 'data-slider') === false) { continue; }
+        $relative_marker = $marker_position - $gap_start;
+        $prefix = substr($gap, 0, $relative_marker);
+        $start_candidates = array();
+        foreach (array(
+            "document.querySelectorAll('.fref-grid')",
+            'document.querySelectorAll(".fref-grid")',
+            "document.querySelectorAll('.slider-btn')",
+            'document.querySelectorAll(".slider-btn")',
+        ) as $needle) {
+            $candidate = strpos($prefix, $needle);
+            if ($candidate !== false) { $start_candidates[] = $candidate; }
+        }
+        if (preg_match_all('~function\\s*\\(\\s*\\)\\s*\\{~i', $prefix, $function_matches, PREG_OFFSET_CAPTURE)) {
+            $last_function = end($function_matches[0]);
+            $start_candidates[] = $last_function[1];
+        }
+        $first_comment = strpos($prefix, '/*');
+        if ($first_comment !== false) { $start_candidates[] = $first_comment; }
+        $relative_start = $start_candidates ? min($start_candidates) : $relative_marker;
+
+        $next_iife_end = strpos($gap, '})();', $relative_marker);
+        if ($next_iife_end !== false) {
+            $relative_end = $next_iife_end + 4;
+        } else {
+            $orphan_close = stripos($gap, '</script', $relative_marker);
+            $relative_end = $orphan_close !== false ? $orphan_close : strlen($gap);
+        }
+        if ($relative_end <= $relative_start) { continue; }
+
+        $remove_start = $gap_start + $relative_start;
+        $remove_length = $relative_end - $relative_start;
+        $document = substr_replace($document, '', $remove_start, $remove_length);
+        $after = substr($document, $remove_start);
+        if (preg_match('~^\s*</script\s*>~i', $after, $orphan_closing_tag)) {
+            $document = substr_replace($document, '', $remove_start, strlen($orphan_closing_tag[0]));
+        }
+
+        // Reattach a clean slider handler after removing the leaked plain-text source.
+        $recovery_script = <<<'TAKINTA_SCRIPT'
+<script id="takinta-portfolio-slider-recovery">
+(function () {
+  document.querySelectorAll('.slider-btn[data-slider]').forEach(function (button) {
+    if (button.getAttribute('data-takinta-slider-recovery-bound') === '1') return;
+    button.setAttribute('data-takinta-slider-recovery-bound', '1');
+    button.addEventListener('click', function () {
+      var slider = document.getElementById(button.getAttribute('data-slider'));
+      if (!slider) return;
+      var card = slider.querySelector('li');
+      var gap = parseFloat(getComputedStyle(slider).columnGap || getComputedStyle(slider).gap) || 18;
+      var step = card ? card.getBoundingClientRect().width + gap : 320;
+      var items = Array.prototype.filter.call(slider.children, function (item) {
+        return !item.hidden && item.getClientRects().length;
+      });
+      var sign = items.length > 1
+        ? (items[1].getBoundingClientRect().left < items[0].getBoundingClientRect().left ? -1 : 1)
+        : (getComputedStyle(slider).direction === 'rtl' ? -1 : 1);
+      slider.scrollBy({ left: step * Number(button.getAttribute('data-dir') || 1) * sign, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+TAKINTA_SCRIPT;
+        $recovery_script = trim($recovery_script);
+        $with_recovery = preg_replace('~</body\s*>~i', $recovery_script . '</body>', $document, 1);
+        if (is_string($with_recovery)) { $document = $with_recovery; }
+        break;
     }
     return $document;
 }
