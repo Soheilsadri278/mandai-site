@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.11
+ * Version: 1.5.12
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -967,6 +967,52 @@ function takinta_persian_ui_text_transform($document) {
     return $document;
 }
 
+function takinta_persian_footer_more_links_transform($document) {
+    if (!is_string($document) || $document === '' || strpos($document, 'بیشتر ببینید') === false) { return $document; }
+
+    return preg_replace_callback('~<footer\b(?=[^>]*\bclass\s*=\s*"[^"]*\bsite-footer\b[^"]*")[^>]*>.*?</footer\s*>~is', function($footer) {
+        $html = preg_replace_callback('~(<li\b[^>]*>)(.*?)(</li\s*>)~is', function($item) {
+            $more_anchor = '';
+            $content = preg_replace_callback('~<a\b[^>]*>.*?</a\s*>~is', function($anchor) use (&$more_anchor) {
+                $label = html_entity_decode(trim(wp_strip_all_tags($anchor[0])), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                if ($label === 'بیشتر ببینید') {
+                    if ($more_anchor === '') { $more_anchor = $anchor[0]; }
+                    return '';
+                }
+                return $anchor[0];
+            }, $item[2]);
+            if (!is_string($content) || $more_anchor === '') { return $item[0]; }
+
+            $visible_label = html_entity_decode(trim(wp_strip_all_tags($content)), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            if ($visible_label === '') { return $item[1] . $content . $item[3]; }
+
+            // Existing destination link? Keep it and only remove the redundant CTA.
+            if (preg_match('~<a\b~i', $content)) { return $item[1] . trim($content) . $item[3]; }
+            $link_open = strstr($more_anchor, '>', true);
+            if ($link_open === false) { return $item[1] . $content . $item[3]; }
+            return $item[1] . $link_open . '>' . trim($content) . '</a>' . $item[3];
+        }, $footer[0]);
+        if (!is_string($html)) { return $footer[0]; }
+
+        // The footer note uses the same CTA after “با ما تماس بگیرید.” Move its
+        // destination onto that meaningful phrase instead of leaving a “see more” link.
+        $html = preg_replace_callback('~(<p\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bsite-footer__note\b[^"]*"|\'[^\']*\bsite-footer__note\b[^\']*\'))[^>]*>)(.*?)(</p\s*>)~is', function($note) {
+            $more_anchor = '';
+            $content = preg_replace_callback('~<a\b[^>]*>.*?</a\s*>~is', function($anchor) use (&$more_anchor) {
+                $label = html_entity_decode(trim(wp_strip_all_tags($anchor[0])), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                if ($label === 'بیشتر ببینید') { $more_anchor = $anchor[0]; return ''; }
+                return $anchor[0];
+            }, $note[2]);
+            if (!is_string($content) || $more_anchor === '' || strpos($content, 'با ما تماس بگیرید') === false) { return $note[0]; }
+            $link_open = strstr($more_anchor, '>', true);
+            if ($link_open === false) { return $note[0]; }
+            $content = str_replace('با ما تماس بگیرید', $link_open . '>با ما تماس بگیرید</a>', $content, $count);
+            return $note[1] . (is_string($content) ? $content : $note[2]) . $note[3];
+        }, $html);
+        return is_string($html) ? $html : $footer[0];
+    }, $document);
+}
+
 function takinta_portfolio_images_only_transform($document) {
     if (!is_string($document) || $document === '') { return $document; }
 
@@ -1330,7 +1376,10 @@ function takinta_editable_render_imported_route() {
     $document = takinta_account_link_in_static_document($document, $route);
     $document = takinta_cart_transform_static_document($document, $route);
     $document = takinta_portfolio_images_only_transform($document);
-    if (strpos($route, 'fa/') === 0) { $document = takinta_persian_ui_text_transform($document); }
+    if (strpos($route, 'fa/') === 0) {
+        $document = takinta_persian_ui_text_transform($document);
+        $document = takinta_persian_footer_more_links_transform($document);
+    }
     // Bust stale browser/CDN copies of the old placeholder search handler on imported pages.
     $document = preg_replace_callback("~(<script\\b[^>]*\\bsrc\\s*=\\s*)([\"'])([^\"']*assets/js/main\\.js)(?:\\?[^\"']*)?([\"'])~i", function($matches) {
         return $matches[1] . $matches[2] . $matches[3] . '?v=20261102-search' . $matches[4];
