@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.10
+ * Version: 1.5.11
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -914,6 +914,59 @@ function takinta_cart_transform_static_document($document, $route) {
     }, $document, 1);
 }
 
+function takinta_persian_ui_text_transform($document) {
+    if (!is_string($document) || $document === '') { return $document; }
+
+    // Preserve submitted form values while localizing the visible labels and common UI
+    // strings shared by Persian pages, including the site-wide footer and form controls.
+    $protected_values = array();
+    $document = preg_replace_callback('~\bvalue\s*=\s*(["\'])(.*?)\1~is', function($match) use (&$protected_values) {
+        $token = '__TAKINTA_FORM_VALUE_' . count($protected_values) . '__';
+        $protected_values[$token] = $match[0];
+        return $token;
+    }, $document);
+    if (!is_string($document)) { return ''; }
+
+    $translations = array(
+        'Design Service' => 'خدمات طراحی',
+        'Assembly Instructions' => 'راهنمای مونتاژ',
+        'Wardrobe Systems' => 'سیستم‌های رگال لباس',
+        'Imprint' => 'اطلاعات حقوقی',
+        'CCPA Opt Out' => 'تنظیمات حریم خصوصی CCPA',
+        'Your email' => 'ایمیل شما',
+        'Frequently asked questions' => 'پرسش‌های متداول',
+        'Quick delivery' => 'ارسال سریع',
+        'Clear filters' => 'پاک کردن فیلترها',
+        'Skip to main content' => 'رفتن به محتوای اصلی',
+        'Previous announcement' => 'اطلاعیهٔ قبلی',
+        'Next announcement' => 'اطلاعیهٔ بعدی',
+        'Social media' => 'شبکه‌های اجتماعی',
+        'Footer column 1' => 'پیوندهای پایانی، ستون ۱',
+        'Footer column 2' => 'پیوندهای پایانی، ستون ۲',
+        'Footer column 3' => 'پیوندهای پایانی، ستون ۳',
+        'Footer keyword links' => 'پیوندهای کلیدی پایین صفحه',
+        'Google / Search engine' => 'گوگل / موتور جست‌وجو',
+        'Trade fair' => 'نمایشگاه',
+        'Other search engine' => 'موتور جست‌وجوی دیگر',
+        'AI platform (e.g. ChatGPT, Perplexity)' => 'پلتفرم هوش مصنوعی (مانند ChatGPT یا Perplexity)',
+        'Filter by finish' => 'فیلتر بر اساس رنگ و پوشش',
+        '1 more finish' => '۱ پوشش دیگر',
+        'Call to action' => 'دعوت به اقدام',
+        'Name *' => 'نام *',
+        'Email *' => 'ایمیل *',
+        'Message *' => 'پیام *',
+        'GET STARTED' => 'شروع کنید',
+        'GET IN TOUCH' => 'با ما تماس بگیرید',
+        'GET INSPIRED' => 'ایده بگیرید',
+        'SAMPLE SERVICE' => 'خدمات دریافت نمونه',
+    );
+    $document = str_replace(array_keys($translations), array_values($translations), $document);
+    foreach ($protected_values as $token => $original_attribute) {
+        $document = str_replace($token, $original_attribute, $document);
+    }
+    return $document;
+}
+
 function takinta_portfolio_images_only_transform($document) {
     if (!is_string($document) || $document === '') { return $document; }
 
@@ -1277,6 +1330,7 @@ function takinta_editable_render_imported_route() {
     $document = takinta_account_link_in_static_document($document, $route);
     $document = takinta_cart_transform_static_document($document, $route);
     $document = takinta_portfolio_images_only_transform($document);
+    if (strpos($route, 'fa/') === 0) { $document = takinta_persian_ui_text_transform($document); }
     // Bust stale browser/CDN copies of the old placeholder search handler on imported pages.
     $document = preg_replace_callback("~(<script\\b[^>]*\\bsrc\\s*=\\s*)([\"'])([^\"']*assets/js/main\\.js)(?:\\?[^\"']*)?([\"'])~i", function($matches) {
         return $matches[1] . $matches[2] . $matches[3] . '?v=20261102-search' . $matches[4];
