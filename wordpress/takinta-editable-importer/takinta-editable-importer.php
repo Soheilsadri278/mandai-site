@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.5
+ * Version: 1.5.6
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -969,13 +969,39 @@ TAKINTA_REGEX;
 ~(<ul\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-track\b[^"]*"|'[^']*\bfref-track\b[^']*'))[^>]*>)(.*?)(</ul\s*>)~is
 TAKINTA_REGEX;
     $track_pattern = trim($track_pattern);
-    $updated = preg_replace_callback($track_pattern, function($matches) {
-        $items = preg_replace_callback('~<li\b[^>]*>.*?</li\s*>~is', function($slide) {
+    $lazy_loading_pattern = <<<'TAKINTA_REGEX'
+~\bloading\s*=\s*(?:"lazy"|'lazy')~i
+TAKINTA_REGEX;
+    $loading_attribute_pattern = <<<'TAKINTA_REGEX'
+~\bloading\s*=~i
+TAKINTA_REGEX;
+    $lazy_loading_pattern = trim($lazy_loading_pattern);
+    $loading_attribute_pattern = trim($loading_attribute_pattern);
+    $updated = preg_replace_callback($track_pattern, function($matches) use ($lazy_loading_pattern, $loading_attribute_pattern) {
+        $first_photo_found = false;
+        $items = preg_replace_callback('~<li\b[^>]*>.*?</li\s*>~is', function($slide) use (&$first_photo_found, $lazy_loading_pattern, $loading_attribute_pattern) {
             $photo_slide = preg_replace('~<video\b[^>]*>.*?</video\s*>~is', '', $slide[0]);
             $photo_slide = preg_replace('~<iframe\b[^>]*>.*?</iframe\s*>~is', '', $photo_slide);
             $photo_slide = preg_replace('~<figcaption\b[^>]*>.*?</figcaption\s*>~is', '', $photo_slide);
             $photo_slide = preg_replace('~</?a\b[^>]*>~is', '', $photo_slide);
-            return is_string($photo_slide) && preg_match('~<img\b~i', $photo_slide) ? $photo_slide : '';
+            if (!is_string($photo_slide) || !preg_match('~<img\b~i', $photo_slide)) { return ''; }
+
+            // Load one representative image eagerly in every customer gallery so the
+            // page never renders a wall of blank carousel slots; remaining slides stay lazy.
+            if (!$first_photo_found) {
+                $photo_slide = preg_replace_callback('~<img\b[^>]*>~is', function($image) use ($lazy_loading_pattern, $loading_attribute_pattern) {
+                    $tag = $image[0];
+                    if (preg_match($lazy_loading_pattern, $tag)) {
+                        return preg_replace($lazy_loading_pattern, 'loading="eager"', $tag, 1);
+                    }
+                    if (!preg_match($loading_attribute_pattern, $tag)) {
+                        return preg_replace('~\s*/?>$~', ' loading="eager"$0', $tag, 1);
+                    }
+                    return $tag;
+                }, $photo_slide, 1);
+                $first_photo_found = true;
+            }
+            return is_string($photo_slide) ? $photo_slide : $slide[0];
         }, $matches[2]);
         return $matches[1] . (is_string($items) ? $items : $matches[2]) . $matches[3];
     }, $document);
