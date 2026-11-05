@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.3
+ * Version: 1.5.4
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -914,6 +914,62 @@ function takinta_cart_transform_static_document($document, $route) {
     }, $document, 1);
 }
 
+function takinta_portfolio_images_only_transform($document) {
+    if (!is_string($document) || $document === '') { return $document; }
+
+    // Keep each portfolio card's image container only; remove client names, locations,
+    // captions, and links without changing the image or its accessibility text.
+    $card_pattern = <<<'TAKINTA_REGEX'
+~(<li\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bref-card\b[^"]*"|'[^']*\bref-card\b[^']*'))[^>]*>)(.*?)(</li\s*>)~is
+TAKINTA_REGEX;
+    $media_pattern = <<<'TAKINTA_REGEX'
+~<div\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bref-card__media\b[^"]*"|'[^']*\bref-card__media\b[^']*'))[^>]*>.*?</div\s*>~is
+TAKINTA_REGEX;
+    $card_pattern = trim($card_pattern);
+    $media_pattern = trim($media_pattern);
+    $updated = preg_replace_callback($card_pattern, function($matches) use ($media_pattern) {
+        if (!preg_match($media_pattern, $matches[2], $media)) { return $matches[0]; }
+        return $matches[1] . $media[0] . $matches[3];
+    }, $document);
+    if (is_string($updated)) { $document = $updated; }
+
+    // In client project galleries, remove the store/location title and the external
+    // address rows before the photo slider, while retaining the slider controls.
+    $store_prefix_pattern = <<<'TAKINTA_REGEX'
+~(<div\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-store\b[^"]*"|'[^']*\bfref-store\b[^']*'))[^>]*>)(.*?)(<div\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-grid\b[^"]*"|'[^']*\bfref-grid\b[^']*'))[^>]*>)~is
+TAKINTA_REGEX;
+    $store_links_pattern = <<<'TAKINTA_REGEX'
+~<p\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-store__links\b[^"]*"|'[^']*\bfref-store__links\b[^']*'))[^>]*>.*?</p\s*>~is
+TAKINTA_REGEX;
+    $store_prefix_pattern = trim($store_prefix_pattern);
+    $store_links_pattern = trim($store_links_pattern);
+    $updated = preg_replace_callback($store_prefix_pattern, function($matches) use ($store_links_pattern) {
+        $before_gallery = preg_replace('~<h2\b[^>]*>.*?</h2\s*>~is', '', $matches[2]);
+        if (is_string($before_gallery)) {
+            $before_gallery = preg_replace($store_links_pattern, '', $before_gallery);
+        }
+        return $matches[1] . (is_string($before_gallery) ? $before_gallery : $matches[2]) . $matches[3];
+    }, $document);
+    if (is_string($updated)) { $document = $updated; }
+
+    // Remove product-name/photo-credit captions from the gallery items themselves.
+    $track_pattern = <<<'TAKINTA_REGEX'
+~(<ul\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfref-track\b[^"]*"|'[^']*\bfref-track\b[^']*'))[^>]*>)(.*?)(</ul\s*>)~is
+TAKINTA_REGEX;
+    $track_pattern = trim($track_pattern);
+    $updated = preg_replace_callback($track_pattern, function($matches) {
+        $items = preg_replace_callback('~<li\b[^>]*>.*?</li\s*>~is', function($slide) {
+            $photo_slide = preg_replace('~<video\b[^>]*>.*?</video\s*>~is', '', $slide[0]);
+            $photo_slide = preg_replace('~<iframe\b[^>]*>.*?</iframe\s*>~is', '', $photo_slide);
+            $photo_slide = preg_replace('~<figcaption\b[^>]*>.*?</figcaption\s*>~is', '', $photo_slide);
+            $photo_slide = preg_replace('~</?a\b[^>]*>~is', '', $photo_slide);
+            return is_string($photo_slide) && preg_match('~<img\b~i', $photo_slide) ? $photo_slide : '';
+        }, $matches[2]);
+        return $matches[1] . (is_string($items) ? $items : $matches[2]) . $matches[3];
+    }, $document);
+    return is_string($updated) ? $updated : $document;
+}
+
 function takinta_wc_render_cart_shortcode_fallback($is_fa) {
     if (!class_exists('WooCommerce') || !function_exists('do_shortcode') || !function_exists('get_header') || !function_exists('get_footer')) { return false; }
     $theme_uri = untrailingslashit(get_template_directory_uri());
@@ -1056,6 +1112,7 @@ function takinta_editable_render_imported_route() {
     $document = str_replace($home_url . '/images/', $theme_uri . '/static-site/images/', $document);
     $document = takinta_account_link_in_static_document($document, $route);
     $document = takinta_cart_transform_static_document($document, $route);
+    $document = takinta_portfolio_images_only_transform($document);
     // Bust stale browser/CDN copies of the old placeholder search handler on imported pages.
     $document = preg_replace_callback("~(<script\\b[^>]*\\bsrc\\s*=\\s*)([\"'])([^\"']*assets/js/main\\.js)(?:\\?[^\"']*)?([\"'])~i", function($matches) {
         return $matches[1] . $matches[2] . $matches[3] . '?v=20261102-search' . $matches[4];
