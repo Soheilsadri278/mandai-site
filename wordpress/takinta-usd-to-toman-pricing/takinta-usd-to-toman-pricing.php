@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta USD to Toman Prices for WooCommerce
  * Description: Converts per-product USD base prices using Iran Market Data's free-market USD rate and syncs WooCommerce prices, with per-product manual control.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -11,7 +11,7 @@
 
 if (!defined('ABSPATH')) { exit; }
 
-const TAKINTA_USD_TOMAN_VERSION = '1.0.0';
+const TAKINTA_USD_TOMAN_VERSION = '1.0.1';
 const TAKINTA_USD_TOMAN_API_URL = 'https://raw.githubusercontent.com/iran-market/iran-market.github.io/main/data/popular.json';
 const TAKINTA_USD_TOMAN_CRON_HOOK = 'takinta_usd_toman_refresh_rate';
 const TAKINTA_USD_TOMAN_BATCH_HOOK = 'takinta_usd_toman_sync_batch';
@@ -111,6 +111,33 @@ function takinta_usd_toman_price_from_usd($usd, $rate) {
     return round($usd * $rate * takinta_usd_toman_current_multiplier(), max(0, min(6, $decimals)));
 }
 
+function takinta_usd_toman_checkbox_enabled($value) {
+    if (!is_scalar($value)) { return false; }
+    return in_array(strtolower(trim((string) $value)), array('yes', '1', 'on', 'true'), true);
+}
+
+function takinta_usd_toman_update_one_product($product_id, $rate) {
+    if (!function_exists('wc_get_product')) { return false; }
+    $product_id = absint($product_id);
+    $product = wc_get_product($product_id);
+    $usd = (float) get_post_meta($product_id, '_takinta_usd_toman_usd_price', true);
+    if (!$product || $usd <= 0 || get_post_meta($product_id, '_takinta_usd_toman_auto', true) !== 'yes') { return false; }
+    if ($product->is_type('variable') || $product->is_type('grouped')) { return false; }
+
+    $price = takinta_usd_toman_price_from_usd($usd, $rate);
+    if ($price === false || $price <= 0) { return false; }
+    $formatted_price = function_exists('wc_format_decimal') ? wc_format_decimal($price, wc_get_price_decimals()) : (string) $price;
+    $product->set_regular_price($formatted_price);
+    // Preserve any separately configured sale price; otherwise make the converted
+    // regular price the active price as well.
+    if ($product->get_sale_price('edit') === '') { $product->set_price($formatted_price); }
+    $product->save();
+    update_post_meta($product_id, '_takinta_usd_toman_last_auto_price', $formatted_price);
+    update_post_meta($product_id, '_takinta_usd_toman_last_rate', (string) $rate);
+    update_post_meta($product_id, '_takinta_usd_toman_last_synced', current_time('mysql', true));
+    return true;
+}
+
 function takinta_usd_toman_query_products($offset = 0) {
     return new WP_Query(array(
         'post_type' => array('product', 'product_variation'),
@@ -162,33 +189,8 @@ function takinta_usd_toman_sync_batch() {
     $query = takinta_usd_toman_query_products($offset);
 
     foreach ($query->posts as $product_id) {
-        $product = wc_get_product($product_id);
-        $usd = (float) get_post_meta($product_id, '_takinta_usd_toman_usd_price', true);
-        if (!$product || $usd <= 0 || get_post_meta($product_id, '_takinta_usd_toman_auto', true) !== 'yes') {
-            $skipped++;
-            continue;
-        }
-        if ($product->is_type('variable') || $product->is_type('grouped')) {
-            $skipped++;
-            continue;
-        }
-        $price = takinta_usd_toman_price_from_usd($usd, $rate);
-        if ($price === false || $price <= 0) {
-            $skipped++;
-            continue;
-        }
-        $formatted_price = function_exists('wc_format_decimal') ? wc_format_decimal($price, wc_get_price_decimals()) : (string) $price;
-        $product->set_regular_price($formatted_price);
-        // Preserve any separately configured sale price; otherwise make the converted
-        // regular price the active price as well.
-        if ($product->get_sale_price('edit') === '') {
-            $product->set_price($formatted_price);
-        }
-        $product->save();
-        update_post_meta($product_id, '_takinta_usd_toman_last_auto_price', $formatted_price);
-        update_post_meta($product_id, '_takinta_usd_toman_last_rate', (string) $rate);
-        update_post_meta($product_id, '_takinta_usd_toman_last_synced', current_time('mysql', true));
-        $updated++;
+        if (takinta_usd_toman_update_one_product($product_id, $rate)) { $updated++; }
+        else { $skipped++; }
     }
 
     $next_offset = $offset + count($query->posts);
@@ -372,6 +374,7 @@ function takinta_usd_toman_render_product_fields() {
     ));
     woocommerce_wp_checkbox(array(
         'id' => '_takinta_usd_toman_auto',
+        'cbvalue' => 'yes',
         'label' => 'به‌روزرسانی خودکار از نرخ دلار',
         'description' => 'اگر خاموش باشد، قیمت محصول را دستی در فیلد قیمت عادی WooCommerce وارد کنید؛ افزونه آن را تغییر نمی‌دهد.',
     ));
@@ -393,11 +396,84 @@ function takinta_usd_toman_save_product_fields($product) {
     if (!is_scalar($raw_usd)) { return; }
     $usd = wc_format_decimal(wc_clean($raw_usd), 6);
     if ($usd === '' || (float) $usd < 0) { $usd = ''; }
-    $enabled = isset($_POST['_takinta_usd_toman_auto']) && sanitize_text_field(wp_unslash($_POST['_takinta_usd_toman_auto'])) === 'yes' && $usd !== '' && (float) $usd > 0;
+    $auto_value = isset($_POST['_takinta_usd_toman_auto']) ? wp_unslash($_POST['_takinta_usd_toman_auto']) : '';
+    $enabled = takinta_usd_toman_checkbox_enabled($auto_value) && $usd !== '' && (float) $usd > 0;
     $product->update_meta_data('_takinta_usd_toman_usd_price', $usd);
     $product->update_meta_data('_takinta_usd_toman_auto', $enabled ? 'yes' : 'no');
 }
 add_action('woocommerce_admin_process_product_object', 'takinta_usd_toman_save_product_fields', 20);
+
+function takinta_usd_toman_verify_product_admin_save($product_id) {
+    if (!current_user_can('edit_post', $product_id)) { return false; }
+    if (isset($_POST['takinta_usd_toman_product_nonce'])) {
+        $nonce = sanitize_text_field(wp_unslash($_POST['takinta_usd_toman_product_nonce']));
+        if (wp_verify_nonce($nonce, 'takinta_usd_toman_save_product')) { return true; }
+    }
+    if (isset($_POST['_wpnonce'])) {
+        $nonce = sanitize_text_field(wp_unslash($_POST['_wpnonce']));
+        return wp_verify_nonce($nonce, 'update-post_' . $product_id);
+    }
+    return false;
+}
+
+function takinta_usd_toman_save_product_meta_fallback($product_id) {
+    if (!takinta_usd_toman_verify_product_admin_save($product_id)) { return; }
+    $product = wc_get_product($product_id);
+    if (!$product) { return; }
+    if ($product->is_type('variable') || $product->is_type('grouped')) {
+        update_post_meta($product_id, '_takinta_usd_toman_auto', 'no');
+        return;
+    }
+    if (!isset($_POST['_takinta_usd_toman_usd_price'])) { return; }
+    $raw_usd = wp_unslash($_POST['_takinta_usd_toman_usd_price']);
+    if (!is_scalar($raw_usd)) { return; }
+    $usd = wc_format_decimal(wc_clean($raw_usd), 6);
+    if ($usd === '' || (float) $usd < 0) { $usd = ''; }
+    $raw_auto = isset($_POST['_takinta_usd_toman_auto']) ? wp_unslash($_POST['_takinta_usd_toman_auto']) : '';
+    $enabled = takinta_usd_toman_checkbox_enabled($raw_auto) && $usd !== '' && (float) $usd > 0;
+    update_post_meta($product_id, '_takinta_usd_toman_usd_price', $usd);
+    update_post_meta($product_id, '_takinta_usd_toman_auto', $enabled ? 'yes' : 'no');
+}
+add_action('woocommerce_process_product_meta', 'takinta_usd_toman_save_product_meta_fallback', 20, 1);
+
+function takinta_usd_toman_sync_saved_product($product_id) {
+    if (!takinta_usd_toman_verify_product_admin_save($product_id) || !function_exists('wc_get_product')) { return; }
+    $product = wc_get_product($product_id);
+    if (!$product) { return; }
+    $product_ids = $product->is_type('variable') ? $product->get_children() : array($product_id);
+    $eligible = array();
+    foreach ($product_ids as $id) {
+        if (get_post_meta($id, '_takinta_usd_toman_auto', true) === 'yes' && (float) get_post_meta($id, '_takinta_usd_toman_usd_price', true) > 0) {
+            $eligible[] = (int) $id;
+        }
+    }
+    if (!$eligible) { return; }
+
+    $rate_data = get_option(TAKINTA_USD_TOMAN_RATE_OPTION, array());
+    $fetched_at = !empty($rate_data['fetched_at']) ? strtotime($rate_data['fetched_at'] . ' UTC') : false;
+    if (empty($rate_data['value']) || !$fetched_at || (time() - $fetched_at) > 25 * MINUTE_IN_SECONDS) {
+        $rate_data = takinta_usd_toman_fetch_rate();
+    }
+    if (is_wp_error($rate_data)) {
+        update_option(TAKINTA_USD_TOMAN_STATE_OPTION, array('status' => 'error', 'message' => $rate_data->get_error_message(), 'finished_at' => current_time('mysql')), false);
+        return;
+    }
+    $updated = 0;
+    foreach ($eligible as $id) {
+        if (takinta_usd_toman_update_one_product($id, $rate_data['value'])) { $updated++; }
+    }
+    if ($updated) {
+        update_option(TAKINTA_USD_TOMAN_STATE_OPTION, array(
+            'status' => 'complete',
+            'updated' => $updated,
+            'skipped' => 0,
+            'rate' => (float) $rate_data['value'],
+            'finished_at' => current_time('mysql'),
+            'message' => 'قیمت محصول پس از ذخیره، با نرخ روز به‌روزرسانی شد.',
+        ), false);
+    }
+}
+add_action('woocommerce_process_product_meta', 'takinta_usd_toman_sync_saved_product', 99, 1);
 
 function takinta_usd_toman_render_variation_fields($loop, $variation_data, $variation) {
     $variation_id = isset($variation->ID) ? (int) $variation->ID : 0;
@@ -423,7 +499,7 @@ function takinta_usd_toman_save_variation_fields($variation_id, $loop) {
     if ($usd === '' || (float) $usd < 0) { $usd = ''; }
     $auto_values = isset($_POST['_takinta_usd_toman_auto']) && is_array($_POST['_takinta_usd_toman_auto']) ? wp_unslash($_POST['_takinta_usd_toman_auto']) : array();
     $auto_value = isset($auto_values[$loop]) && is_scalar($auto_values[$loop]) ? sanitize_text_field($auto_values[$loop]) : '';
-    $enabled = $auto_value === 'yes' && $usd !== '' && (float) $usd > 0;
+    $enabled = takinta_usd_toman_checkbox_enabled($auto_value) && $usd !== '' && (float) $usd > 0;
     update_post_meta($variation_id, '_takinta_usd_toman_usd_price', $usd);
     update_post_meta($variation_id, '_takinta_usd_toman_auto', $enabled ? 'yes' : 'no');
 }
