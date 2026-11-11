@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.13
+ * Version: 1.5.14
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1014,6 +1014,124 @@ function takinta_persian_footer_more_links_transform($document) {
     }, $document);
 }
 
+function takinta_process_video_playback_transform($document, $route) {
+    if (!is_string($document) || !is_string($route)) { return $document; }
+    $route = trim($route, '/');
+    if (($route !== 'pages/our-process.html' && $route !== 'fa/pages/our-process.html') || strpos($document, 'data-takinta-process-video-src') !== false) { return $document; }
+
+    // The source pages contain poster images only. Their six corresponding MP4s
+    // are shared publicly from the owner's Drive folder and opened in a modal player.
+    $video_ids = array(
+        '1Tg3tL_Z2JWyq799yEvODYebMNRFSjqF3',
+        '1Q4bS6a77WmtX0WlHK_U284i39R2iOwqE',
+        '1UwKP0DvEDVGti3iJ69dTnaa8xUMedmea',
+        '1x_Y03mzLt4CkYM3Pon1SZvMn9nf2uDC5',
+        '1z3Zya8yyjrUA7pL81mjNl0Yt3YMspHfZ',
+        '1kIPYgYARYg_FxVEKYPqvdYfeuOYwuuxG',
+    );
+    $is_fa = strpos(ltrim($route, '/'), 'fa/') === 0;
+    $fa_labels = array('چشم‌انداز', 'برنامه‌ریزی', 'تولید', 'ارسال', 'آماده‌سازی و مونتاژ', 'افتتاح');
+    $index = 0;
+    $changed = 0;
+    $thumb_pattern = <<<'TAKINTA_REGEX'
+~<div\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bop-thumb\b[^"]*"|'[^']*\bop-thumb\b[^']*'))[^>]*>~is
+TAKINTA_REGEX;
+    $document = preg_replace_callback(trim($thumb_pattern), function($match) use (&$index, &$changed, $video_ids, $is_fa, $fa_labels) {
+        $current = $index++;
+        if (!isset($video_ids[$current])) { return $match[0]; }
+        $label = $is_fa ? 'پخش ویدئوی مرحلهٔ ' . ($current + 1) . ': ' . $fa_labels[$current] : 'Play process video, step ' . ($current + 1);
+        $opening = rtrim(substr($match[0], 0, -1));
+        $changed++;
+        return $opening . ' role="button" tabindex="0" aria-label="' . esc_attr($label) . '" data-takinta-process-video-src="' . esc_url('https://drive.google.com/file/d/' . $video_ids[$current] . '/preview') . '">';
+    }, $document);
+    if (!is_string($document) || !$changed) { return $document; }
+
+    $close_label = $is_fa ? 'بستن ویدئو' : 'Close video';
+    $runtime = <<<'TAKINTA_VIDEO_RUNTIME'
+<style id="takinta-process-video-style">
+.op-thumb[data-takinta-process-video-src] { cursor: pointer; }
+.op-thumb[data-takinta-process-video-src]:focus-visible { outline: 3px solid #1b6b4a; outline-offset: 4px; }
+.takinta-process-video-overlay { position: fixed; inset: 0; z-index: 2147483000; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.88); }
+.takinta-process-video-dialog { position: relative; width: min(92vw, 480px); height: min(86vh, 854px); background: #000; box-shadow: 0 18px 70px rgba(0,0,0,.5); }
+.takinta-process-video-dialog iframe { display: block; width: 100%; height: 100%; max-width: none; border: 0; background: #000; }
+.takinta-process-video-close { position: absolute; inset-block-start: -46px; inset-inline-end: 0; display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; background: #171717; color: #fff; font: 28px/1 sans-serif; cursor: pointer; }
+.takinta-process-video-close:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+@media (max-width: 600px) { .takinta-process-video-overlay { padding: 18px; } .takinta-process-video-dialog { width: min(92vw, 420px); height: min(82vh, 746px); } }
+</style>
+<script id="takinta-process-video-script">
+(function(){
+  var activeOverlay = null;
+  var lastTrigger = null;
+  var oldOverflow = '';
+  var closeLabel = __TAKINTA_CLOSE_LABEL__;
+  function closeVideo(){
+    if(!activeOverlay) return;
+    var overlay = activeOverlay;
+    var frame = overlay.querySelector('iframe');
+    if(frame) frame.src = 'about:blank';
+    overlay.remove();
+    activeOverlay = null;
+    document.body.style.overflow = oldOverflow;
+    if(lastTrigger && document.contains(lastTrigger)) lastTrigger.focus();
+    lastTrigger = null;
+  }
+  function openVideo(trigger){
+    if(activeOverlay) return;
+    var src = trigger.getAttribute('data-takinta-process-video-src');
+    if(!src) return;
+    lastTrigger = trigger;
+    oldOverflow = document.body.style.overflow;
+    var overlay = document.createElement('div');
+    overlay.className = 'takinta-process-video-overlay';
+    overlay.setAttribute('role','presentation');
+    var dialog = document.createElement('div');
+    dialog.className = 'takinta-process-video-dialog';
+    dialog.setAttribute('role','dialog');
+    dialog.setAttribute('aria-modal','true');
+    dialog.setAttribute('aria-label', trigger.getAttribute('aria-label') || closeLabel);
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'takinta-process-video-close';
+    close.setAttribute('aria-label', closeLabel);
+    close.textContent = '×';
+    var frame = document.createElement('iframe');
+    frame.src = src + '?autoplay=1';
+    frame.title = trigger.getAttribute('aria-label') || closeLabel;
+    frame.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.loading = 'eager';
+    close.addEventListener('click', closeVideo);
+    overlay.addEventListener('click', function(event){ if(event.target === overlay) closeVideo(); });
+    dialog.appendChild(close);
+    dialog.appendChild(frame);
+    overlay.appendChild(dialog);
+    document.body.appendChild(overlay);
+    activeOverlay = overlay;
+    document.body.style.overflow = 'hidden';
+    close.focus();
+  }
+  document.addEventListener('click', function(event){
+    var trigger = event.target.closest && event.target.closest('[data-takinta-process-video-src]');
+    if(trigger){ event.preventDefault(); openVideo(trigger); }
+  });
+  document.addEventListener('keydown', function(event){
+    if(activeOverlay && event.key === 'Escape'){ closeVideo(); return; }
+    var trigger = event.target.closest && event.target.closest('[data-takinta-process-video-src]');
+    if(trigger && (event.key === 'Enter' || event.key === ' ')){ event.preventDefault(); openVideo(trigger); }
+  });
+})();
+</script>
+TAKINTA_VIDEO_RUNTIME;
+    $runtime = str_replace('__TAKINTA_CLOSE_LABEL__', wp_json_encode($close_label), $runtime);
+    if (preg_match('~</body\\s*>~i', $document)) {
+        $document = preg_replace('~</body\\s*>~i', $runtime . '</body>', $document, 1);
+    } else {
+        $document .= $runtime;
+    }
+    return $document;
+}
+
 function takinta_portfolio_images_only_transform($document) {
     if (!is_string($document) || $document === '') { return $document; }
 
@@ -1377,6 +1495,7 @@ function takinta_editable_render_imported_route() {
     $document = takinta_account_link_in_static_document($document, $route);
     $document = takinta_cart_transform_static_document($document, $route);
     $document = takinta_portfolio_images_only_transform($document);
+    $document = takinta_process_video_playback_transform($document, $route);
     if (strpos($route, 'fa/') === 0) {
         $document = takinta_persian_ui_text_transform($document);
         $document = takinta_persian_footer_more_links_transform($document);
