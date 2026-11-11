@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta USD to Toman Prices for WooCommerce
  * Description: Converts per-product USD base prices using Iran Market Data's free-market USD rate and syncs WooCommerce prices, with per-product manual control.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -11,7 +11,7 @@
 
 if (!defined('ABSPATH')) { exit; }
 
-const TAKINTA_USD_TOMAN_VERSION = '1.0.1';
+const TAKINTA_USD_TOMAN_VERSION = '1.0.2';
 const TAKINTA_USD_TOMAN_API_URL = 'https://raw.githubusercontent.com/iran-market/iran-market.github.io/main/data/popular.json';
 const TAKINTA_USD_TOMAN_CRON_HOOK = 'takinta_usd_toman_refresh_rate';
 const TAKINTA_USD_TOMAN_BATCH_HOOK = 'takinta_usd_toman_sync_batch';
@@ -108,7 +108,12 @@ function takinta_usd_toman_price_from_usd($usd, $rate) {
     $rate = (float) $rate;
     if ($usd <= 0 || $rate <= 0) { return false; }
     $decimals = function_exists('wc_get_price_decimals') ? (int) wc_get_price_decimals() : 0;
-    return round($usd * $rate * takinta_usd_toman_current_multiplier(), max(0, min(6, $decimals)));
+    $multiplier = takinta_usd_toman_current_multiplier();
+    $raw_price = $usd * $rate * $multiplier;
+    // Round to the nearest 500,000 toman (or the equivalent 5,000,000 rial).
+    $rounding_step = 500000 * $multiplier;
+    $rounded_price = round($raw_price / $rounding_step) * $rounding_step;
+    return round($rounded_price, max(0, min(6, $decimals)));
 }
 
 function takinta_usd_toman_checkbox_enabled($value) {
@@ -318,7 +323,7 @@ function takinta_usd_toman_render_admin_page() {
     if (isset($_GET['saved'])) { echo '<div class="notice notice-success is-dismissible"><p>تنظیمات ذخیره شد.</p></div>'; }
     if (isset($_GET['sync_started'])) { echo '<div class="notice notice-success is-dismissible"><p>نرخ دریافت شد و همگام‌سازی شروع شد؛ در صورت تعداد زیاد محصولات، ادامهٔ آن در پس‌زمینه انجام می‌شود.</p></div>'; }
     if (isset($_GET['sync_error'])) { echo '<div class="notice notice-error"><p>همگام‌سازی شروع نشد. وضعیت و خطا را در بخش پایین بررسی کنید.</p></div>'; }
-    echo '<p>نرخ دلار آزاد از <a href="https://iran-market.github.io/" target="_blank" rel="noopener">Iran Market Data</a> دریافت می‌شود. API نرخ را به تومان می‌دهد و معمولاً هر ۳۰ دقیقه به‌روزرسانی می‌کند.</p>';
+    echo '<p>نرخ دلار آزاد از <a href="https://iran-market.github.io/" target="_blank" rel="noopener">Iran Market Data</a> دریافت می‌شود. API نرخ را به تومان می‌دهد و معمولاً هر ۳۰ دقیقه به‌روزرسانی می‌کند. قیمت نهایی به نزدیک‌ترین ۵۰۰٬۰۰۰ تومان (یا ۵٬۰۰۰٬۰۰۰ ریال) گرد می‌شود.</p>';
 
     if ($rate_value > 0) {
         echo '<div class="notice notice-info"><p><strong>نرخ آخر دریافت‌شده:</strong> ۱ دلار = ' . esc_html(number_format_i18n($rate_value)) . ' تومان';
