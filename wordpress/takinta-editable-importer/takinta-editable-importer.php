@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.18
+ * Version: 1.5.19
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1525,6 +1525,20 @@ function takinta_trim_markup_after_html_close($document) {
     return substr($document, 0, $closing_tag_position + strlen('</html>'));
 }
 
+function takinta_fashion_subtitle_dot_transform($document, $route) {
+    if (!is_string($document) || !is_string($route) || !preg_match('~^(?:fa/)?sectors/fashion\\.html$~i', ltrim($route, '/'))) { return $document; }
+
+    // Normalize stale imported copies: RTL bidi rendering can move a trailing dot
+    // to the visual start of this English subtitle, where it looks like a stray bullet.
+    $subtitle_pattern = <<<'TAKINTA_REGEX'
+~(<p\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfsh-sys__sub\b[^"]*"|'[^']*\bfsh-sys__sub\b[^']*'))[^>]*>)\s*[.·•]?\s*(Displaying fashion beautifully)\s*[.·•]?\s*(</p\s*>)~iu
+TAKINTA_REGEX;
+    $updated = preg_replace_callback(trim($subtitle_pattern), function($match) {
+        return $match[1] . $match[2] . $match[3];
+    }, $document);
+    return is_string($updated) ? $updated : $document;
+}
+
 function takinta_editable_render_imported_route() {
     if (is_admin() || (defined('REST_REQUEST') && REST_REQUEST)) { return; }
     $route = (string) get_query_var('takinta_static');
@@ -1552,6 +1566,7 @@ function takinta_editable_render_imported_route() {
 
     // Imported database copies can retain invalid content that was once appended after </html>.
     $document = takinta_trim_markup_after_html_close($document);
+    $document = takinta_fashion_subtitle_dot_transform($document, $route);
     $document = takinta_sector_home_footer_transform($document, $route);
     $theme_uri = untrailingslashit(get_template_directory_uri());
     $home_url = untrailingslashit(home_url('/'));
