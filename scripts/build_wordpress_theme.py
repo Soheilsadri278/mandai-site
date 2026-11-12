@@ -28,7 +28,7 @@ THEME_STYLE = '''/*
 Theme Name: Takinta Static Site
 Author: Takinta Design
 Description: Classic WordPress theme wrapper for the supplied bilingual Takinta static website.
-Version: 1.1.1
+Version: 1.1.2
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: takinta-static
@@ -676,6 +676,25 @@ def transform_html(source: str, page_path: str) -> str:
             whole = whole[:-1] + ' action="' + TOKEN_HOME + '/contact.php">'
         return whole
     source = FORM_RE.sub(form_replace, source)
+
+    # Keep reference photos but remove visible client names, locations, addresses,
+    # and links beneath each image in the static theme output.
+    ref_card_pattern = re.compile(
+        r"""(<li\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bref-card\b[^"]*"|'[^']*\bref-card\b[^']*'))[^>]*>)(.*?)(</li\s*>)""",
+        re.I | re.S,
+    )
+    ref_media_pattern = re.compile(
+        r"""<div\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bref-card__media\b[^"]*"|'[^']*\bref-card__media\b[^']*'))[^>]*>.*?</div\s*>""",
+        re.I | re.S,
+    )
+
+    def image_only_reference_card(match: re.Match) -> str:
+        media = ref_media_pattern.search(match.group(2))
+        if not media:
+            return match.group(0)
+        return match.group(1) + media.group(0) + match.group(3)
+
+    source = ref_card_pattern.sub(image_only_reference_card, source)
     return source
 
 
