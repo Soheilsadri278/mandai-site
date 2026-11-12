@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.15
+ * Version: 1.5.16
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1139,8 +1139,13 @@ function takinta_quick_delivery_badges_transform($document) {
 ~<span\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bproduct__badge\b[^"]*"|'[^']*\bproduct__badge\b[^']*'))(?P<opening>[^>]*)>(?P<label>\s*(?:Quick\s+delivery|ارسال\s+سریع|تحویل\s+سریع)\s*)</span\s*>~iu
 TAKINTA_REGEX;
     $transformed = preg_replace_callback(trim($badge_pattern), function($match) {
-        if (preg_match('~(?:^|\s)hidden(?:\s|=|$)~i', $match['opening'])) { return $match[0]; }
-        return '<span' . $match['opening'] . ' hidden>' . $match['label'] . '</span>';
+        $opening = $match['opening'];
+        if (preg_match('~\bdata-quick-delivery\s*=\s*(?:"show"|\'show\')~i', $opening)) {
+            $opening = preg_replace('~\s+hidden(?=\s|$)~i', '', $opening, 1);
+            return '<span' . $opening . '>' . $match['label'] . '</span>';
+        }
+        if (preg_match('~(?:^|\s)hidden(?:\s|=|$)~i', $opening)) { return $match[0]; }
+        return '<span' . $opening . ' hidden>' . $match['label'] . '</span>';
     }, $document);
     return is_string($transformed) ? $transformed : $document;
 }
