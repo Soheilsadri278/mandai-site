@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.18
+ * Version: 1.5.20
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1525,6 +1525,36 @@ function takinta_trim_markup_after_html_close($document) {
     return substr($document, 0, $closing_tag_position + strlen('</html>'));
 }
 
+function takinta_fashion_subtitle_dot_transform($document, $route) {
+    if (!is_string($document) || !is_string($route) || !preg_match('~^(?:fa/)?sectors/fashion[.]html$~i', ltrim($route, '/'))) { return $document; }
+
+    // Hide a marker from any old stylesheet and normalize stale imported subtitle HTML.
+    $marker_fix = '<style id="takinta-fashion-subtitle-marker-fix">.sys-intro .fsh-sys__sub::before,.sys-intro .fsh-sys__sub::after,.sys-intro .fsh-sys__sub::marker{content:none!important;display:none!important;}</style>';
+    $head_end = stripos($document, '</head>');
+    if ($head_end !== false) { $document = substr_replace($document, $marker_fix, $head_end, 0); }
+
+    // Normalize the whole paragraph; old database copies may wrap the bullet/dot in a span.
+    $paragraph_pattern = <<<'TAKINTA_REGEX'
+~([ \t\r\n]*[.·•]?[ \t\r\n]*)(<p\b[^>]*>)(.*?)(</p\s*>)([ \t\r\n]*[.·•]?[ \t\r\n]*)~is
+TAKINTA_REGEX;
+    $updated = preg_replace_callback(trim($paragraph_pattern), function($match) {
+        $plain_text = html_entity_decode(strip_tags($match[3]), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $normalized = preg_replace('~^[\s.·•]*Displaying\s+fashion\s+beautifully[\s.·•]*$~iu', 'Displaying fashion beautifully', trim($plain_text));
+        if (!is_string($normalized) || $normalized !== 'Displaying fashion beautifully') { return $match[0]; }
+        return $match[2] . $normalized . $match[4];
+    }, $document);
+    if (!is_string($updated)) { return $document; }
+
+    // Also remove an adjacent dot/bullet if older markup placed it outside the paragraph.
+    $phrase_pattern = <<<'TAKINTA_REGEX'
+~(?:[.·•]\s*)?Displaying\s+fashion\s+beautifully(?:\s*[.·•])?~iu
+TAKINTA_REGEX;
+    $updated = preg_replace_callback(trim($phrase_pattern), function() {
+        return 'Displaying fashion beautifully';
+    }, $updated);
+    return is_string($updated) ? $updated : $document;
+}
+
 function takinta_editable_render_imported_route() {
     if (is_admin() || (defined('REST_REQUEST') && REST_REQUEST)) { return; }
     $route = (string) get_query_var('takinta_static');
@@ -1552,6 +1582,7 @@ function takinta_editable_render_imported_route() {
 
     // Imported database copies can retain invalid content that was once appended after </html>.
     $document = takinta_trim_markup_after_html_close($document);
+    $document = takinta_fashion_subtitle_dot_transform($document, $route);
     $document = takinta_sector_home_footer_transform($document, $route);
     $theme_uri = untrailingslashit(get_template_directory_uri());
     $home_url = untrailingslashit(home_url('/'));
