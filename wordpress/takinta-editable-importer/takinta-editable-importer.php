@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.14
+ * Version: 1.5.15
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1132,6 +1132,19 @@ TAKINTA_VIDEO_RUNTIME;
     return $document;
 }
 
+function takinta_quick_delivery_badges_transform($document) {
+    if (!is_string($document) || $document === '') { return $document; }
+
+    $badge_pattern = <<<'TAKINTA_REGEX'
+~<span\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bproduct__badge\b[^"]*"|'[^']*\bproduct__badge\b[^']*'))(?P<opening>[^>]*)>(?P<label>\s*(?:Quick\s+delivery|ارسال\s+سریع|تحویل\s+سریع)\s*)</span\s*>~iu
+TAKINTA_REGEX;
+    $transformed = preg_replace_callback(trim($badge_pattern), function($match) {
+        if (preg_match('~(?:^|\s)hidden(?:\s|=|$)~i', $match['opening'])) { return $match[0]; }
+        return '<span' . $match['opening'] . ' hidden>' . $match['label'] . '</span>';
+    }, $document);
+    return is_string($transformed) ? $transformed : $document;
+}
+
 function takinta_portfolio_images_only_transform($document) {
     if (!is_string($document) || $document === '') { return $document; }
 
@@ -1500,6 +1513,7 @@ function takinta_editable_render_imported_route() {
         $document = takinta_persian_ui_text_transform($document);
         $document = takinta_persian_footer_more_links_transform($document);
     }
+    $document = takinta_quick_delivery_badges_transform($document);
     // Bust stale browser/CDN copies of the old placeholder search handler on imported pages.
     $document = preg_replace_callback("~(<script\\b[^>]*\\bsrc\\s*=\\s*)([\"'])([^\"']*assets/js/main\\.js)(?:\\?[^\"']*)?([\"'])~i", function($matches) {
         return $matches[1] . $matches[2] . $matches[3] . '?v=20261102-search' . $matches[4];
