@@ -53,7 +53,8 @@
     .fsh-sys__media { background: var(--bg-media); }
     .fsh-sys__media img { display: block; width: 100%; height: auto; }
     .fsh-sys__sub { margin-top: 10px; font-family: var(--font-serif); font-weight: 400; font-size: 22px; color: rgba(26, 26, 26, 0.9); }
-    .sys-intro .fsh-sys__sub::before, .sys-intro .fsh-sys__sub::after { content: none !important; display: none !important; }
+    .sys-intro .fsh-sys__sub { list-style: none !important; }
+    .sys-intro .fsh-sys__sub::before, .sys-intro .fsh-sys__sub::after, .sys-intro .fsh-sys__sub::marker { content: none !important; display: none !important; }
     .fsh-sys__copy .sector-alt__text { margin-top: 14px; }
     .fsh-sys__cta { margin-top: 24px; }
     @media (min-width: 1024px) {

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.19
+ * Version: 1.5.20
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1526,16 +1526,32 @@ function takinta_trim_markup_after_html_close($document) {
 }
 
 function takinta_fashion_subtitle_dot_transform($document, $route) {
-    if (!is_string($document) || !is_string($route) || !preg_match('~^(?:fa/)?sectors/fashion\\.html$~i', ltrim($route, '/'))) { return $document; }
+    if (!is_string($document) || !is_string($route) || !preg_match('~^(?:fa/)?sectors/fashion[.]html$~i', ltrim($route, '/'))) { return $document; }
 
-    // Normalize stale imported copies: RTL bidi rendering can move a trailing dot
-    // to the visual start of this English subtitle, where it looks like a stray bullet.
-    $subtitle_pattern = <<<'TAKINTA_REGEX'
-~(<p\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bfsh-sys__sub\b[^"]*"|'[^']*\bfsh-sys__sub\b[^']*'))[^>]*>)\s*[.·•]?\s*(Displaying fashion beautifully)\s*[.·•]?\s*(</p\s*>)~iu
+    // Hide a marker from any old stylesheet and normalize stale imported subtitle HTML.
+    $marker_fix = '<style id="takinta-fashion-subtitle-marker-fix">.sys-intro .fsh-sys__sub::before,.sys-intro .fsh-sys__sub::after,.sys-intro .fsh-sys__sub::marker{content:none!important;display:none!important;}</style>';
+    $head_end = stripos($document, '</head>');
+    if ($head_end !== false) { $document = substr_replace($document, $marker_fix, $head_end, 0); }
+
+    // Normalize the whole paragraph; old database copies may wrap the bullet/dot in a span.
+    $paragraph_pattern = <<<'TAKINTA_REGEX'
+~([ \t\r\n]*[.·•]?[ \t\r\n]*)(<p\b[^>]*>)(.*?)(</p\s*>)([ \t\r\n]*[.·•]?[ \t\r\n]*)~is
 TAKINTA_REGEX;
-    $updated = preg_replace_callback(trim($subtitle_pattern), function($match) {
-        return $match[1] . $match[2] . $match[3];
+    $updated = preg_replace_callback(trim($paragraph_pattern), function($match) {
+        $plain_text = html_entity_decode(strip_tags($match[3]), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $normalized = preg_replace('~^[\s.·•]*Displaying\s+fashion\s+beautifully[\s.·•]*$~iu', 'Displaying fashion beautifully', trim($plain_text));
+        if (!is_string($normalized) || $normalized !== 'Displaying fashion beautifully') { return $match[0]; }
+        return $match[2] . $normalized . $match[4];
     }, $document);
+    if (!is_string($updated)) { return $document; }
+
+    // Also remove an adjacent dot/bullet if older markup placed it outside the paragraph.
+    $phrase_pattern = <<<'TAKINTA_REGEX'
+~(?:[.·•]\s*)?Displaying\s+fashion\s+beautifully(?:\s*[.·•])?~iu
+TAKINTA_REGEX;
+    $updated = preg_replace_callback(trim($phrase_pattern), function() {
+        return 'Displaying fashion beautifully';
+    }, $updated);
     return is_string($updated) ? $updated : $document;
 }
 
