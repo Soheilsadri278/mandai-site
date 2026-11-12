@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Takinta Editable Site, Accounts & WooCommerce Orders
  * Description: Imports editable pages, provides accounts and WooCommerce ordering with manual card-to-card payment.
- * Version: 1.5.16
+ * Version: 1.5.17
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * Author: Takinta Design
@@ -1150,6 +1150,45 @@ TAKINTA_REGEX;
     return is_string($transformed) ? $transformed : $document;
 }
 
+function takinta_sector_home_footer_transform($document, $route) {
+    if (!is_string($document) || !is_string($route)) { return $document; }
+    $route = ltrim($route, '/');
+    if (!preg_match('~^(?:fa/)?sectors/[^/]+\.html$~i', $route)) { return $document; }
+
+    // Keep database-backed sector routes in sync with the localized homepage footer.
+    $home_route = stripos($route, 'fa/') === 0 ? 'fa/index.html' : 'index.html';
+    $root = realpath(takinta_editable_static_root());
+    $home_file = $root ? realpath($root . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $home_route)) : false;
+    if (!$root || !$home_file || strpos($home_file, $root . DIRECTORY_SEPARATOR) !== 0 || !is_readable($home_file)) { return $document; }
+    $home_document = file_get_contents($home_file);
+    if (!is_string($home_document)) { return $document; }
+
+    $footer_pattern = <<<'TAKINTA_REGEX'
+~<footer\b(?=[^>]*\bclass\s*=\s*(?:"[^"]*\bsite-footer\b[^"]*"|'[^']*\bsite-footer\b[^']*'))[^>]*>.*?</footer\s*>~is
+TAKINTA_REGEX;
+    $footer_pattern = trim($footer_pattern);
+    if (!preg_match_all($footer_pattern, $home_document, $home_footers) || empty($home_footers[0])) { return $document; }
+    $canonical_footer = end($home_footers[0]);
+    if (!is_string($canonical_footer) || $canonical_footer === '') { return $document; }
+
+    // The homepage footer is one directory shallower than a sector route. Prefix
+    // only relative URL references; leave hashes, root-relative paths and schemes alone.
+    $url_attribute_pattern = <<<'TAKINTA_REGEX'
+~\b(href|src|action|poster)\s*=\s*(["'])(.*?)\2~is
+TAKINTA_REGEX;
+    $canonical_footer = preg_replace_callback(trim($url_attribute_pattern), function($match) {
+        $url = trim($match[3]);
+        if ($url === '' || preg_match('~^(?:[a-z][a-z0-9+.-]*:|//|/|#|\{|__TAKINTA_)~i', $url)) { return $match[0]; }
+        return $match[1] . '=' . $match[2] . '../' . $match[3] . $match[2];
+    }, $canonical_footer);
+    if (!is_string($canonical_footer)) { return $document; }
+
+    if (!preg_match_all($footer_pattern, $document, $page_footers, PREG_OFFSET_CAPTURE) || empty($page_footers[0])) { return $document; }
+    $target = end($page_footers[0]);
+    if (!is_array($target) || !isset($target[0], $target[1])) { return $document; }
+    return substr_replace($document, $canonical_footer, $target[1], strlen($target[0]));
+}
+
 function takinta_portfolio_images_only_transform($document) {
     if (!is_string($document) || $document === '') { return $document; }
 
@@ -1504,6 +1543,7 @@ function takinta_editable_render_imported_route() {
         if (!is_string($document) || $document === '') { return; }
     }
 
+    $document = takinta_sector_home_footer_transform($document, $route);
     $theme_uri = untrailingslashit(get_template_directory_uri());
     $home_url = untrailingslashit(home_url('/'));
     $document = str_replace('__TAKINTA_THEME_URI__', esc_url_raw($theme_uri), $document);
